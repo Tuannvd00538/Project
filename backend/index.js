@@ -1,9 +1,10 @@
+'use strict';
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const crypto = require('crypto-js');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/Project', { useMongoClient: true });
+mongoose.connect('mongodb://admin:admin@ds153577.mlab.com:53577/tthhngroup');
 mongoose.Promise = global.Promise;
 
 var app = express();
