@@ -23,6 +23,6 @@ accountRoute(app);
 var gvRoute = require('./routes/gvRoute');
 gvRoute(app);
 
-app.listen(3000, function(){
-	console.log('Port 3000: everything is going to be 200 OK!');
+app.listen(8080, function(){
+	console.log('Port 8080: everything is going to be 200 OK!');
 });
