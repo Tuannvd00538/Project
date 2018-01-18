@@ -1,0 +1,23 @@
+.tieu-de {
+    font-weight: 700;
+}
+.col-sm-offset-2 {
+    background-color: white;
+}
+.chu {
+    font-size: 20px;
+}
+.mau-chu {
+    color: red;
+    font-size: 23px;
+}
+.co-chu {
+    font-size: 22px;
+}
+.chu li p a {
+    color: blue;
+}
+#content {
+    background-color: rgb(245, 245, 245);
+    margin-top: -20px;
+}
