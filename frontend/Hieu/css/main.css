@@ -1,0 +1,291 @@
+/*
+          ==============================================================
+                   Unica Reset CSS
+          ==============================================================
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, sub, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: Arial;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;}
+a:hover {text-decoration: none; }
+/*
+          ==============================================================
+                   Unica Main CSS
+          ==============================================================
+*/
+.flL { float: left; }
+.flR { float: right; }
+.lastnone { border: 0 !important; }
+.choosed {
+    background: rgb(133, 147, 148) !important;
+    color: rgb(255, 255, 255) !important;
+    box-shadow: rgb(133, 147, 148) 1px 2px !important;
+}
+#sticky_navigation {margin-bottom: 15px;}
+.lastnone2 { border: 0 !important; margin-bottom: 0 !important; padding-bottom: 0 !important; }
+.u-search-box { background: #f54d4f;    border-radius: 5px 5px 0 0;    padding: 1px 5px 5px 5px; display: inline-block;}
+.u-search-box > div > label {   text-transform: uppercase;    display: block;    color: #fff;    font-weight: 700;    margin-bottom: 10px;}
+.margin-auto {    margin: 10px auto;}
+.u-search-box > div > input {  }
+.u-search-box label { display: inline; color: #fff; text-transform: uppercase; font-size: 22px; }
+#search_btn {    margin-left: -3px; padding: 7px 12px !important; top: 0 !important;}
+.bf-course b {margin: 10px; font-size: 18px; font-weight: bold;}
+.col-lg-12,.col-lg-5 {padding-right: 15px;}
+.padback {    background: #fff;    margin: 10px 0;    padding: 15px 10px 0 10px;}
+.padback > .checkbox-inline, .radio-inline {    width: 24%;    height: 30px;    font-size: 14px;}
+input[type="radio"], input[type="checkbox"] { margin: 1px 0 0; }
+#navbar { overflow: hidden; background-color: #333; }
+.sticky {  position: fixed;  top: 0;  width: 100%}
+.dg-navbar-sticky { background: #f54d4f; }
+.dg-navbar-sticky a { color: #fff; font-size: 16px; font-weight: bold; }
+.dg-navbar-sticky a:hover, .dg-navbar-sticky a:focus { background: #fc5773 !important; border: 0 none !important; }
+#sticky_navigation2 { padding: 10px; background: #d05800; z-index: 9;}
+#sticky_navigation2 a { border: 0 none !important; }
+.list-course { margin: 10px auto; }
+#sticky_navigation2 > div.col-lg-6.margin-auto.searchbox > input { width: 90%; float: left; height: 36px !important;}
+.hot-course {    font-size: 26px;    text-transform: uppercase;    font-weight: bold;    margin-bottom: 10px;    display: inline-block;}
+.box-slide { margin-bottom: 10px; }
+.list-projects .title a { font-weight: bold; color: #004d94 !important; font-size: 18px; }
+.list-projects {background: #fff;    border-radius: 5px;    box-shadow: 1px 1px 4px #ccc; display: inline-block;}
+
+
+.donggia {background: #f3f3f3; margin-top: 10px; margin-bottom: 10px; padding-top: 10px; padding-bottom: 10px;}
+.dg-box-course { background: #fff; border-radius: 5px; padding: 10px; box-shadow: 1px 1px 4px #ccc; margin-bottom: 30px;}
+.dg-title-box { min-height: 42px; max-height: 44px; overflow: hidden; font-size: 18px; font-weight: bold; color: #004d94; margin-bottom: 10px; display: block; min-height: 40px; line-height: 21px;}
+.dg-gv-box {margin-bottom: 5px; display: inline-block;}
+.dg-avatar-gv { float: left; }
+.dg-avatar-gv img {height: 55px; width: 55px; border-radius: 50px;}
+.dg-bigname-gv { color: #232323; }
+.dg-name-gv { float: left; margin: 5px 10px; font-size: 15px; font-weight: bold; color: #2a7fc8; }
+.dg-des-gv { max-width: 250px; min-height: 30px; font-size: 14px; color: #6a6a6a; font-weight: normal; margin-top: 10px; }
+.dg-price-course {margin: 10px 0; border-bottom: 1px solid #c7c7c7; padding-bottom: 10px; font-size: 18px; display: inline-block; width: 100%}
+.dg-price-course ul {text-align:  center;}
+.dg-price-course ul li {display: inline;color: #555555}
+.dg-img-course {display: inline-block;}
+.dg-price-goc {text-decoration: line-through; text-align:  center; }
+.dg-price-goc sup, .dg-price-net sup {left: -4px;}
+.dg-price-net {color: #f54007 !important; float: left;}
+.dg-price-discount { float: right; padding: 3px 5px; background: #f00; color: #fff !important; margin-top: -5px; }
+.dg-img-course { text-align: center; }
+.dg-des-course { background: #f5f5f5; border-radius: 5px; padding: 10px; min-height: 110px;}
+.dg-des-course p {line-height: 22px; font-size: 15px;}
+.dg-des-course ul li {line-height: 20px; font-size: 14px; list-style-image:url(../img/icon-des.png); margin-left: 20px;}
+.dg-btn-buy { text-align: center; background: #2196f3; color: #fff; border-radius: 5px; padding: 8px 15px; margin: 10px auto; width: 70%; box-shadow: 1px 2px #2196f3; display: block; }
+.dg-btn-buy:hover { background: #178abe; color: #fff; }
+.dg-txt-buy {margin-bottom: 5px; font-weight: bold;}
+.dg-box-list { background: #fff; border-radius: 5px; padding: 10px; box-shadow: 1px 1px 4px #ccc; width: 360px;}
+.dg-title-box-list {padding-bottom: 5px; display:  inline-block; width:  100%; }
+.dg-title-bg {margin: 10px 0; padding: 5px 0; font-weight: bold; font-size: 18px; text-transform: uppercase; float:  left;}
+.dg-icon-list { float: right;}
+.dg-des-gv2 {   font-size: 14px;    color: #6a6a6a;    font-weight: normal;    margin-top: 5px;}
+.dg-search-course { }
+.dg-area-course { margin: 10px 0; display: inline-block; }
+.dg-search-course input { padding: 6px 114px 6px 10px;  }
+.dg-search-course .navbar-form {padding: 0;}
+.dg-box-list a {font-weight: bold; color: #000;}
+.dg-box-list a:hover { color: #ff7e00;}
+.dg-box-list ul li { line-height: 28px; margin-left: 3px; }
+.dg-box-list ul li i { margin-right: 10px; }
+.dg-box-list .active { color: #ff7e00; }
+.dg-btn-reg {cursor:pointer;  margin: 9px 0; padding:10px; font-size: 24px; font-weight: bold; background: #d00000; box-shadow: 1px 2px #d00000; border-radius: 5px; width: 100%;  display: inline-block;  color: #ffce1b !important; text-transform: uppercase; }
+.dg-btn-reg2 { margin: 9px 0; padding:10px; font-size: 24px; font-weight: bold; background: #f26c4f; border-radius: 5px; width: 100%;  display: inline-block;  color: #fff !important; text-transform: uppercase; text-align: center; border: 1px solid #fff; cursor: pointer;}
+.dg-btn-reg:hover { background: #fd0707; }
+.dg-message { text-align: center; font-size: 18px; color: #ff7e00; font-weight: bold; }
+.dg-btn-txt {float: left; margin: 15px 10px 0 10px;}
+.dg-icon-cart { background: #ffce1b; border-radius: 4px; padding: 8px; float: right; margin:8px; }
+.dg-nummber-cart { color: #040404; position: relative; top: 0px; }
+
+/*
+          ==============================================================
+                   Unica Colorbox
+          ==============================================================
+*/
+
+.donggia2 { margin-top: 10px; margin-bottom: 10px; padding-top: 20px; padding-bottom: 10px;}
+.dg-block-left {0px 12px 12px 12px}
+.dg-block-right { background: #30a4e6; padding: 12px; }
+.dg-title-block { font-size: 18px; font-weight: bold; text-transform: uppercase;  }
+.dg-cart-cirle { color: #fff;     padding: 3px 4px 3px 7px;    background: #f26c4f;    border-radius: 15px; }
+.dg-line-course { margin: 10px 0; padding-bottom: 5px; border-bottom: 2px solid #d0d0d0; display: inline-block; width: 100%; }
+.dg-line-course ul li { display: inline;  font-size: 14px; font-weight: bold; }
+.dg-list-course { display: inline-block; width: 100%; }
+.dg-list-course ul { border-bottom: 1px solid #ccc; padding-bottom: 10px; }
+.dg-list-course ul li { line-height: 25px; margin: 5px 0px; font-size: 14px;}
+.dg-course-buy { display: inline-block; width: 100%; font-weight: bold;}
+.dg-course-gift {display: inline-block; width: 100%;}
+.dg-title-gift {color: #ed330b; font-size: 13px; font-weight: bold; margin-right: 15px;}
+.dg-select-box {}
+.dg-form-hv { margin-top: 10px; }
+.dg-form-hv label { font-weight: normal; color: #fff; }
+.dg-title-block-right { font-weight: bold; color: #fff; text-transform: uppercase; font-size: 18px; }
+.dg-txt-help { color: #fff; font-size: 14px; }
+.dg-txt-help p { line-height: 20px; }
+.dg-course-gift > div.dg-select-box.flL > select {     padding: 6px 20px 6px 12px;  }
+.chosen-search-input { height: 30px; }
+.modal-title {font-size:20px; font-weight: bold;}
+
+
+/*
+==========================================
+        @Media Reponsive Start
+==========================================
+*/
+
+@media (min-width:1367px) and (max-width:1600px) {
+}
+
+@media (min-width:1200px) and (max-width:1365px) {
+}
+
+@media (min-width:992px) and (max-width:1199px) {
+    .dg-title-box {font-size: 16px; min-height: 42px;}
+    .dg-des-course {padding: 5px;}
+    .dg-des-course ul li { font-size: 12px; }
+    .dg-box-course { min-height: 505px; }
+    .dg-des-course { max-height: 90px; overflow: hidden; }
+    .dg-search-course input { padding: 6px 47px 6px 10px; }
+    .dg-btn-reg {padding: 5px; font-size: 22px;}
+    .dg-message { font-size: 16px; }
+    .dg-box-list { width: 292px; }
+}
+
+@media (min-width:768px) and (max-width:991px) {
+    .dg-mb-list-box { background: #fff; border-radius: 5px; padding-bottom: 1px; margin-bottom: 10px; border: 1px solid #ccc; padding: 10px 20px 0; width: 94%; margin: 0 auto; }
+    .dg-mb-list-course {display: inline-block; width: 100%;}
+    .dg-mb-message { margin: 10px;text-align: center; font-size: 16px; color: #ff7e00; font-weight: bold; }
+    .dg-mb-list-combobox { float:  left; }
+    .dg-mb-btn-reg { padding: 3px 5px; background: #00aeef; box-shadow: 1px 2px #005a8d; border-radius: 5px; }
+    .dg-btn-smalltitle { color: #fff; float: left; padding: 5px }
+    .dg-icon-smallcart { margin-right: 5px; float: right; }
+    .dg-btn-sm-reg { margin: 11px 0; float: right; }
+    #sticky_navigation2 > div.col-lg-6.margin-auto.searchbox > input { width: 83%; }
+    .dg-hiddenbox-listcourse {     width: 720px;    margin-bottom: 10px;    background: #fff;    padding: 10px;    border-radius: 5px;    display: inline-block;    z-index: 9; }
+    .dg-hiddenbox-listcourse ul li { line-height: 25px; }
+    .dg-title-hdbox { font-weight: bold; font-size: 16px; margin-bottom: 10px; display: inline-block; width: 100%; }
+    .dg-hiddenbox-listcourse { box-shadow: 1px 1px 4px #ccc; }
+    .dg-hiddenbox-listcourse ul { float:  left;  }
+    .dg-btn-hidden-reg { margin: 10px 10px 0 0 ; }
+
+}
+
+@media (max-width:767px) {
+    .dg-mb-list-box { background: #fff; border-radius: 5px; padding-bottom: 1px; margin-bottom: 10px; border: 1px solid #ccc; padding: 10px 0 0; width: 94%; margin: 0 auto; }
+    #sticky_navigation2 > div > label > center { font-size: 18px; } 
+    .u-search-box > div > input { height: 40px; }	
+    #search_btn {    margin-left: -1px;    padding: 9px 16px;    top: 14px;	}
+    .padback > .checkbox-inline, .radio-inline {		width: 49%;    height: 31px;    font-size: 14px;	}
+}
+
+@media (min-width:375px) and (max-width:425px) { #search_btn { top: 14px; } }
+@media (min-width:320px) and (max-width:375px) {  #search_btn { top: 23px ; } }
+/* NEW CSS */
+#sticky_navigation2 { background: #e63131 !important; }
+.list-price ul { text-align: center; }
+.nav-tabs>li>a:hover { background: none; border: none; }
+.list-price ul li { float: none; display: inline-block; font-size: 20px; font-weight: bold; float: left}
+#sticky_navigation a { color: #ffce1b; margin: 10px 0; border-radius: 5px;}
+#sticky_navigation { width: auto; }
+.number-course { background: #fff; color: #337ab7; padding: 1px 8px 2px 6px; border-radius: 10px; font-weight: bold; border-radius: 10px; }
+.dg-course-buy > a { width: 75%; }
+.dg-select-box { width: 75%; }
+#thank-you h3 {
+	text-transform: uppercase;
+    color: #50ad4e;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin: 40px auto 20px;
+}
+
+#thank-you p {
+	font-size: 14px !important;
+    color: #000;
+    text-align: center;
+    margin: 10px auto;
+}
+
+#thank-you i {
+	display: block;
+    width: 80px;
+    margin: 30px auto;
+	font-size: 90px;
+}
+.input-group-btn .search_btn {
+	background: #e63131;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {  background: transparent; border: 0 none; }
+.list-price>ul>li>a { padding: 0 !important;  }
+.dg-des-course { min-height: 103px !important; max-height: 103px; overflow: hidden; }
+/*
+==========================================
+        @Media Reponsive Start
+==========================================
+*/
+
+@media (min-width:1367px) and (max-width:1600px) {
+}
+
+@media (min-width:1200px) and (max-width:1365px) {
+}
+
+@media (min-width:992px) and (max-width:1199px) {
+ #sticky_navigation2 { width: 100%; }
+ .dg-des-gv { max-width: 185px; }
+ .dg-name-gv { font-size: 16px; }
+ .nav>li>a>img { max-width: 100%; }
+ #sticky_navigation > li:nth-child(4) > a { margin-top: 10px; }
+}
+
+@media (min-width:768px) and (max-width:991px) {
+    .nav>li>a>img { max-width: 100%; }
+    #sticky_navigation > li:nth-child(4) > a { margin-top: 10px; }
+}
+
+@media (max-width:767px) {
+ .dg-list-course { font-size: 12px }
+ .dg-list-course ul li { line-height: 21px; }
+ .dg-select-box { width: 70%; }
+ .dg-course-buy > a { width: 70%; }
+ .bootstrap-select.btn-group .dropdown-toggle .filter-option { font-size: 12px; }
+ .nav>li>a>img { max-width: 100%; }
+ #sticky_navigation > li:nth-child(4) > a { margin-top: 10px; float:left; }
+}
