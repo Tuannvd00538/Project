@@ -231,3 +231,11 @@ i {
   -ms-transform: rotate(360deg);
   transform: rotate(360deg);
 }
+
+.thanhtoan {
+	padding: 0 250px;
+}
+
+td img {
+	width: 75px;
+}
