@@ -23,7 +23,7 @@ exports.uploadImg = function(req, res){
 	avatar.mv('./public/images/' + avatar.name, function(err) {
 		if (err)
 		  return res.status(500).send(err);
-		res.send('http://localhost:3000/images/' + avatar.name);
+		res.send('https://project-tthhn.appspot.com/images/' + avatar.name);
 	});
 }
 

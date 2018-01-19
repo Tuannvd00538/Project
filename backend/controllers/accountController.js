@@ -10,7 +10,7 @@ exports.getList = function(req, res){
 	Account.find({'status': 1})
 	.paginate(page, limit, function(err, result, total) {
     	var responseData = {
-    		'listStudent': result,
+    		'listAccount': result,
     		'totalPage': Math.ceil(total/limit)
     	};
     	res.send(responseData);

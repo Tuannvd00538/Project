@@ -23,7 +23,7 @@ var accountRoute = require('./routes/accountRoute');
 accountRoute(app);
 var gvRoute = require('./routes/gvRoute');
 gvRoute(app);
-
+app.get('/', (req, res) => res.send('Chào mừng bạn đến với server của Siin Đẹp Trai, đừng nghịch hay phá phách gì nhé :)'))
 app.listen(8080, function(){
 	console.log('Port 8080: everything is going to be 200 OK!');
 });
