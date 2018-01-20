@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html class=''>
+<head>
+   <meta charset='UTF-8'>
+   <link rel="icon" href="../img/icon.ico" type="image/x-icon" />
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css'>
+  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <div class="modal modalload"></div>
+</head>
+<body>
+<body class="sidebar-is-reduced">
+  <header class="l-header">
+    <div class="l-header__inner clearfix">
+      <div class="c-header-icon js-hamburger">
+        <div class="hamburger-toggle"><span class="bar-top"></span><span class="bar-mid"></span><span class="bar-bot"></span></div>
+      </div>
+      <div class="c-header-icon has-dropdown"><span class="c-badge c-badge--header-icon animated shake">87</span><i class="fa fa-bell"></i>
+        <div class="c-dropdown c-dropdown--notifications">
+          <div class="c-dropdown__header"></div>
+          <div class="c-dropdown__content"></div>
+        </div>
+      </div>
+      <div class="header-icons-group">
+        <div class="c-header-icon basket"><span class="c-badge c-badge--header-icon animated shake">12</span><i class="fa fa-shopping-basket"></i></div>
+        <div class="c-header-icon logout"><i class="fa fa-power-off"></i></div>
+      </div>
+    </div>
+  </header>
+  <div class="l-sidebar">
+    <div class="logo">
+      <div class="logo__txt">TT</div>
+    </div>
+    <div class="l-sidebar__content">
+      <nav class="c-menu js-menu">
+        <ul class="u-list">
+          <li class="reload c-menu__item has-submenu" data-toggle="tooltip" title="Trang Chủ">
+            <a id href="../index.html">
+              <div class="c-menu__item__inner"><i class="fa fa-home"></i>
+                <div class="c-menu-item__title"><span>Trang Chủ</span></div>
+              </div>
+            </a>           
+          </li>
+           <li class="reload c-menu__item is-active" data-toggle="tooltip" title="Thêm Giảng Viên">
+            <a href="#">
+              <div class="c-menu__item__inner"><i class="fa fa-user-plus"></i>
+                <div class="c-menu-item__title"><span>Thêm Giảng Viên</span></div>
+              </div>
+            </a>
+          </li>
+          <li class="reload c-menu__item has-submenu" data-toggle="tooltip" title="Thêm Khóa Học">
+            <a href="form_course.html">
+              <div class="c-menu__item__inner"><i class="fa fa-plus-circle"></i>
+                <div class="c-menu-item__title"><span>Thêm Khóa Học</span></div>
+              </div>
+            </a>
+          </li>
+          <li class="reload c-menu__item has-submenu" data-toggle="tooltip" title="Danh Sách Khóa Học">
+            <a href="listcourse.html" id="loadcourse">
+              <div class="c-menu__item__inner"><i class="fa fa-list"></i>
+                <div class="c-menu-item__title"><span>Danh Sách Khóa Học</span></div>
+              </div>
+            </a>
+          </li>
+          <li class="reload c-menu__item has-submenu" data-toggle="tooltip" title="Danh Sách Giảng Viên">
+            <a href="listgiangvien.html" id="loadgiangvien">
+              <div class="c-menu__item__inner"><i class="fa fa-user"></i>
+                <div class="c-menu-item__title"><span>Danh Sách Giảng Viên</span></div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</body>
+<main class="l-main">
+  <div class="content-wrapper content-wrapper--with-bg">
+    <h1 class="page-title">Thêm Giảng Viên</h1>
+    <div class="page-content">
+    	<form>
+		    <div class="form-group reg_name col-md-6">
+		        <label>Mã Giảng Viên</label>
+		        <input id="magiangvien" type="text" class="form-control" placeholder="Mã Giảng Viên">
+		    </div>
+		    <div class="form-group reg_name col-md-6">
+		        <label>Tên Giảng Viên</label>
+		        <input id="tengiangvien" type="text" class="form-control" placeholder="Tên Giảng Viên">
+		    </div>
+		    <div class="form-group reg_name col-md-6">
+		        <label>Chủ Đề Giảng Dạy</label>
+		        <textarea id="chudegiangday" rows="5" type="text" class="form-control" placeholder="Chủ Đề Giảng Dạy"></textarea>
+		    </div>
+		    <div class="form-group reg_name col-md-6">
+		        <label>Mô Tả</label>
+		        <textarea id="mota" rows="5" type="text" class="form-control" placeholder="Mô Tả Về Giảng Việt"></textarea>
+		    </div>
+		    <div class="form-group reg_name col-md-6">
+		        <label>Số Khóa Học</label>
+		        <input id="sokhoahoc" type="text" class="form-control" placeholder="Số Khóa Học">
+		    </div>
+        <div class="form-group reg_name col-md-6">
+          <label>Ảnh Đại Diện</label>
+          <input value="https://goo.gl/zuvMDY" id="anhdaidien" type="text" class="form-control" placeholder="Link Ảnh Đại Diện">
+        </div>
+	       <!--  <div class="col-md-6 reg_name form-group">
+	        	<label>Ảnh Đại Diện</label>
+			    <label class="btn btn-default form-control" for="my-file-selector">
+				    <input id="my-file-selector" type="file" style="display:none" 
+				    onchange="$('#upload-file-info').html(this.files[0].name)">
+				    Chọn Ảnh Đại Diện
+				</label>
+				<span class='label label-default' id="upload-file-info"></span>
+				<input style="display: none;" id="anhdaidien" type="text" class="form-control" placeholder="link Ảnh Đại Diện" value="https://cms.unica.vn/upload/images/_kiem-tien-affiliate-hieu-qua_thumb.jpg">
+	        </div> -->
+		    <button id="themgiangvien" type="button" class="btn btn-default">Hoàn Tất</button>
+		    <button type="reset" class="btn btn-default">Reset</button>
+		</form>
+    </div>
+  </div>
+</main>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script src="../js/script.js"></script>
+</body></html>
+
