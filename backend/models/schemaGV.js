@@ -3,20 +3,19 @@ var mongoose = require('mongoose');
 module.exports = mongoose.model('giangvien', {
 	MaGiangVien: {
 		type: String,
-		required: 'Vui Lòng Nhập Mã Giảng Viên'
+		required: true
 	},
 	TenGiangVien: {
 		type: String,
-		required: 'Vui Lòng Nhập Ten Giang Vien'
+		required: true
 	},
 	ChuDeGiangDay: {
 		type: String,
-		required: 'Vui Lòng Nhập Chủ Đề Giảng Dạy Của Giảng Viên'
+		required: true
 	},
 	MoTa: {
 		type: String,
-		required: 'Vui Lòng Nhập Mô Tả'
-		// Mỗi dòng ngăn cách nhau bởi dấu phảy
+		required: true
 	},
 	SoHocVien: {
 		type: Number,
@@ -28,7 +27,7 @@ module.exports = mongoose.model('giangvien', {
 	},
 	AnhDaiDien: {
 		type: String,
-		required: 'Vui Lòng Chọn Ảnh Đại Diện Giảng Viên'
+		required: true
 	},
 	NgayTao: {
 		type: Date,

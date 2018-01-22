@@ -1,21 +1,7 @@
 var Account = require('../models/schemaAccount');
+var Member = require('../models/schemaMember');
 require('mongoose-pagination');
 var crypto = require('crypto');
-
-exports.getList = function(req, res){
-	// Lấy tham số và parse ra number.	
-	var page = Number(req.query.page);
-	var limit = Number(req.query.limit);
-
-	Account.find({'status': 1})
-	.paginate(page, limit, function(err, result, total) {
-    	var responseData = {
-    		'listAccount': result,
-    		'totalPage': Math.ceil(total/limit)
-    	};
-    	res.send(responseData);
-  	});
-}
 
 exports.getDetail = function(req, res){	
 	Account.findOne({ _id: req.params.id, 'status': 1 },function(err, result){
@@ -23,8 +9,28 @@ exports.getDetail = function(req, res){
 	});
 }
 
+exports.getDetailMember = function(req, res){	
+	Member.findOne({ _id: req.params.id, 'status': 1 },function(err, result){
+		res.send(result);
+	});
+}
+
 exports.add = function(req, res){
 	var obj = new Account(req.body);
+	var salt = Math.random().toString(36).substring(7);
+	obj.salt = salt;
+	obj.password = sha512(obj.password, obj.salt);
+	obj.save(function(err){
+		if(err){
+			res.send(err);
+			return;
+		}
+		res.send(obj);
+	});
+}
+
+exports.addMember = function(req, res){
+	var obj = new Member(req.body);
 	var salt = Math.random().toString(36).substring(7);
 	obj.salt = salt;
 	obj.password = sha512(obj.password, obj.salt);
@@ -51,8 +57,23 @@ exports.update = function(req, res){
 	});
 }
 
+exports.updateMember = function(req, res){
+	Member.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, result) {
+	    res.json(result);
+	});
+}
+
 exports.delete = function(req, res){
 	Account.findById(req.params.id,function(err, result){
+		result.status = 0;
+		Account.findOneAndUpdate({_id: req.params.id}, result, {new: true}, function(err, result) {
+		    res.json(result);
+		});
+	});	
+}
+
+exports.deleteMember = function(req, res){
+	Member.findById(req.params.id,function(err, result){
 		result.status = 0;
 		Account.findOneAndUpdate({_id: req.params.id}, result, {new: true}, function(err, result) {
 		    res.json(result);

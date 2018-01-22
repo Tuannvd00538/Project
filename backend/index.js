@@ -6,13 +6,26 @@ const crypto = require('crypto-js');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://admin:admin@ds153577.mlab.com:53577/tthhngroup');
 mongoose.Promise = global.Promise;
-
+var jwt = require('jsonwebtoken');
 var app = express();
 
 app.use(cors());
 const fileUpload = require('express-fileupload');
 const path = require('path');
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(function(req, res, next) {
+  if (req.headers && req.headers.authorization) {
+    jwt.verify(req.headers.authorization.split(' ')[0], 'RESTFULAPIs', function(err, decode) {
+      if (err) req.user = undefined;
+      req.user = decode;
+      next();
+    });
+  } else {
+    req.user = undefined;
+    next();
+  }
+});
 
 app.use(fileUpload());
 app.use(express.static('./public'));
