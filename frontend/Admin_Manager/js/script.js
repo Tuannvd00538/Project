@@ -1,49 +1,3 @@
-var app = angular.module("myApp", ["ngRoute"]);
-
-app.config(function($routeProvider) {
-// $routeProvider
-//   .when('/home/', {
-//     templateUrl: 'pages/home.html',
-//     controller: 'myCtrl'
-//   })
-//   .when('/addcourse/', {
-//     templateUrl: 'pages/form_course.html',
-//     controller: 'myCtrl'
-//   })
-//   .when('/listcourse/', {
-//     templateUrl: 'pages/listcourse.html',
-//     controller: 'myCtrl'
-//   })
-//   .when('/listgiangvien/', {
-//     templateUrl: 'pages/listgiangvien.html',
-//     controller: 'myCtrl'
-//   })
-//   .when('/themgiangvien/', {
-//     templateUrl: 'pages/form_giangvien.html',
-//     controller: 'myCtrl'
-//   });
-// });
-
-
-
-  $routeProvider
-  .when("/home", {
-    templateUrl : "pages/home.html"
-  })
-  .when("/addcourse", {
-    templateUrl : "pages/form_course.html"
-  })
-  .when("/listcourse", {
-    templateUrl : "pages/listcourse.html"
-  })
-  .when("/themgiangvien", {
-    templateUrl : "pages/form_giangvien.html"
-  }).when("/listgiangvien", {
-    templateUrl : "pages/listgiangvien.html"
-  }).otherwise({
-      redirectTo: 'home'
- 	});
-});
 
 // LOAD KHÓA HỌC
 $(document).ready(function(){
@@ -56,7 +10,7 @@ $(document).ready(function(){
 			var content = '';
 			var viewindex = '';
 			// var listchude = '';
-			viewindex += '<div><h1>Khóa Học Mới Nhất : <strong style="color: red"><i>'+ reponse.data[reponse.data.length - 1].TieuDe +'</i></strong></h1></div>';			
+			viewindex += '<div><h1 class="viewindex">Khóa Học Mới Nhất : <strong style="color: red"><i>'+ reponse.data[reponse.data.length - 1].TieuDe +'</i></strong></h1></div>';			
 			// for (var i = 0; i < reponse.data.length; i++)
 			for (var i = reponse.data.length - 1; i >=0; i--){
 				var id = reponse.data[i]._id;
@@ -93,7 +47,7 @@ $(document).ready(function(){
 		success: function(reponse) {
 			var content = '';
 			var viewindex2 = '';
-			viewindex2 += '<div><h1>Giảng Viên Mới Nhất : <strong style="color: red"><i>'+ reponse.data[reponse.data.length - 1].TenGiangVien +'</i></strong></h1></div>';
+			viewindex2 += '<div><h1 class="viewindex2">Giảng Viên Mới Nhất : <strong style="color: red"><i>'+ reponse.data[reponse.data.length - 1].TenGiangVien +'</i></strong></h1></div>';
 			var listgiangvien = '';
 			for (var i = reponse.data.length - 1; i >=0; i--) {
 				var id = reponse.data[i]._id;
@@ -388,64 +342,71 @@ function suagiangvien(id) {
 // LOGIN ADMIN
 
 $(document).ready(function($){
+	$('#logoutpage').click(function () {
+	if(confirm("Đăng Xuất")){
+		localStorage.removeItem("keyLogin");
+		window.location.href = '../index.html'
+	}		
+	});
 	$('#logout').click(function () {
 		if(confirm("Đăng Xuất")){
-		localStorage.removeItem("KeyLogin");
+		localStorage.removeItem("keyLogin");
 		location.reload();
 	}
 	});
-
 	$('#loginadmin').click(function () {
 		var username = $('#username').val();
-	var password = $('#password').val();
+		var password = $('#password').val();
+		$('#msg').hide();
 		$.ajax({
-		url: 'https://project-tthhn.appspot.com/_api/v1/Authentication',
+		url: 'https://project-tthhn.appspot.com/admin',
 		type: "POST",
 		data: {
 				"username" : username,
 				"password" : password
 				},
 			success: function(reponse) {
-				localStorage.setItem("KeyLogin", reponse.tokenKey);
-				$('#indexlogin').hide();
-				swal("Thành Công", "Đăng Nhập Thành Công", "success");
-				location.reload(700);
-			},
+				var tokenKey = reponse.token;
+				if (tokenKey == null && tokenKey == undefined) 
+				{
+					$('#msg').show();
+					$('#msg').text('Tài khoản hoặc mật khẩu không chính xác !');
+					$.toast({
+					    heading: 'Thất Bại',
+					    text: ''+ reponse +'',
+					    position: 'bottom-right',
+					    icon: 'error'
+					})
+				}
+				else {
+					localStorage.setItem('keyLogin', tokenKey);		
+					$.toast({
+					    heading: 'Thành Công',
+					    text: 'Đăng Nhập Thành Công',
+					    position: 'bottom-right',
+					    icon: 'success'
+					})
+					setTimeout(location.reload.bind(location), 2000);		
+					}
+				
+				},
 			error: function() {
-
+				$('#msg').show();
+				$('#msg').text('Có lỗi xảy ra ! Vui lòng thử lại sau');
 			}
 		});
 	});
 });
 
-	
+// CHECK ADMIN LOGIN
 
-	
-
-
-var key = localStorage.getItem("KeyLogin");
-		if (key == undefined && key == null) {
-			$('#index').hide();
-			$('#indexlogin').show();	
-		}
-		else {
-			$('#index').show();
-			$('#indexlogin').hide();
-		}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+var keyLogin = localStorage.getItem('keyLogin');
+if (keyLogin == null && keyLogin == undefined) {
+	$('#indexlogin').attr("style","");
+}
+else {
+	$('#index').attr("style","");
+}
 
 
 

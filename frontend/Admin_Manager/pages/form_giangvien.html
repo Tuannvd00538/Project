@@ -9,12 +9,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
   <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.min.js"></script>
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   <div class="modal modalload"></div>
 </head>
-<body>
+<body id="index" style="display: none;">
 <body class="sidebar-is-reduced">
   <header class="l-header">
     <div class="l-header__inner clearfix">
@@ -29,7 +27,7 @@
       </div>
       <div class="header-icons-group">
         <div class="c-header-icon basket"><span class="c-badge c-badge--header-icon animated shake">12</span><i class="fa fa-shopping-basket"></i></div>
-        <div class="c-header-icon logout"><i class="fa fa-power-off"></i></div>
+        <div id="logoutpage" class="c-header-icon logout"><i class="fa fa-power-off"></i></div>
       </div>
     </div>
   </header>

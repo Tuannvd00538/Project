@@ -629,10 +629,6 @@ td img {
   margin-top: 10px;
 }
 
-#loginadmin {
-  margin-right: 20%;
-}
-
 /*LOADING*/
 
 .modalload {
@@ -653,4 +649,8 @@ body.loading {
 }
 body.loading .modal {
   display: block;
+}
+
+.viewindex,.viewindex2 {
+  color: black;
 }
