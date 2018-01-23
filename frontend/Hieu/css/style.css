@@ -90,7 +90,7 @@ header img {
 	color: #fff;
 }
 .checked {
-    color: yellow;
+    color: #f4c507;
 }
 .starBlue {
 	text-align: right;
@@ -498,6 +498,7 @@ footer ul li {
 .pay table tbody tr td {
 	line-height: 25px;
 }
+/*moi*/
 
 .a {
 	background-color: white;
@@ -522,4 +523,103 @@ footer ul li {
 }
 .b {
 	margin-top: -20px;
+}
+
+/*moi*/
+.container div {
+    margin-bottom: 15px;
+}
+.tit-teaching {
+    text-align: center;
+    margin: 50px auto 20px;
+}
+.tit-teaching span {
+	color: #4FAD4D;
+}
+.c {
+	background-color: #50AD4E;
+	    margin-top: 20px;
+}
+.item-day {
+	margin-top: 40px;
+    margin-bottom: 40px;
+    color: #FFF;
+    font-size: 15px;
+    text-align: center;
+}
+.item-day img {
+    margin-bottom: 25px;
+    margin-top: 25px;
+}
+#teaching-recruitment {
+    background-color: #F5F5F5;
+    margin: 40px 0;
+    padding-bottom: 30px;
+    text-align: center;
+}
+.btn-form-register {
+    width: 270px;
+    height: 70px;
+    font-size: 26px;
+    color: white !important;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    -ms-border-radius: 35px;
+    border-radius: 35px;
+    background: #50ad4e;
+    border: 2px solid #387836;
+}
+#teaching-footer {
+    text-align: center;
+    margin-bottom: 40px;
+}
+#teaching-footer .teaching-footer-title {
+    max-width: 325px;
+    margin: 40px auto 0;
+}
+
+/*/MOI*/
+.k-profile-edit-content {
+	box-sizing: inherit;
+}
+.file-upload {
+	color: black;
+	display: table-cell;
+	width: 122px;
+	height: 122px;
+	border: 1px solid transparent;
+	border-radius: 50%;
+	vertical-align: middle;
+	position: relative;
+	text-align: center;
+	overflow: hidden;
+}
+.avatar-empty {
+	border-color: #ccc;
+}
+.user-avatar .file-upload:hover::after{
+	content:"Đổi hình";
+	position:absolute;
+	top:0;
+	left:0;
+	width:120px;
+	height:120px;
+	line-height:120px;
+	color:#fff;
+	border-radius:50%;
+	background-color:rgba(0,0,0,.5)
+	}
+#k-courses-header {
+    margin-top: 5%;	
+}
+#d {
+	margin-bottom: -15%
+}
+a:focus {
+	outline: none;
+	outline-offset: 0;
+	text-decoration: none;
+}
+#panel {
+	display: none;
 }
