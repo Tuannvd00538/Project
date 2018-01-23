@@ -255,19 +255,21 @@ table {
 }
 
 .page-title {
-  padding: 32px;
+
   color: green;
   font-size: 25px;
   font-weight: bold;
+  padding: 20px;
 }
 
 .form-group {
   border-radius: 5px;
   border: 1px solid #eee; 
   height: 60px; 
-  margin-left: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
   text-align: center;
-  width: 270px;
+  width: 300px;
 }
 
 .form-group:hover {
@@ -283,8 +285,8 @@ table {
 }
 
 
-.row {
-  margin-top: 5px;
+.content {
+  margin: 0 10%;
 }
 
 .thongtin {
@@ -293,6 +295,7 @@ table {
   border-radius: 5px;
   background-color: #f9f9f9;
   padding: 40px;
+  margin-bottom: 20px;
 }
 
 #chuyenkhoan p,#atm p,#visa p {
@@ -307,9 +310,9 @@ table {
   float: left;
 }
 
-.input {
+/*.input {
   border: none;
-}
+}*/
 
 .tinhtien {
   width: 350px;
@@ -336,7 +339,7 @@ h4 a {
 
 .apdung  {
   border-top: 1px dashed #aaa;
-  margin-top: 20px;
+  margin: 7px 0 7px;  
 }
 
 .checkout-list-price {
@@ -360,17 +363,19 @@ ul li {
 
 .color-orange {
   color: #fb6a00!important;
+  font-weight: bold;
 }
 
 .thanhtoan {
+  margin-top: 100px;
+  float: right;
   width: 100%;
   background-color: #fff;
   position: sticky;
   bottom: 0;
   box-shadow: 0 -10px 15px rgba(0,0,0,.1);
   border-top: 1px solid #ddd;
-  height: 80px;
-  z-index: 1;
+  height: 50px;
 }
 
 .item, .button{
@@ -386,5 +391,60 @@ ul li {
   color: #fff;
   background: #ff7816;
   height: 54px;
-  font-size: 24px;
+  font-size: 20px;
+}
+
+fieldset {
+  margin-top: 20px;
+  border-radius: 10px;
+  margin-left: 45px;
+  border: 1px solid #eee;
+}
+
+fieldset:hover {
+  border: 1px solid #50ad4e;
+}
+
+fieldset legend {
+    width: auto;
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 0;
+}
+
+.row fieldset input, .row fieldset textarea {
+  border: none;
+  margin-top: -18px;
+  margin-left: -9px;
+  margin-bottom: -11px;
+  width: 259px;
+  height: 50px;
+  border-radius: 10px;
+}
+
+.login {
+  background-color: #fff8f3;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 50px;
+  margin-left: 20px;
+}
+
+.login p {
+  text-align: center;
+}
+
+.btnlogin {
+  margin-left: 60%;
+  margin-right: 30%;
+  width: 250px;
+}
+
+.gia {
+  float: right;
+  margin-right: -42%;
+}
+
+.phuongthuc {
+  width: 40px;
 }
