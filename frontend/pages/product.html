@@ -3,6 +3,8 @@
 <head>
   	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<meta property="fb:app_id" content="252312411967413" />
+	<meta property="fb:admins" content="100009112376938"/>
   	<link rel="icon" type="image/png" href="../img/favicon.png">
   	<title></title>
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -62,8 +64,16 @@
 	            		<span class="countCart">0</span>
 	            	</a>
 	            </li>
-	            <li><a href="javascript:void(0)">Đăng Ký</a></li>
-	            <li><a href="javascript:void(0)">Đăng Nhập</a></li>
+	            <li class="dropdown" id="checkLogin">
+	            	<a href="javascript:void(0)" data-toggle="dropdown"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+	            	<ul class="dropdown-menu">
+				      	<li><a href="javascript:void(0)">Khóa học của tôi</a></li>
+				      	<li><a href="javascript:void(0)">Chỉnh sửa thông tin</a></li>
+				      	<li><a href="javascript:logout()">Đăng xuất</a></li>
+				    </ul>
+	            </li>
+	            <li id="checkSign"><a href="sign.html">Đăng Ký</a></li>
+	            <li id="checkSignTwo"><a href="login.html">Đăng Nhập</a></li>
 	        </ul>
        	</div>
 	</nav>
@@ -73,11 +83,11 @@
 	  		<p id="desKH"></p>
 	  		<p><span>Giảng viên:</span> <a href="javascript:void(0)" id="gvKH"></a> <span>Chủ đề:</span> <a href="javascript:void(0)" id="cdKH"></a></p>
 	  		<p><span>219 đánh giá - 5946 học viên</span></p>
-	  		<span class="fa fa-star checked"></span>
-			<span class="fa fa-star checked"></span>
-			<span class="fa fa-star checked"></span>
-			<span class="fa fa-star checked"></span>
-			<span class="fa fa-star checked"></span>
+	  		<span class="fa fa-star star"></span>
+			<span class="fa fa-star star"></span>
+			<span class="fa fa-star star"></span>
+			<span class="fa fa-star star"></span>
+			<span class="fa fa-star star"></span>
 	  	</div>
   		<div class="col-md-4"></div>
 	</div>
@@ -107,6 +117,16 @@
 				<strong>Tags:</strong>
 				<div id="tagKH"></div>
 			</div>
+			<div class="btnXH">
+				<div class="row">
+				  	<div class="col-md-8">
+				  		<div class="fb-like" data-href="https://tthhnvn.appspot.com/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+				  	</div>
+				  	<div class="col-md-4">
+				  		<div class="fb-save"></div>
+				  	</div>
+				</div>
+			</div>
 			<div class="lecturerProduct">
 				<h5><strong>Giảng viên</strong></h5>
 				<div class="row">
@@ -122,6 +142,9 @@
 				  		</div>
 				  	</div>
 				</div>
+			</div>
+			<div class="pluginCommentTTHHN">
+				<div class="fb-comments" data-width=""></div>
 			</div>
 			<div class="commentProduct">
 				<span>Học viên đánh giá</span>
@@ -238,9 +261,17 @@
 			<div class="foo"><strong>&copy; Học viện Online TTHHN - Hệ thống đào tạo trực tuyến dành cho người đi làm - Cổng kết nối Chuyên gia với Học viên</strong>
 		</div>
     </footer>
+    <div id="fb-root"></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     <script type="text/javascript" src="../js/home.js"></script>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.11&appId=252312411967413&autoLogAppEvents=1';
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
 </body>
 </html>

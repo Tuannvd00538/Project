@@ -90,11 +90,7 @@ header img {
 	color: #fff;
 }
 .checked {
-<<<<<<< HEAD
     color: #0a75b5;
-=======
-    color: #f4c507;
->>>>>>> 2632c340e2f8246cb503898a6b17dcbacacf8288
 }
 .starBlue {
 	text-align: right;
@@ -328,7 +324,7 @@ footer ul li {
 	font-weight: 300;
 }
 .faq_footer {
-	/*margin-top: 50px;*/
+	margin-top: 50px;
 	height: 110px;
 	background-color: #000;
 	text-align: center;
@@ -503,7 +499,6 @@ footer ul li {
 .pay table tbody tr td {
 	line-height: 25px;
 }
-<<<<<<< HEAD
 .tagKH button {
 	margin-right: 5px;
 }
@@ -691,84 +686,40 @@ footer ul li {
 }
 #imgGV {
 	width: 100%;
-=======
-/*moi*/
-
-.a {
-	background-color: white;
-	padding-bottom: 10%
 }
-.faq-chung1 {
-	border-bottom: 1px solid #e7e7e7;; 
-    margin-bottom: 7%;
-    padding-top: 21px;
-    padding-bottom: 22px;
-    margin-left: 50px;
+.videoIntro {
+	text-align: center;
+	margin: 20px 0;
 }
-.faq-chung2 {
-    padding-left: 15%;
-    margin-bottom: 5%;
+#checkSign, #checkLogin, #checkSignTwo {
+	display: none;
 }
-.faq-chung2 img {
-	width: 60%;
+.btnXH, .pluginCommentTTHHN {
+	margin: 10px 0;
 }
-.quay-lai {
-	margin: 15%;
+.rsSearch {
+	display: none;
+	margin-top: 10px;
 }
-.b {
-	margin-top: -20px;
+.textSearch {
+	margin-top: 0;
 }
-
-/*moi*/
-.container div {
-    margin-bottom: 15px;
+.searchMain {
+	margin-top: -10px;
+	padding-top: 10px;
 }
-.tit-teaching {
-    text-align: center;
-    margin: 50px auto 20px;
+.rsSearch h1 {
+	font-size: 22px;
+	font-weight: 500;
+	margin-top: -10px;
+	line-height: 50px;
 }
-.tit-teaching span {
-	color: #4FAD4D;
+.error404 {
+	text-align: center;
+	padding: 10%;
+	display: none;
+	margin-top: -10px;
 }
-.c {
-	background-color: #50AD4E;
-	    margin-top: 20px;
-}
-.item-day {
-	margin-top: 40px;
-    margin-bottom: 40px;
-    color: #FFF;
-    font-size: 15px;
-    text-align: center;
-}
-.item-day img {
-    margin-bottom: 25px;
-    margin-top: 25px;
-}
-#teaching-recruitment {
-    background-color: #F5F5F5;
-    margin: 40px 0;
-    padding-bottom: 30px;
-    text-align: center;
-}
-.btn-form-register {
-    width: 270px;
-    height: 70px;
-    font-size: 26px;
-    color: white !important;
-    -webkit-border-radius: 35px;
-    -moz-border-radius: 35px;
-    -ms-border-radius: 35px;
-    border-radius: 35px;
-    background: #50ad4e;
-    border: 2px solid #387836;
-}
-#teaching-footer {
-    text-align: center;
-    margin-bottom: 40px;
-}
-#teaching-footer .teaching-footer-title {
-    max-width: 325px;
-    margin: 40px auto 0;
->>>>>>> 2632c340e2f8246cb503898a6b17dcbacacf8288
+.star {
+	color: yellow;
 }

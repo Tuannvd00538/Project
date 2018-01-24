@@ -20,21 +20,21 @@ exports.checkAdmin = function(req, res){
 			if(digestedPassword === result.password){
 				res.json({token: jwt.sign({ username: result.username, password: result.password, _id: result._id }, 'RESTFULAPIs', { expiresIn: 1440 })});
 			}else{
-				res.send('Tên đăng nhập hoặc mật khẩu không chính xác!');
+				res.status(401).json({ message: 'Tên đăng nhập hoặc mật khẩu không chính xác!' });
 				return;	
 			}
 		} else {
-			res.send('Tài khoản không tồn tại!');
+			res.status(401).json({ message: 'Tài khoản không tồn tại!'});
 		}
 	});
 }
 
 exports.loginRequired = function(req, res, next) {
-  if (req.user) {
-    next();
-  } else {
-    return res.status(401).json({ message: 'Token hết hạn hoặc không tồn tại!' });
-  }
+  	if (req.user) {
+	    next();
+  	} else {
+	    return res.status(401).json({ message: 'Token hết hạn hoặc không tồn tại!' });
+  	}
 };
 
 exports.getAdmin = function(req, res, next) {
@@ -44,7 +44,6 @@ exports.getAdmin = function(req, res, next) {
      res.json(result);
  });
 };
-
 
 exports.checkLogin = function(req, res){
 	var username = req.body.username;
@@ -58,25 +57,13 @@ exports.checkLogin = function(req, res){
 		if (result) {
 			var digestedPassword = accountController.sha512(password, result.salt);
 			if(digestedPassword === result.password){
-				var credential = new Credential({
-					tokenKey: crypto.randomBytes(20).toString('hex'),
-					ownerId: result._id
-				});
-				credential.save(function(err){
-					if(err){
-						res.send(err);
-						return;
-					}
-					res.send(credential);
-					return;
-				});
-				return;
+				res.json({token: jwt.sign({ username: result.username, password: result.password, _id: result._id }, 'RESTFULAPIs', { expiresIn: 1440 })});
 			}else{
-				res.send('Mật khẩu không khớp!');
+				res.status(401).json({ message: 'Tên đăng nhập hoặc mật khẩu không chính xác!' });
 				return;	
 			}
 		} else {
-			res.send('Tài khoản không tồn tại!');
+			res.status(404).json({ message: 'Tài khoản không tồn tại!'});
 		}
 	});
 }

@@ -14,6 +14,19 @@ exports.getList = function(req, res){
   	});
 }
 
+exports.getKhoaHoc = function (req, res) {
+	var page = Number(req.query.page);
+	var limit = Number(req.query.limit);
+	Product.find({ GiangVienID: req.params.id, 'TrangThai': 1 })
+	.paginate(page, limit, function(err, result, total) {
+    	var responseData = {
+    		'data': result,
+    		'totalPage': Math.ceil(total/limit)
+    	};
+    	res.send(responseData);
+  	});
+}
+
 exports.getHot = function(req, res){
 	var page = Number(req.query.page);
 	var limit = Number(req.query.limit);
@@ -43,21 +56,7 @@ exports.getNew = function(req, res){
 exports.getQuery = function (req, res) {
 	var page = Number(req.query.page);
 	var limit = Number(req.query.limit);
-	var key = req.query.q;
-	Product.find({ $or: [ { MaKhoaHoc: key }, { ChuDe: key }, { TuKhoa: key }] }).sort({NgayTao: -1})
-	.paginate(page, limit, function(err, result, total) {
-    	var responseData = {
-    		'data': result,
-    		'totalPage': Math.ceil(total/limit)
-    	};
-    	res.send(responseData);
-  	});
-}
-exports.getChuDe = function (req, res) {
-	var page = Number(req.query.page);
-	var limit = Number(req.query.limit);
-	var chude = req.query.chude;
-	Product.find({ $and: [ { ChuDe: chude }, { TrangThai: 1 } ] }).sort({NgayTao: -1})
+	Product.find({ $and: [ { $text: {$search: req.params.key} }, { TrangThai: 1 } ] })
 	.paginate(page, limit, function(err, result, total) {
     	var responseData = {
     		'data': result,

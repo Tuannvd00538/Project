@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>TTHHN -Login</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/member/login/sign.css">
+</head>
+<body>
+	<div id="wrapper">
+		<div id="sign_div">
+			<form>
+				<div class="input-field">
+					<i class="mdi-social-person-outline prefix"></i>
+					<input class="validate" id="username" type="text">
+					<label for="username" class="center-align">Tên đăng nhập</label>
+					<span class="alertMsgUser"></span>
+				</div>
+				<div class="input-field">
+					<i class="mdi-action-lock-outline prefix"></i>
+					<input id="password" type="password">
+					<label for="password">Mật khẩu</label>
+					<span class="alertMsgPass"></span>
+				</div>
+				<div class="input-field">
+					<i class="mdi-action-lock-outline prefix"></i>
+					<input id="repassword" type="password">
+					<label for="repassword">Nhập lại mật khẩu</label>
+					<span class="alertMsgRePass"></span>
+				</div>
+				<div class="input-field">
+					<i class="mdi-editor-format-align-center prefix"></i>
+					<input id="fullName" type="text">
+					<label for="fullName">Họ và tên</label>
+					<span class="alertMsgName"></span>
+				</div>
+				<div class="input-field">
+					<i class="mdi-communication-email prefix"></i>
+					<input id="email" type="email">
+					<label for="email">Email</label>
+					<span class="alertMsgEmail"></span>
+				</div>
+				<div class="input-field">
+					<i class="mdi-editor-insert-invitation prefix"></i>
+					<input id="birthDay" type="text">
+					<label for="birthDay">Sinh nhật</label>
+					<span class="alertMsgBd"></span>
+				</div>
+				
+				<div class="input-field">
+					<button class="btn waves-effect waves-light" type="button">Đăng ký</button>
+				</div>
+				<p>
+					<a href="sign.html" id="register">Đăng ký</a>
+					<a href="javascript:void(0)" id="forgot">Quên mật khẩu?</a>
+				</p>
+			</form>
+		</div>
+	</div>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+	<script type="text/javascript" src="../js/member/login/sign.js"></script>
+</body>
+</html>

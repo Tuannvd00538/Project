@@ -1,13 +1,14 @@
 var mongoose = require('mongoose');
 
-module.exports = mongoose.model('courses', {
+var coursesSchema =  new mongoose.Schema ({
 	MaKhoaHoc: {
 		type: String,
 		required: true
 	},
 	TieuDe: {
 		type: String,
-		required: true
+		required: true,
+  		index: true
 	},
 	MoTa: {
 		type: String,
@@ -82,3 +83,6 @@ module.exports = mongoose.model('courses', {
 		default: 1
 	}
 });
+coursesSchema.index({TieuDe: 'text'});
+
+module.exports = mongoose.model('courses', coursesSchema);

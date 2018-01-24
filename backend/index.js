@@ -9,6 +9,9 @@ mongoose.Promise = global.Promise;
 var jwt = require('jsonwebtoken');
 var app = express();
 
+var fullTextSearch = require('full-text-search');
+var search = new fullTextSearch();
+
 app.use(cors());
 const fileUpload = require('express-fileupload');
 const path = require('path');

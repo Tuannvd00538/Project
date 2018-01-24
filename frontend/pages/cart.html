@@ -62,8 +62,16 @@
 	            		<span class="countCart">0</span>
 	            	</a>
 	            </li>
-	            <li><a href="javascript:void(0)">Đăng Ký</a></li>
-	            <li><a href="javascript:void(0)">Đăng Nhập</a></li>
+	            <li class="dropdown" id="checkLogin">
+	            	<a href="javascript:void(0)" data-toggle="dropdown"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+	            	<ul class="dropdown-menu">
+				      	<li><a href="javascript:void(0)">Khóa học của tôi</a></li>
+				      	<li><a href="javascript:void(0)">Chỉnh sửa thông tin</a></li>
+				      	<li><a href="javascript:logout()">Đăng xuất</a></li>
+				    </ul>
+	            </li>
+	            <li id="checkSign"><a href="sign.html">Đăng Ký</a></li>
+	            <li id="checkSignTwo"><a href="login.html">Đăng Nhập</a></li>
 	        </ul>
        	</div>
 	</nav>

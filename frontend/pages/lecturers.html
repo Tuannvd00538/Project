@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+ <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
  <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body onload="loadLecturers()">
@@ -61,131 +62,48 @@
 	                  <span class="countCart">0</span>
 	                </a>
 	            </li>
-	            <li><a href="javascript:void(0)">Đăng Ký</a></li>
-	            <li><a href="javascript:void(0)">Đăng Nhập</a></li>
+	            <li class="dropdown" id="checkLogin">
+                <a href="javascript:void(0)" data-toggle="dropdown"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="javascript:void(0)">Khóa học của tôi</a></li>
+                    <li><a href="javascript:void(0)">Chỉnh sửa thông tin</a></li>
+                    <li><a href="javascript:logout()">Đăng xuất</a></li>
+                </ul>
+              </li>
+              <li id="checkSign"><a href="sign.html">Đăng Ký</a></li>
+              <li id="checkSignTwo"><a href="login.html">Đăng Nhập</a></li>
 	        </ul>
        	</div>
 	</nav>
   <div class="row mainLecturers">
     <div class="row topLecturers">
       <div class="col-md-3">
-        <img id="imgGV" src="https://graph.facebook.com/1900021470311580/picture?type=large">
+        <img id="imgGV" src="#">
         <div class="row">
           <div class="col-md-6">
-            <h2 id="soHV">69</h2>
+            <h2 id="soHV"></h2>
             <p>Học Viên</p>
           </div>
           <div class="col-md-6">
-            <h2 id="soKH">6</h2>
+            <h2 id="soKH"></h2>
             <p>Khóa Học</p>
           </div>
         </div>
       </div>
       <div class="col-md-9 infoLecturers">
-        <h3 id="nameGV">Siin</h3>
-        <p id="chudeGV">Full Stack Developer</p>
+        <h3 id="nameGV"></h3>
+        <p id="chudeGV"></p>
         <div id="motaGV">
           
         </div>
       </div>
     </div>
     <div class="row bottomLecturers">
-      <h5 id="cacKHofGV"><i class="fa fa-book" aria-hidden="true"></i> Các khóa học của giảng viên Siin</h5>
+      <h5 id="cacKHofGV"><i class="fa fa-book" aria-hidden="true"></i></h5>
       <div class="container">       
         <table class="table table-hover">
-          <tbody>
-            <tr>
-              <td class="imgLecturers">
-                <a href="javascript:void(0)"><img src="https://static.unica.vn/uploads/images/nguyenthiDieuLinh/BANNER21_m.jpg"></a>
-              </td>
-              <td class="tenKhoaHoc">
-                <a href="javascript:void(0)">Khóa học SEO bài bản - Làm SEO lên Top đơn giản</a>
-                <div class="starBlue">
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                </div>
-              </td>
-              <td>
-                <p>Bài Giảng: 96</p>
-                <p>Thời lượng: 722 phút</p>
-                <p>Học viên: 99</p>
-              </td>
-              <td>
-                <a href="javascript:void(0)" class="btn btn-primary">Xem khóa học</a>
-              </td>
-            </tr>
-            <tr>
-              <td class="imgLecturers">
-                <a href="javascript:void(0)"><img src="https://static.unica.vn/uploads/images/nguyenthiDieuLinh/BANNER21_m.jpg"></a>
-              </td>
-              <td class="tenKhoaHoc">
-                <a href="javascript:void(0)">Khóa học SEO bài bản - Làm SEO lên Top đơn giản</a>
-                <div class="starBlue">
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                </div>
-              </td>
-              <td>
-                <p>Bài Giảng: 96</p>
-                <p>Thời lượng: 722 phút</p>
-                <p>Học viên: 99</p>
-              </td>
-              <td>
-                <a href="javascript:void(0)" class="btn btn-primary">Xem khóa học</a>
-              </td>
-            </tr>
-            <tr>
-              <td class="imgLecturers">
-                <a href="javascript:void(0)"><img src="https://static.unica.vn/uploads/images/nguyenthiDieuLinh/BANNER21_m.jpg"></a>
-              </td>
-              <td class="tenKhoaHoc">
-                <a href="javascript:void(0)">Khóa học SEO bài bản - Làm SEO lên Top đơn giản</a>
-                <div class="starBlue">
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                </div>
-              </td>
-              <td>
-                <p>Bài Giảng: 96</p>
-                <p>Thời lượng: 722 phút</p>
-                <p>Học viên: 99</p>
-              </td>
-              <td>
-                <a href="javascript:void(0)" class="btn btn-primary">Xem khóa học</a>
-              </td>
-            </tr>
-            <tr>
-              <td class="imgLecturers">
-                <a href="javascript:void(0)"><img src="https://static.unica.vn/uploads/images/nguyenthiDieuLinh/BANNER21_m.jpg"></a>
-              </td>
-              <td class="tenKhoaHoc">
-                <a href="javascript:void(0)">Khóa học SEO bài bản - Làm SEO lên Top đơn giản</a>
-                <div class="starBlue">
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                </div>
-              </td>
-              <td>
-                <p>Bài Giảng: 96</p>
-                <p>Thời lượng: 722 phút</p>
-                <p>Học viên: 99</p>
-              </td>
-              <td>
-                <a href="javascript:void(0)" class="btn btn-primary">Xem khóa học</a>
-              </td>
-            </tr>
+          <tbody id="returnKH">
+            
           </tbody>
         </table>
       </div>
@@ -235,6 +153,7 @@
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     <script type="text/javascript" src="../js/home.js"></script>
 </body>
 </html>

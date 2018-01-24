@@ -1,13 +1,25 @@
 // jQuery trang chủ
 var HOME = 'https://project-tthhn.appspot.com/_api/v1/course';
 var GIANGVIEN = 'https://project-tthhn.appspot.com/_api/v1/giangvien';
+var GIANGVIENDetail = 'https://project-tthhn.appspot.com/_api/v1/giangvien/course';
+var SEARCH = 'https://project-tthhn.appspot.com/_api/v1/course/view';
 $(document).ready(function () {
 	search();
 	var cart = localStorage.getItem("cart");
 	if (cart != null) {
 		$('.countCart').text(cart);
 	}
-	$('.loading').fadeOut();
+	var username = localStorage.getItem('username');
+	if (username == null || username == undefined) {
+		$('#checkSign').attr('style', 'display:block;');
+		$('#checkSignTwo').attr('style', 'display:block;');
+		$('#checkLogin').attr('style', 'display:none;');
+	}
+	if (username != null || username != undefined) {
+		$('#checkLogin').attr('style', 'display:block;');
+		$('#checkSign').attr('style', 'display:none;');
+		$('#checkSignTwo').attr('style', 'display:none;');
+	}
 });
 function search() {
     $.ajax({
@@ -26,6 +38,7 @@ function search() {
 		     	appendContent += generateVideoBlock(id, Thumbnail, TieuDe, GiangVien, GiaKhoaHoc, Sale, GiangVienID);
 	     	}
 	     	$("#hot").html(appendContent);
+	     	$('.loading').fadeOut();
 	    },
 	    error: function(jqXHR, textStatus, errorThrown) {
 	       console.log(textStatus, errorThrown);
@@ -47,6 +60,7 @@ function search() {
 		     	appendContent += generateVideoBlock(id, Thumbnail, TieuDe, GiangVien, GiaKhoaHoc, Sale, GiangVienID);
 	     	}
 	     	$("#sale").html(appendContent);
+	     	$('.loading').fadeOut();
 	    },
 	    error: function(jqXHR, textStatus, errorThrown) {
 	       console.log(textStatus, errorThrown);
@@ -68,6 +82,7 @@ function search() {
 		     	appendContent += generateVideoBlock(id, Thumbnail, TieuDe, GiangVien, GiaKhoaHoc, Sale, GiangVienID);
 	     	}
 	     	$("#new").html(appendContent);
+	     	$('.loading').fadeOut();
 	    },
 	    error: function(jqXHR, textStatus, errorThrown) {
 	       console.log(textStatus, errorThrown);
@@ -218,6 +233,7 @@ function detailCourse() {
 			$('#tagKH').html(TagMoi);
 			var GiaHienTai = ((response.GiaKhoaHoc / 100) * (100 - response.Sale));
 			$('#pcNow').html(formatPrice(GiaHienTai, '.', ',') + '<sup>đ</sup>');
+			$('.loading').fadeOut();
 	    },
 	    error: function(jqXHR, textStatus, errorThrown) {
 	       console.log(textStatus, errorThrown);
@@ -237,6 +253,7 @@ function detailCourse() {
 			}
 			$('#desGV').html(DesMoi);
 			$('#imgGV').attr("src", response.AnhDaiDien);
+			$('.loading').fadeOut();
 	    },
 	    error: function(jqXHR, textStatus, errorThrown) {
 	       console.log(textStatus, errorThrown);
@@ -313,6 +330,7 @@ function loadCart() {
 		totalPrice += listCart.course[i].GiaKhoaHoc * 1;
 	}
 	$('.panel-footer').html('Tổng đơn hàng: ' + formatPrice(totalPrice, '.', ',') + '<sup>đ</sup>');
+	$('.loading').fadeOut();
 }
 function addToCart(MaKhoaHoc, TenKhoaHoc, GiangVien, ChuDe, GiaKhoaHoc) {
 	var listCart = localStorage.getItem('listCart');
@@ -399,7 +417,6 @@ function loadLecturers() {
 	    	document.title = response.TenGiangVien + ' - Giảng viên TTHHN';
 	    	$('#imgGV').attr('src', response.AnhDaiDien);
 	    	$('#soHV').text(response.SoHocVien);
-	    	$('#soKH').text(response.SoKhoaHoc);
 	    	$('#nameGV').text(response.TenGiangVien);
 	    	$('#chudeGV').text(response.ChuDeGiangDay);
 	    	var MoTa = response.MoTa;
@@ -411,9 +428,129 @@ function loadLecturers() {
 			}
 			$('#motaGV').html(DesMoi);
 			$('#cacKHofGV').html('<i class="fa fa-book" aria-hidden="true"></i> Các khóa học của giảng viên ' + response.TenGiangVien);
+			khoaHoc(response._id);
+			$('.loading').fadeOut();
 	    },
 	    error: function(jqXHR, textStatus, errorThrown) {
 	       console.log(textStatus, errorThrown);
 	    }
 	});
 }
+function khoaHoc(id) {
+	$.ajax({
+	    url: GIANGVIENDetail + '/' + id + '?page=1&limit=50',
+	    type: "GET",
+	    success: function (response) {
+	    	var appendContent = "";
+	     	for (var i = 0; i < response.data.length; i++) {
+	     		var id = response.data[i]._id;
+		     	var Thumbnail = response.data[i].Thumbnail;
+		     	var TieuDe = response.data[i].TieuDe;
+		     	var SoBaiGiang = response.data[i].SoBaiGiang;
+		     	var SoPhutHoc = response.data[i].SoPhutHoc;
+		     	var SoHocVien = response.data[i].SoHocVien;
+		     	var GiangVienID = response.data[i].GiangVienID;
+		     	appendContent += returnKH(id, Thumbnail, TieuDe, SoBaiGiang, SoPhutHoc, SoHocVien, GiangVienID);
+	     	}
+	     	$("#returnKH").html(appendContent);
+	     	$('#soKH').text(response.data.length);
+	     	$('.loading').fadeOut();
+	    },
+	    error: function(jqXHR, textStatus, errorThrown) {
+	       console.log(textStatus, errorThrown);
+	    }
+	});
+}
+function returnKH(id, Thumbnail, TieuDe, SoBaiGiang, SoPhutHoc, SoHocVien, GiangVienID) {
+	var content = '';
+		content += '<tr>';
+          content += '<td class="imgLecturers">';
+            content += '<a href="product.html?id=' + id + '&gv=' + GiangVienID + '"><img src="' + Thumbnail + '"></a>';
+          content += '</td>';
+          content += '<td class="tenKhoaHoc">';
+            content += '<a href="product.html?id=' + id + '&gv=' + GiangVienID + '">' + TieuDe + '</a>';
+            content += '<div class="starBlue">';
+              content += '<span class="fa fa-star checked"></span>';
+              content += '<span class="fa fa-star checked"></span>';
+              content += '<span class="fa fa-star checked"></span>';
+              content += '<span class="fa fa-star checked"></span>';
+              content += '<span class="fa fa-star checked"></span>';
+            content += '</div>';
+          content += '</td>';
+          content += '<td>';
+            content += '<p>Bài Giảng: ' + SoBaiGiang + '</p>';
+            content += '<p>Thời lượng: ' + SoPhutHoc + ' phút</p>';
+            content += '<p>Học viên: ' + SoHocVien + '</p>';
+          content += '</td>';
+          content += '<td>';
+            content += '<a href="product.html?id=' + id + '&gv=' + GiangVienID + '" class="btn btn-primary">Xem khóa học</a>';
+          content += '</td>';
+        content += '</tr>';
+     return content;
+}
+function logout() {
+	swal({
+	  title: "Bạn có chắc chắn muốn đăng xuất?",
+	  text: "Ấn OK để đăng xuất",
+	  type: "warning",
+	  showCancelButton: true,
+	  closeOnConfirm: false,
+	  showLoaderOnConfirm: true
+	}, function () {
+	  setTimeout(function () {
+	    localStorage.removeItem('username');
+	    location.reload();
+	  }, 2000);
+	});
+}
+$(function() {
+    var searchField = $('#valCourse');
+    $('#searchCourse').submit(function(e) {
+        e.preventDefault();
+    });
+});
+$('#searchCourse').submit(function () {
+	$('.loading').fadeIn();
+	var key = $('#valCourse').val();
+	$.ajax({
+	    url: SEARCH + '/' + key + '?page=1&limit=100',
+	    type: "GET",
+	    success: function (response) {
+	    	if (response.data.length != 0) {
+	    		var appendContent = "";
+		     	for (var i = 0; i < response.data.length; i++) {
+		     		var id = response.data[i]._id;
+			     	var Thumbnail = response.data[i].Thumbnail;
+			     	var TieuDe = response.data[i].TieuDe;
+			     	var GiangVien = response.data[i].GiangVien;
+			     	var GiaKhoaHoc = response.data[i].GiaKhoaHoc;
+			     	var Sale = response.data[i].Sale;
+			     	var GiangVienID = response.data[i].GiangVienID;
+			     	appendContent += generateVideoBlock(id, Thumbnail, TieuDe, GiangVien, GiaKhoaHoc, Sale, GiangVienID);
+		     	}
+		     	$("#resultSearch").html(appendContent);
+		     	$('#resultSearch').attr('style', 'display:block;');
+		     	$('.defaultIndex').attr('style', 'display:none;');
+				$('header').attr('style', 'display:none;');
+				$('.rsSearch').attr('style', 'display:block;');
+				$('.textSearch').text('Kết quả tìm kiếm cho: ' + key);
+				$('.textSearch').attr('style', 'display:block;');
+				$('.error404').attr('style', 'display:none;');
+		     	$('.loading').fadeOut();
+	    	}
+	    	if (response.data.length == 0) {
+	    		$('.defaultIndex').attr('style', 'display:none;');
+				$('header').attr('style', 'display:none;');
+				$('#resultSearch').attr('style', 'display:none;');
+				$('.textSearch').attr('style', 'display:none;');
+				$('.rsSearch').attr('style', 'display:block;');
+	    		$('.error404').attr('style', 'display:block;');
+	    		$('.text404').text('Không có kết quả tìm kiếm cho từ khóa ' + key);
+	    		$('.loading').fadeOut();
+	    	}
+	    },
+	    error: function(jqXHR, textStatus, errorThrown) {
+	       console.log(textStatus, errorThrown);
+	    }
+	});
+})
