@@ -2,13 +2,16 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Trang Chủ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <title>TTHHN - Học từ chuyên gia</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
  <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+	<div class="loading"><img src="img/chonau.gif"></div>
   	<div class="banner_top">
     	<a href="javascript:void(0)"><img src="https://unica.vn/uploadmydang/top.jpg"></a>
   	</div>
@@ -20,7 +23,7 @@
             	  	<span class="icon-bar"></span>
               		<span class="icon-bar"></span>                        
             	</button>
-            	<a class="navbar-brand" href="javascript:void(0)">TTHHN Group</a>
+            	<a class="navbar-brand" href="/">TTHHN Group</a>
         	</div>
         	<div class="collapse navbar-collapse" id="myNavbar">
 	            <ul class="nav navbar-nav">
@@ -52,7 +55,12 @@
               	</li>
             </ul>
 	        <ul class="nav navbar-nav navbar-right">
-	            <li><a href="javascript:void(0)"><i class="fa fa-shopping-cart"></i></a></li>
+	            <li>
+	                <a href="pages/cart.html">
+	                  <i class="fa fa-shopping-cart"></i>
+	                  <span class="countCart">0</span>
+	                </a>
+	            </li>
 	            <li><a href="javascript:void(0)">Đăng Ký</a></li>
 	            <li><a href="javascript:void(0)">Đăng Nhập</a></li>
 	        </ul>
@@ -60,7 +68,7 @@
 	</nav>
    	<header>
    		<a href="javascript:void(0)">
-        	<img src="https://i.imgur.com/UsBnGBD.jpg">
+        	<img src="https://i.imgur.com/gDih0uK.png">
         </a>
    	</header>
     <main>
@@ -68,12 +76,20 @@
           	<ul class="nav nav-pills">
 			    <li class="active"><a data-toggle="pill" href="#hot"><i class="fa fa-fire" aria-hidden="true"></i> Nổi bật</a></li>
 			    <li><a data-toggle="pill" href="#new">Mới nhất</a></li>
-			    <li><a data-toggle="pill" href="#sale">Đang khuyến mại</a></li>
-			    <li><a data-toggle="pill" href="#combo">Combo</a></li>
+			    <li><a data-toggle="pill" onclick="saleNow()" href="#sale">Đang khuyến mại</a></li>
 			</ul>
         </div>
         <div class="tab-content">
 	      	<div class="row tab-pane fade in active" id="hot">
+<<<<<<< HEAD
+		        
+	        </div>
+	      <div class="row tab-pane fade" id="new">
+
+	      </div>
+	      <div class="row tab-pane fade" id="sale">
+	      	
+=======
 		        <div class="col-sm-6 col-md-3">
 		          <div class="thumbnail">
 		            <img src="https://unica.vn/uploads/images/thaoptt09@gmail.com/giongnoi_m.jpg" class="image">
@@ -1891,7 +1907,11 @@
 		                </div>
 		            </div>
 		        </div>
+>>>>>>> 2632c340e2f8246cb503898a6b17dcbacacf8288
 	      </div>
+	    </div>
+	    <div class="banner">
+	    	<a href="javascript:void(0)"><img src="https://media.kyna.vn/uploads/pages/campaign/dong-gia/img/banner-footer.png"></a>
 	    </div>
     </main>
     <div class="tag_hots">
@@ -1981,15 +2001,14 @@
 							<li><a href="pages/gioithieu.html">Giới thiệu về Tthhn</a>
 							</li>
 							<li><a href="pages/faq.html">Câu hỏi thường gặp</a></li>
-							<li><a href="#">Điều khoản dịch vụ</a></li>
+							<li><a href="pages/QA.html">Điều khoản dịch vụ</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-sm-3">
 					<div>
 						<ul class="item-list">
-								<li><a href="#">Hướng dẫn thanh toán</a></li>
-								<li><a href="#">Kích hoạt khóa học</a></li>
+								<li><a href="pages/pay.html">Hướng dẫn thanh toán</a></li>
 								<li><a href="#">Affiliate</a></li>
 						</ul>
 					</div>
@@ -2017,5 +2036,6 @@
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/home.js"></script>
 </body>
 </html>

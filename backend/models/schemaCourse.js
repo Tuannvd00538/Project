@@ -3,23 +3,27 @@ var mongoose = require('mongoose');
 module.exports = mongoose.model('courses', {
 	MaKhoaHoc: {
 		type: String,
-		required: 'Vui Lòng Nhập Mã Khóa Học'
+		required: true
 	},
 	TieuDe: {
 		type: String,
-		required: 'Tiêu Đề Không Được Để Trống'
+		required: true
 	},
 	MoTa: {
 		type: String,
-		required: 'Mô Tả Không Được Để Trống'
+		required: true
 	},
 	GiangVien: {
 		type: String,
-		required: 'Vui Lòng Nhập Tên Giảng Viên'
+		required: true
+	},
+	GiangVienID: {
+		type: String,
+		required: true
 	},
 	ChuDe: {
 		type: String,
-		required: 'Hãy Nhập Một Chủ Đề'
+		required: true
 	},
 	DanhGia: {
 		type: Number,
@@ -31,22 +35,19 @@ module.exports = mongoose.model('courses', {
 	},
 	LoiIch: { 
 		type: String,
-		required: 'Cần Thêm Những Lợi Ích'
-		// Bạn sẽ học được gì ? (Ngăn cách bởi dấu phẩy)
+		required: true
 	},
 	DoiTuong: {
 		type: String,
-		required: 'Cần Thêm Các Đối Tượng Sẽ Đào Tạo'
-		// ĐỐi tượng đào tạo (Ngăn cách bởi dấu phẩy)
+		required: true
 	},
 	GioiThieu: {
 		type: String,
-		required: 'Thêm Giới Thiệu Về Khóa Học'
-		// Mỗi dòng ngăn cách nhau bởi dấu phảy
+		required: true
 	},
 	GiaKhoaHoc: {
 		type: String,
-		required: 'Vui Lòng Nhập Giá Khóa Học'
+		required: true
 	},
 	Sale: {
 		type: Number,
@@ -54,19 +55,19 @@ module.exports = mongoose.model('courses', {
 	},
 	SoBaiGiang: {
 		type: Number,
-		required: 'Vui Lòng Nhập Số Bài Giảng'
+		required: true
 	},
 	SoPhutHoc: {
 		type: String,
-		required: 'Vui Lòng Nhập Số Phút Học'
+		required: true
 	},
 	TuKhoa: {
 		type: String,
-		required: 'Vui Lòng Nhập Từ Khóa'
+		required: true
 	},
 	Thumbnail: {
 		type: String,
-		required: 'Vui Lòng Chọn Ảnh Thu Nhỏ Cho Khóa Học'
+		required: true
 	},
 	NgayTao: {
 		type: Date,

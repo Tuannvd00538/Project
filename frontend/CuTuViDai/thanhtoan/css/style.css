@@ -1,0 +1,450 @@
+* {
+ font-family: Arial;
+}
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-brand:hover {
+ color: #000;
+}
+.navbar-inverse {
+ background-color: #fff;
+ border-color: #fff;
+}
+ .navbar-inverse .navbar-nav>li>a:hover {
+ color: #000;
+ 
+}
+a, a:hover {
+ text-decoration: none;
+}
+.hihi {
+  position: sticky;
+ top: 0;
+ z-index: 1000
+
+}
+.navbar-inverse {
+ position: sticky;
+ top: 40px;
+ z-index: 1000;
+ border: 1px;
+
+}
+
+.haha {
+  position: sticky;
+ top: 100px;
+ z-index: 1000
+}
+.btn-warning {
+ width: 400px;
+ }
+
+.btn-primary {
+width: 400px;
+}
+.Dangkyhoc {
+ text-align: center;
+ margin-top: 5px;
+}
+.header2 {
+ background-image: url(https://static1.squarespace.com/static/56db4b9b07eaa05aaab5f1d8/t/56db6249356fb0dac9d6357f/1457218121600/banner-132.jpg?format=2500w);
+ background-size: cover;
+ height: 250px;
+}
+
+.header3 {
+ height: 200px;
+ background-color: #333;
+ margin-top: 70px!important;
+ margin-bottom: -72px;
+}
+
+.gioithieu {
+
+ margin-top: 60px;
+ text-align: center;
+}
+.gioithieu1 {
+ border-radius: 8px;
+    height: 45px;
+    width: 56%;
+    margin-top: 30px;
+    text-align: center;
+    border: 1px solid #fff;
+}
+
+.gioithieu2 {
+     margin-left: 190px;
+    margin-top: 110px;
+}
+.gioithieu4 {
+     margin: 30px 175px;
+}
+
+.gioithieu5 {
+ margin-left: 25px;
+}
+.gioithieu7 {
+ margin-top: 20px;
+ margin-left: 350px;  
+}
+.thaygiao {
+ margin-left: 135px;
+}
+.thaygiao span {
+ color: yellow;
+}
+.hoho {
+     margin-right: -135px;
+    margin-top: -20px;
+   padding: 2px 6px ;
+    background-color: #ed1c24;
+     float: right;
+     color: #fff;
+}
+.navbar-inverse .navbar-nav>li>a {
+ color: #131111;
+}
+.aaa {
+ margin-top: 12px;
+}
+
+.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
+ background: yellow;
+}
+
+header {
+ color: #fff;
+ padding: 20px;
+ padding-left: 100px;
+}
+.header {
+ background-color: #333;
+ margin-top: -20px!important;
+}
+.container-fluid {
+ border-bottom: 1px solid #000;
+}
+header h6 {
+ font-size: 18px;
+ line-height: 25px;
+}
+img {
+ width: 100%;
+}
+
+i {
+ color: red;
+ }
+.vivu {
+ text-align: center;
+}
+.hai {
+ color: yellow;
+}
+.colLeft .fa {
+ color: green;
+}
+.colLeft {
+ white-space: pre-line;
+}
+.main {
+ padding: 0 80px;
+}
+
+.container22 {
+ background: #6186c6;
+ margin-top: 50px;
+}
+.col ul li {
+ list-style-type: none;
+ line-height: 25px;
+}
+.col {
+ 
+ margin-top: 10px;
+ color: #fff;
+}
+.foo {
+ margin-top: -20px;
+ text-align: center;
+ color: #fff;
+}
+.ullll ul li {
+ margin-left: -25px; 
+ list-style-type: none;
+}
+
+.gioihtieuu {
+ margin: 0px 420px;
+ border: 2px solid black;
+}
+.videogioithieu {
+ margin-left: 500px;
+}
+
+.hinhanh img {
+ margin-top: 30px;
+ text-align: center;
+    margin: 0 50 40px;
+ width: 30%;
+ border-radius: 50%;
+}
+.hinhanh {
+ text-align: center;
+}
+.khoahoc {
+     margin: 30px 152px;
+ }
+ .khoahoc1 {
+  margin: 50px;
+ }
+
+ .mau {
+  color: #FA58D0
+ }
+ .mau1 {
+  color: yellow;
+ }
+ .mau2 {
+  color: #6186c6;
+ }
+ .mau3 {
+  color: green;
+ }
+
+ .giohangpng,.btn-primary {
+ 	width: 25%;
+    height: auto;
+    border: none;
+ }
+.titlegiohang {
+	font-size: 26px;
+	color: #333;
+	font-weight: bold;
+}
+.noneCart {
+	border: none;
+}
+
+#giocohang {
+	width: 100%;
+	padding: 20px;
+	border-radius: 20px;
+	background-color: #f9f9f9a3;
+}
+.anhdonhang {
+	width: 12%;
+	border-radius: 10px;
+}
+
+table {
+	margin-top: 20px;
+}
+
+#footer {
+
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
+}
+
+.giohang {
+	min-height: 300px;
+}
+
+.page-title {
+
+  color: green;
+  font-size: 25px;
+  font-weight: bold;
+  padding: 20px;
+}
+
+.form-group {
+  border-radius: 5px;
+  border: 1px solid #eee; 
+  height: 60px; 
+  margin-left: 20px;
+  margin-right: 20px;
+  text-align: center;
+  width: 300px;
+}
+
+.form-group:hover {
+  border-color: #50ad4e;
+}
+
+.form-group span {
+  font-weight: bold;
+}
+
+.form-group input[type=radio] {
+  margin-top: 20px;
+}
+
+
+.content {
+  margin: 0 10%;
+}
+
+.thongtin {
+  margin-left: 30px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  padding: 40px;
+  margin-bottom: 20px;
+}
+
+#chuyenkhoan p,#atm p,#visa p {
+  color: green;
+  font-weight: bold;
+}
+
+.tinhtien p {
+  color: green;
+  font-weight: bold;
+  margin-top: 10px;
+  float: left;
+}
+
+/*.input {
+  border: none;
+}*/
+
+.tinhtien {
+  width: 350px;
+  height: auto;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  float: right;
+  margin-right: 8%;
+}
+
+.tinhtien img {
+  vertical-align: middle;
+  width: 30px;
+}
+
+h4 a {
+    float: right;
+    line-height: 24px;
+    color: #999;
+    font-size: 12px;
+    text-decoration: underline!important;
+    font-style: italic;
+}
+
+.apdung  {
+  border-top: 1px dashed #aaa;
+  margin: 7px 0 7px;  
+}
+
+.checkout-list-price {
+    margin-top: 20px;
+    position: relative;
+    margin-left: -15px;
+    width: calc(100% + 30px);
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+ul {
+  display: block;
+}
+
+ul li {
+  list-style: none;
+}
+
+.color-orange {
+  color: #fb6a00!important;
+  font-weight: bold;
+}
+
+.thanhtoan {
+  margin-top: 100px;
+  float: right;
+  width: 100%;
+  background-color: #fff;
+  position: sticky;
+  bottom: 0;
+  box-shadow: 0 -10px 15px rgba(0,0,0,.1);
+  border-top: 1px solid #ddd;
+  height: 50px;
+}
+
+.item, .button{
+    width: calc((100% - 370px) / 3);
+    float: left;
+    margin-top: 15px;
+}
+
+.checkout-button {
+  float: left;
+  border: 1px solid #ff7816;
+  border-radius: 3px;
+  color: #fff;
+  background: #ff7816;
+  height: 54px;
+  font-size: 20px;
+}
+
+fieldset {
+  margin-top: 20px;
+  border-radius: 10px;
+  margin-left: 45px;
+  border: 1px solid #eee;
+}
+
+fieldset:hover {
+  border: 1px solid #50ad4e;
+}
+
+fieldset legend {
+    width: auto;
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 0;
+}
+
+.row fieldset input, .row fieldset textarea {
+  border: none;
+  margin-top: -18px;
+  margin-left: -9px;
+  margin-bottom: -11px;
+  width: 259px;
+  height: 50px;
+  border-radius: 10px;
+}
+
+.login {
+  background-color: #fff8f3;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 50px;
+  margin-left: 20px;
+}
+
+.login p {
+  text-align: center;
+}
+
+.btnlogin {
+  margin-left: 60%;
+  margin-right: 30%;
+  width: 250px;
+}
+
+.gia {
+  float: right;
+  margin-right: -42%;
+}
+
+.phuongthuc {
+  width: 40px;
+}

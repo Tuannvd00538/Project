@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../img/favicon.png">
+  <title></title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+ <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+<body onload="loadLecturers()">
+	<div class="loading"><img src="../img/chonau.gif"></div>
+  	<div class="banner_top">
+    	<a href="javascript:void(0)"><img src="https://unica.vn/uploadmydang/top.jpg"></a>
+  	</div>
+  	<nav class="navbar navbar-inverse">
+      	<div class="container-fluid">
+	        <div class="navbar-header">
+    	        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        	      	<span class="icon-bar"></span>
+            	  	<span class="icon-bar"></span>
+              		<span class="icon-bar"></span>                        
+            	</button>
+            	<a class="navbar-brand" href="/">TTHHN Group</a>
+        	</div>
+        	<div class="collapse navbar-collapse" id="myNavbar">
+	            <ul class="nav navbar-nav">
+    	          	<li class="dropdown">
+                  	<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">Chủ Đề <span class="fa fa-bars"></span></span></a>
+                  	<ul class="dropdown-menu">
+                    	<li><a href="javascript:void(0)"><i class="fa fa-caret-right"></i> Công nghệ thông tin</a></li>
+                    	<li><a href="javascript:void(0)"><i class="fa fa-caret-right"></i> Thiết kế - Nhiếp ảnh</a></li>
+                    	<li><a href="javascript:void(0)"><i class="fa fa-caret-right"></i> Sale - Marketing</a></li>
+                    	<li><a href="javascript:void(0)"><i class="fa fa-caret-right"></i> Kinh doanh - Khời nghiệp</a></li>
+                    	<li><a href="javascript:void(0)"><i class="fa fa-caret-right"></i> Phát triển cá nhân</a></li>
+                    	<li><a href="javascript:void(0)"><i class="fa fa-caret-right"></i> Sức khỏe - Giới tính</a></li>
+                    	<li><a href="javascript:void(0)"><i class="fa fa-caret-right"></i> Nghệ thuật - Làm đẹp</a></li>
+                    	<li><a href="javascript:void(0)"><i class="fa fa-caret-right"></i> Ngoại ngữ</a></li>
+                    	<li><a href="javascript:void(0)"><i class="fa fa-caret-right"></i> Nuôi dạy con</a></li>
+                  	</ul>
+              	</li>
+            	<li class="search">
+            		<form class="navbar-form navbar-left">
+                		<div class="input-group">
+                  			<input type="text" class="form-control" placeholder="Tìm kiếm trên tthhn.vn">
+                  			<div class="input-group-btn">
+                      			<button class="btn btn-default" type="button">
+                        			<span class="glyphicon glyphicon-search"></span>
+                      			</button>
+                  			</div>
+                		</div>
+            		</form>
+              	</li>
+            </ul>
+	        <ul class="nav navbar-nav navbar-right">
+	            <li>
+	                <a href="cart.html">
+	                  <i class="fa fa-shopping-cart"></i>
+	                  <span class="countCart">0</span>
+	                </a>
+	            </li>
+	            <li><a href="javascript:void(0)">Đăng Ký</a></li>
+	            <li><a href="javascript:void(0)">Đăng Nhập</a></li>
+	        </ul>
+       	</div>
+	</nav>
+  <div class="row mainLecturers">
+    <div class="row topLecturers">
+      <div class="col-md-3">
+        <img id="imgGV" src="https://graph.facebook.com/1900021470311580/picture?type=large">
+        <div class="row">
+          <div class="col-md-6">
+            <h2 id="soHV">69</h2>
+            <p>Học Viên</p>
+          </div>
+          <div class="col-md-6">
+            <h2 id="soKH">6</h2>
+            <p>Khóa Học</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9 infoLecturers">
+        <h3 id="nameGV">Siin</h3>
+        <p id="chudeGV">Full Stack Developer</p>
+        <div id="motaGV">
+          
+        </div>
+      </div>
+    </div>
+    <div class="row bottomLecturers">
+      <h5 id="cacKHofGV"><i class="fa fa-book" aria-hidden="true"></i> Các khóa học của giảng viên Siin</h5>
+      <div class="container">       
+        <table class="table table-hover">
+          <tbody>
+            <tr>
+              <td class="imgLecturers">
+                <a href="javascript:void(0)"><img src="https://static.unica.vn/uploads/images/nguyenthiDieuLinh/BANNER21_m.jpg"></a>
+              </td>
+              <td class="tenKhoaHoc">
+                <a href="javascript:void(0)">Khóa học SEO bài bản - Làm SEO lên Top đơn giản</a>
+                <div class="starBlue">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                </div>
+              </td>
+              <td>
+                <p>Bài Giảng: 96</p>
+                <p>Thời lượng: 722 phút</p>
+                <p>Học viên: 99</p>
+              </td>
+              <td>
+                <a href="javascript:void(0)" class="btn btn-primary">Xem khóa học</a>
+              </td>
+            </tr>
+            <tr>
+              <td class="imgLecturers">
+                <a href="javascript:void(0)"><img src="https://static.unica.vn/uploads/images/nguyenthiDieuLinh/BANNER21_m.jpg"></a>
+              </td>
+              <td class="tenKhoaHoc">
+                <a href="javascript:void(0)">Khóa học SEO bài bản - Làm SEO lên Top đơn giản</a>
+                <div class="starBlue">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                </div>
+              </td>
+              <td>
+                <p>Bài Giảng: 96</p>
+                <p>Thời lượng: 722 phút</p>
+                <p>Học viên: 99</p>
+              </td>
+              <td>
+                <a href="javascript:void(0)" class="btn btn-primary">Xem khóa học</a>
+              </td>
+            </tr>
+            <tr>
+              <td class="imgLecturers">
+                <a href="javascript:void(0)"><img src="https://static.unica.vn/uploads/images/nguyenthiDieuLinh/BANNER21_m.jpg"></a>
+              </td>
+              <td class="tenKhoaHoc">
+                <a href="javascript:void(0)">Khóa học SEO bài bản - Làm SEO lên Top đơn giản</a>
+                <div class="starBlue">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                </div>
+              </td>
+              <td>
+                <p>Bài Giảng: 96</p>
+                <p>Thời lượng: 722 phút</p>
+                <p>Học viên: 99</p>
+              </td>
+              <td>
+                <a href="javascript:void(0)" class="btn btn-primary">Xem khóa học</a>
+              </td>
+            </tr>
+            <tr>
+              <td class="imgLecturers">
+                <a href="javascript:void(0)"><img src="https://static.unica.vn/uploads/images/nguyenthiDieuLinh/BANNER21_m.jpg"></a>
+              </td>
+              <td class="tenKhoaHoc">
+                <a href="javascript:void(0)">Khóa học SEO bài bản - Làm SEO lên Top đơn giản</a>
+                <div class="starBlue">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                </div>
+              </td>
+              <td>
+                <p>Bài Giảng: 96</p>
+                <p>Thời lượng: 722 phút</p>
+                <p>Học viên: 99</p>
+              </td>
+              <td>
+                <a href="javascript:void(0)" class="btn btn-primary">Xem khóa học</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <div>
+            <ul class="item-list">
+              <li><a href="gioithieu.html">Giới thiệu về Tthhn</a>
+              </li>
+              <li><a href="faq.html">Câu hỏi thường gặp</a></li>
+              <li><a href="QA.html">Điều khoản dịch vụ</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div>
+            <ul class="item-list">
+                <li><a href="pay.html">Hướng dẫn thanh toán</a></li>
+                <li><a href="#">Affiliate</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="link">
+            <ul class="item-list">
+              <li><span class="fa fa-phone" aria-hidden="true"></span> 0979289939</li>
+              <li><span class="fa fa-clock-o" aria-hidden="true"></span> 8:00 - 22:00 hàng ngày</li>
+              <li><span class="fa fa-envelope" aria-hidden="true"></span> cskh@tthhn.vn</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-3 downloadApp">
+          <h5><strong>Tải App Tthhn</strong></h5>
+          <div class="row">
+            <a href="javascript:void(0)"><img src="https://unica.vn/icon/appstore.png"></a>
+            <a href="javascript:void(0)"><img src="https://unica.vn/icon/playstore.png"></a>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="foo"><strong>&copy; Học viện Online TTHHN - Hệ thống đào tạo trực tuyến dành cho người đi làm - Cổng kết nối Chuyên gia với Học viên</strong>
+    </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/home.js"></script>
+</body>
+</html>

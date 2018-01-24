@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html class=''>
+<head>
+   <meta charset='UTF-8'>
+  <link rel="icon" href="img/icon.ico" type="image/x-icon" />
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css'>
+  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href=" https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/logincss.css">
+  <div class="modal modalload"></div>
+</head>
+<body>
+<div id="indexlogin" style="display: none;">
+  <div class="wrapper login">
+    <div class="container">
+      <h1>Đăng Nhập</h1>    
+      <span id="msg" style="color: red; font-weight: bold; font-size: 20px;"></span>
+      <form class="form">
+        <input id="username" type="text" placeholder="Tài Khoản">
+        <input id="password" type="password" placeholder="Mật Khẩu">
+        <button class="btn btnloginadmin" type="button" id="loginadmin">Đăng Nhập</button>
+      </form>
+    </div>
+  </div>
+</div>
+<div id="index" style="display: none;">
+  <body class="sidebar-is-reduced">
+  <header class="l-header">
+    <div class="l-header__inner clearfix">
+      <div class="c-header-icon js-hamburger">
+        <div class="hamburger-toggle"><span class="bar-top"></span><span class="bar-mid"></span><span class="bar-bot"></span></div>
+      </div>
+      <div style="color: black" class="c-header-icon has-dropdown"><span class="c-badge c-badge--header-icon animated shake">87</span><i class="fa fa-bell"></i>
+        <div class="c-dropdown c-dropdown--notifications">
+          <div class="c-dropdown__header"></div>
+          <div class="c-dropdown__content"></div>
+        </div>
+      </div>
+      <div class="header-icons-group">
+        <div style="color: black" class="c-header-icon basket"><span class="c-badge c-badge--header-icon animated shake">12</span><i class="fa fa-shopping-basket"></i></div>
+        <div style="color: black" id="logout" class="c-header-icon logout"><i class="fa fa-power-off"></i></div>
+      </div>
+    </div>
+  </header>
+  <div class="l-sidebar">
+    <div class="logo">
+      <div class="logo__txt">TT</div>
+    </div>
+    <div class="l-sidebar__content">
+      <nav class="c-menu js-menu">
+        <ul class="u-list">
+          <li class="reload c-menu__item is-active" data-toggle="tooltip" title="Trang Chủ">
+            <a id href="#">
+              <div class="c-menu__item__inner"><i class="fa fa-home"></i>
+                <div class="c-menu-item__title"><span>Trang Chủ</span></div>
+              </div>
+            </a>           
+          </li>
+           <li class="reload c-menu__item has-submenu" data-toggle="tooltip" title="Thêm Giảng Viên">
+            <a href="pages/form_giangvien.html">
+              <div class="c-menu__item__inner"><i class="fa fa-user-plus"></i>
+                <div class="c-menu-item__title"><span>Thêm Giảng Viên</span></div>
+              </div>
+            </a>
+          </li>
+          <li class="reload c-menu__item has-submenu" data-toggle="tooltip" title="Thêm Khóa Học">
+            <a href="pages/form_course.html">
+              <div class="c-menu__item__inner"><i class="fa fa-plus-circle"></i>
+                <div class="c-menu-item__title"><span>Thêm Khóa Học</span></div>
+              </div>
+            </a>
+          </li>
+          <li class="reload c-menu__item has-submenu" data-toggle="tooltip" title="Danh Sách Khóa Học">
+            <a href="pages/listcourse.html" id="loadcourse">
+              <div class="c-menu__item__inner"><i class="fa fa-list"></i>
+                <div class="c-menu-item__title"><span>Danh Sách Khóa Học</span></div>
+              </div>
+            </a>
+          </li>
+          <li class="reload c-menu__item has-submenu" data-toggle="tooltip" title="Danh Sách Giảng Viên">
+            <a href="pages/listgiangvien.html" id="loadgiangvien">
+              <div class="c-menu__item__inner"><i class="fa fa-user"></i>
+                <div class="c-menu-item__title"><span>Danh Sách Giảng Viên</span></div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</body>
+<main class="l-main">
+  <div class="content-wrapper content-wrapper--with-bg">
+    <h1 class="page-title">Trang Chủ</h1>
+    <div class="page-content" >
+        <div id="viewindex"></div>
+        <br>
+        <div id="viewindex2"></div>
+    </div>
+  </div>
+</main>
+</div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script src="js/script.js"></script>
+</body></html>
+

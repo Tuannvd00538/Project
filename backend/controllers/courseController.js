@@ -4,7 +4,6 @@ require('mongoose-pagination');
 exports.getList = function(req, res){
 	var page = Number(req.query.page);
 	var limit = Number(req.query.limit);
-
 	Product.find({ 'TrangThai' : 1})
 	.paginate(page, limit, function(err, result, total) {
     	var responseData = {
@@ -15,16 +14,57 @@ exports.getList = function(req, res){
   	});
 }
 
-exports.uploadImg = function(req, res){
-	console.log(req.files);
-	if (!req.files)
-		return res.status(400).send('Không có file nào được upload.');
-	let avatar = req.files.avatar;
-	avatar.mv('./public/images/' + avatar.name, function(err) {
-		if (err)
-		  return res.status(500).send(err);
-		res.send('https://project-tthhn.appspot.com/images/' + avatar.name);
-	});
+exports.getHot = function(req, res){
+	var page = Number(req.query.page);
+	var limit = Number(req.query.limit);
+	Product.find({ $and: [ { Sale: { $gt: 0 } }, { TrangThai: 1 } ] }).sort({Sale: -1})
+	.paginate(page, limit, function(err, result, total) {
+    	var responseData = {
+    		'data': result,
+    		'totalPage': Math.ceil(total/limit)
+    	};
+    	res.send(responseData);
+  	});
+}
+
+exports.getNew = function(req, res){
+	var page = Number(req.query.page);
+	var limit = Number(req.query.limit);
+	Product.find({TrangThai: 1}).sort({NgayTao: -1})
+	.paginate(page, limit, function(err, result, total) {
+    	var responseData = {
+    		'data': result,
+    		'totalPage': Math.ceil(total/limit)
+    	};
+    	res.send(responseData);
+  	});
+}
+
+exports.getQuery = function (req, res) {
+	var page = Number(req.query.page);
+	var limit = Number(req.query.limit);
+	var key = req.query.q;
+	Product.find({ $or: [ { MaKhoaHoc: key }, { ChuDe: key }, { TuKhoa: key }] }).sort({NgayTao: -1})
+	.paginate(page, limit, function(err, result, total) {
+    	var responseData = {
+    		'data': result,
+    		'totalPage': Math.ceil(total/limit)
+    	};
+    	res.send(responseData);
+  	});
+}
+exports.getChuDe = function (req, res) {
+	var page = Number(req.query.page);
+	var limit = Number(req.query.limit);
+	var chude = req.query.chude;
+	Product.find({ $and: [ { ChuDe: chude }, { TrangThai: 1 } ] }).sort({NgayTao: -1})
+	.paginate(page, limit, function(err, result, total) {
+    	var responseData = {
+    		'data': result,
+    		'totalPage': Math.ceil(total/limit)
+    	};
+    	res.send(responseData);
+  	});
 }
 
 exports.getDetail = function(req, res){	

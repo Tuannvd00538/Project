@@ -2,6 +2,8 @@
 <html>
 <head>
   	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<link rel="icon" type="image/png" href="../img/favicon.png">
   	<title>Giới thiệu - Học viện online TTHHN</title>
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -9,7 +11,8 @@
  	<link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body>
-	  	<div class="banner_top">
+	<div class="loading"><img src="../img/chonau.gif"></div>
+	<div class="banner_top">
     	<a href="javascript:void(0)"><img src="https://unica.vn/uploadmydang/top.jpg"></a>
   	</div>
   	<nav class="navbar navbar-inverse">
@@ -20,7 +23,7 @@
             	  	<span class="icon-bar"></span>
               		<span class="icon-bar"></span>                        
             	</button>
-            	<a class="navbar-brand" href="javascript:void(0)">TTHHN Group</a>
+            	<a class="navbar-brand" href="/">TTHHN Group</a>
         	</div>
         	<div class="collapse navbar-collapse" id="myNavbar">
 	            <ul class="nav navbar-nav">
@@ -52,7 +55,12 @@
               	</li>
             </ul>
 	        <ul class="nav navbar-nav navbar-right">
-	            <li><a href="javascript:void(0)"><i class="fa fa-shopping-cart"></i></a></li>
+	            <li>
+	            	<a href="cart.html">
+	            		<i class="fa fa-shopping-cart"></i>
+	            		<span class="countCart">0</span>
+	            	</a>
+	            </li>
 	            <li><a href="javascript:void(0)">Đăng Ký</a></li>
 	            <li><a href="javascript:void(0)">Đăng Nhập</a></li>
 	        </ul>
@@ -96,6 +104,7 @@
   			<p>Với hình thức giảng dạy online, mỗi chương trình đào tạo của TTHHN được các giảng viên xây dựng thành các bài nhỏ, mỗi bài là một clip đi sâu giải quyết một vấn đề nhỏ cho học viên vì vậy, học viên rất dễ lĩnh hội kiến thức. Tiết kiệm thời gian học tập.</p>
   		</div>
 	</div>
+	<!-- Chỗ đặt google maps -->
 	<div class="row why">
    		<h2><strong>Tại sao bạn nên học cùng Tthhn?</strong></h2>
    		<hr class="whyhr">
@@ -146,15 +155,14 @@
 							<li><a href="gioithieu.html">Giới thiệu về Tthhn</a>
 							</li>
 							<li><a href="faq.html">Câu hỏi thường gặp</a></li>
-							<li><a href="#">Điều khoản dịch vụ</a></li>
+							<li><a href="tos.html">Điều khoản dịch vụ</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-sm-3">
 					<div>
 						<ul class="item-list">
-								<li><a href="#">Hướng dẫn thanh toán</a></li>
-								<li><a href="#">Kích hoạt khóa học</a></li>
+								<li><a href="pay.html">Hướng dẫn thanh toán</a></li>
 								<li><a href="#">Affiliate</a></li>
 						</ul>
 					</div>
@@ -182,5 +190,6 @@
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/home.js"></script>
 </body>
 </html>
