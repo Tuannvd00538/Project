@@ -770,5 +770,51 @@ footer ul li {
 #teaching-footer .teaching-footer-title {
     max-width: 325px;
     margin: 40px auto 0;
+<<<<<<< HEAD
+}
+
+/*/MOI*/
+.k-profile-edit-content {
+	box-sizing: inherit;
+}
+.file-upload {
+	color: black;
+	display: table-cell;
+	width: 122px;
+	height: 122px;
+	border: 1px solid transparent;
+	border-radius: 50%;
+	vertical-align: middle;
+	position: relative;
+	text-align: center;
+	overflow: hidden;
+}
+.avatar-empty {
+	border-color: #ccc;
+}
+.user-avatar .file-upload:hover::after{
+	content:"Đổi hình";
+	position:absolute;
+	top:0;
+	left:0;
+	width:120px;
+	height:120px;
+	line-height:120px;
+	color:#fff;
+	border-radius:50%;
+	background-color:rgba(0,0,0,.5)
+	}
+#k-courses-header {
+    margin-top: 5%;	
+}
+#d {
+	margin-bottom: -15%
+}
+a:focus {
+	outline: none;
+	outline-offset: 0;
+	text-decoration: none;
+=======
 >>>>>>> 2632c340e2f8246cb503898a6b17dcbacacf8288
+>>>>>>> f7b2e12905d8518b50807f3c367097041c0811f1
 }
