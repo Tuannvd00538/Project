@@ -66,6 +66,19 @@ exports.getQuery = function (req, res) {
   	});
 }
 
+exports.getChuDe = function (req, res) {
+	var page = Number(req.query.page);
+	var limit = Number(req.query.limit);
+	Product.find({ $and: [ { ChuDe: req.params.key}, { TrangThai: 1 } ] })
+	.paginate(page, limit, function(err, result, total) {
+    	var responseData = {
+    		'data': result,
+    		'totalPage': Math.ceil(total/limit)
+    	};
+    	res.send(responseData);
+  	});
+}
+
 exports.getDetail = function(req, res){	
 	Product.findOne({ _id: req.params.id, 'TrangThai': 1 },function(err, result){
 		res.send(result);

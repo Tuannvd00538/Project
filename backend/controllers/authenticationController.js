@@ -18,7 +18,7 @@ exports.checkAdmin = function(req, res){
 		if (result) {
 			var digestedPassword = accountController.sha512(password, result.salt);
 			if(digestedPassword === result.password){
-				res.json({token: jwt.sign({ username: result.username, password: result.password, _id: result._id }, 'RESTFULAPIs', { expiresIn: 1440 })});
+				res.json({id: result._id, token: jwt.sign({ username: result.username, password: result.password, _id: result._id }, 'RESTFULAPIs', { expiresIn: 1440 })});
 			}else{
 				res.status(401).json({ message: 'Tên đăng nhập hoặc mật khẩu không chính xác!' });
 				return;	
@@ -57,7 +57,7 @@ exports.checkLogin = function(req, res){
 		if (result) {
 			var digestedPassword = accountController.sha512(password, result.salt);
 			if(digestedPassword === result.password){
-				res.json({token: jwt.sign({ username: result.username, password: result.password, _id: result._id }, 'RESTFULAPIs', { expiresIn: 1440 })});
+				res.json({id: result._id, token: jwt.sign({ username: result.username, password: result.password, _id: result._id }, 'RESTFULAPIs', { expiresIn: 1440 })});
 			}else{
 				res.status(401).json({ message: 'Tên đăng nhập hoặc mật khẩu không chính xác!' });
 				return;	

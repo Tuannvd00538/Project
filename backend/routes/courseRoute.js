@@ -22,4 +22,7 @@ module.exports = function(app){
 
 	app.route('/_api/v1/course/view/:key')
 		.get(courseController.getQuery)
+
+	app.route('/_api/v1/course/chude/:key')
+		.get(courseController.getChuDe)
 }

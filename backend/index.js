@@ -9,9 +9,6 @@ mongoose.Promise = global.Promise;
 var jwt = require('jsonwebtoken');
 var app = express();
 
-var fullTextSearch = require('full-text-search');
-var search = new fullTextSearch();
-
 app.use(cors());
 const fileUpload = require('express-fileupload');
 const path = require('path');
@@ -30,6 +27,37 @@ app.use(function(req, res, next) {
   }
 });
 
+var Promise = require('bluebird');
+var GoogleCloudStorage = Promise.promisifyAll(require('@google-cloud/storage'));
+var storage = GoogleCloudStorage({
+  	projectId: 'project-tthhn',
+  	keyFilename: 'siin.json'
+});
+var BUCKET_NAME = 'tthhnvn'
+var myBucket = storage.bucket(BUCKET_NAME)
+
+app.post('/_api/v1/images', function(req, res) {
+	var file = myBucket.file('siin.png')
+	file.existsAsync()
+	.then(exists => {
+	    if (exists) {
+	      	// file exists in bucket
+	    }
+	})
+	.catch(err => {
+	    return err
+	});
+	let localFileLocation = './public/images/haha.gif'
+	myBucket.uploadAsync(localFileLocation, { public: true })
+	.then(file => {
+	    // file saved
+	});
+	var getPublicThumbnailUrlForItem = file_name => {
+	  	return 'https://storage.googleapis.com/${BUCKET_NAME}/${file_name}'
+	}
+	res.status(200).send('Thành công!');
+});
+
 app.use(fileUpload());
 app.use(express.static('./public'));
 app.use(bodyParser.json());
@@ -39,6 +67,8 @@ var accountRoute = require('./routes/accountRoute');
 accountRoute(app);
 var gvRoute = require('./routes/gvRoute');
 gvRoute(app);
+var recycleBin = require('./routes/recycleBinRoute');
+recycleBin(app);
 app.get('/', (req, res) => res.send('Chào mừng bạn đến với server của Siin Đẹp Trai, đừng nghịch hay phá phách gì nhé :)'))
 app.listen(8080, function(){
 	console.log('Port 8080: everything is going to be 200 OK!');

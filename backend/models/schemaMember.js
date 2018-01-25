@@ -9,24 +9,16 @@ module.exports = mongoose.model('members', {
 		type: String,
 		require: true
 	},
-	fullName: {
-		type: String,
-		require: true
-	},
+	fullName: String,
 	email: {
 		type: String,
 		require: true
 	},
 	salt: String,
 	birthDay: String,
-	phone: {
-		type: String,
-		require: true
-	},
-	gender: {
-		type: String,
-		require: true
-	},
+	phone: String,
+	gender: Number,
+	avatar: String,
 	createdAt: {
 		type: Date,
 		default: Date.now
