@@ -1,0 +1,49 @@
+body {
+ text-align:center;
+ width:100%;
+ margin:0 auto;
+ padding:0px;
+ background-image: url(http://static.hdw.eweb4.com/media/wallpapers_2560x1600/photography/1/1/dew-drops-on-grass-photography-hd-wallpaper-2560x1600-2529.jpg);
+ background-size: cover;
+ background-attachment: fixed;;
+ background-repeat: no-repeat;
+}
+#wrapper {
+ margin:5% auto;
+ text-align: center;
+ width:995px;
+}
+#login_div {
+    background-color: white;
+    padding: 48px;
+    max-width: 45%;
+    margin-left: 280px;
+}
+#login_div button {
+ 	margin-top:20px;
+ 	height:40px;
+ 	width:100%;
+}
+#login_div #register {
+ 	margin-top:10px;
+ 	float:left;
+ 	color: #0089ec;
+}
+#login_div #forgot {
+ 	margin-top:10px;
+ 	float:right;
+ 	color: #0089ec;
+}
+.alertMsgUser, .alertMsgPass {
+ 	 color: red;
+}
+.logo {
+	margin-top: 55px;
+}
+.logo1 {
+	color: #333;
+}
+.logo2 {
+	color: #777;
+	margin-top: -25px;
+}
