@@ -12,9 +12,9 @@ module.exports = function(app){
 		.post(accountController.addMember);
 
 	app.route('/_api/v1/member/:id')
-		.get(accountController.getDetailMember)
-		.put(accountController.updateMember)
-		.delete(accountController.deleteMember);
+		.get(authenticationController.loginRequired, accountController.getDetailMember)
+		.put(authenticationController.loginRequired, accountController.updateMember)
+		.delete(authenticationController.loginRequired, accountController.deleteMember);
 
 	// Authentication
 	app.route('/_api/v1/authentication')

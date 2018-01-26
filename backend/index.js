@@ -1,5 +1,6 @@
 'use strict';
 const express = require('express');
+var multer  = require('multer');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const crypto = require('crypto-js');
@@ -27,35 +28,44 @@ app.use(function(req, res, next) {
   }
 });
 
-var Promise = require('bluebird');
-var GoogleCloudStorage = Promise.promisifyAll(require('@google-cloud/storage'));
-var storage = GoogleCloudStorage({
-  	projectId: 'project-tthhn',
-  	keyFilename: 'siin.json'
+const Storage = require('@google-cloud/storage');
+const storage = new Storage({
+    keyFilename: './siin.json'
 });
-var BUCKET_NAME = 'tthhnvn'
-var myBucket = storage.bucket(BUCKET_NAME)
+const CLOUD_BUCKET = 'tthhnvn';
+const bucket = storage.bucket('tthhnvn');
+function getPublicUrl(filename) {
+    return `https://storage.googleapis.com/${CLOUD_BUCKET}/${filename}`;
+}
+var upload = multer({ storage: multer.memoryStorage() });
+app.post('/_api/v1/images', upload.single('file'), function(req, res, next) {
+    if (!req.file) {
+        return next();
+    }
 
-app.post('/_api/v1/images', function(req, res) {
-	var file = myBucket.file('siin.png')
-	file.existsAsync()
-	.then(exists => {
-	    if (exists) {
-	      	// file exists in bucket
-	    }
-	})
-	.catch(err => {
-	    return err
-	});
-	let localFileLocation = './public/images/haha.gif'
-	myBucket.uploadAsync(localFileLocation, { public: true })
-	.then(file => {
-	    // file saved
-	});
-	var getPublicThumbnailUrlForItem = file_name => {
-	  	return 'https://storage.googleapis.com/${BUCKET_NAME}/${file_name}'
-	}
-	res.status(200).send('Thành công!');
+    const gcsname = Date.now() + req.file.originalname;
+    const file    = bucket.file(gcsname);
+
+    const stream = file.createWriteStream({
+        metadata: {
+            contentType: req.file.mimetype
+        }
+    });
+
+    stream.on('error', (err) => {
+        req.file.cloudStorageError = err;
+        next(err);
+    });
+
+    stream.on('finish', () => {
+        req.file.cloudStorageObject = gcsname;
+        file.makePublic().then(() => {
+            req.file.cloudStoragePublicUrl = getPublicUrl(gcsname);
+            res.status(200).send(req.file.cloudStoragePublicUrl);
+        });
+    });
+
+    stream.end(req.file.buffer);
 });
 
 app.use(fileUpload());
