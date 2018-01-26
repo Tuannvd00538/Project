@@ -31,15 +31,15 @@
     	          	<li class="dropdown">
                   	<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">Chủ Đề <span class="fa fa-bars"></span></span></a>
                   	<ul class="dropdown-menu">
-                    	<li><a href="javascript:void(0)"><i class="fa fa-caret-right"></i> Công nghệ thông tin</a></li>
-                    	<li><a href="javascript:void(0)"><i class="fa fa-caret-right"></i> Thiết kế - Nhiếp ảnh</a></li>
-                    	<li><a href="javascript:void(0)"><i class="fa fa-caret-right"></i> Sale - Marketing</a></li>
-                    	<li><a href="javascript:void(0)"><i class="fa fa-caret-right"></i> Kinh doanh - Khời nghiệp</a></li>
-                    	<li><a href="javascript:void(0)"><i class="fa fa-caret-right"></i> Phát triển cá nhân</a></li>
-                    	<li><a href="javascript:void(0)"><i class="fa fa-caret-right"></i> Sức khỏe - Giới tính</a></li>
-                    	<li><a href="javascript:void(0)"><i class="fa fa-caret-right"></i> Nghệ thuật - Làm đẹp</a></li>
-                    	<li><a href="javascript:void(0)"><i class="fa fa-caret-right"></i> Ngoại ngữ</a></li>
-                    	<li><a href="javascript:void(0)"><i class="fa fa-caret-right"></i> Nuôi dạy con</a></li>
+                    	<li><a href="javascript:getChuDe('Công nghệ thông tin')"><i class="fa fa-caret-right"></i> Công nghệ thông tin</a></li>
+                    	<li><a href="javascript:getChuDe('Thiết kế - Nhiếp ảnh')"><i class="fa fa-caret-right"></i> Thiết kế - Nhiếp ảnh</a></li>
+                    	<li><a href="javascript:getChuDe('Sale - Marketing')"><i class="fa fa-caret-right"></i> Sale - Marketing</a></li>
+                    	<li><a href="javascript:getChuDe('Kinh doanh - Khởi nghiệp')"><i class="fa fa-caret-right"></i> Kinh doanh - Khởi nghiệp</a></li>
+                    	<li><a href="javascript:getChuDe('Phát triển cá nhân')"><i class="fa fa-caret-right"></i> Phát triển cá nhân</a></li>
+                    	<li><a href="javascript:getChuDe('Sức khỏe - Giới tính')"><i class="fa fa-caret-right"></i> Sức khỏe - Giới tính</a></li>
+                    	<li><a href="javascript:getChuDe('Nghệ thuật - Làm đẹp')"><i class="fa fa-caret-right"></i> Nghệ thuật - Làm đẹp</a></li>
+                    	<li><a href="javascript:getChuDe('Ngoại ngữ')"><i class="fa fa-caret-right"></i> Ngoại ngữ</a></li>
+                    	<li><a href="javascript:getChuDe('Công nghệ thông tin')"><i class="fa fa-caret-right"></i> Nuôi dạy con</a></li>
                   	</ul>
               	</li>
             	<li class="search">
@@ -66,7 +66,7 @@
 	            	<a href="javascript:void(0)" data-toggle="dropdown"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
 	            	<ul class="dropdown-menu">
 				      	<li><a href="javascript:void(0)">Khóa học của tôi</a></li>
-				      	<li><a href="javascript:void(0)">Chỉnh sửa thông tin</a></li>
+				      	<li><a href="pages/edit.html">Chỉnh sửa thông tin</a></li>
 				      	<li><a href="javascript:logout()">Đăng xuất</a></li>
 				    </ul>
 	            </li>
@@ -80,12 +80,12 @@
         	<img src="https://i.imgur.com/gDih0uK.png">
         </a>
    	</header>
-    <main class="defaultIndex">
+    <main>
     	<div class="row nav-center">
           	<ul class="nav nav-pills">
 			    <li class="active"><a data-toggle="pill" href="#hot"><i class="fa fa-fire" aria-hidden="true"></i> Nổi bật</a></li>
 			    <li><a data-toggle="pill" href="#new">Mới nhất</a></li>
-			    <li><a data-toggle="pill" onclick="saleNow()" href="#sale">Đang khuyến mại</a></li>
+			    <li><a data-toggle="pill" href="#sale">Đang khuyến mại</a></li>
 			</ul>
         </div>
         <div class="tab-content">
@@ -103,51 +103,40 @@
 	    	<a href="javascript:void(0)"><img src="https://media.kyna.vn/uploads/pages/campaign/dong-gia/img/banner-footer.png"></a>
 	    </div>
     </main>
-    <main class="searchMain">
-    	<h1 class="textSearch"></h1>
-    	<div class="row" id="resultSearch">
-   		
-   		</div>
-   		<div class="row error404">
-			<h1 class="text404"></h1>
-			<img src="https://4.bp.blogspot.com/-bjR1MJ6jSnA/WgG-WnpCgaI/AAAAAAAAAyY/LBcQeNa4Y9UshNJSUARAS1k1JFvorO1RgCLcBGAs/s1600/UmVRFlQVwwy.png">
-			<h3>&copy; Học viện Online TTHHN - Học từ chuyên gia</h3>
-		</div>
-    </main>
     <div class="tag_hots">
         <div class="container">
             <h3><strong>Chinh phục những mục tiêu của bạn</strong></h3>
             <div class="row">
               <div class="col-md-4 col-lg-4 col-sm-6 tag_item">
-                <a href="#">Nuôi dạy con ngoan, tự lập</a>
+                <a href="javascript:getChuDe('Công nghệ thông tin')">Nuôi dạy con ngoan, tự lập</a>
               </div>
               <div class="col-md-4 col-lg-4 col-sm-6 tag_item">
-                <a href="#">Có cơ thể khỏe mạnh, săn chắc</a>
+                <a href="javascript:getChuDe('Sức khỏe - Giới tính')">Có cơ thể khỏe mạnh, săn chắc</a>
               </div>
               <div class="col-md-4 col-lg-4 col-sm-6 tag_item">
-                <a href="#">Làm chủ một nhạc cụ mới</a>
+                <a href="javascript:getChuDe('Nghệ thuật - Làm đẹp')">Làm chủ một nhạc cụ mới</a>
               </div>
             </div>
             <div class="row">
               <div class="col-md-4 col-lg-4 col-sm-6 tag_item">
-                <a href="#">Chinh phục tình yêu của bạn</a>
+                <a href="javascript:getChuDe('Phát triển cá nhân')">Chinh phục tình yêu của bạn</a>
               </div>
               <div class="col-md-4 col-lg-4 col-sm-6 tag_item">
-                <a href="#">Xây dựng hệ thống marketing tự động</a>
+                <a href="javascript:getChuDe('Sale - Marketing')">Xây dựng hệ thống marketing tự động</a>
               </div>
               <div class="col-md-4 col-lg-4 col-sm-6 tag_item">
-                <a href="#">Tăng doanh số bán hàng</a>
+                <a href="javascript:getChuDe('Kinh doanh - Khởi nghiệp')">Tăng doanh số bán hàng</a>
               </div>
             </div>
             <div class="row">
               	<div class="col-md-4 col-lg-4 col-sm-6 tag_item">
-                    <a href="#">Tự học Tiếng Anh tại nhà</a>
+                    <a href="javascript:getChuDe('Ngoại ngữ')">Tự học Tiếng Anh tại nhà</a>
               	</div>
               	<div class="col-md-4 col-lg-4 col-sm-6 tag_item">
-                	<a href="#">Có dòng tiền thu nhập thụ động</a>
+                	<a href="javascript:getChuDe('Thiết kế - Nhiếp ảnh')">Có dòng tiền thu nhập thụ động</a>
               	</div>
               	<div class="col-md-4 col-lg-4 col-sm-6 tag_item">
-                	<a href="#">Làm chủ một ngôn ngữ lập trình</a>
+                	<a href="javascript:getChuDe('Công nghệ thông tin')">Làm chủ một ngôn ngữ lập trình</a>
               	</div>
             </div>
         </div>

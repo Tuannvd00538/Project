@@ -26,6 +26,7 @@ $(document).ready(function () {
         type: "POST",
         data: login,
         success: function (response) {
+          localStorage.setItem('id', response.id);
           localStorage.setItem('username', username);
           localStorage.setItem('token', response.token);
           swal("Thành công", "Bạn sẽ được chuyển về trang chủ sau 2s nữa!", "success")

@@ -1,8 +1,13 @@
+// All rights reserved by Ngo Van Tuan - T1707A - FPT Aptech
+// ---------------------------------------------------------------------------------------------
 // jQuery trang chủ
 var HOME = 'https://project-tthhn.appspot.com/_api/v1/course';
 var GIANGVIEN = 'https://project-tthhn.appspot.com/_api/v1/giangvien';
 var GIANGVIENDetail = 'https://project-tthhn.appspot.com/_api/v1/giangvien/course';
 var SEARCH = 'https://project-tthhn.appspot.com/_api/v1/course/view';
+var CHUDE = 'https://project-tthhn.appspot.com/_api/v1/course/chude';
+var FILE_UPLOAD_URL = 'https://project-tthhn.appspot.com/_api/v1/images';
+var MEMBER = 'https://project-tthhn.appspot.com/_api/v1/member';
 $(document).ready(function () {
 	search();
 	var cart = localStorage.getItem("cart");
@@ -14,11 +19,13 @@ $(document).ready(function () {
 		$('#checkSign').attr('style', 'display:block;');
 		$('#checkSignTwo').attr('style', 'display:block;');
 		$('#checkLogin').attr('style', 'display:none;');
+		$('.ifLogin').attr('style', 'display:block;');
 	}
 	if (username != null || username != undefined) {
 		$('#checkLogin').attr('style', 'display:block;');
 		$('#checkSign').attr('style', 'display:none;');
 		$('#checkSignTwo').attr('style', 'display:none;');
+		$('.ifLogin').attr('style', 'display:none;');
 	}
 });
 function search() {
@@ -187,6 +194,7 @@ function detailCourse() {
 	    	$('#gvKH').text(response.GiangVien);
 	    	$('#gvKH').attr('href', 'lecturers.html?id=' + response.GiangVienID);
 	    	$('#cdKH').text(response.ChuDe);
+	    	$('#cdKH').attr('href', '/course.html?key=' + response.ChuDe);
 	    	$('#imgKH').attr("src", response.Thumbnail);
 	    	var GiaNow = ((response.GiaKhoaHoc / 100) * (100 - response.Sale));
 	    	$('#bgKH').html('<i class="fa fa-play-circle" aria-hidden="true"></i> ' + response.SoBaiGiang + ' bài giảng');
@@ -306,7 +314,7 @@ function loadCart() {
 		$('.noneCart').attr('style', 'display:none;');
 	}
 	listCart = JSON.parse(listCart);
-	if (listCart.course == undefined || listCart.course == null) {
+	if (listCart == undefined || listCart == null) {
 		$('.listCart').attr('style', 'display:none;');
 		$('.noneCart').attr('style', 'display:block;');
 	} else {
@@ -314,20 +322,20 @@ function loadCart() {
 		$('.noneCart').attr('style', 'display:none;');
 	}
 	var cartContent = '';
-	for (var i = 0; i < listCart.course.length; i++) {
+	for (var i = 0; i < listCart.length; i++) {
 		cartContent += '<tr>';
-    		cartContent += '<td>' + listCart.course[i].MaKhoaHoc + '</td>';
-    		cartContent += '<td class="titleCart">' + listCart.course[i].TenKhoaHoc + '</td>';
-    		cartContent += '<td>' + listCart.course[i].GiangVien + '</td>';
-    		cartContent += '<td>' + listCart.course[i].ChuDe + '</td>';
-    		cartContent += '<td>' + formatPrice(listCart.course[i].GiaKhoaHoc, '.', ',') + '<sup>đ</sup></td>';
+    		cartContent += '<td>' + listCart[i].MaKhoaHoc + '</td>';
+    		cartContent += '<td class="titleCart">' + listCart[i].TenKhoaHoc + '</td>';
+    		cartContent += '<td>' + listCart[i].GiangVien + '</td>';
+    		cartContent += '<td>' + listCart[i].ChuDe + '</td>';
+    		cartContent += '<td>' + formatPrice(listCart[i].GiaKhoaHoc, '.', ',') + '<sup>đ</sup></td>';
     		cartContent += '<td>x</td>';
   		cartContent += '</tr>';
 	}
 	$('#innerCart').html(cartContent);
 	var totalPrice = 0;
-	for (var i = 0; i < listCart.course.length; i++) {
-		totalPrice += listCart.course[i].GiaKhoaHoc * 1;
+	for (var i = 0; i < listCart.length; i++) {
+		totalPrice += listCart[i].GiaKhoaHoc * 1;
 	}
 	$('.panel-footer').html('Tổng đơn hàng: ' + formatPrice(totalPrice, '.', ',') + '<sup>đ</sup>');
 	$('.loading').fadeOut();
@@ -335,17 +343,16 @@ function loadCart() {
 function addToCart(MaKhoaHoc, TenKhoaHoc, GiangVien, ChuDe, GiaKhoaHoc) {
 	var listCart = localStorage.getItem('listCart');
 	if (listCart == null) {
-		listCart = {
-			'course': [
-				{
-					'MaKhoaHoc': MaKhoaHoc,
-					'TenKhoaHoc': TenKhoaHoc,
-					'GiangVien': GiangVien,
-					'ChuDe': ChuDe,
-					'GiaKhoaHoc': GiaKhoaHoc
-				}
-			]
-		}
+		listCart = [
+			{
+				'customerId': '',
+				'MaKhoaHoc': MaKhoaHoc,
+				'TenKhoaHoc': TenKhoaHoc,
+				'GiangVien': GiangVien,
+				'ChuDe': ChuDe,
+				'GiaKhoaHoc': GiaKhoaHoc
+			}
+		]
 		localStorage.setItem("cart", 1);
 		$('.countCart').text(1);
 		$('#snackbar').addClass('show');
@@ -353,9 +360,9 @@ function addToCart(MaKhoaHoc, TenKhoaHoc, GiangVien, ChuDe, GiaKhoaHoc) {
 		setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
 	} else {
 		listCart = JSON.parse(listCart);
-		if (listCart.course != undefined && listCart.course != null) {
+		if (listCart != undefined && listCart != null) {
 			var existsItem = false;
-			var totalCart = listCart.course.length;
+			var totalCart = listCart.length;
 			var cart = localStorage.getItem("cart");
 			if (cart == null) {
 				localStorage.setItem("cart", totalCart);
@@ -364,15 +371,16 @@ function addToCart(MaKhoaHoc, TenKhoaHoc, GiangVien, ChuDe, GiaKhoaHoc) {
 				localStorage.setItem("cart", totalCart);
 				$('.countCart').text(totalCart);
 			}
-			for (var i = 0; i < listCart.course.length; i++) {
-				if(listCart.course[i].MaKhoaHoc == MaKhoaHoc){
+			for (var i = 0; i < listCart.length; i++) {
+				if(listCart[i].MaKhoaHoc == MaKhoaHoc){
 					existsItem = true;
 					swal("Lỗi!", "Khóa học này đã có trong giỏ hàng của bạn", "error")
 					break;
 				}
 			}
 			if(!existsItem){
-				listCart.course.push({
+				listCart.push({
+					'customerId': '',
 					'MaKhoaHoc': MaKhoaHoc,
 					'TenKhoaHoc': TenKhoaHoc,
 					'GiangVien': GiangVien,
@@ -499,6 +507,7 @@ function logout() {
 	}, function () {
 	  setTimeout(function () {
 	    localStorage.removeItem('username');
+	    localStorage.removeItem('token');
 	    location.reload();
 	  }, 2000);
 	});
@@ -510,10 +519,16 @@ $(function() {
     });
 });
 $('#searchCourse').submit(function () {
-	$('.loading').fadeIn();
 	var key = $('#valCourse').val();
+	window.location.href = '/search.html?key=' + key;
+});
+function searchCourseIndex() {
+	var url_string = window.location.href;
+	var url = new URL(url_string);
+	var key = url.searchParams.get("key");
+	$('#valCourse').val(key);
 	$.ajax({
-	    url: SEARCH + '/' + key + '?page=1&limit=100',
+	    url: SEARCH + '/' + key,
 	    type: "GET",
 	    success: function (response) {
 	    	if (response.data.length != 0) {
@@ -529,28 +544,162 @@ $('#searchCourse').submit(function () {
 			     	appendContent += generateVideoBlock(id, Thumbnail, TieuDe, GiangVien, GiaKhoaHoc, Sale, GiangVienID);
 		     	}
 		     	$("#resultSearch").html(appendContent);
-		     	$('#resultSearch').attr('style', 'display:block;');
-		     	$('.defaultIndex').attr('style', 'display:none;');
-				$('header').attr('style', 'display:none;');
-				$('.rsSearch').attr('style', 'display:block;');
-				$('.textSearch').text('Kết quả tìm kiếm cho: ' + key);
-				$('.textSearch').attr('style', 'display:block;');
-				$('.error404').attr('style', 'display:none;');
+		     	$('.error404').attr('style', 'display:none;');
+		     	$('.textSearch').html('Các khóa học theo từ khóa: <strong>' + key + '</strong>');
 		     	$('.loading').fadeOut();
-	    	}
-	    	if (response.data.length == 0) {
-	    		$('.defaultIndex').attr('style', 'display:none;');
-				$('header').attr('style', 'display:none;');
-				$('#resultSearch').attr('style', 'display:none;');
-				$('.textSearch').attr('style', 'display:none;');
-				$('.rsSearch').attr('style', 'display:block;');
-	    		$('.error404').attr('style', 'display:block;');
-	    		$('.text404').text('Không có kết quả tìm kiếm cho từ khóa ' + key);
-	    		$('.loading').fadeOut();
-	    	}
+		     } else {
+		     	$('.text404').html('Không có kết quả cho từ khóa: <strong>' + key + '</strong>');
+		     }
 	    },
 	    error: function(jqXHR, textStatus, errorThrown) {
 	       console.log(textStatus, errorThrown);
 	    }
 	});
-})
+}
+$('.thongtin').fadeOut();
+
+$('#check1').click(function() {
+   if(this.checked) {
+        $('.thongtin').fadeOut();
+        $('#giaoma').fadeIn();
+   }
+});
+
+$('#check2').click(function() {
+   if(this.checked) {
+        $('.thongtin').fadeOut();
+        $('#thecao').fadeIn();
+   }
+});
+
+$('#check3').click(function() {
+   if(this.checked) {
+        $('.thongtin').fadeOut();
+        $('#atm').fadeIn();
+   }
+});
+
+$('#check4').click(function() {
+   if(this.checked) {
+        $('.thongtin').fadeOut();
+        $('#visa').fadeIn();
+   }
+});
+
+$('#check5').click(function() {
+   if(this.checked) {
+        $('.thongtin').fadeOut();
+        $('#chuyenkhoan').fadeIn();
+   }
+});
+
+$('#check6').click(function() {
+   if(this.checked) {
+        $('.thongtin').fadeOut();
+   }
+});
+function getChuDe(value) {
+	window.location.href = '/course.html?key=' + value;
+}
+function chude() {
+	var url_string = window.location.href;
+	var url = new URL(url_string);
+	var key = url.searchParams.get("key");
+	$('#valCourse').val(key);
+	$.ajax({
+	    url: CHUDE + '/' + key,
+	    type: "GET",
+	    success: function (response) {
+	    	var appendContent = "";
+	     	for (var i = 0; i < response.data.length; i++) {
+	     		var id = response.data[i]._id;
+		     	var Thumbnail = response.data[i].Thumbnail;
+		     	var TieuDe = response.data[i].TieuDe;
+		     	var GiangVien = response.data[i].GiangVien;
+		     	var GiaKhoaHoc = response.data[i].GiaKhoaHoc;
+		     	var Sale = response.data[i].Sale;
+		     	var GiangVienID = response.data[i].GiangVienID;
+		     	appendContent += generateVideoBlock(id, Thumbnail, TieuDe, GiangVien, GiaKhoaHoc, Sale, GiangVienID);
+	     	}
+	     	$("#resultSearch").html(appendContent);
+	     	$('.textSearch').html('Các khóa học theo chủ đề: <strong>' + key + '</strong>');
+	     	$('.loading').fadeOut();
+	    },
+	    error: function(jqXHR, textStatus, errorThrown) {
+	       console.log(textStatus, errorThrown);
+	    }
+	});
+}
+$("#fileSelect").change(function (e){
+	var data = new FormData();
+	data.append('file', e.target.files[0]);
+	$.ajax({
+		url: FILE_UPLOAD_URL,
+		type: "POST",
+		data: data,
+		cache: false,
+	    contentType: false,
+	    processData: false,
+		success: function(response){
+			$('.file-upload').attr('style', 'background-image:url(' + response + ')');
+			$('#avtUrl').val(response);
+			$('#addAvt').attr('style', 'display:none;');
+			var id = localStorage.getItem('id');
+			var token = localStorage.getItem('token');
+			var putData = {
+				"avatar": response
+			};
+			$.ajax({
+				url: MEMBER + '/' + id,
+				type: "PUT",
+				data: putData,
+				headers: {
+				    "Authorization": token
+				},
+				success: function(response){
+					swal("Thành công!", "Cập nhật ảnh đại diện thành công!", "success");
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+			       swal("Lỗi!", jqXHR.responseJSON.message, "error");
+			    }
+			});
+		},
+		error: function(response, message){
+			swal("Lỗi!", "Có lỗi xảy ra!", "error");
+		}
+	});
+});
+function editProfile() {
+	var username = localStorage.getItem('username');
+	var token = localStorage.getItem('token');
+	var id = localStorage.getItem('id');
+	if (username == null || username == undefined) {
+		window.location.href = '/pages/login.html';
+	} else {
+		$.ajax({
+		    url: MEMBER + '/' + id,
+		    type: "GET",
+		    headers: {
+			    "Authorization": token
+			},
+		    success: function (response) {
+		    	$('#username').val(response.username);
+		    	$('#email').val(response.email);
+		    	$('#fullName').val(response.fullName);
+		    	$('#phone').val(response.phone);
+		    	$('#birthDay').val(response.birthDay);
+		    	$('.form-control option[value=' + response.gender + ']').attr('selected','selected');
+		    	var avatar = response.avatar;
+		    	if (avatar != null || avatar != undefined) {
+		    		$('.file-upload').attr('style', 'background-image:url(' + response.avatar + ')');
+					$('#avtUrl').val(response.avatar);
+					$('#addAvt').attr('style', 'display:none;');
+		    	}
+		     	$('.loading').fadeOut();
+		    },
+		    error: function(jqXHR, textStatus, errorThrown) {
+		       swal("Lỗi!", jqXHR.responseJSON.message, "error");
+		    }
+		});
+	}
+}

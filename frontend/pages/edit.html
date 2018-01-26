@@ -4,16 +4,16 @@
   	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   	<link rel="icon" type="image/png" href="../img/favicon.png">
-  	<title>Giới thiệu - Học viện online TTHHN</title>
+  	<title>Chỉnh sửa thông tin cá nhân</title>
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
  	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
  	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
  	<link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
-<body>
+<body onload="editProfile()">
 	<div class="loading"><img src="../img/chonau.gif"></div>
-	<div class="banner_top">
+  	<div class="banner_top">
     	<a href="javascript:void(0)"><img src="https://unica.vn/uploadmydang/top.jpg"></a>
   	</div>
   	<nav class="navbar navbar-inverse">
@@ -75,85 +75,121 @@
 	        </ul>
        	</div>
 	</nav>
-	<div class="videoIntro">
-		<iframe width="854" height="480" src="https://www.youtube.com/embed/D_76EvlI6kw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-	</div>
-	<div class="info">
-		<h1> Giới thiệu  -  Học viện Online Tthhn </h1>
-	</div>
-	<div class="row gt">
-		<div class="col-md-7">
-			<h2>Về chúng tôi</h2>
-			<hr>
-			<h5><strong>Chúng tôi là ai.</strong></h5>
-			<p>Công ty CP đào tạo trực tuyến TTHHN được hình thành bởi đội ngũ chuyên gia hàng đầu Việt Nam trong lĩnh vực đào tạo dành cho Doanh nghiệp. Với mục tiêu tối thượng hỗ trợ lực lượng Doanh nhân luôn giữ thế chủ động, cập nhật giải pháp và phương thức quản trị, điều hành doanh nghiệp trong mọi lúc mọi nơi, TTHHN đã thiết kế và triển khai hệ thống chương trình đào tạo trực tuyến chất lượng cao. Các sản phẩm đào tạo của TTHHN chính là sự kết hợp giữa nghiên cứu lý luận gắn với thực tiễn nhằm nâng cao năng lực quản trị tổ chức trong doanh nghiệp.</p>
-			<p>TTHHN - nơi hội tụ trí tuệ, tầm nhìn của đội ngũ Chuyên gia - Doanh nhân - Trí thức.</p>
-			<p>TTHHN - hướng tới và trở thành không gian rộng mở, sáng tạo và kết nối toàn cầu dành cho các nhà quản trị trong và ngoài nước.</p>
-			<p>TTHHN – đơn vị duy nhất tại Việt Nam chỉ cung cấp các chương trình đào tạo online dành cho doanh nghiệp.</p>
-			<p>Trên cơ sở đó, các chương trình đào tạo của TTHHN bao gồm từ các nhóm chương trình: Lãnh đạo và quản lý, Nhân sự và nhân lực, Tài chính và kế toán, Sản xuất và vận hành, Tiếp thị và bán hàng, Kỹ năng chuyên nghiệp sẽ được chuyển thể sáng tạo thành các chương trình học trực tuyến dành cho tất cả các đối tượng ham học hỏi đặc biệt là giới Doanh nhân.</p>
+	<div class="row mainEdit">
+		<div class="panel panel-default">
+		  	<div class="panel-heading">
+		  		<h2>Chỉnh sửa thông tin cá nhân</h2>
+				<form class="user-avatar">
+					<label class="file-upload avatar-empty">
+						<i class="fa fa-plus" id="addAvt" aria-hidden="true"></i>
+						<input id="fileSelect" type="file" name="file" multiple="multiple" accept="image/*"/>
+						<input type="hidden" id="avtUrl" value="">
+					</label>
+				</form>
+		  	</div>
+		  	<div class="panel-body">
+		  		<form class="form-horizontal">
+			      	<div class="panel panel-default">
+			        	<div class="panel-heading">
+			        		<h4 class="panel-title">Thông tin tài khoản</h4>
+			        	</div>
+			        	<div class="panel-body">
+			          		<div class="form-group">
+			            		<label class="col-sm-2 control-label">Tên tài khoản</label>
+			            		<div class="col-sm-10">
+			              			<input type="text" class="form-control" id="username" disabled>
+			            		</div>
+			          		</div>
+			          		<div class="form-group">
+			            		<label class="col-sm-2 control-label">Email</label>
+			            		<div class="col-sm-10">
+			              			<input type="text" class="form-control" id="email" disabled>
+			            		</div>
+			          		</div>
+			        	</div>
+			      	</div>
+			      	<div class="panel panel-default">
+			        	<div class="panel-heading">
+			        		<h4 class="panel-title">Thông tin cá nhân</h4>
+			        	</div>
+			        	<div class="panel-body">
+			          		<div class="form-group">
+			            		<label class="col-sm-2 control-label">Họ và tên</label>
+			            		<div class="col-sm-10">
+			              			<input type="text" class="form-control" id="fullName">
+			            		</div>
+			          		</div>
+			          		<div class="form-group">
+			            		<label class="col-sm-2 control-label">Số điện thoại</label>
+			            		<div class="col-sm-10">
+			              			<input type="tel" class="form-control" id="phone">
+			            		</div>
+			          		</div>
+			          		<div class="form-group">
+			            		<label class="col-sm-2 control-label">Sinh nhật</label>
+			            		<div class="col-sm-10">
+			              			<input type="date" class="form-control" id="birthDay">
+			            		</div>
+			          		</div>
+			          		<div class="form-group">
+			            		<label class="col-sm-2 control-label">Giới tính</label>
+			            		<div class="col-sm-10">
+			              			<select class="form-control">
+			                			<option>Chọn giới tính</option>
+			                			<option value="1">Nam</option>
+			                			<option value="2">Nữ</option>
+			                			<option value="0">Khác</option>
+			              			</select>
+			            		</div>
+			          		</div>
+			        	</div>
+			      	</div>
+			      	<div class="panel panel-default">
+			        	<div class="panel-heading">
+			        		<h4 class="panel-title">Bảo mật</h4>
+			        	</div>
+			        	<div class="panel-body">
+			          		<div class="form-group">
+			            		<label class="col-sm-2 control-label">Mật khẩu cũ</label>
+			            		<div class="col-sm-10">
+			              			<input type="password" class="form-control">
+			            		</div>
+			          		</div>
+			          		<div class="form-group">
+			            		<label class="col-sm-2 control-label">Mật khẩu mới</label>
+			            		<div class="col-sm-10">
+			              			<input type="password" class="form-control">
+			            		</div>
+			          		</div>
+			          		<div class="form-group">
+			            		<label class="col-sm-2 control-label">Nhập lại mật khẩu mới</label>
+			            		<div class="col-sm-10">
+			              			<input type="password" class="form-control">
+			            		</div>
+			          		</div>
+			          		<div class="form-group">
+			            		<div class="col-sm-10 col-sm-offset-2">
+			              			<div class="checkbox">
+			                			<input type="checkbox" id="checkbox_1">
+			                			<label for="checkbox_1">Nhận email từ ban đào tạo khóa học TTHHN.VN</label>
+			              			</div>
+			              			<div class="checkbox">
+			                			<input type="checkbox" id="checkbox_2">
+			                			<label for="checkbox_2">Nhận email nhắc nhở có bài học mới</label>
+			              			</div>
+			            		</div>
+			          		</div>
+			          		<div class="form-group">
+			            		<div class="col-sm-10 col-sm-offset-2">
+			              			<button type="button" class="btn btn-success">Lưu</button>
+			              			<button type="reset" class="btn btn-danger">Hủy</button>
+			            		</div>
+			          		</div>
+			        	</div>
+			      	</div>
+			    </form>
+		  	</div>
 		</div>
-  		<div class="col-md-5">
-  			<img src="http://peo.vn/assets/images/1.jpg" alt="Giới Thiệu TTHHN">
-  		</div>
-	</div>
-	<div class="row gt2">
-		<div class="col-md-5">
-			<img src="http://peo.vn/assets/images/2.jpg">
-		</div>
-  		<div class="col-md-7">
-  			<h2>Phương pháp giáo giục hiện đại tại TTHHN</h2>
-  			<hr>
-  			<strong>Phương pháp sư phạm</strong>
-  			<p>Trên cơ sở nghiên cứu thực tế nhu cầu học tập của học viên và tham khảo các phương pháp đào tạo hiện đại của các trường đại học uy tín trên thế giới, TTHHN đã xây dựng một phương pháp phù hợp nhất với người Việt Nam: sự kết hợp giữa lý luận và thực tiễn, đi sâu giải quyết các vấn đề cụ thể của học viên tại các doanh nghiệp một cách triệt để.</p>
-  			<strong>Hình thức học tập</strong>
-  			<p>Rất đơn giản và tiện lợi, chỉ cần bạn có một thiết bị kết nối mạng là có thể theo học bất cứ chương trình nào bạn muốn tại bất cứ đâu.</p>
-  			<strong>Sở hữu khóa học vĩnh viên</strong>
-  			<p>Học viên chỉ mất chi phí mua khóa học 01 lần nhưng sẽ sở hữu vĩnh viễn ngay cả khi TTHHN có những điều chỉnh, cải tiến khóa học về sau.</p>
-  			<strong>Dễ lĩnh hội kiến thức</strong>
-  			<p>Với hình thức giảng dạy online, mỗi chương trình đào tạo của TTHHN được các giảng viên xây dựng thành các bài nhỏ, mỗi bài là một clip đi sâu giải quyết một vấn đề nhỏ cho học viên vì vậy, học viên rất dễ lĩnh hội kiến thức. Tiết kiệm thời gian học tập.</p>
-  		</div>
-	</div>
-	<!-- Chỗ đặt google maps -->
-	<div class="row why">
-   		<h2><strong>Tại sao bạn nên học cùng Tthhn?</strong></h2>
-   		<hr class="whyhr">
-  		<div class="col-xs-6 col-sm-3">
-  			<div>
- 			 	<img src="https://unica.vn/media/images_v2017/taisao1.png">
-			</div>
-			<div class="first">
-				<h3>Học trực tuyến</h3>
-				<p>mọi lúc, mọi nơi</p>
-			</div>
-		</div>
-  		<div class="col-xs-6 col-sm-3">
-	  		<div>
- 			 	<img src="https://unica.vn/media/images_v2017/taisao2.png">
- 			</div>
- 			<div class="second">
- 				<h3>Hoàn tiền</h3>
- 				<p>nếu không hài lòng</p>
- 			</div>
-		</div>
-  		<div class="clearfix visible-xs-block"></div>
-  		<div class="col-xs-6 col-sm-3">
-        	<div>
-  				<img src="https://unica.vn/media/images_v2017/taisao3.png">
-  			</div>
-  			<div class="third">
-  				<h3>Thanh toán 1 lần</h3>
-  				<p>học mãi mãi</p>
-  			</div>
-		</div>
-  		<div class="col-xs-6 col-sm-3">
-	  		<div>
-	    		<img src="https://unica.vn/media/images_v2017/taisao4.png">
-	    	</div>
-	    	<div class="last">
-	    		<h3>Giao miễn phí</h3>
-	    		<p>khóa học tới tận nhà</p>
-	    	</div>
-	  	</div>
 	</div>
     <footer>
     	<div class="container">
