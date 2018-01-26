@@ -33,7 +33,7 @@ body {
  margin-top:20px;
  float:right;
 }
-.alertMsgUser, .alertMsgPass {
+.alertMsgUser, .alertMsgPass, .alertMsgEmail, .alertMsgRePass {
   color: red;
 }
 #register {
