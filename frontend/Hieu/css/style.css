@@ -912,3 +912,31 @@ footer ul li {
 	filter: opacity(0);
 	z-index: 9;
 }
+
+/*MOI*/
+.panel-footer ul {
+	text-align: left;
+	display: inline-block;
+}
+.panel-footer ul li {
+	float: left;
+	width: 100%;
+}
+.price1 {
+	float: right;
+}
+.a2 {
+	float: left;
+	margin-left: -25%;
+}
+.ttkh {
+	margin-bottom: 15px;
+}
+.ttkh1 {
+	height: 45px;
+    overflow: hidden;
+}
+.cart1 {
+	color: #63b458;
+	font-size: 20px;
+}
