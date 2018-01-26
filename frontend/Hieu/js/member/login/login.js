@@ -2,6 +2,7 @@ $(document).ready(function () {
   $('.btn').click(function () {
     var username = $('#username').val();
     var password = $('#password').val();
+    var show = $(this).parents('li:first').find('input').attr('id');
     if (username.length == 0) {
       $('.alertMsgUser').text('Bạn chưa nhập username!');
     } else if (username.length < 5) {
@@ -16,6 +17,14 @@ $(document).ready(function () {
     } else {
       $('.alertMsgPass').attr('style', 'display: none');
     }
+    if (show.length == 0) {
+      $('.alertMsgPass').text('Bạn chưa nhập mật khẩu!');
+    } else if (password.length < 5) {
+      $('.alertMsgPass').text('Mật khẩu phải lớn hơn 5 ký tự!');
+    } else {
+      $('.alertMsgPass').attr('style', 'display: none');
+    }
+
     var login = {
       "username": username,
       "password": password
@@ -37,4 +46,12 @@ $(document).ready(function () {
     });
     }
   });
+  $('#showPsw').click(function () {
+    var psw = $('#password').attr('type');
+    if (psw == 'password') {
+      $('#password').attr('type', 'text');
+    } else {
+      $('#password').attr('type', 'password');
+    }
+  })
 })
