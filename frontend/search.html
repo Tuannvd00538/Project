@@ -3,16 +3,16 @@
 <head>
   	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  	<link rel="icon" type="image/png" href="../img/favicon.png">
-  	<title>Giỏ hàng</title>
+  	<link rel="icon" type="image/png" href="img/favicon.png">
+  	<title>TTHHN - Học từ chuyên gia</title>
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
  	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
  	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
- 	<link rel="stylesheet" type="text/css" href="../css/style.css">
+ 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<body onload="loadCart()">
-	<div class="loading"><img src="../img/chonau.gif"></div>
+<body onload="searchCourseIndex()">
+	<div class="loading"><img src="img/chonau.gif"></div>
   	<div class="banner_top">
     	<a href="javascript:void(0)"><img src="https://unica.vn/uploadmydang/top.jpg"></a>
   	</div>
@@ -32,20 +32,20 @@
                   	<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">Chủ Đề <span class="fa fa-bars"></span></span></a>
                   	<ul class="dropdown-menu">
                     	<li><a href="javascript:getChuDe('Công nghệ thông tin')"><i class="fa fa-caret-right"></i> Công nghệ thông tin</a></li>
-                    	<li><a href="javascript:getChuDe('Thiết kế - Nhiếp ảnh')"><i class="fa fa-caret-right"></i> Thiết kế - Nhiếp ảnh</a></li>
-                    	<li><a href="javascript:getChuDe('Sale - Marketing')"><i class="fa fa-caret-right"></i> Sale - Marketing</a></li>
-                    	<li><a href="javascript:getChuDe('Kinh doanh - Khởi nghiệp')"><i class="fa fa-caret-right"></i> Kinh doanh - Khởi nghiệp</a></li>
-                    	<li><a href="javascript:getChuDe('Phát triển cá nhân')"><i class="fa fa-caret-right"></i> Phát triển cá nhân</a></li>
-                    	<li><a href="javascript:getChuDe('Sức khỏe - Giới tính')"><i class="fa fa-caret-right"></i> Sức khỏe - Giới tính</a></li>
-                    	<li><a href="javascript:getChuDe('Nghệ thuật - Làm đẹp')"><i class="fa fa-caret-right"></i> Nghệ thuật - Làm đẹp</a></li>
-                    	<li><a href="javascript:getChuDe('Ngoại ngữ')"><i class="fa fa-caret-right"></i> Ngoại ngữ</a></li>
-                    	<li><a href="javascript:getChuDe('Công nghệ thông tin')"><i class="fa fa-caret-right"></i> Nuôi dạy con</a></li>
+                      <li><a href="javascript:getChuDe('Thiết kế - Nhiếp ảnh')"><i class="fa fa-caret-right"></i> Thiết kế - Nhiếp ảnh</a></li>
+                      <li><a href="javascript:getChuDe('Sale - Marketing')"><i class="fa fa-caret-right"></i> Sale - Marketing</a></li>
+                      <li><a href="javascript:getChuDe('Kinh doanh - Khởi nghiệp')"><i class="fa fa-caret-right"></i> Kinh doanh - Khởi nghiệp</a></li>
+                      <li><a href="javascript:getChuDe('Phát triển cá nhân')"><i class="fa fa-caret-right"></i> Phát triển cá nhân</a></li>
+                      <li><a href="javascript:getChuDe('Sức khỏe - Giới tính')"><i class="fa fa-caret-right"></i> Sức khỏe - Giới tính</a></li>
+                      <li><a href="javascript:getChuDe('Nghệ thuật - Làm đẹp')"><i class="fa fa-caret-right"></i> Nghệ thuật - Làm đẹp</a></li>
+                      <li><a href="javascript:getChuDe('Ngoại ngữ')"><i class="fa fa-caret-right"></i> Ngoại ngữ</a></li>
+                      <li><a href="javascript:getChuDe('Công nghệ thông tin')"><i class="fa fa-caret-right"></i> Nuôi dạy con</a></li>
                   	</ul>
               	</li>
             	<li class="search">
-            		<form class="navbar-form navbar-left">
+            		<form id="searchCourse" class="navbar-form navbar-left">
                 		<div class="input-group">
-                  			<input type="text" class="form-control" placeholder="Tìm kiếm trên tthhn.vn">
+                  			<input type="text" id="valCourse" class="form-control" placeholder="Tìm kiếm trên tthhn.vn">
                   			<div class="input-group-btn">
                       			<button class="btn btn-default" type="button">
                         			<span class="glyphicon glyphicon-search"></span>
@@ -57,78 +57,52 @@
             </ul>
 	        <ul class="nav navbar-nav navbar-right">
 	            <li>
-	            	<a href="cart.html">
-	            		<i class="fa fa-shopping-cart"></i>
-	            		<span class="countCart">0</span>
-	            	</a>
+	                <a href="pages/cart.html">
+	                  <i class="fa fa-shopping-cart"></i>
+	                  <span class="countCart">0</span>
+	                </a>
 	            </li>
 	            <li class="dropdown" id="checkLogin">
 	            	<a href="javascript:void(0)" data-toggle="dropdown"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
 	            	<ul class="dropdown-menu">
 				      	<li><a href="javascript:void(0)">Khóa học của tôi</a></li>
-				      	<li><a href="edit.html">Chỉnh sửa thông tin</a></li>
+				      	<li><a href="javascript:void(0)">Chỉnh sửa thông tin</a></li>
 				      	<li><a href="javascript:logout()">Đăng xuất</a></li>
 				    </ul>
 	            </li>
-	            <li id="checkSign"><a href="sign.html">Đăng Ký</a></li>
-	            <li id="checkSignTwo"><a href="login.html">Đăng Nhập</a></li>
+	            <li id="checkSign"><a href="pages/sign.html">Đăng Ký</a></li>
+	            <li id="checkSignTwo"><a href="pages/login.html">Đăng Nhập</a></li>
 	        </ul>
        	</div>
-	</nav>
-	<div class="row mainCart">
-		<div class="col-md-12">
-			<h1 class="cart">GIỎ HÀNG CỦA TÔI</h1>
-		</div>
-		<div class="noneCart">
-			<img src="https://unica.vn/media/images/giohang.png">
-			<p>Hiện tại giỏ hàng của bạn chưa có khóa học nào. Vui lòng lựa chọn khóa học mà bạn muốn học.</p>
-			<p><a href="/" class="btn btn-primary"> Xem danh sách khóa học</a></p>
-		</div>
-		<div class="listCart">
-			<div class="panel panel-primary">
-		      	<div class="panel-heading">Danh sách khóa học</div>
-		      	<div class="panel-body table-responsive">
-				  	<table class="table">
-				    	<thead>
-				      		<tr>
-				        		<th>ID</th>
-				        		<th>Tên Khóa Học</th>
-				        		<th>Giảng Viên</th>
-				        		<th>Chủ Đề</th>
-				        		<th>Giá Khóa Học</th>
-				        		<th>Option</th>
-				      		</tr>
-				    	</thead>
-				    	<tbody id="innerCart">
-				      		
-				    	</tbody>
-				  	</table>
-		      	</div>
-		      	<div class="panel-footer"></div>
-		    </div>
-		    <div class="checkOut">
-		    	<a href="javascript:deleteCart()" class="btn btn-danger">Xóa giỏ hàng</a>
-		    	<a href="checkout.html" class="btn btn-primary">Thanh toán ngay</a>
-		    </div>
-		</div>
-	</div>
+	   </nav>
+     <main>
+       <div class="row error404">
+          <h1 class="text404"></h1>
+          <img src="https://4.bp.blogspot.com/-bjR1MJ6jSnA/WgG-WnpCgaI/AAAAAAAAAyY/LBcQeNa4Y9UshNJSUARAS1k1JFvorO1RgCLcBGAs/s1600/UmVRFlQVwwy.png">
+          <h5><a href="/">Trang chủ</a> - <a href="/pages/gioithieu.html">Giới thiệu</a> - <a href="/pages/faq.html">FAQ</a></h5>
+        </div>
+        <h1 class="textSearch"></h1>
+        <div class="row" id="resultSearch">
+        
+        </div>
+     </main>
     <footer>
     	<div class="container">
 			<div class="row">
 				<div class="col-sm-3">
 					<div>
 						<ul class="item-list">
-							<li><a href="gioithieu.html">Giới thiệu về Tthhn</a>
+							<li><a href="pages/gioithieu.html">Giới thiệu về Tthhn</a>
 							</li>
-							<li><a href="faq.html">Câu hỏi thường gặp</a></li>
-							<li><a href="tos.html">Điều khoản dịch vụ</a></li>
+							<li><a href="pages/faq.html">Câu hỏi thường gặp</a></li>
+							<li><a href="pages/QA.html">Điều khoản dịch vụ</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-sm-3">
 					<div>
 						<ul class="item-list">
-								<li><a href="pay.html">Hướng dẫn thanh toán</a></li>
+								<li><a href="pages/pay.html">Hướng dẫn thanh toán</a></li>
 								<li><a href="#">Affiliate</a></li>
 						</ul>
 					</div>
@@ -157,6 +131,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-    <script type="text/javascript" src="../js/home.js"></script>
+    <script type="text/javascript" src="js/home.js"></script>
 </body>
 </html>

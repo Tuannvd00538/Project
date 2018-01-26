@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<link rel="icon" type="image/png" href="../img/favicon.png">
+  	<title>TTHHN - Học từ chuyên gia</title>
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+   	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+   	<link rel="stylesheet" type="text/css" href="../css/style.css">
+  </head>
+  <body>
+  	<div class="loading"><img src="../img/chonau.gif"></div>
+    	<div class="banner_top">
+      	<a href="javascript:void(0)"><img src="https://unica.vn/uploadmydang/top.jpg"></a>
+    	</div>
+    	<nav class="navbar navbar-inverse">
+        	<div class="container-fluid">
+  	        <div class="navbar-header">
+      	        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        	      	<span class="icon-bar"></span>
+            	  	<span class="icon-bar"></span>
+              		<span class="icon-bar"></span>                        
+              	</button>
+              	<a class="navbar-brand" href="/">TTHHN Group</a>
+          	</div>
+          	<div class="collapse navbar-collapse" id="myNavbar">
+  	            <ul class="nav navbar-nav">
+      	          	<li class="dropdown">
+                    	<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">Chủ Đề <span class="fa fa-bars"></span></span></a>
+                    	<ul class="dropdown-menu">
+                      	<li><a href="javascript:getChuDe('Công nghệ thông tin')"><i class="fa fa-caret-right"></i> Công nghệ thông tin</a></li>
+                        <li><a href="javascript:getChuDe('Thiết kế - Nhiếp ảnh')"><i class="fa fa-caret-right"></i> Thiết kế - Nhiếp ảnh</a></li>
+                        <li><a href="javascript:getChuDe('Sale - Marketing')"><i class="fa fa-caret-right"></i> Sale - Marketing</a></li>
+                        <li><a href="javascript:getChuDe('Kinh doanh - Khởi nghiệp')"><i class="fa fa-caret-right"></i> Kinh doanh - Khởi nghiệp</a></li>
+                        <li><a href="javascript:getChuDe('Phát triển cá nhân')"><i class="fa fa-caret-right"></i> Phát triển cá nhân</a></li>
+                        <li><a href="javascript:getChuDe('Sức khỏe - Giới tính')"><i class="fa fa-caret-right"></i> Sức khỏe - Giới tính</a></li>
+                        <li><a href="javascript:getChuDe('Nghệ thuật - Làm đẹp')"><i class="fa fa-caret-right"></i> Nghệ thuật - Làm đẹp</a></li>
+                        <li><a href="javascript:getChuDe('Ngoại ngữ')"><i class="fa fa-caret-right"></i> Ngoại ngữ</a></li>
+                        <li><a href="javascript:getChuDe('Công nghệ thông tin')"><i class="fa fa-caret-right"></i> Nuôi dạy con</a></li>
+                    	</ul>
+                	</li>
+              	<li class="search">
+              		<form id="searchCourse" class="navbar-form navbar-left">
+                  		<div class="input-group">
+                    			<input type="text" id="valCourse" class="form-control" placeholder="Tìm kiếm trên tthhn.vn">
+                    			<div class="input-group-btn">
+                        			<button class="btn btn-default" type="button">
+                          			<span class="glyphicon glyphicon-search"></span>
+                        			</button>
+                    			</div>
+                  		</div>
+              		</form>
+              	</li>
+            </ul>
+	        <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="cart.html">
+                <i class="fa fa-shopping-cart"></i>
+                <span class="countCart">0</span>
+              </a>
+          </li>
+          <li class="dropdown" id="checkLogin">
+          	<a href="javascript:void(0)" data-toggle="dropdown"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+          	<ul class="dropdown-menu">
+  		      	<li><a href="javascript:void(0)">Khóa học của tôi</a></li>
+  		      	<li><a href="edit.html">Chỉnh sửa thông tin</a></li>
+  		      	<li><a href="javascript:logout()">Đăng xuất</a></li>
+  		      </ul>
+          </li>
+          <li id="checkSign"><a href="sign.html">Đăng Ký</a></li>
+          <li id="checkSignTwo"><a href="login.html">Đăng Nhập</a></li>
+      </ul>
+   	</div>
+  </nav>
+  <div class="row content">
+    <main class="l-main">
+      <div class="content-wrapper content-wrapper--with-bg">
+        <h1 class="page-title">Chọn Phương Thức Thanh Toán</h1>
+        <div class="page-content">
+          <div class="row">
+            <div class="col-md-7">
+              <div class="row">   
+                <div class="col-md-6">
+                  <label>
+                    <div class="form-group selectCO">
+                      <input id="check1" type="radio" name="thanhtoan"> <img class="phuongthuc" src="https://media.kyna.vn/img/checkout/cod.png"> <span>Giao mã kích hoạt và thu tiền</span>
+                    </div>
+                  </label>
+                </div>
+                <div class="col-md-6">
+                  <label>
+                    <div class="form-group selectCO">
+                      <input id="check2" type="radio" name="thanhtoan"> <img class="phuongthuc" src="https://media.kyna.vn/img/checkout/mobile-card.png"> <span>Thẻ cào điện thoại</span>
+                    </div>
+                  </label>
+                </div>
+                <div id="thecao" class="col-md-11 thongtin">
+                  <ul>
+                    Thẻ cào điện thoại các nhà mạng: Vinaphone, Mobiphone, Viettel.
+                    <strong>TTHHN.VN</strong> sẽ hoàn lại số tiền dư bằng cách gửi tặng Coupon tương ứng số tiền dư. Nếu số tiền dư < 50.000đ thì bạn sẽ nhận được coupon 50.000đ, từ 50.000đ-100.000đ tương ứng coupon 100.000đ, trên 100.000đ tương ứng nhiều coupon 100.000đ (số lượng được làm tròn lên). Bạn có thể xem coupon và sử dụng bằng cách vào menu Voucher/Coupon trong trang khóa học của tôi.
+                  </ul>
+              </div>
+              <div id="giaoma" class="col-md-11 thongtin">
+                <ul>
+                  Bạn cần điền đủ các thông tin mua hàng bên dưới. Sau đó, TTHHN.VN sẽ giao phong bì có chứa mã kích hoạt và thu tiền tận nơi.
+                  <p></p>
+                  <li><strong>MIỄN PHÍ</strong> đối với các đơn hàng có giá trị <strong>từ 300.000 đồng trở lên</strong> (áp dụng trên toàn quốc)</li>
+                  <li>Đối với những đơn hàng <strong>dưới 300.000</strong>, TTHHN sẽ áp dụng biểu giá của dịch vụ giao nhận như sau:</li>
+                    - Phí giao nhận tại các quận ngoại thành Tp. Hồ Chí Minh, ngoại thành Hà Nội: 10.000VNĐ<br>
+                    - Phí giao nhận tại khu vực nội thành các tỉnh khác: 20.000VNĐ<br>
+                    - Phí giao nhận tại khu vực ngoại thành tỉnh khác: 30.000VNĐ
+                </ul>
+              </div>
+            </div>
+            <div class="row">   
+              <div class="col-md-6">
+                <label>
+                  <div class="form-group selectCO">
+                    <input id="check3" type="radio" name="thanhtoan"> <img class="phuongthuc" src="https://media.kyna.vn/img/checkout/debit-card.png"> <span>Thẻ ATM có Internet Banking</span>
+                  </div>
+                </label>
+              </div>
+              <div class="col-md-6">
+                <label>
+                  <div class="form-group selectCO">
+                    <input id="check4" type="radio" name="thanhtoan"> 
+                    <img class="phuongthuc" src="https://media.kyna.vn/img/checkout/credit-card.png"> <span>Thẻ Visa / Mastercard</span>
+                  </div>
+                </label>
+              </div>
+              <div id="atm" class="col-md-11 thongtin">
+                Sau khi điền thông tin mua hàng và bấm Hoàn tất đơn hàng, hệ thống sẽ chuyển sang Onepay để bạn điền thông tin thẻ thanh toán.
+                <p>Khoá học sẽ được kích hoạt ngay sau khi bạn thanh toán thành công.</p>
+                </div>
+                <div id="visa" class="col-md-11 thongtin">
+                      Sau khi điền thông tin mua hàng và bấm Hoàn tất đơn hàng, hệ thống sẽ chuyển sang Onepay để bạn điền thông tin thẻ thanh toán.
+                      <p>Khoá học sẽ được kích hoạt ngay sau khi bạn thanh toán thành công.</p>
+                </div>
+            </div>
+            <div class="row">   
+              <div class="col-md-6">
+                <label><div class="form-group selectCO">
+                  <input id="check5" type="radio" name="thanhtoan"> <img class="phuongthuc" src="https://media.kyna.vn/img/checkout/transfer.png"> <span>Chuyển khoản Ngân hàng</span>
+                </div></label>
+              </div>
+              <div class="col-md-6">
+                <label><div class="form-group selectCO">
+                  <input id="check6" type="radio" name="thanhtoan"> <img class="phuongthuc" src="https://i0.wp.com/investcorrectly.com/wp-content/uploads/2015/02/paypal.png"> <span>Thanh toán qua paypal</span>
+                </div></label>
+              </div>
+              <div id="chuyenkhoan" class="col-md-10 thongtin">
+                <ul>
+                    <p>Khóa học sẽ được kích hoạt sau khi TTHHN.VN kiểm tra tài khoản và xác nhận việc thanh toán của bạn thành công. (Thời gian kiểm tra và xác nhận tài khoản ít nhất là 12 giờ)</p><br>
+
+                    <strong>Chuyển khoản ngân hàng</strong><br>
+
+                    Bạn có thể đến bất kỳ ngân hàng nào ở Việt Nam (hoặc sử dụng Internet Banking) để chuyển tiền theo thông tin bên dưới:<br>
+
+                    <li> Số tài khoản: 0531 0025 11245.</li>
+                    <li> Chủ tài khoản: Công ty cổ phần DREAM VIET EDUCATION.</li>
+                    <li> Ngân hàng: Ngân hàng Vietcombank, Chi nhánh Đông Sài Gòn, TP.HCM.</li><br>
+                    Ghi chú khi chuyển khoản:<br>
+
+                    <li> Tại mục "Ghi chú" khi chuyển khoản, bạn ghi rõ: Số điện thoại - Họ và tên - Email đăng ký học - Mã đơn hàng.
+                    <li> Ví dụ: 0909090909 - Dao Tuan Tu - daotuantu@gmail.com - 2313123<br><br>
+                    <strong>Chuyển tiền qua Paypal</strong>
+
+                    <li> Địa chỉ email nhận tiền: ketoan@tthhn.vn
+                    <li> Tại mục "Message" khi chuyển tiền, bạn ghi rõ: Số điện thoại - Họ và tên - Email đăng ký học - Khóa học đăng ký.
+                    <li> Tỉ giá áp dụng 1 USD = 23.000 VND (tỉ giá trên PayPal).
+                </ul>
+              </div>
+            </div>
+            <h1 class="page-title">Thông Tin Mua Hàng</h1>
+            <div class="row"> 
+              <form>
+                <div class="row">
+                  <div class="col-md-6">
+                    <fieldset>
+                      <legend>Email đăng kí học <span style="color: red">*</span></legend>
+                      <input type="text" id="paymentform-email" class="form-control" name="" oldautocomplete="remove" autocomplete="off" abineorigin="disposable">
+                    </fieldset>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <fieldset>
+                      <legend>Họ Và Tên <span style="color: red">*</span></legend>
+                      <input type="text" id="paymentform-email" class="form-control" name="" oldautocomplete="remove" autocomplete="off" abineorigin="disposable">
+                    </fieldset>
+                  </div>
+                  <div class="col-md-6">
+                    <fieldset>
+                      <legend>Số Điện Thoại <span style="color: red">*</span></legend>
+                      <input type="text" id="paymentform-email" class="form-control" name="" oldautocomplete="remove" autocomplete="off" abineorigin="disposable">
+                    </fieldset>
+                  </div>
+                </div>                
+              </form> 
+            </div>
+            <div class="row ifLogin">
+              <p>Nếu bạn đã từng mua khoá học và có tài khoản ở TTHHN.VN, bạn có thể đăng nhập để không phải nhập lại thông tin cá nhân</p>
+              <div class="row btnLogin">
+                  <a href="login.html" class="btn btn-success">Đăng nhập</a>
+              </div>
+              <p>Nếu bạn chưa có tài khoản, hãy đăng ký ngay.</p>
+              <div class="row btnLogin">
+                  <a href="sign.html" class="btn btn-primary">Đăng ký</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-md-6">
+                    <strong>1 khóa học</strong>
+                  </div>
+                  <div class="col-md-6 change">
+                    <a href="cart.html">Thay đổi</a>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-8">Nếu bạn chưa có tài khoản, hãy đăng ký ngay. Nếu bạn chưa có tài khoản, hãy đăng ký ngay.</div>
+                  <div class="col-md-4">
+                    <strong>400000<sup>đ</sup></strong>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-8">Nếu bạn chưa có tài khoản, hãy đăng ký ngay. Nếu bạn chưa có tài khoản, hãy đăng ký ngay.</div>
+                  <div class="col-md-4">
+                    <strong>400000<sup>đ</sup></strong>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-8">Nếu bạn chưa có tài khoản, hãy đăng ký ngay. Nếu bạn chưa có tài khoản, hãy đăng ký ngay.</div>
+                  <div class="col-md-4">
+                    <strong>400000<sup>đ</sup></strong>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-8">Nếu bạn chưa có tài khoản, hãy đăng ký ngay. Nếu bạn chưa có tài khoản, hãy đăng ký ngay.</div>
+                  <div class="col-md-4">
+                    <strong>400000<sup>đ</sup></strong>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-footer">Panel Footer</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <div>
+            <ul class="item-list">
+              <li><a href="pages/gioithieu.html">Giới thiệu về Tthhn</a>
+              </li>
+              <li><a href="pages/faq.html">Câu hỏi thường gặp</a></li>
+              <li><a href="pages/QA.html">Điều khoản dịch vụ</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div>
+            <ul class="item-list">
+                <li><a href="pages/pay.html">Hướng dẫn thanh toán</a></li>
+                <li><a href="#">Affiliate</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="link">
+            <ul class="item-list">
+              <li><span class="fa fa-phone" aria-hidden="true"></span> 0979289939</li>
+              <li><span class="fa fa-clock-o" aria-hidden="true"></span> 8:00 - 22:00 hàng ngày</li>
+              <li><span class="fa fa-envelope" aria-hidden="true"></span> cskh@tthhn.vn</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-3 downloadApp">
+          <h5><strong>Tải App Tthhn</strong></h5>
+          <div class="row">
+            <a href="javascript:void(0)"><img src="https://unica.vn/icon/appstore.png"></a>
+            <a href="javascript:void(0)"><img src="https://unica.vn/icon/playstore.png"></a>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="foo"><strong>&copy; Học viện Online TTHHN - Hệ thống đào tạo trực tuyến dành cho người đi làm - Cổng kết nối Chuyên gia với Học viên</strong>
+    </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <script type="text/javascript" src="../js/home.js"></script>
+</body>
+</html>

@@ -574,7 +574,7 @@ footer ul li {
 	height: 100%;
 	text-align: center;
 	background-color: #fff;
-	padding: 20%;
+	padding: 15%;
 }
 .panel-footer, .checkOut {
 	text-align: right;
@@ -703,6 +703,8 @@ footer ul li {
 }
 .textSearch {
 	margin-top: 0;
+	font-size: 30px;
+	line-height: 60px;
 }
 .searchMain {
 	margin-top: -10px;
@@ -717,9 +719,196 @@ footer ul li {
 .error404 {
 	text-align: center;
 	padding: 10%;
-	display: none;
+	/*display: none;*/
 	margin-top: -10px;
 }
 .star {
 	color: yellow;
+}
+.content, .l-main {
+  margin: 0;
+  background-color: #fff;
+}
+.content ul li {
+	list-style-type: none;
+}
+.page-title {
+  color: green;
+  font-size: 25px;
+  font-weight: bold;
+  padding: 20px;
+}
+.selectCO {
+	border-radius: 5px;
+  	border: 1px solid #eee; 
+  	height: 60px; 
+  	margin-left: 20px;
+  	margin-right: 20px;
+  	padding-left: 10px;
+  	width: 300px;
+}
+.selectCO:hover {
+	border-color: #50ad4e;
+	cursor: pointer;
+}
+.selectCO span {
+  font-weight: bold;
+}
+.selectCO input[type=radio] {
+  margin-top: 20px;
+}
+.thongtin {
+  	margin-left: 30px;
+  	border: 1px solid #eee;
+  	border-radius: 5px;
+  	background-color: #f9f9f9;
+  	padding: 15px;
+  	margin-bottom: 20px;
+}
+#chuyenkhoan p,#atm p,#visa p {
+  	color: green;
+  	font-weight: bold;
+}
+.apdung  {
+  	border-top: 1px dashed #aaa;
+  	margin: 7px 0 7px;  
+}
+.checkout-list-price {
+    margin-top: 20px;
+    position: relative;
+    margin-left: -15px;
+    width: calc(100% + 30px);
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.color-orange {
+  	color: #fb6a00!important;
+  	font-weight: bold;
+}
+.thanhtoan {
+  	margin-top: 100px;
+  	float: right;
+  	width: 100%;
+  	background-color: #fff;
+  	position: sticky;
+  	bottom: 0;
+  	box-shadow: 0 -10px 15px rgba(0,0,0,.1);
+  	border-top: 1px solid #ddd;
+  	height: 50px;
+}
+.row .col-md-6 fieldset {
+  	margin-top: 20px;
+  	border-radius: 10px;
+  	margin-left: 40px;
+}
+.row .col-md-6 fieldset:hover {
+  	border: 1px solid #50ad4e;
+}
+.row .col-md-6 fieldset legend {
+    width: auto;
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 0;
+}
+.row .col-md-6 fieldset input, .row .col-md-6 fieldset textarea {
+  	border: none;
+  	margin-top: -17px;
+  	margin-bottom: -11px;
+  	height: 50px;
+  	width: 104%;
+  	margin-left: -8px;
+  	border-radius: 10px;
+}
+.ifLogin {
+  background-color: #fff8f3;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  display: none;
+}
+.ifLogin p {
+  text-align: center;
+}
+.btnLogin {
+  text-align: center;
+}
+.gia {
+  float: right;
+  margin-right: -42%;
+}
+.phuongthuc {
+  width: 40px;
+}
+.checkout-list {
+	margin-left: -15px;
+}
+.panel-heading .change, .panel-body .col-md-4 {
+	text-align: right;
+}
+.panel-heading .change a {
+	font-style: italic;
+	color: #333;
+}
+.page-content {
+	margin-bottom: 15px;
+}
+.mainEdit {
+	padding: 10px 150px;
+}
+.mainEdit .panel-heading {
+	text-align: center;
+}
+.mainEdit .panel-heading h2 {
+	font-weight: 400;
+	font-size: 24px;
+}
+.user-avatar {
+	text-align: center;
+	display: inline-block;
+	margin: 30px;
+}
+.user-avatar .file-upload:hover::after{
+	content:"Đổi hình";
+	position:absolute;
+	top:0;
+	left:0;
+	width:120px;
+	height:120px;
+	line-height:120px;
+	color:#fff;
+	border-radius:50%;
+	background-color:rgba(0,0,0,.5);
+	cursor: pointer;
+}
+.file-upload {
+	color: black;
+	display: table-cell;
+	width: 122px;
+	height: 122px;
+	border: 1px solid transparent;
+	border-radius: 50%;
+	vertical-align: middle;
+	position: relative;
+	text-align: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: inherit;
+}
+.avatar-empty {
+	border-color: #ccc;
+}
+.mainEdit .panel-body {
+	padding: 20px 100px;
+}
+.user-avatar #fileSelect {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	opacity: 0;
+	filter: opacity(0);
+	z-index: 9;
 }
