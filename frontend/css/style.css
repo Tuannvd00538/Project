@@ -912,3 +912,11 @@ footer ul li {
 	filter: opacity(0);
 	z-index: 9;
 }
+/* Thêm */
+.map {
+	margin: 0 150px;
+}
+.map h1 {
+	text-align: center;
+	margin-bottom: 3%;
+}  
