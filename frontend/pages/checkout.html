@@ -1,37 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  	<meta charset="utf-8">
-  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  	<link rel="icon" type="image/png" href="../img/favicon.png">
-  	<title>TTHHN - Học từ chuyên gia</title>
-  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-   	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-   	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
-   	<link rel="stylesheet" type="text/css" href="../css/style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../img/favicon.png">
+    <title>TTHHN - Học từ chuyên gia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+      <script src="https://www.paypalobjects.com/api/checkout.js"></script>
   </head>
-  <body>
-  	<div class="loading"><img src="../img/chonau.gif"></div>
-    	<div class="banner_top">
-      	<a href="javascript:void(0)"><img src="https://unica.vn/uploadmydang/top.jpg"></a>
-    	</div>
-    	<nav class="navbar navbar-inverse">
-        	<div class="container-fluid">
-  	        <div class="navbar-header">
-      	        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        	      	<span class="icon-bar"></span>
-            	  	<span class="icon-bar"></span>
-              		<span class="icon-bar"></span>                        
-              	</button>
-              	<a class="navbar-brand" href="/">TTHHN Group</a>
-          	</div>
-          	<div class="collapse navbar-collapse" id="myNavbar">
-  	            <ul class="nav navbar-nav">
-      	          	<li class="dropdown">
-                    	<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">Chủ Đề <span class="fa fa-bars"></span></span></a>
-                    	<ul class="dropdown-menu">
-                      	<li><a href="javascript:getChuDe('Công nghệ thông tin')"><i class="fa fa-caret-right"></i> Công nghệ thông tin</a></li>
+  <body onload="checkOut()">
+    <div class="loading"><img src="../img/chonau.gif"></div>
+      <div class="banner_top">
+        <a href="javascript:void(0)"><img src="https://unica.vn/uploadmydang/top.jpg"></a>
+      </div>
+      <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>                        
+                </button>
+                <a class="navbar-brand" href="/">TTHHN Group</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                      <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">Chủ Đề <span class="fa fa-bars"></span></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="javascript:getChuDe('Công nghệ thông tin')"><i class="fa fa-caret-right"></i> Công nghệ thông tin</a></li>
                         <li><a href="javascript:getChuDe('Thiết kế - Nhiếp ảnh')"><i class="fa fa-caret-right"></i> Thiết kế - Nhiếp ảnh</a></li>
                         <li><a href="javascript:getChuDe('Sale - Marketing')"><i class="fa fa-caret-right"></i> Sale - Marketing</a></li>
                         <li><a href="javascript:getChuDe('Kinh doanh - Khởi nghiệp')"><i class="fa fa-caret-right"></i> Kinh doanh - Khởi nghiệp</a></li>
@@ -39,23 +40,23 @@
                         <li><a href="javascript:getChuDe('Sức khỏe - Giới tính')"><i class="fa fa-caret-right"></i> Sức khỏe - Giới tính</a></li>
                         <li><a href="javascript:getChuDe('Nghệ thuật - Làm đẹp')"><i class="fa fa-caret-right"></i> Nghệ thuật - Làm đẹp</a></li>
                         <li><a href="javascript:getChuDe('Ngoại ngữ')"><i class="fa fa-caret-right"></i> Ngoại ngữ</a></li>
-                        <li><a href="javascript:getChuDe('Công nghệ thông tin')"><i class="fa fa-caret-right"></i> Nuôi dạy con</a></li>
-                    	</ul>
-                	</li>
-              	<li class="search">
-              		<form id="searchCourse" class="navbar-form navbar-left">
-                  		<div class="input-group">
-                    			<input type="text" id="valCourse" class="form-control" placeholder="Tìm kiếm trên tthhn.vn">
-                    			<div class="input-group-btn">
-                        			<button class="btn btn-default" type="button">
-                          			<span class="glyphicon glyphicon-search"></span>
-                        			</button>
-                    			</div>
-                  		</div>
-              		</form>
-              	</li>
+                        <li><a href="javascript:getChuDe('Nuôi dạy con')"><i class="fa fa-caret-right"></i> Nuôi dạy con</a></li>
+                      </ul>
+                  </li>
+                <li class="search">
+                  <form id="searchCourse" class="navbar-form navbar-left">
+                      <div class="input-group">
+                          <input type="text" id="valCourse" class="form-control" placeholder="Tìm kiếm trên tthhn.vn">
+                          <div class="input-group-btn">
+                              <button class="btn btn-default" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                              </button>
+                          </div>
+                      </div>
+                  </form>
+                </li>
             </ul>
-	        <ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav navbar-right">
             <li>
               <a href="cart.html">
                 <i class="fa fa-shopping-cart"></i>
@@ -63,26 +64,53 @@
               </a>
           </li>
           <li class="dropdown" id="checkLogin">
-          	<a href="javascript:void(0)" data-toggle="dropdown"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
-          	<ul class="dropdown-menu">
-  		      	<li><a href="javascript:void(0)">Khóa học của tôi</a></li>
-  		      	<li><a href="edit.html">Chỉnh sửa thông tin</a></li>
-  		      	<li><a href="javascript:logout()">Đăng xuất</a></li>
-  		      </ul>
+            <a href="javascript:void(0)" data-toggle="dropdown"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="javascript:void(0)">Khóa học của tôi</a></li>
+              <li><a href="edit.html">Chỉnh sửa thông tin</a></li>
+              <li><a href="javascript:logout()">Đăng xuất</a></li>
+            </ul>
           </li>
           <li id="checkSign"><a href="sign.html">Đăng Ký</a></li>
           <li id="checkSignTwo"><a href="login.html">Đăng Nhập</a></li>
       </ul>
-   	</div>
+    </div>
   </nav>
   <div class="row content">
     <main class="l-main">
       <div class="content-wrapper content-wrapper--with-bg">
-        <h1 class="page-title">Chọn Phương Thức Thanh Toán</h1>
+        <h1 class="page-title">Thông Tin Mua Hàng</h1>
         <div class="page-content">
           <div class="row">
             <div class="col-md-7">
-              <div class="row">   
+              <div class="row"> 
+              <form>
+                <div class="row">
+                  <div class="col-md-6">
+                    <fieldset>
+                      <legend>Email đăng kí học <span style="color: red">*</span></legend>
+                      <input type="text" id="paymentform-email" class="form-control" name="" oldautocomplete="remove" autocomplete="off" abineorigin="disposable">
+                    </fieldset>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <fieldset>
+                      <legend>Họ Và Tên <span style="color: red">*</span></legend>
+                      <input type="text" id="paymentform-name" class="form-control" name="" oldautocomplete="remove" autocomplete="off" abineorigin="disposable">
+                    </fieldset>
+                  </div>
+                  <div class="col-md-6">
+                    <fieldset>
+                      <legend>Số Điện Thoại <span style="color: red">*</span></legend>
+                      <input type="text" id="paymentform-phone" class="form-control" name="" oldautocomplete="remove" autocomplete="off" abineorigin="disposable">
+                    </fieldset>
+                  </div>
+                </div>                
+              </form> 
+            </div>
+            <h1 class="page-title">Chọn Phương Thức Thanh Toán</h1>
+            <div class="row">   
                 <div class="col-md-6">
                   <label>
                     <div class="form-group selectCO">
@@ -174,33 +202,6 @@
                 </ul>
               </div>
             </div>
-            <h1 class="page-title">Thông Tin Mua Hàng</h1>
-            <div class="row"> 
-              <form>
-                <div class="row">
-                  <div class="col-md-6">
-                    <fieldset>
-                      <legend>Email đăng kí học <span style="color: red">*</span></legend>
-                      <input type="text" id="paymentform-email" class="form-control" name="" oldautocomplete="remove" autocomplete="off" abineorigin="disposable">
-                    </fieldset>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <fieldset>
-                      <legend>Họ Và Tên <span style="color: red">*</span></legend>
-                      <input type="text" id="paymentform-email" class="form-control" name="" oldautocomplete="remove" autocomplete="off" abineorigin="disposable">
-                    </fieldset>
-                  </div>
-                  <div class="col-md-6">
-                    <fieldset>
-                      <legend>Số Điện Thoại <span style="color: red">*</span></legend>
-                      <input type="text" id="paymentform-email" class="form-control" name="" oldautocomplete="remove" autocomplete="off" abineorigin="disposable">
-                    </fieldset>
-                  </div>
-                </div>                
-              </form> 
-            </div>
             <div class="row ifLogin">
               <p>Nếu bạn đã từng mua khoá học và có tài khoản ở TTHHN.VN, bạn có thể đăng nhập để không phải nhập lại thông tin cá nhân</p>
               <div class="row btnLogin">
@@ -216,41 +217,38 @@
             <div class="panel panel-default">
               <div class="panel-heading">
                 <div class="row">
-                  <div class="col-md-6">
-                    <strong>1 khóa học</strong>
+                  <div class="col-md-6 cart1">
+                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                    <strong class="soKhoaHoc"></strong>
                   </div>
                   <div class="col-md-6 change">
                     <a href="cart.html">Thay đổi</a>
                   </div>
                 </div>
               </div>
-              <div class="panel-body">
+              <div class="panel-body loadCartCheckOut">
+                
+              </div>
+              <div class="panel-footer">
                 <div class="row">
-                  <div class="col-md-8">Nếu bạn chưa có tài khoản, hãy đăng ký ngay. Nếu bạn chưa có tài khoản, hãy đăng ký ngay.</div>
-                  <div class="col-md-4">
-                    <strong>400000<sup>đ</sup></strong>
-                  </div>
+                  <div class="col-md-6 priceOrigin">Học phí gốc</div>
+                  <div class="col-md-6 priceAfter hocPhiGoc"></div>
                 </div>
                 <div class="row">
-                  <div class="col-md-8">Nếu bạn chưa có tài khoản, hãy đăng ký ngay. Nếu bạn chưa có tài khoản, hãy đăng ký ngay.</div>
-                  <div class="col-md-4">
-                    <strong>400000<sup>đ</sup></strong>
-                  </div>
+                  <div class="col-md-6 priceOrigin">Giảm giá</div>
+                  <div class="col-md-6 priceAfter">-0<sup>$</sup></div>
                 </div>
                 <div class="row">
-                  <div class="col-md-8">Nếu bạn chưa có tài khoản, hãy đăng ký ngay. Nếu bạn chưa có tài khoản, hãy đăng ký ngay.</div>
-                  <div class="col-md-4">
-                    <strong>400000<sup>đ</sup></strong>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-8">Nếu bạn chưa có tài khoản, hãy đăng ký ngay. Nếu bạn chưa có tài khoản, hãy đăng ký ngay.</div>
-                  <div class="col-md-4">
-                    <strong>400000<sup>đ</sup></strong>
-                  </div>
+                  <div class="col-md-6 priceOrigin">THÀNH TIỀN</div>
+                  <div class="col-md-6 priceAfter hocPhiGoc"></div>
                 </div>
               </div>
-              <div class="panel-footer">Panel Footer</div>
+              <div class="panel-body">
+                <center>
+                  <a href="javascript:Payment()" class="btn btn-warning btn-lg btn-block"><strong>THANH TOÁN</strong></a>
+                  <div id="paypal-button"></div>
+                </center>
+              </div>
             </div>
           </div>
         </div>
@@ -263,17 +261,17 @@
         <div class="col-sm-3">
           <div>
             <ul class="item-list">
-              <li><a href="pages/gioithieu.html">Giới thiệu về Tthhn</a>
+              <li><a href="gioithieu.html">Giới thiệu về Tthhn</a>
               </li>
-              <li><a href="pages/faq.html">Câu hỏi thường gặp</a></li>
-              <li><a href="pages/QA.html">Điều khoản dịch vụ</a></li>
+              <li><a href="faq.html">Câu hỏi thường gặp</a></li>
+              <li><a href="QA.html">Điều khoản dịch vụ</a></li>
             </ul>
           </div>
         </div>
         <div class="col-sm-3">
           <div>
             <ul class="item-list">
-                <li><a href="pages/pay.html">Hướng dẫn thanh toán</a></li>
+                <li><a href="pay.html">Hướng dẫn thanh toán</a></li>
                 <li><a href="#">Affiliate</a></li>
             </ul>
           </div>
@@ -303,5 +301,40 @@
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     <script type="text/javascript" src="../js/home.js"></script>
+    <script>
+      paypal.Button.render({
+
+          env: 'sandbox', // Or 'sandbox'
+
+          client: {
+              sandbox:    'ATNg_IgcVzGOTZIT3GknU3kyxFVXED9ITbA8CQ93-cu_hLvGwvTruK_tvs9NXvHIv1YC5GISICNpMH_2',
+              production: 'ATNg_IgcVzGOTZIT3GknU3kyxFVXED9ITbA8CQ93-cu_hLvGwvTruK_tvs9NXvHIv1YC5GISICNpMH_2'
+          },
+
+          commit: true, // Show a 'Pay Now' button
+
+          payment: function(data, actions) {
+              return actions.payment.create({
+                  payment: {
+                      transactions: [
+                          {
+                              amount: { total: '1.00', currency: 'USD' }
+                          }
+                      ]
+                  }
+              });
+          },
+
+          onAuthorize: function(data, actions) {
+              return actions.payment.execute().then(function(payment) {
+
+                  // The payment is complete!
+                  // You can now show a confirmation message to the customer
+                  alert('Okie, done!');
+              });
+          }
+
+      }, '#paypal-button');
+  </script>
 </body>
 </html>

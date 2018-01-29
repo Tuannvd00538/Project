@@ -9,7 +9,7 @@ mongoose.connect('mongodb://admin:admin@ds153577.mlab.com:53577/tthhngroup');
 mongoose.Promise = global.Promise;
 var jwt = require('jsonwebtoken');
 var app = express();
-
+var paypal_sdk = require('paypal-rest-sdk');
 app.use(cors());
 const fileUpload = require('express-fileupload');
 const path = require('path');
@@ -68,6 +68,16 @@ app.post('/_api/v1/images', upload.single('file'), function(req, res, next) {
     stream.end(req.file.buffer);
 });
 
+// PayPal SDK
+
+paypal.configure({
+    'mode': 'sandbox', //sandbox or live
+    'client_id': 'ATGv66JpXYIQRKgfybS3AECl62BZJpBnXBpwaiIsA5neL5IOJofWObknPS5nCtLph8QVHvpDUY48tAC7',
+    'client_secret': 'ELbEr6AkhwTOhKHvnFy5awDD11kiwS-acyY9MzM1iUj6PTavxSCF1UNQRdJrotET2UczcqjPBhynTDEa'
+});
+
+// End PayPal SDK
+
 app.use(fileUpload());
 app.use(express.static('./public'));
 app.use(bodyParser.json());
@@ -79,7 +89,29 @@ var gvRoute = require('./routes/gvRoute');
 gvRoute(app);
 var recycleBin = require('./routes/recycleBinRoute');
 recycleBin(app);
-app.get('/', (req, res) => res.send('Chào mừng bạn đến với server của Siin Đẹp Trai, đừng nghịch hay phá phách gì nhé :)'))
+app.get('/', (req, res) => res.status(200).json({
+	"MEMBER": "/_api/v1/member    ----    Method: Post (Đăng ký thành viên)",
+	"MEMBER": "/_api/v1/member/:id    ---- Method: Get (Thông tin của 1 member), Put (Sửa thông tin của member (kèm authorization)), Delete (Xóa member (kèm authorization))",
+	"LOGIN": "/_api/v1/authentication    ----    Method: Post (Đăng nhập thành viên), Put (Đổi mật khẩu (kèm authorization))",
+	"ADMIN": "/admin    ---- Method: Post (Đăng nhập admin), Put (Đổi mật khẩu (kèm authorization))",
+	"COURSE": "/_api/v1/course    ---- Method: Get (Thông tin tất cả các khóa học), Post (Thêm khóa học (kèm authorization))",
+	"HOT": "/_api/v1/course/hot    ---- Method: Get (Khóa học hot nhất)",
+	"NEW": "/_api/v1/course/new    ---- Method: Get (Khóa học mới nhất)",
+	"FindKHOAHOC": "/_api/v1/giangvien/course/:id    ----    Method: Get (Tìm tất cả khóa học của 1 giảng viên)",
+	"FindCourse": "/_api/v1/course/:id    ----    Method: Get (Thông tin của 1 khóa học), Put (Sửa thông tin của 1 khóa học (Kèm authorization)), Delete (Xóa khóa học (kèm authorization))",
+	"QUERY": "/_api/v1/course/view/:key    ----    Method: Get (Tìm khóa học theo tiêu đề)",
+	"CHUDE": "/_api/v1/course/chude/:key    ----    Method: Get (Tìm khóa học theo chủ đề)",
+	"LECTURERS": "/_api/v1/giangvien    ----    Method: Get (Lấy ra danh sách giảng viên)",
+	"INFOLECURERS": "/_api/v1/giangvien/:id    ----    Method: Get (Thông tin của 1 giảng viên), Put (Sửa thông tin giảng viên (kèm authorization)), Delete (Xóa giảng viên (kèm authorization))",
+	"RECYCLEBINCOURSE": "/_api/v1/recyclebin/course    ----    Method: Get (Danh sách khóa học đã xóa)",
+	"RECYCLEBINLECTURERS": "/_api/v1/recyclebin/lecturers    ----    Method: Get (Danh sách giảng viên đã xóa)",
+	"RECYCLEBINMEMBER": "/_api/v1/recyclebin/member    ----    Method: Get (Danh sách thành viên đã xóa)",
+	"RETURNCOURSE": "/_api/v1/recyclebin/course/:id    ----    Method: Put (Khôi phục khóa học đã xóa (Kèm authorization)), Delete (Xóa vĩnh viễn khóa học (Kèm authorization))",
+	"RETURNLECTURERS": "/_api/v1/recyclebin/lecturers/:id    ----    Method: Put (Khôi phục giảng viên đã xóa (Kèm authorization)), Delete (Xóa vĩnh viễn giảng viên (Kèm authorization))",
+	"RETURNLECTURERS": "/_api/v1/recyclebin/member/:id    ----    Method: Put (Khôi phục thành viên đã xóa (Kèm authorization)), Delete (Xóa vĩnh viễn thành viên (Kèm authorization))",
+    "IMAGE": "/_api/v1/images    ----    Method: Post (ở client input file có name='file' :>",
+    "ADMIN": "www.facebook.com/TuanMinPay    ----    Ngô Văn Tuấn"
+}));
 app.listen(8080, function(){
 	console.log('Port 8080: everything is going to be 200 OK!');
 });

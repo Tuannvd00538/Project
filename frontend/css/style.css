@@ -912,3 +912,36 @@ footer ul li {
 	filter: opacity(0);
 	z-index: 9;
 }
+.paypal {
+	text-align: center;
+}
+.changePsw {
+	cursor: pointer;
+}
+.showChangePsw {
+	display: none;
+}
+.alertOldPsw, .alertNewPsw, .alertRePsw {
+	color: red;
+}
+.price1 {
+	float: right;
+}
+.ttkh {
+	margin-bottom: 15px;
+}
+.ttkh1 {
+	height: 45px;
+    overflow: hidden;
+}
+.cart1 {
+	color: #63b458;
+	font-size: 20px;
+}
+.panel-footer .row .priceOrigin {
+	text-align: left;
+}
+.panel-footer .row .priceAfter {
+	text-align: right;
+	margin-top: 10px;
+}

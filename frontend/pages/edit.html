@@ -39,13 +39,13 @@
                     	<li><a href="javascript:getChuDe('Sức khỏe - Giới tính')"><i class="fa fa-caret-right"></i> Sức khỏe - Giới tính</a></li>
                     	<li><a href="javascript:getChuDe('Nghệ thuật - Làm đẹp')"><i class="fa fa-caret-right"></i> Nghệ thuật - Làm đẹp</a></li>
                     	<li><a href="javascript:getChuDe('Ngoại ngữ')"><i class="fa fa-caret-right"></i> Ngoại ngữ</a></li>
-                    	<li><a href="javascript:getChuDe('Công nghệ thông tin')"><i class="fa fa-caret-right"></i> Nuôi dạy con</a></li>
+                    	<li><a href="javascript:getChuDe('Nuôi dạy con')"><i class="fa fa-caret-right"></i> Nuôi dạy con</a></li>
                   	</ul>
               	</li>
             	<li class="search">
-            		<form class="navbar-form navbar-left">
+            		<form id="searchCourse" class="navbar-form navbar-left">
                 		<div class="input-group">
-                  			<input type="text" class="form-control" placeholder="Tìm kiếm trên tthhn.vn">
+                  			<input type="text" id="valCourse" class="form-control" placeholder="Tìm kiếm trên tthhn.vn">
                   			<div class="input-group-btn">
                       			<button class="btn btn-default" type="button">
                         			<span class="glyphicon glyphicon-search"></span>
@@ -134,7 +134,7 @@
 			          		<div class="form-group">
 			            		<label class="col-sm-2 control-label">Giới tính</label>
 			            		<div class="col-sm-10">
-			              			<select class="form-control">
+			              			<select class="form-control" id="gender">
 			                			<option>Chọn giới tính</option>
 			                			<option value="1">Nam</option>
 			                			<option value="2">Nữ</option>
@@ -146,47 +146,44 @@
 			      	</div>
 			      	<div class="panel panel-default">
 			        	<div class="panel-heading">
-			        		<h4 class="panel-title">Bảo mật</h4>
+			        		<h4 class="panel-title changePsw" onclick="changePsw()">Đổi mật khẩu</h4>
 			        	</div>
-			        	<div class="panel-body">
+			        	<div class="panel-body showChangePsw">
 			          		<div class="form-group">
 			            		<label class="col-sm-2 control-label">Mật khẩu cũ</label>
 			            		<div class="col-sm-10">
-			              			<input type="password" class="form-control">
+			              			<input type="password" id="oldPsw" class="form-control">
+			              			<span class="alertOldPsw"></span>
 			            		</div>
 			          		</div>
 			          		<div class="form-group">
 			            		<label class="col-sm-2 control-label">Mật khẩu mới</label>
 			            		<div class="col-sm-10">
-			              			<input type="password" class="form-control">
+			              			<input type="password" id="newPsw" class="form-control">
+			              			<span class="alertNewPsw"></span>
 			            		</div>
 			          		</div>
 			          		<div class="form-group">
 			            		<label class="col-sm-2 control-label">Nhập lại mật khẩu mới</label>
 			            		<div class="col-sm-10">
-			              			<input type="password" class="form-control">
+			              			<input type="password" id="rePsw" class="form-control">
+			              			<span class="alertRePsw"></span>
 			            		</div>
 			          		</div>
 			          		<div class="form-group">
 			            		<div class="col-sm-10 col-sm-offset-2">
-			              			<div class="checkbox">
-			                			<input type="checkbox" id="checkbox_1">
-			                			<label for="checkbox_1">Nhận email từ ban đào tạo khóa học TTHHN.VN</label>
-			              			</div>
-			              			<div class="checkbox">
-			                			<input type="checkbox" id="checkbox_2">
-			                			<label for="checkbox_2">Nhận email nhắc nhở có bài học mới</label>
-			              			</div>
-			            		</div>
-			          		</div>
-			          		<div class="form-group">
-			            		<div class="col-sm-10 col-sm-offset-2">
-			              			<button type="button" class="btn btn-success">Lưu</button>
-			              			<button type="reset" class="btn btn-danger">Hủy</button>
+			              			<a href="javascript:savePsw()" class="btn btn-success">Lưu mật khẩu</a>
+			              			<a href="javascript:changePsw()" class="btn btn-danger">Hủy</a>
 			            		</div>
 			          		</div>
 			        	</div>
 			      	</div>
+			      	<div class="form-group">
+	            		<div class="col-sm-10 col-sm-offset-2">
+	              			<a href="javascript:saveEdit()" class="btn btn-success">Lưu</a>
+	              			<a href="/" class="btn btn-danger">Hủy</a>
+	            		</div>
+	          		</div>
 			    </form>
 		  	</div>
 		</div>

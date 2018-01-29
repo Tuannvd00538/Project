@@ -2,6 +2,7 @@ $(document).ready(function () {
   $('.btn').click(function () {
     var username = $('#username').val();
     var password = $('#password').val();
+    var show = $(this).parents('li:first').find('input').attr('id');
     if (username.length == 0) {
       $('.alertMsgUser').text('Bạn chưa nhập username!');
     } else if (username.length < 5) {
@@ -26,8 +27,8 @@ $(document).ready(function () {
         type: "POST",
         data: login,
         success: function (response) {
-          localStorage.setItem('id', response.id);
           localStorage.setItem('username', username);
+          localStorage.setItem('id', response.id);
           localStorage.setItem('token', response.token);
           swal("Thành công", "Bạn sẽ được chuyển về trang chủ sau 2s nữa!", "success")
           setTimeout(function(){window.location = '/';}, 2000);
@@ -35,7 +36,15 @@ $(document).ready(function () {
         error: function(jqXHR, textStatus, errorThrown) {
           swal("Lỗi", jqXHR.responseJSON.message, "error");
         }
-    });
+      });
     }
   });
+  $('#showPsw').click(function () {
+    var psw = $('#password').attr('type');
+    if (psw == 'password') {
+      $('#password').attr('type', 'text');
+    } else {
+      $('#password').attr('type', 'password');
+    }
+  })
 })

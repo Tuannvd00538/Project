@@ -1,4 +1,5 @@
 var recycleBin = require('../controllers/recycleBin');
+var authenticationController = require('../controllers/authenticationController');
 
 module.exports = function(app){
 
@@ -10,12 +11,12 @@ module.exports = function(app){
 		.get(recycleBin.getListMember)
 
 	app.route('/_api/v1/recyclebin/course/:id')
-		.put(recycleBin.updateCourse)
-		.delete(recycleBin.deleteCourse);
+		.put(authenticationController.loginRequired, recycleBin.updateCourse)
+		.delete(authenticationController.loginRequired, recycleBin.deleteCourse);
 	app.route('/_api/v1/recyclebin/lecturers/:id')
-		.put(recycleBin.updateLecturers)
-		.delete(recycleBin.deleteLecturers);
+		.put(authenticationController.loginRequired, recycleBin.updateLecturers)
+		.delete(authenticationController.loginRequired, recycleBin.deleteLecturers);
 	app.route('/_api/v1/recyclebin/member/:id')
-		.put(recycleBin.updateMember)
-		.delete(recycleBin.deleteMember);
+		.put(authenticationController.loginRequired, recycleBin.updateMember)
+		.delete(authenticationController.loginRequired, recycleBin.deleteMember);
 }
