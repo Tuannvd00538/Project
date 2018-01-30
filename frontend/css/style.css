@@ -912,16 +912,12 @@ footer ul li {
 	filter: opacity(0);
 	z-index: 9;
 }
-<<<<<<< HEAD
 /* Thêm */
-.map {
-	margin: 0 150px;
-}
 .map h1 {
 	text-align: center;
 	margin-bottom: 3%;
 }  
-=======
+/*=======*/
 .paypal {
 	text-align: center;
 }
@@ -955,4 +951,3 @@ footer ul li {
 	text-align: right;
 	margin-top: 10px;
 }
->>>>>>> 3dd3da662d819f97bd3d22a96dba12ed6f509137
