@@ -950,16 +950,15 @@ footer ul li {
 }
 .mapApi h1 {
 	text-align: center;
-<<<<<<< HEAD
 }
 
 .slogan{
 	text-align: center;
 	width: 90%;
+	padding-top: 30px;
 }
 
 .slogan h1{
-	
     text-transform: uppercase;
     margin: 0px 10px;
     line-height: 56px;
@@ -978,20 +977,16 @@ footer ul li {
 .abc{
 	background-image: url(https://static.unica.vn/images/header-bg.jpg);
 	height: 30%;
+	border-bottom: 23px solid #f05f40; 
 }
 .link_dk{
 	text-align: center;
-	font-weight: bold;
-	cursor: pointer;
-	width: 15%;
-	margin-left: 43%;
-	height: 37px;
-	background-color: #f05f40;
-	border-radius: 30px;
-	font-size: 20px;
 	margin-bottom: 50px;
 }
 
+.link_dk a:hover{
+	background-color: #0975b4;
+}
 .title_affiliate{
 	text-align: center;
 }
@@ -1020,6 +1015,9 @@ footer ul li {
 	font-size: 17px;
 }
 
+.description_affiliate p{
+	margin-top: 4%;
+}
 .number_affiliate{
 	color: green;
 	font-weight: bold;
@@ -1108,7 +1106,7 @@ footer ul li {
 .title_affiliate3 ul li{
 	padding: 10px 0;
 	margin-left: 10%;
-	font-size: 17px;
+	font-size: 14px;
 	margin: 10px 0;
 }
 
@@ -1128,14 +1126,6 @@ footer ul li {
 
 .link_dk2{
 	text-align: center;
-	font-weight: bold;
-	cursor: pointer;
-	width: 15%;
-	margin-left: 43%;
-	height: 37px;
-	background-color: #f05f40;
-	border-radius: 30px;
-	font-size: 20px;
 	margin-bottom: 20px;
 	margin-top: 40px;
 }
@@ -1145,12 +1135,104 @@ footer ul li {
 	height: 250px;
 }
 
+.why {
+
+}
+.btn-add {
+padding: 10px;
+width: 160px;
+font-size: 16px;
+border-radius: 50px;
+text-transform: uppercase;
+font-weight: bold;
+}
+
+.quay_quay {
+	margin-top: -20px;
+	background-color: #f5f2eb;
+	padding-top: 10px;
+}
+
 .content_affiliate5{
 	padding-top: 10px;
-=======
 	margin-bottom: 3%;
 }
 .map {
 	font-size: 17px;
 >>>>>>> bb680219d15624faaf74c4138fc557e6119d97f1
+}
+-----------------------------------------------
+.ul_li_affiliate ul li{
+    margin: 0 0 25px 0;
+    color: #464646;
+    font-size: 16px;
+    float: left;
+    width: 100%;
+}
+
+.ul_li_affiliate ul li.mot span{
+	background-color: #18bc9c;
+	color: #fff;
+    padding: 5px 13px;
+    border-radius: 20px;
+    margin: 0 20px 0 0;
+    float: left;
+}
+
+.ul_li_affiliate ul li.hai span{
+	background-color: #f7844c;
+	color: #fff;
+    padding: 5px 13px;
+    border-radius: 20px;
+    margin: 0 20px 0 0;
+    float: left;
+}
+
+.ul_li_affiliate ul li.ba span{
+	background-color: #f7bd4c;
+	color: #fff;
+    padding: 5px 13px;
+    border-radius: 20px;
+    margin: 0 20px 0 0;
+    float: left;
+}
+
+.ul_li_affiliate ul li.bon span{
+	background-color: #74f74c;
+	color: #fff;
+    padding: 5px 13px;
+    border-radius: 20px;
+    margin: 0 20px 0 0;
+    float: left;
+}
+
+.ul_li_affiliate ul li.nam span{
+	background-color: #f7844c;
+	color: #fff;
+    padding: 5px 13px;
+    border-radius: 20px;
+    margin: 0 20px 0 0;
+    float: left;
+}
+
+.ul_li_affiliate ul li.sau span{
+	background-color: #4ca9f7;
+	color: #fff;
+    padding: 5px 13px;
+    border-radius: 20px;
+    margin: 0 20px 0 0;
+    float: left;
+}
+
+.ul_li_affiliate ul li.bay span{
+	background-color: #18bc9c;
+	color: #fff;
+    padding: 5px 13px;
+    border-radius: 20px;
+    margin: 0 20px 0 0;
+    float: left;
+}
+
+.ul_li_affiliate ul{
+	list-style: none;
 }
