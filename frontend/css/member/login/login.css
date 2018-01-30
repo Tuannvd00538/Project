@@ -9,33 +9,44 @@ body {
  background-repeat: no-repeat;
 }
 #wrapper {
- margin:12% auto;
- padding:0px;
- text-align:center;
+ text-align: center;
  width:995px;
+ margin-top: 20px;
 }
 #login_div {
- background-color:white;
- padding:20px;
- max-width:300px;
- margin-left:345px;
+    background-color: white;
+    padding: 48px;
+    max-width: 45%;
+    margin-left: 280px;
 }
 #login_div button {
- margin-top:20px;
- height:40px;
- width:100%;
+ 	margin-top:20px;
+ 	height:40px;
+ 	width:100%;
 }
 #login_div #register {
- margin-top:20px;
- float:left;
+ 	margin-top:10px;
+ 	float:left;
+ 	color: #0089ec;
 }
 #login_div #forgot {
- margin-top:20px;
- float:right;
+ 	margin-top:10px;
+ 	float:right;
+ 	color: #0089ec;
 }
 .alertMsgUser, .alertMsgPass {
-  color: red;
+ 	 color: red;
 }
-#register, #forgot {
-  color: #111;
+.logo {
+	margin-top: 55px;
+}
+.logo1 {
+	color: #333;
+}
+.logo2 {
+	color: #777;
+	margin-top: -25px;
+}
+.remember {
+	margin-right: 28px;
 }

@@ -12,13 +12,14 @@ module.exports = function(app){
 		.post(accountController.addMember);
 
 	app.route('/_api/v1/member/:id')
-		.get(authenticationController.loginRequired, accountController.getDetailMember)
+		.get(accountController.getDetailMember)
 		.put(authenticationController.loginRequired, accountController.updateMember)
 		.delete(authenticationController.loginRequired, accountController.deleteMember);
 
 	// Authentication
 	app.route('/_api/v1/authentication')
 		.post(authenticationController.checkLogin)
+		.put(authenticationController.loginRequired, authenticationController.changePsw)
 	app.route('/admin')
 		.post(authenticationController.checkAdmin)
 		.get(authenticationController.loginRequired, authenticationController.getAdmin);

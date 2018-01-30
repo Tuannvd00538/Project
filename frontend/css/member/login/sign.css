@@ -8,17 +8,11 @@ body {
  background-attachment: fixed;;
  background-repeat: no-repeat;
 }
-#wrapper {
- margin:5% auto;
- padding:0px;
- text-align:center;
- width:995px;
-}
 #sign_div {
  background-color:white;
  padding:20px;
  max-width:600px;
- margin-left:15%;
+ margin-top: 20px;
 }
 #login_div button {
  margin-top:20px;
@@ -33,9 +27,22 @@ body {
  margin-top:20px;
  float:right;
 }
-.alertMsgUser, .alertMsgPass {
+.alertMsgUser, .alertMsgPass, .alertMsgEmail, .alertMsgRePass {
   color: red;
 }
-#register, #forgot {
-  color: #111;
+#register {
+  color: #0089ec;
+}
+.logo {
+	margin-top: 55px;
+}
+.logo1 {
+	color: #333;
+}
+.logo2 {
+	color: #777;
+	margin-top: -25px;
+}
+.co-login {
+	margin-top: 20px;
 }

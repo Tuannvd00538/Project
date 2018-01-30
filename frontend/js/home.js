@@ -19,13 +19,11 @@ $(document).ready(function () {
 		$('#checkSign').attr('style', 'display:block;');
 		$('#checkSignTwo').attr('style', 'display:block;');
 		$('#checkLogin').attr('style', 'display:none;');
-		$('.ifLogin').attr('style', 'display:block;');
 	}
 	if (username != null || username != undefined) {
 		$('#checkLogin').attr('style', 'display:block;');
 		$('#checkSign').attr('style', 'display:none;');
 		$('#checkSignTwo').attr('style', 'display:none;');
-		$('.ifLogin').attr('style', 'display:none;');
 	}
 });
 function search() {
@@ -123,8 +121,8 @@ function generateVideoBlock(id, Thumbnail, TieuDe, GiangVien, GiaKhoaHoc, Sale, 
 		              newOutPut += '</div>';
 		            newOutPut += '</div>';
 		          newOutPut += '<div class="price">';
-		              newOutPut += '<strong>' + formatPrice(GiaHienTai, '.', ',') + '<sup>đ</sup></strong>';
-		              newOutPut += '<span class="old-price">' + formatPrice(GiaKhoaHoc, '.', ',') + '<sup>đ</sup></span>';
+		              newOutPut += '<strong>' + Math.round(GiaHienTai) + '<sup>$</sup></strong>';
+		              newOutPut += '<span class="old-price">' + Math.round(GiaKhoaHoc) + '<sup>$</sup></span>';
 		              newOutPut += '<span class="discount person">-' + Sale + '%</span>';
 		            newOutPut += '</div>';
 		        newOutPut += '</div>';
@@ -156,7 +154,7 @@ function generateVideoBlock(id, Thumbnail, TieuDe, GiangVien, GiaKhoaHoc, Sale, 
 		              newOutPut += '</div>';
 		            newOutPut += '</div>';
 		          newOutPut += '<div class="price">';
-		              newOutPut += '<strong>' + formatPrice(GiaKhoaHoc, ',', ',') + '<sup>đ</sup></strong>';
+		              newOutPut += '<strong>' + Math.round(GiaKhoaHoc) + '<sup>$</sup></strong>';
 		              newOutPut += '<span class="old-price"></span>';
 		              newOutPut += '<span class="discount person"></span>';
 		            newOutPut += '</div>';
@@ -166,17 +164,6 @@ function generateVideoBlock(id, Thumbnail, TieuDe, GiangVien, GiaKhoaHoc, Sale, 
 	    return newOutPut;
     }
 };
-function formatPrice(SoTien, DauPhay, DauPhay2) {
-    SoTien += '';
-    var x = SoTien.split(DauPhay);
-    var x1 = x[0];
-    var x2 = x.length > 1 ? '.' + x[1] : '';
-    var rgx = /(\d+)(\d{3})/;
-    while (rgx.test(x1)) {
-        x1 = x1.replace(rgx, '$1' + DauPhay2 + '$2');
-    }
-    return x1 + x2;
-}
 
 // jQuery trang chi tiết
 function detailCourse() {
@@ -200,7 +187,7 @@ function detailCourse() {
 	    	$('#bgKH').html('<i class="fa fa-play-circle" aria-hidden="true"></i> ' + response.SoBaiGiang + ' bài giảng');
 	    	$('#sgKH').html('<i class="fa fa-clock-o" aria-hidden="true"></i> ' + response.SoPhutHoc + ' phút học');
 	    	if (response.Sale != 0) {
-	    		$('#priceKH').html(formatPrice(response.GiaKhoaHoc, '.', ',') + '<sup>đ</sup>');
+	    		$('#priceKH').html(Math.round(response.GiaKhoaHoc) + '<sup>$</sup>');
 	    		$('#couponKH').html('-' + response.Sale + '%');
 	    	} else {
 	    		$('#couponKH').attr("style", "display:none;");
@@ -240,7 +227,7 @@ function detailCourse() {
 			}
 			$('#tagKH').html(TagMoi);
 			var GiaHienTai = ((response.GiaKhoaHoc / 100) * (100 - response.Sale));
-			$('#pcNow').html(formatPrice(GiaHienTai, '.', ',') + '<sup>đ</sup>');
+			$('#pcNow').html(Math.round(GiaHienTai) + '<sup>$</sup>');
 			$('.loading').fadeOut();
 	    },
 	    error: function(jqXHR, textStatus, errorThrown) {
@@ -301,7 +288,7 @@ function sendCart(id) {
 	var ChuDe = $('#cdKH').text();
 	var price = $('#pcNow').text();
 	var price2 = price.replace(",", "");
-	var GiaKhoaHoc = price2.replace("đ", "");
+	var GiaKhoaHoc = price2.replace("$", "");
 	addToCart(id, TenKhoaHoc, GiangVien, ChuDe, GiaKhoaHoc);
 }
 function loadCart() {
@@ -328,7 +315,7 @@ function loadCart() {
     		cartContent += '<td class="titleCart">' + listCart[i].TenKhoaHoc + '</td>';
     		cartContent += '<td>' + listCart[i].GiangVien + '</td>';
     		cartContent += '<td>' + listCart[i].ChuDe + '</td>';
-    		cartContent += '<td>' + formatPrice(listCart[i].GiaKhoaHoc, '.', ',') + '<sup>đ</sup></td>';
+    		cartContent += '<td>' + Math.round(listCart[i].GiaKhoaHoc) + '<sup>$</sup></td>';
     		cartContent += '<td>x</td>';
   		cartContent += '</tr>';
 	}
@@ -337,7 +324,7 @@ function loadCart() {
 	for (var i = 0; i < listCart.length; i++) {
 		totalPrice += listCart[i].GiaKhoaHoc * 1;
 	}
-	$('.panel-footer').html('Tổng đơn hàng: ' + formatPrice(totalPrice, '.', ',') + '<sup>đ</sup>');
+	$('.panel-footer').html('Tổng đơn hàng: ' + Math.round(totalPrice) + '<sup>$</sup>');
 	$('.loading').fadeOut();
 }
 function addToCart(MaKhoaHoc, TenKhoaHoc, GiangVien, ChuDe, GiaKhoaHoc) {
@@ -397,6 +384,48 @@ function addToCart(MaKhoaHoc, TenKhoaHoc, GiangVien, ChuDe, GiaKhoaHoc) {
 	}
 	localStorage.setItem('listCart', JSON.stringify(listCart));
 };
+function checkOut() {
+	var listCart = localStorage.getItem('listCart');
+	listCart = JSON.parse(listCart);
+	$('.soKhoaHoc').text(listCart.length + ' Khóa học');
+	var cartContent = '';
+	for (var i = 0; i < listCart.length; i++) {
+		cartContent += '<div class="row ttkh">';
+    		cartContent += '<div class="col-md-8 ttkh1">' + listCart[i].TenKhoaHoc + '</div>';
+    		cartContent += '<div class="col-md-4">';
+    		cartContent += '<strong>' + Math.round(listCart[i].GiaKhoaHoc) + '<sup>$</sup></strong>';
+    		cartContent += '</div>';
+  		cartContent += '</div>';
+	}
+	$('.loadCartCheckOut').html(cartContent);
+	var totalPrice = 0;
+	for (var i = 0; i < listCart.length; i++) {
+		totalPrice += listCart[i].GiaKhoaHoc * 1;
+	}
+	$('.hocPhiGoc').html(Math.round(totalPrice) + '<sup>$</sup>');
+	$('.loading').fadeOut();
+	var token = localStorage.getItem('token');
+	if (token == null || token == undefined) {
+		$('.ifLogin').attr('style', 'display:block;');
+	}
+	if (token != null || token != undefined) {
+		$('.ifLogin').attr('style', 'display:none;');
+		var id = localStorage.getItem('id');
+		$.ajax({
+		    url: MEMBER + '/' + id,
+		    type: "GET",
+		    success: function (response) {
+		    	$('#paymentform-email').val(response.email);
+		    	$('#paymentform-name').val(response.fullName);
+		    	$('#paymentform-phone').val(response.phone);
+		     	$('.loading').fadeOut();
+		    },
+		    error: function(jqXHR, textStatus, errorThrown) {
+		       swal("Lỗi!", jqXHR.responseJSON.message, "error");
+		    }
+		});
+	}
+}
 function deleteCart() {
 	swal({
 	  	title: "Bạn có muốn xóa giỏ hàng?",
@@ -508,6 +537,9 @@ function logout() {
 	  setTimeout(function () {
 	    localStorage.removeItem('username');
 	    localStorage.removeItem('token');
+	    localStorage.removeItem('listCart');
+	    localStorage.removeItem('id');
+	    localStorage.removeItem('cart');
 	    location.reload();
 	  }, 2000);
 	});
@@ -679,9 +711,6 @@ function editProfile() {
 		$.ajax({
 		    url: MEMBER + '/' + id,
 		    type: "GET",
-		    headers: {
-			    "Authorization": token
-			},
 		    success: function (response) {
 		    	$('#username').val(response.username);
 		    	$('#email').val(response.email);
@@ -702,4 +731,79 @@ function editProfile() {
 		    }
 		});
 	}
+}
+function saveEdit() {
+	var token = localStorage.getItem('token');
+	var id = localStorage.getItem('id');
+	var fullName = $('#fullName').val();
+	var birthDay = $('#birthDay').val();
+	var phone = $('#phone').val();
+	var gender = $('#gender').val();
+	var putData = {
+		"fullName": fullName,
+		"birthDay": birthDay,
+		"phone": phone,
+		"gender": gender
+	}
+	$.ajax({
+		url: MEMBER + '/' + id,
+		type: "PUT",
+		data: putData,
+		headers: {
+		    "Authorization": token
+		},
+		success: function(response){
+			swal("Thành công!", "Cập nhật thông tin thành công!", "success");
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+	       swal("Lỗi!", "Có lỗi xảy ra!", "error");
+	    }
+	});
+}
+function changePsw() {
+	$('.showChangePsw').fadeToggle();
+}
+function savePsw() {
+	var token = localStorage.getItem('token');
+	var username = localStorage.getItem('username');
+	var oldPsw = $('#oldPsw').val();
+	var newPsw = $('#newPsw').val();
+	var rePsw = $('#rePsw').val();
+	if (oldPsw.length == 0) {
+		$('.alertOldPsw').text('Bạn chưa nhập mật khẩu cũ!');
+	}
+	if (newPsw.length == 0) {
+		$('.alertNewPsw').text('Bạn chưa nhập mật khẩu mới!');
+	} else if (newPsw.length < 5) {
+		$('.alertNewPsw').text('Mật khẩu mới phải dài hơn 5 ký tự!');
+	}
+	if (rePsw.length == 0) {
+		$('.alertRePsw').text('Bạn chưa xác nhận mật khẩu mới!');
+	} else if (rePsw != newPsw) {
+		$('.alertRePsw').text('Mật khẩu không khớp!');
+	}
+	var putData = {
+		"username": username,
+		"password": oldPsw,
+		"newPsw": newPsw
+	}
+	if (oldPsw != 0 && newPsw == rePsw) {
+		$.ajax({
+			url: 'https://project-tthhn.appspot.com/_api/v1/authentication',
+			type: "PUT",
+			data: putData,
+			headers: {
+			    "Authorization": token
+			},
+			success: function(response){
+				swal("Thành công!", "Đổi mật khẩu thành công!", "success");
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+		       swal("Lỗi!", "Có lỗi xảy ra!", "error");
+		    }
+		});
+	}
+}
+function Payment() {
+	alert('Chức năng đang phát triển :)');
 }

@@ -45,6 +45,31 @@ exports.getAdmin = function(req, res, next) {
  });
 };
 
+exports.changePsw = function(req, res){
+	var username = req.body.username;
+	var password = req.body.password;
+	var newPsw = req.body.newPsw;
+	Member.findOne({username: username, 'status': 1}, function (err, result) {
+		if (err) {
+			console.log(err);
+			res.send('Có thể do bạn hoặc do mình ngu nên lỗi rồi!');
+			return;
+		}
+		if (result) {
+			var digestedPassword = accountController.sha512(password, result.salt);
+			var newPass = accountController.sha512(newPsw, result.salt);
+			if(digestedPassword === result.password){
+				Member.findOneAndUpdate({username: username, 'status': 1}, {$set: {password: newPass}}, {runValidators: true}, function(err, result) {
+				    res.send('Đổi mật khẩu thành công!');
+				});
+			}else{
+				res.status(401).json({ message: 'Mật khẩu cũ không chính xác!' });
+				return;	
+			}
+		}
+	});
+}
+
 exports.checkLogin = function(req, res){
 	var username = req.body.username;
 	var password = req.body.password;
