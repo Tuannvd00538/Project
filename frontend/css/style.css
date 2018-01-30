@@ -945,3 +945,9 @@ footer ul li {
 	text-align: right;
 	margin-top: 10px;
 }
+.mapApi {
+	margin: 0 150px;
+}
+.mapApi h1 {
+	text-align: center;
+}
