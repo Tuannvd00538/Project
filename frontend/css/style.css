@@ -912,12 +912,6 @@ footer ul li {
 	filter: opacity(0);
 	z-index: 9;
 }
-/* Thêm */
-.map h1 {
-	text-align: center;
-	margin-bottom: 3%;
-}  
-/*=======*/
 .paypal {
 	text-align: center;
 }
@@ -950,4 +944,10 @@ footer ul li {
 .panel-footer .row .priceAfter {
 	text-align: right;
 	margin-top: 10px;
+}
+.mapApi {
+	margin: 0 150px;
+}
+.mapApi h1 {
+	text-align: center;
 }
