@@ -950,4 +950,8 @@ footer ul li {
 }
 .mapApi h1 {
 	text-align: center;
+	margin-bottom: 3%;
+}
+.map {
+	font-size: 17px;
 }
