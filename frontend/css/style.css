@@ -950,8 +950,207 @@ footer ul li {
 }
 .mapApi h1 {
 	text-align: center;
+<<<<<<< HEAD
+}
+
+.slogan{
+	text-align: center;
+	width: 90%;
+}
+
+.slogan h1{
+	
+    text-transform: uppercase;
+    margin: 0px 10px;
+    line-height: 56px;
+    font-weight: bold;
+    margin-left: 10%;
+    color: white;
+}
+
+.intro{
+	font-size: 21px;
+    margin-bottom: 100px;
+    text-align: center;
+    color: #d2d2d2;
+    margin-top: 3%;
+}
+.abc{
+	background-image: url(https://static.unica.vn/images/header-bg.jpg);
+	height: 30%;
+}
+.link_dk{
+	text-align: center;
+	font-weight: bold;
+	cursor: pointer;
+	width: 15%;
+	margin-left: 43%;
+	height: 37px;
+	background-color: #f05f40;
+	border-radius: 30px;
+	font-size: 20px;
+	margin-bottom: 50px;
+}
+
+.title_affiliate{
+	text-align: center;
+}
+
+.video_affiliate{
+	text-align: center;
+}
+
+.content_affiliate{
+	border-top-color: green;
+	border-bottom-color: green;
+	border-left-color: white;
+	border-right-color: white;
+	margin-top: 3%;
+	margin-bottom: 5%;
+	border: 1px dashed green;
+}
+.content_affiliate a{
+	color: blue;
+}
+
+.description_affiliate{
+	text-align: center;
+	width: 60%;
+	margin-left: 19%;
+	font-size: 17px;
+}
+
+.number_affiliate{
+	color: green;
+	font-weight: bold;
+}
+
+.description_affiliate2 {
+	margin-top: 40px;
+	text-align: center;
+	width: 60%;
+	margin-left: 19%;
+	font-size: 17px;
+	margin-bottom: 20px;
+}
+.content_affiliate2{
+	background-image: url(https://static.unica.vn/images/page-2-bg.jpg);
+	color: white;
+	width: 100%;
+	height: 30%;
+}
+.content_affiliate2 hr{
+	padding: 0 200px;
+}
+
+.hr_affiliate{
+	max-width: 60%;
+ 	margin-left: 20%;
+}
+
+.title_affiliate2{
+	padding-top: 30px;
+	text-align: center;
+}
+
+.content_affiliate3{
+	text-align: center;
+	margin-top: 45px;
+}
+
+.boder_affiliate{
+	max-width: 200px;
+	border: 2px solid red;
+	margin-left: 43%;
+	margin: 20px auto 80px;
+}
+
+.content_affiliate4{
+	text-align: center;
+	margin-top: 30px;
+	background-color: #17bb99;
+}
+
+.content_affiliate4 h1{
+	color: white;
+	margin: 30px 0;
+}
+.content_affiliate4 .why{
+	background-color: #17bb99;
+}
+
+.img_affiliate1{
+	background-color: #1a5bac;
+	height: 76px;
+}
+
+.img_affiliate2{
+	background-color: #4d1686;
+	height: 76px;
+}
+
+.img_affiliate3{
+	background-color: #0c6050;
+	height: 76px;
+}
+
+.content_affiliate3 h2{
+	font-weight: bold;
+}
+.img_affiliate{
+	border: 3px solid white;
+	background-color: white;
+	margin-top: 30px;
+	margin-bottom: 80px;
+	margin-left: 8%;
+}
+
+.title_affiliate3 ul li{
+	padding: 10px 0;
+	margin-left: 10%;
+	font-size: 17px;
+	margin: 10px 0;
+}
+
+.ul_li_affiliate{
+	width: 80%;
+	margin-left: 10%;
+}
+.title_affiliate3{
+	padding-top: 30px;
+}
+
+.title_affiliate5 h3{
+	text-align: center;
+	color: white;
+	font-weight: bold;
+}
+
+.link_dk2{
+	text-align: center;
+	font-weight: bold;
+	cursor: pointer;
+	width: 15%;
+	margin-left: 43%;
+	height: 37px;
+	background-color: #f05f40;
+	border-radius: 30px;
+	font-size: 20px;
+	margin-bottom: 20px;
+	margin-top: 40px;
+}
+
+.title_affiliate5{
+	background-image: url(https://static.unica.vn/images/footer-bg.jpg);
+	height: 250px;
+}
+
+.content_affiliate5{
+	padding-top: 10px;
+=======
 	margin-bottom: 3%;
 }
 .map {
 	font-size: 17px;
+>>>>>>> bb680219d15624faaf74c4138fc557e6119d97f1
 }
