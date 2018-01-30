@@ -950,6 +950,7 @@ footer ul li {
 }
 .mapApi h1 {
 	text-align: center;
+<<<<<<< HEAD
 }
 
 .slogan{
@@ -1146,4 +1147,10 @@ footer ul li {
 
 .content_affiliate5{
 	padding-top: 10px;
+=======
+	margin-bottom: 3%;
+}
+.map {
+	font-size: 17px;
+>>>>>>> bb680219d15624faaf74c4138fc557e6119d97f1
 }
