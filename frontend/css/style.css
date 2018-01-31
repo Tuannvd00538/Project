@@ -987,9 +987,6 @@ footer ul li {
 .link_dk a:hover{
 	background-color: #0975b4;
 }
-.title_affiliate{
-	text-align: center;
-}
 
 .video_affiliate{
 	text-align: center;
@@ -1036,6 +1033,7 @@ footer ul li {
 	color: white;
 	width: 100%;
 	height: 30%;
+	margin-top: 50px
 }
 .content_affiliate2 hr{
 	padding: 0 200px;
@@ -1051,9 +1049,9 @@ footer ul li {
 	text-align: center;
 }
 
-.content_affiliate3{
-	text-align: center;
-	margin-top: 45px;
+.content_affiliate3 {
+text-align: center;
+margin-top: 20px;
 }
 
 .boder_affiliate{
@@ -1077,19 +1075,26 @@ footer ul li {
 	background-color: #17bb99;
 }
 
-.img_affiliate1{
-	background-color: #1a5bac;
-	height: 76px;
+.img_affiliate1 {
+background-color: #1a5bac;
+height: 80px;
+padding: 10px;
 }
 
-.img_affiliate2{
-	background-color: #4d1686;
-	height: 76px;
+.img_affiliate2 {
+background-color: #4d1686;
+height: 80px;
+padding: 5px;
 }
 
-.img_affiliate3{
-	background-color: #0c6050;
-	height: 76px;
+.img_affiliate3 {
+background-color: #0c6050;
+height: 80px;
+padding: 5px;
+}
+
+.img_affiliate p {
+margin: 10px 0 10px;
 }
 
 .content_affiliate3 h2{
@@ -1114,14 +1119,12 @@ footer ul li {
 	width: 80%;
 	margin-left: 10%;
 }
-.title_affiliate3{
-	padding-top: 30px;
-}
 
 .title_affiliate5 h3{
 	text-align: center;
 	color: white;
 	font-weight: bold;
+	padding-bottom: 10px;
 }
 
 .link_dk2{
@@ -1133,6 +1136,7 @@ footer ul li {
 .title_affiliate5{
 	background-image: url(https://static.unica.vn/images/footer-bg.jpg);
 	height: 250px;
+	padding-bottom: 10px;
 }
 
 .why {
@@ -1151,6 +1155,10 @@ font-weight: bold;
 	margin-top: -20px;
 	background-color: #f5f2eb;
 	padding-top: 10px;
+}
+
+.quay_quay h2{
+	text-align: center;
 }
 
 .content_affiliate5{
