@@ -2,15 +2,23 @@ var mongoose = require('mongoose');
 
 module.exports = mongoose.model('order', {
 	customerId: {
-		type: mongoose.Schema.Types.ObjectId,,
+		type: String,
 		require: true
 	},
-	courseId: {
-		type: mongoose.Schema.Types.ObjectId,,
+	orderID: {
+		type: String,
 		require: true
 	},
 	totalPrice: {
 		type: Number,
+		require: true
+	},
+	paymentMethod: {
+		type: String,
+		require: true
+	},
+	paymentID: {
+		type: String,
 		require: true
 	},
 	createdAt: {

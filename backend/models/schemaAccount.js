@@ -9,6 +9,7 @@ module.exports = mongoose.model('accounts', {
 		type: String,
 		require: true
 	},
+	avatar: String,
 	salt: String,
 	createdAt: {
 		type: Date,

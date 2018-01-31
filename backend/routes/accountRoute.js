@@ -22,5 +22,6 @@ module.exports = function(app){
 		.put(authenticationController.loginRequired, authenticationController.changePsw)
 	app.route('/admin')
 		.post(authenticationController.checkAdmin)
-		.get(authenticationController.loginRequired, authenticationController.getAdmin);
+		.get(authenticationController.loginRequired, authenticationController.getAdmin)
+		.put(authenticationController.loginRequired, authenticationController.changePswAdmin);
 }
