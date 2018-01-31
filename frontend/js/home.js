@@ -425,6 +425,59 @@ function checkOut() {
 	    	$('#paymentform-email').val(response.email);
 	    	$('#paymentform-name').val(response.fullName);
 	    	$('#paymentform-phone').val(response.phone);
+	    	if (response.fullName == null || response.phone == null || response.phone == undefined || response.fullName == undefined) {
+				swal({
+				  	title: "Vui lòng nhập họ tên!",
+				  	text: "Vui lòng nhập họ tên của bạn để hoàn tất thanh toán",
+				  	type: "input",
+				  	showCancelButton: true,
+				  	closeOnConfirm: false,
+				  	inputPlaceholder: "Nhập tên của bạn."
+				}, function (nameValue) {
+				  	if (nameValue === false) return false;
+				  	if (nameValue === "") {
+					    swal.showInputError("Bạn chưa nhập tên kìa!");
+				    	return false
+				  	}
+				  	swal({
+					  	title: "Vui lòng số điện thoại!",
+					  	text: "Số điện thoại của bạn là:",
+					  	type: "input",
+					  	showCancelButton: true,
+					  	closeOnConfirm: false,
+					  	inputPlaceholder: "Nhập số điện thoại của bạn.",
+					  	showLoaderOnConfirm: true
+					}, function (sdtValue) {
+					  	if (sdtValue === false) return false;
+					  	if (sdtValue === "") {
+						    swal.showInputError("Bạn chưa nhập số điện thoại kìa!");
+					    	return false
+					  	}
+					  	var token = localStorage.getItem('token');
+					  	var putData = {
+							"fullName": nameValue,
+							"phone": sdtValue
+						}
+						$.ajax({
+							url: MEMBER + '/' + id,
+							type: "PUT",
+							data: putData,
+							headers: {
+							    "Authorization": token
+							},
+							success: function(response){
+						    	$('#paymentform-name').val(response.fullName);
+						    	$('#paymentform-phone').val(response.phone);
+						    	swal("Cập nhật thông tin thành công!", "Hãy tiếp tục thanh toán nhé!", "success");
+						    	$('.loading').fadeOut();
+							},
+							error: function(jqXHR, textStatus, errorThrown) {
+						       swal("Lỗi!", "Có lỗi xảy ra!", "error");
+						    }
+						});
+					});
+				});
+			}
 	     	$('.loading').fadeOut();
 	    },
 	    error: function(jqXHR, textStatus, errorThrown) {
