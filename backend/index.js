@@ -9,7 +9,7 @@ mongoose.connect('mongodb://admin:admin@ds153577.mlab.com:53577/tthhngroup');
 mongoose.Promise = global.Promise;
 var jwt = require('jsonwebtoken');
 var app = express();
-var paypal_sdk = require('paypal-rest-sdk');
+
 app.use(cors());
 const fileUpload = require('express-fileupload');
 const path = require('path');
@@ -68,16 +68,6 @@ app.post('/_api/v1/images', upload.single('file'), function(req, res, next) {
     stream.end(req.file.buffer);
 });
 
-// PayPal SDK
-
-paypal.configure({
-    'mode': 'sandbox', //sandbox or live
-    'client_id': 'ATGv66JpXYIQRKgfybS3AECl62BZJpBnXBpwaiIsA5neL5IOJofWObknPS5nCtLph8QVHvpDUY48tAC7',
-    'client_secret': 'ELbEr6AkhwTOhKHvnFy5awDD11kiwS-acyY9MzM1iUj6PTavxSCF1UNQRdJrotET2UczcqjPBhynTDEa'
-});
-
-// End PayPal SDK
-
 app.use(fileUpload());
 app.use(express.static('./public'));
 app.use(bodyParser.json());
@@ -89,6 +79,8 @@ var gvRoute = require('./routes/gvRoute');
 gvRoute(app);
 var recycleBin = require('./routes/recycleBinRoute');
 recycleBin(app);
+var order = require('./routes/orderRoute');
+order(app);
 app.get('/', (req, res) => res.status(200).json({
 	"MEMBER": "/_api/v1/member    ----    Method: Post (Đăng ký thành viên)",
 	"MEMBER": "/_api/v1/member/:id    ---- Method: Get (Thông tin của 1 member), Put (Sửa thông tin của member (kèm authorization)), Delete (Xóa member (kèm authorization))",

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<link rel="icon" type="image/png" href="../img/favicon.png">
+  	<title>Affiliate</title>
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+ 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+ 	<link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+<body>
+	<div class="loading"><img src="../img/chonau.gif"></div>
+  	<div class="banner_top">
+    	<a href="javascript:void(0)"><img src="https://unica.vn/uploadmydang/top.jpg"></a>
+  	</div>
+  	<nav class="navbar navbar-inverse">
+      	<div class="container-fluid">
+	        <div class="navbar-header">
+    	        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        	      	<span class="icon-bar"></span>
+            	  	<span class="icon-bar"></span>
+              		<span class="icon-bar"></span>                        
+            	</button>
+            	<a class="navbar-brand" href="/">TTHHN Group</a>
+        	</div>
+        	<div class="collapse navbar-collapse" id="myNavbar">
+	            <ul class="nav navbar-nav">
+    	          	<li class="dropdown">
+                  	<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">Chủ Đề <span class="fa fa-bars"></span></span></a>
+                  	<ul class="dropdown-menu">
+                    	<li><a href="javascript:getChuDe('Công nghệ thông tin')"><i class="fa fa-caret-right"></i> Công nghệ thông tin</a></li>
+                    	<li><a href="javascript:getChuDe('Thiết kế - Nhiếp ảnh')"><i class="fa fa-caret-right"></i> Thiết kế - Nhiếp ảnh</a></li>
+                    	<li><a href="javascript:getChuDe('Sale - Marketing')"><i class="fa fa-caret-right"></i> Sale - Marketing</a></li>
+                    	<li><a href="javascript:getChuDe('Kinh doanh - Khởi nghiệp')"><i class="fa fa-caret-right"></i> Kinh doanh - Khởi nghiệp</a></li>
+                    	<li><a href="javascript:getChuDe('Phát triển cá nhân')"><i class="fa fa-caret-right"></i> Phát triển cá nhân</a></li>
+                    	<li><a href="javascript:getChuDe('Sức khỏe - Giới tính')"><i class="fa fa-caret-right"></i> Sức khỏe - Giới tính</a></li>
+                    	<li><a href="javascript:getChuDe('Nghệ thuật - Làm đẹp')"><i class="fa fa-caret-right"></i> Nghệ thuật - Làm đẹp</a></li>
+                    	<li><a href="javascript:getChuDe('Ngoại ngữ')"><i class="fa fa-caret-right"></i> Ngoại ngữ</a></li>
+                    	<li><a href="javascript:getChuDe('Nuôi dạy con')"><i class="fa fa-caret-right"></i> Nuôi dạy con</a></li>
+                  	</ul>
+              	</li>
+            	<li class="search">
+            		<form id="searchCourse" class="navbar-form navbar-left">
+                		<div class="input-group">
+                  			<input type="text" id="valCourse" class="form-control" placeholder="Tìm kiếm trên tthhn.vn">
+                  			<div class="input-group-btn">
+                      			<button class="btn btn-default" type="button">
+                        			<span class="glyphicon glyphicon-search"></span>
+                      			</button>
+                  			</div>
+                		</div>
+            		</form>
+              	</li>
+            </ul>
+	        <ul class="nav navbar-nav navbar-right">
+	            <li>
+	            	<a href="cart.html">
+	            		<i class="fa fa-shopping-cart"></i>
+	            		<span class="countCart">0</span>
+	            	</a>
+	            </li>
+	            <li class="dropdown" id="checkLogin">
+	            	<a href="javascript:void(0)" data-toggle="dropdown"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+	            	<ul class="dropdown-menu">
+				      	<li><a href="javascript:void(0)">Khóa học của tôi</a></li>
+				      	<li><a href="edit.html">Chỉnh sửa thông tin</a></li>
+				      	<li><a href="javascript:logout()">Đăng xuất</a></li>
+				    </ul>
+	            </li>
+	            <li id="checkSign"><a href="sign.html">Đăng Ký</a></li>
+	            <li id="checkSignTwo"><a href="login.html">Đăng Nhập</a></li>
+	        </ul>
+       	</div>
+	</nav>
+	<div class="abc">
+		<div class="slogan">
+			<h1>TRỞ THÀNH ĐỐI TÁC PHÂN PHỐI KHÓA HỌC CỦA TTHHN.COM</h1>
+		</div>
+		<div class="intro">
+			Khóa học chất - Hoa hồng cao - Dễ chia sẻ
+		</div>
+		<div class="link_dk">
+			<a href="javascript:void(0)" class=" btn btn-danger btn-add">Đăng Ký Ngay</a>
+		</div>
+	</div>
+	<div class="quay_quay">
+			<h2>AFFILIATE MARKETING LÀ GÌ?</h2>
+		<div class="video_affiliate">
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/LDh75ovBEdk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+		</div>
+			<div class="description_affiliate">
+				<p>Bạn được tạo 1 coupon với độ dài 4-20 ký tự (a-z,0-9), viết liền không dấu, không phân biệt chữ hoa chữ thường.Chia sẻ coupon này để nhận ngay hoa hồng Affiliate >=<span class="number_affiliate">30%</span> trên mỗi khóa học (học viên cũng được giảm học phí <span class="number_affiliate">40%</span> khi dùng coupon của bạn).</p>
+				<p>Bạn có thể tạo coupon affiliate <a href="#">Tại đây</a>.</p>
+			</div>
+		<div class="content_affiliate2">
+			<div class="title_affiliate2">
+				<h3>KIẾM TIỀN BẰNG CÁCH CHIA SẺ GIÁ TRỊ TỚI CỘNG ĐỒNG</h3>
+			</div>
+			<div class="hr_affiliate">
+				<hr>
+			</div>
+			<div class="description_affiliate2">
+				TTHHN là một siêu thị các khóa học trực tuyến (e-learning) hàng đầu tại Việt Nam. Sứ mệnh của TTHHN là đem tri thức tới 10 triệu người dân Việt Nam. Chúng tôi đã và đang hợp tác với nhiều giảng viên, diễn giả nổi tiếng để cho ra mắt hàng trăm khóa học phục vụ. Các bài giảng trên Unica được biên soạn công phu, nhu cầu học cao, dễ dàng chia sẻ. Bạn hãy cùng chúng tôi chia sẻ tri thức tới cộng đồng.
+			</div>
+		</div>
+		<div class="content_affiliate3">
+			<h3>3 BƯỚC KIẾM TIỀN VỚI TTHHN</h3>
+			<div class="boder_affiliate"></div>
+		</div>
+		<div class="row why quay_quay">
+			<div class="col-xs-6 col-sm-4">
+	  			<div>
+	 			 	<img src="https://unica.vn/images/link-1.png">
+				</div>
+				<div class="first">
+					<h4>1. LẤY LINK KHÓA HỌC</h4>
+					<p>Tìm khóa học bạn yêu thích. Click link AFFILIATE dành riêng cho bạn</p>
+				</div>
+			</div>
+	  		<div class="col-xs-6 col-sm-4">
+		  		<div>
+	 			 	<img src="https://unica.vn/images/link-2.png">
+	 			</div>
+	 			<div class="second">
+	 				<h4>2. CHIA SẺ KHÓA HỌC</h4>
+	 				<p>Chia sẻ link AFFILIATE trên Forum, Facebook, Blog, Email, chạy quảng cáo...</p>
+	 			</div>
+			</div>
+	  		<div class="clearfix visible-xs-block"></div>
+	  		<div class="col-xs-6 col-sm-4">
+	        	<div>
+	  				<img src="https://unica.vn/images/link-3.png">
+	  			</div>
+	  			<div class="third">
+	  				<h4>3. NHẬN TIỀN</h4>
+	  				<p>Nếu ai đó vào TTHHN mua khóa học qua link trên, bạn sẽ nhận được hoa hồng >=30%</p>
+	  			</div>
+			</div>
+		</div>
+		<div class="content_affiliate4">
+			<div class="title_affiliate3">
+				<h1>3 LÝ DO BẠN NÊN LÀM AFFILIATE VỚI UNICA</h1>
+			</div>
+			<div class="row why">
+				<div class="col-xs-6 col-sm-4">
+					<div class="img_affiliate">
+			  			<div class="img_affiliate1">
+			 			 	<img src="https://unica.vn/images/lydo-1.png">
+						</div>
+						<div class="first">
+							<p>Hoa hồng >= 30% khi có khách mua khóa học thành công</p>
+						</div>
+					</div>
+				</div>
+		  		<div class="col-xs-6 col-sm-4">
+		  			<div class="img_affiliate">
+			  			<div class="img_affiliate2">
+			 			 	<img src="https://unica.vn/images/lydo-2.png">
+			 			</div>
+			 			<div class="second">
+			 				<p>Khóa học chất lượng, cập nhật liên tục, nhu cầu cao, dễ chia sẻ</p>
+			 			</div>
+		  			</div>
+				</div>
+		  		<div class="clearfix visible-xs-block"></div>
+		  			<div class="col-xs-6 col-sm-4">
+		  				<div class="img_affiliate">
+				        	<div class="img_affiliate3">
+				  				<img src="https://unica.vn/images/lydo-3.png">
+				  			</div>
+				  			<div class="third">
+				  				<p>Báo cáo chính xác, Cập nhật trạng thái đơn hàng tức thì.</p>
+				  			</div>
+			  			</div>
+					</div>
+			</div>
+		</div>
+		<div class="title_affiliate3">
+			<div class="content_affiliate3">
+				<h2>CHƯƠNG TRÌNH AFFILIATE TẠI TTHHN.COM</h2>
+			</div>
+			<div class="ul_li_affiliate">
+				<ul>
+					<li class="mot">
+						<span>1</span>
+						<p>Hoa hồng >= 30% khi có khách mua khóa học thành công (PPS: Pay Per Sale)</p>
+					</li>
+					<li class="hai">
+						<span>2</span>
+						<p>Cookie trong 30 ngày. Khi ai đó vào TTHHN.COM qua link giới thiệu của bạn, nếu họ mua bất kỳ sự khoá học nào trong vòng 30 ngày thì bạn sẽ vẫn được chia hoa hồng.
+					</li>
+					<li class="ba">
+						<span>3</span>
+						<p>Cookie được ghi nhận trên tất cả các trang. Nghĩa là, bạn giới thiệu khách vào khóa A, nhưng khách mua khóa B thì bạn vẫn được chia sẻ hoa hồng</p>
+					</li>
+					<li class="bon">
+						<span>4</span>
+						<p>Lastclick: Nếu có nhiều người cùng giới thiệu 1 khách hàng, thì người giới thiệu cuối cùng sẽ được hưởng hoa hồng.</p>
+					</li>
+					<li class="nam">
+						<span>5</span>
+						<p>ReMarketing không đè cookie của Affiliate. Nếu khách mua ngay khi bấm vào link quảng cáo của marketing đơn tính cho marketing. Nếu sau 1 giờ khách quay trở lại mua thì vẫn tính cho affiliate.</p>
+					</li>
+					<li class="sau">
+						<span>6</span>
+						<p>Thanh toán ngày 15 hàng tháng. Hạn mức thanh toán: 200.000đ. Nếu thu nhập của bạn chưa đạt mức thanh toán tối thiểu sẽ được cộng dồn sang tháng tiếp theo.</p>
+					</li>
+					<li class="bay">
+						<span>7</span>
+						<p>Kênh nhận tiền hoa hồng: Paypal, Ngân lượng, Ngân hàng (Cài đặt thanh toán)</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="title_affiliate5">
+			<div class="content_affiliate5">
+				<h3>GIỚI THIỆU KHÓA HỌC CỦA TTHHN NGAY HÔM NAY</h2>
+			</div>
+			<div class="link_dk2">
+				<button class=" btn btn-danger btn-add"><a href="#">Lấy Link AFF</a></button>
+			</div>
+			<div class="content_affiliate5">
+				<h3>CẢM ƠN BẠN ĐÃ CỘNG TÁC CÙNG TTHHN</h2>
+			</div>
+		</div>
+
+	</div>
+    <footer>
+    	<div class="container">
+			<div class="row">
+				<div class="col-sm-3">
+					<div>
+						<ul class="item-list">
+							<li><a href="gioithieu.html">Giới thiệu về Tthhn</a>
+							</li>
+							<li><a href="faq.html">Câu hỏi thường gặp</a></li>
+							<li><a href="tos.html">Điều khoản dịch vụ</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div>
+						<ul class="item-list">
+								<li><a href="pay.html">Hướng dẫn thanh toán</a></li>
+								<li><a href="#">Affiliate</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="link">
+						<ul class="item-list">
+							<li><span class="fa fa-phone" aria-hidden="true"></span> 0979289939</li>
+							<li><span class="fa fa-clock-o" aria-hidden="true"></span> 8:00 - 22:00 hàng ngày</li>
+							<li><span class="fa fa-envelope" aria-hidden="true"></span> cskh@tthhn.vn</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-sm-3 downloadApp">
+					<h5><strong>Tải App Tthhn</strong></h5>
+					<div class="row">
+						<a href="javascript:void(0)"><img src="https://unica.vn/icon/appstore.png"></a>
+						<a href="javascript:void(0)"><img src="https://unica.vn/icon/playstore.png"></a>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<div class="foo"><strong>&copy; Học viện Online TTHHN - Hệ thống đào tạo trực tuyến dành cho người đi làm - Cổng kết nối Chuyên gia với Học viên</strong>
+		</div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <script type="text/javascript" src="../js/home.js"></script>
+</body>
+</html>
