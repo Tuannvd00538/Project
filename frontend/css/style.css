@@ -1179,75 +1179,6 @@ margin: 10px 0 10px;
 	font-size: 17px;
 <<<<<<< HEAD
 }
-/*moi*/
-.sidebar-left {
-	padding: 15px 0;
-	background-color: #2a3f54;
-	float: left;
-	width: 100%;
-}
-.user-info {
-	float: left;
-	width: 90%;
-	margin:0 5%;
-}
-.images1 {
-	float: left;
-	max-width: 25%;
-	border-radius: 50%;
-	overflow: hidden;
-	margin: 0 15px 0 0;
-}
-.name1 {
-	color: white;
-	font-weight: bold;
-	font-size: 12px;
-	padding: 15px 0 0 0;
-}
-.user-menu {
-	float: left;
-	width: 100%;
-}
-#main-content .breadcrumb {
-	background: none;
-	padding: 0;
-	border-radius: 0;
-	margin: 20px 0;
-}
-#main-content .main-inner {
-	background-color: #fff;
-	border-radius: 5px;
-}
-.page-header {
-	font-size: 18px;
-	margin: 0;
-	padding: 15px;
-	color: #000;
-	text-transform: uppercase;
-}
-.user-menu .content h3 {
-	font-weight: bold;
-	font-size: 16px;
-	margin: 0 0 0 0;
-	padding: 10px;
-	background-color: #405d7a;
-	text-transform: uppercase;
-	color: white;
-}
-.flR-Top {
-	float: right;
-}
-.user-menu .content {
-	margin: 10px 0 0 0;
-}
-.user-menu .content ul li a {
-	color: white;
-	padding: 7px 10px 7px 20px;
-	display: block;
-=======
->>>>>>> bb680219d15624faaf74c4138fc557e6119d97f1
-}
------------------------------------------------
 .ul_li_affiliate ul li{
     margin: 0 0 25px 0;
     color: #464646;
@@ -1321,5 +1252,4 @@ margin: 10px 0 10px;
 
 .ul_li_affiliate ul{
 	list-style: none;
->>>>>>> 037eba0af721bbef7c789b2181e28e591b7fdef1
 }
