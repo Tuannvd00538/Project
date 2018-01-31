@@ -113,20 +113,27 @@
                 <label>Mô Tả</label> <span class="motaerr"></span>
                 <textarea id="mota" name="mota" rows="5" type="text" class="form-control" placeholder="Mô Tả Về Giảng Viên"></textarea>
             </div>
-            <div style="display: none;" class="form-group row">
-              <label>Ảnh Đại Diện</label>
-              <input value="" id="anhdaidien" name="anhdaidien" type="text" class="form-control" placeholder="Link Ảnh Đại Diện">
-            </div>
-            <div class="row form-group">
-              <label>Ảnh Đại Diện</label><span class="avterr"></span>
-              <label id="selectavt" class="btn btn-default form-control" for="my-file-selector">
-                <input id="my-file-selector" type="file" name="file" style="display:none">
-                Chọn Ảnh Đại Diện
-              </label>
-            </div>
-            <span id="deleteavt" aria-hidden="true">&nbsp;&nbsp;<i class="fa fa-times"></i></span>
             <div class="form-group row">
-              <img id="viewavt" src="">
+                <label>Ảnh Đại Diện</label> <span class="avterr"></span>
+                <div class="input-group image-preview">
+                  <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+                  <span class="input-group-btn">
+                      <!-- image-preview-clear button -->
+                      <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                          <span class="glyphicon glyphicon-remove"></span> Xóa
+                      </button>
+                      <!-- image-preview-input -->
+                      <div class="btn btn-default image-preview-input">
+                          <span class="glyphicon glyphicon-folder-open"></span>
+                          <span class="image-preview-input-title">Chọn Ảnh</span>
+                          <input id="inputchange" type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/>
+                      </div>
+                  </span>
+                </div><!-- /input-group image-preview [TO HERE]--> 
+                <div style="display: none;" class="form-group row">
+                  <label>Ảnh Đại Diện</label>
+                  <input value="" id="anhdaidien" name="anhdaidien" type="text" class="form-control" placeholder="Link Ảnh Đại Diện">
+                </div>
             </div>
           </div>
         </div>

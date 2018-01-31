@@ -211,7 +211,8 @@ $(document).ready(function(){
 	      $('.tgerr').attr('style', 'display: none');
 	    }
 	    if (anhmota.length == 0) {
-	      $('.avterr').text('Bạn chưa chọn ảnh mô tả!');
+	      $('.avterr').text('Ảnh mô tả chưa sẵn sàng!');
+	      $('.popover-title').html('<strong class="uploading">Vui Lòng Chờ Tới Khi Hoàn Tất ...</strong>');
 	    } 
 	     else {
 	      $('.avterr').attr('style', 'display: none');
@@ -315,7 +316,8 @@ $(document).ready(function(){
       $('.skherr').attr('style', 'display: none');
     }
     if (anhdaidien.length == 0) {
-      $('.avterr').text('Bạn chưa chọn ảnh đại diện!');
+      $('.avterr').text('Ảnh đại diện chưa sẵn sàng!');
+      $('.popover-title').html('<strong class="uploading">Vui Lòng Chờ Tới Khi Hoàn Tất ...</strong>');
     } 
      else {
       $('.avterr').attr('style', 'display: none');
@@ -362,17 +364,19 @@ function xoakhoahoc(id) {
 	  type: "warning",
 	  showCancelButton: true,
 	  confirmButtonClass: "btn-danger",
-	  confirmButtonText: "Yes, delete it!",
+	  confirmButtonText: "Xóa",
 	  closeOnConfirm: false
 	},
 	function(){
-	  swal("Thành Công", "Bạn đã xóa thành công khóa học này !", "success");
 	  $.ajax({
 			url: 'https://project-tthhn.appspot.com/_api/v1/course/'+id+'',
 			type: "DELETE",
 			data: {},
+			headers: {
+				Authorization: token
+			},
 			success: function(reponse) {
-				swal("Xóa Thành Công", "Đã Xóa Khóa Học", "success");
+				swal("Thành Công", "Bạn đã xóa thành công khóa học này !", "success");
 				location.reload(2000);
 			},
 			error: function() {
@@ -480,17 +484,19 @@ function xoagiangvien(id) {
 	  type: "warning",
 	  showCancelButton: true,
 	  confirmButtonClass: "btn-danger",
-	  confirmButtonText: "Có ! Xóa",
+	  confirmButtonText: "Xóa",
 	  closeOnConfirm: false
 	},
 	function(){
-	  swal("Thành Công !", "Bạn đã xóa thành công giảng viên này !.", "success");
 		$.ajax({
 			url: 'https://project-tthhn.appspot.com/_api/v1/giangvien/'+id+'',
 			type: "DELETE",
 			data: {},
+			headers: {
+				Authorization: token
+			},
 			success: function(reponse) {
-				swal("Xóa Thành Công", "Đã Xóa Giảng Viên", "success");
+				swal("Thành Công !", "Bạn đã xóa thành công giảng viên này !.", "success");
 				location.reload(2000);
 			},
 			error: function() {
@@ -847,8 +853,9 @@ function khoiphucgv(id) {
 // UPLOAD ẢNH
 
 $(document).ready(function($http){
-	$('#deleteavt').hide();   
     $('input[type="file"]').change(function(e){
+    	$('#anhdaidien').val('');
+        $('#anhmota').val('');   
         var input = document.getElementById('my-file-selector');       
         var data = new FormData();
         data.append('file', e.target.files[0]);
@@ -859,26 +866,17 @@ $(document).ready(function($http){
            processData: false,  // tell jQuery not to process the data
            contentType: false ,
            success:function (req,response,data) {
+           	 	$('.popover-title').html('<strong class="uploadok">Hoàn Tất !</strong>');
+           	 	$('.avterr').text('');
+           	 	$('.avterr').text('');
            		$('#anhdaidien').val(data.responseText);
-           		$('#anhmota').val(data.responseText);
-           		$('#selectavt').hide();
-           		$('#viewavt').attr('src', data.responseText);  
-           		$('#deleteavt').show();         
+           		$('#anhmota').val(data.responseText);   
             }
         });
     });
 
 });
 
-// REMOVE ẢNH
-
-$('#deleteavt').click(function () {
-	$('#anhdaidien').val('');
-	$('#anhmota').val('');
-	$('#viewavt').attr('src', '');
-	$('#deleteavt').hide();
-	$('#selectavt').show();
-});
 
 // ĐỔI MẬT KHẨU
 
@@ -1046,11 +1044,63 @@ $(function(){
 
 });
 
-// LOADING PAGE
+// UPLOAD ẢNH
 
-// $body = $("body");
-// $(document).on({
-//     ajaxStart: function() { $body.addClass("loading");   },
-//     ajaxStop: function() { $body.removeClass("loading"); }    
-// });
+$(document).on('click', '#close-preview', function(){ 
+    $('.image-preview').popover('hide');
+    // Hover befor close the preview
+    $('.image-preview').hover(
+        function () {
+           $('.image-preview').popover('show');
+        }, 
+         function () {
+           $('.image-preview').popover('hide');
+        }
+    );    
+});
 
+$(function() {
+    // Create the close button
+    var closebtn = $('<button/>', {
+        type:"button",
+        text: 'x',
+        id: 'close-preview',
+        style: 'font-size: initial;',
+    });
+    closebtn.attr("class","close pull-right");
+    // Set the popover default content
+    $('.image-preview').popover({
+        trigger:'manual',
+        html:true,
+        title: "<strong>Đang Tải Lên...Vui Lòng Chờ...</strong>",
+        content: "Không có ảnh nào được chọn!",
+        placement:'bottom'
+    });
+    // Clear event
+    $('.image-preview-clear').click(function(){
+        $('.image-preview').attr("data-content","").popover('hide');
+        $('.image-preview-filename').val("");
+        $('.image-preview-clear').hide();
+        $('.image-preview-input input:file').val("");
+        $(".image-preview-input-title").text("Browse"); 
+    }); 
+    // Create the preview image
+    $(".image-preview-input input:file").change(function (){     
+        var img = $('<img/>', {
+            id: 'dynamic',
+            width:250,
+            height:200
+        });      
+        var file = this.files[0];
+        var reader = new FileReader();
+        // Set preview image into the popover data-content
+        reader.onload = function (e) {
+            $(".image-preview-input-title").text("Thay Đổi");
+            $(".image-preview-clear").show();
+            $(".image-preview-filename").val(file.name);            
+            img.attr('src', e.target.result);
+            $(".image-preview").attr("data-content",$(img)[0].outerHTML).popover("show");
+        }        
+        reader.readAsDataURL(file);
+    });  
+});
