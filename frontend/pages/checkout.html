@@ -174,10 +174,8 @@
                   <input id="check5" type="radio" name="thanhtoan"> <img class="phuongthuc" src="https://media.kyna.vn/img/checkout/transfer.png"> <span>Chuyển khoản Ngân hàng</span>
                 </div></label>
               </div>
-              <div class="col-md-6">
-                <label><div class="form-group selectCO">
-                  <input id="check6" type="radio" name="thanhtoan"> <img class="phuongthuc" src="https://i0.wp.com/investcorrectly.com/wp-content/uploads/2015/02/paypal.png"> <span>Thanh toán qua paypal</span>
-                </div></label>
+              <div class="col-md-6" style="padding: 15px 35px;">
+                <div id="paypal-button-container"></div>
               </div>
               <div id="chuyenkhoan" class="col-md-10 thongtin">
                 <ul>
@@ -246,7 +244,6 @@
               <div class="panel-body">
                 <center>
                   <a href="javascript:Payment()" class="btn btn-warning btn-lg btn-block"><strong>THANH TOÁN</strong></a>
-                  <div id="paypal-button"></div>
                 </center>
               </div>
             </div>
@@ -301,40 +298,5 @@
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     <script type="text/javascript" src="../js/home.js"></script>
-    <script>
-      paypal.Button.render({
-
-          env: 'sandbox', // Or 'sandbox'
-
-          client: {
-              sandbox:    'ATNg_IgcVzGOTZIT3GknU3kyxFVXED9ITbA8CQ93-cu_hLvGwvTruK_tvs9NXvHIv1YC5GISICNpMH_2',
-              production: 'ATNg_IgcVzGOTZIT3GknU3kyxFVXED9ITbA8CQ93-cu_hLvGwvTruK_tvs9NXvHIv1YC5GISICNpMH_2'
-          },
-
-          commit: true, // Show a 'Pay Now' button
-
-          payment: function(data, actions) {
-              return actions.payment.create({
-                  payment: {
-                      transactions: [
-                          {
-                              amount: { total: '1.00', currency: 'USD' }
-                          }
-                      ]
-                  }
-              });
-          },
-
-          onAuthorize: function(data, actions) {
-              return actions.payment.execute().then(function(payment) {
-
-                  // The payment is complete!
-                  // You can now show a confirmation message to the customer
-                  alert('Okie, done!');
-              });
-          }
-
-      }, '#paypal-button');
-  </script>
 </body>
 </html>

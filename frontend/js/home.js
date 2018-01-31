@@ -289,7 +289,8 @@ function sendCart(id) {
 	var price = $('#pcNow').text();
 	var price2 = price.replace(",", "");
 	var GiaKhoaHoc = price2.replace("$", "");
-	addToCart(id, TenKhoaHoc, GiangVien, ChuDe, GiaKhoaHoc);
+	var thumbnail = $('#imgKH').attr('src');
+	addToCart(id, TenKhoaHoc, GiangVien, ChuDe, GiaKhoaHoc, thumbnail);
 }
 function loadCart() {
 	var listCart = localStorage.getItem('listCart');
@@ -327,7 +328,7 @@ function loadCart() {
 	$('.panel-footer').html('Tổng đơn hàng: ' + Math.round(totalPrice) + '<sup>$</sup>');
 	$('.loading').fadeOut();
 }
-function addToCart(MaKhoaHoc, TenKhoaHoc, GiangVien, ChuDe, GiaKhoaHoc) {
+function addToCart(MaKhoaHoc, TenKhoaHoc, GiangVien, ChuDe, GiaKhoaHoc, thumbnail) {
 	var listCart = localStorage.getItem('listCart');
 	if (listCart == null) {
 		listCart = [
@@ -337,7 +338,8 @@ function addToCart(MaKhoaHoc, TenKhoaHoc, GiangVien, ChuDe, GiaKhoaHoc) {
 				'TenKhoaHoc': TenKhoaHoc,
 				'GiangVien': GiangVien,
 				'ChuDe': ChuDe,
-				'GiaKhoaHoc': GiaKhoaHoc
+				'GiaKhoaHoc': GiaKhoaHoc,
+				'Thumbnail': thumbnail
 			}
 		]
 		localStorage.setItem("cart", 1);
@@ -372,7 +374,8 @@ function addToCart(MaKhoaHoc, TenKhoaHoc, GiangVien, ChuDe, GiaKhoaHoc) {
 					'TenKhoaHoc': TenKhoaHoc,
 					'GiangVien': GiangVien,
 					'ChuDe': ChuDe,
-					'GiaKhoaHoc': GiaKhoaHoc
+					'GiaKhoaHoc': GiaKhoaHoc,
+					'Thumbnail': thumbnail
 				});
 				localStorage.setItem("cart", totalCart + 1);
 				$('.countCart').text(totalCart + 1);
@@ -381,11 +384,18 @@ function addToCart(MaKhoaHoc, TenKhoaHoc, GiangVien, ChuDe, GiaKhoaHoc) {
 				setTimeout(function(){ $('#snackbar').removeClass('show'); }, 3000);
 			}
 		}
-	}
+	}	
 	localStorage.setItem('listCart', JSON.stringify(listCart));
 };
 function checkOut() {
+	var token = localStorage.getItem('token');
+	if (token == null || token == undefined) {
+		window.location.href = "/pages/login.html";
+	}
 	var listCart = localStorage.getItem('listCart');
+	if (listCart == null || listCart == undefined) {
+		window.location.href = "/";
+	}
 	listCart = JSON.parse(listCart);
 	$('.soKhoaHoc').text(listCart.length + ' Khóa học');
 	var cartContent = '';
@@ -403,7 +413,6 @@ function checkOut() {
 		totalPrice += listCart[i].GiaKhoaHoc * 1;
 	}
 	$('.hocPhiGoc').html(Math.round(totalPrice) + '<sup>$</sup>');
-	$('.loading').fadeOut();
 	var token = localStorage.getItem('token');
 	if (token == null || token == undefined) {
 		$('.ifLogin').attr('style', 'display:block;');
@@ -425,6 +434,47 @@ function checkOut() {
 		    }
 		});
 	}
+	paypal.Button.render({
+      env: 'sandbox',
+      style: {
+          label: 'paypal',
+          size:  'responsive',
+          shape: 'rect',
+          color: 'blue',
+          tagline: false
+      },
+      client: {
+          sandbox:    'ATGv66JpXYIQRKgfybS3AECl62BZJpBnXBpwaiIsA5neL5IOJofWObknPS5nCtLph8QVHvpDUY48tAC7',
+          production: '<insert production client id>'
+      },
+      payment: function(data, actions) {
+      	var username = localStorage.getItem('username');
+      	var email = $('#paymentform-email').val();
+      	var name = $('#paymentform-name').val();
+      	var phone = $('#paymentform-phone').val();
+      	if (email == null || name == null || phone == null || email == undefined || name == undefined || phone == undefined) {
+      		window.location.href = "/pages/login.html";
+      	} else if (email != null && name != null && phone != null || email != undefined && name != undefined && phone != undefined) {
+			return actions.payment.create({
+              payment: {
+                  transactions: [
+                      {
+                          amount: { total: Math.round(totalPrice), currency: 'USD' }
+                      }
+                  ]
+              }
+          });
+		}
+      },
+      onAuthorize: function(data, actions) {
+          return actions.payment.execute().then(function() {
+              localStorage.setItem('orderID', data.orderID);
+              localStorage.setItem('paymentID', data.paymentID);
+          });
+      }
+
+  }, '#paypal-button-container');
+	$('.loading').fadeOut();
 }
 function deleteCart() {
 	swal({
@@ -805,5 +855,5 @@ function savePsw() {
 	}
 }
 function Payment() {
-	alert('Chức năng đang phát triển :)');
+	alert('Chức năng đang phát triển!');	
 }
