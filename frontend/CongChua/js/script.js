@@ -854,6 +854,8 @@ function khoiphucgv(id) {
 
 $(document).ready(function($http){
     $('input[type="file"]').change(function(e){
+    	$('#anhdaidien').val('');
+        $('#anhmota').val('');   
         var input = document.getElementById('my-file-selector');       
         var data = new FormData();
         data.append('file', e.target.files[0]);
