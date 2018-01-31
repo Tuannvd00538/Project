@@ -877,7 +877,7 @@ footer ul li {
 	margin: 30px;
 }
 .user-avatar .file-upload:hover::after{
-	content:"Đổi hình";
+	content:"Đổi avatar";
 	position:absolute;
 	top:0;
 	left:0;
@@ -1153,9 +1153,6 @@ margin: 10px 0 10px;
 	padding-bottom: 10px;
 }
 
-.why {
-
-}
 .btn-add {
 	padding: 10px;
 	width: 160px;
@@ -1182,10 +1179,9 @@ margin: 10px 0 10px;
 }
 .map {
 	font-size: 17px;
->>>>>>> bb680219d15624faaf74c4138fc557e6119d97f1
 }
 -----------------------------------------------
-.ul_li_affiliate ul li{
+.ul_li_affiliate ul li {
     margin: 0 0 25px 0;
     color: #464646;
     font-size: 16px;
