@@ -766,13 +766,13 @@ a {
   border: none;
 }
 
-.piccourse {
+.pic,.picgvv {
   text-align: center;
   border-radius: 5px;
   padding: 10px;
 }
 
-#piccourse {
+#pic,#picgv {
   border-radius: 5px;
 }
 /*.piccoursenone {
