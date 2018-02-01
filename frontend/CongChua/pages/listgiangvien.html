@@ -148,30 +148,59 @@
         <h3 class="modal-title" id="lineModalLabel">Sửa Giảng Viên</h3>
       </div>
         <form>
-            <div class="form-group reg_name col-md-6">
-                <label>Mã Giảng Viên</label>
-                <input id="magiangvienput" type="text" class="form-control" placeholder="Mã Giảng Viên">
-            </div>
-            <div class="form-group reg_name col-md-6">
-                <label>Tên Giảng Viên</label>
-                <input id="tengiangvienput" type="text" class="form-control" placeholder="Tên Giảng Viên">
-            </div>
-            <div class="form-group reg_name col-md-6">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                  <label>Mã Giảng Viên</label>
+                  <input id="magiangvienput" type="text" class="form-control" placeholder="Mã Giảng Viên">
+              </div>
+              <div class="form-group row">
                 <label>Chủ Đề Giảng Dạy</label>
                 <textarea id="chudegiangdayput" rows="5" type="text" class="form-control" placeholder="Chủ Đề Giảng Dạy"></textarea>
-            </div>
-            <div class="form-group reg_name col-md-6">
-                <label>Mô Tả</label>
-                <textarea id="motaput" rows="5" type="text" class="form-control" placeholder="Mô Tả Về Giảng Việt"></textarea>
-            </div>
-            <div class="form-group reg_name col-md-6">
+              </div>
+              <div class="form-group row">
                 <label>Số Khóa Học</label>
                 <input id="sokhoahocput" type="text" class="form-control" placeholder="Số Khóa Học">
+              </div>
             </div>
-            <div class="form-group reg_name col-md-6">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label>Tên Giảng Viên</label>
+                <input id="tengiangvienput" type="text" class="form-control" placeholder="Tên Giảng Viên">
+              </div>
+              <div class="form-group row">
+                <label>Mô Tả</label>
+                <textarea id="motaput" rows="5" type="text" class="form-control" placeholder="Mô Tả Về Giảng Việt"></textarea>
+              </div>
+               <div class="form-group row">
+                  <label>Ảnh Khóa Học</label>
+                 <!--  <input id="anhmotaput" type="text" class="form-control" placeholder="Ảnh Mô Tả"> -->
+                  <div class="input-group image-preview">
+                    <input id="inputfilename" type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+                    <span class="input-group-btn">
+                        <!-- image-preview-clear button -->
+                        <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                            <span class="glyphicon glyphicon-remove"></span> Xóa
+                        </button>
+                        <!-- image-preview-input -->
+                        <div class="btn btn-default image-preview-input">
+                            <span class="glyphicon glyphicon-folder-open"></span>
+                            <span class="image-preview-input-title">Chọn Ảnh</span>
+                            <input id="inputchange" type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/>
+                        </div>
+                    </span>
+                  </div><!-- /input-group image-preview [TO HERE]--> 
+                  <input style="display: none;" id="anhdaidienput" type="text" name="">
+                  <div class="pic">
+                       <img style="width: 400px;" id="picgv" src="">
+                  </div>
+                </div>
+           <!--    <div class="form-group row">
                 <label>Ảnh Đại Diện</label>
                 <input id="anhdaidienput" type="text" class="form-control" placeholder="Ảnh Đại Diện">
+              </div> -->
             </div>
+          </div>
         </form>
       <div class="modal-footer">
         <div class="btn-group btn-group-justified" role="group" aria-label="group button">

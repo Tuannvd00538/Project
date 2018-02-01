@@ -411,7 +411,7 @@ function suakhoahoc(id) {
 			$('#anhmotaput').val(reponse.Thumbnail);
 			$('.image-preview-filename').val(reponse.Thumbnail);
 			$('.image-preview-filename').prop("disabled", false);
-			$('#piccourse').attr('src', reponse.Thumbnail);
+			$('#pic').attr('src', reponse.Thumbnail);
 			$('#trangthaiput').val(reponse.TrangThai);
 			$('#khmodal').modal();
 
@@ -522,6 +522,9 @@ function suagiangvien(id) {
 			$('#motaput').val(reponse.MoTa);
 			$('#sokhoahocput').val(reponse.SoKhoaHoc);
 			$('#anhdaidienput').val(reponse.AnhDaiDien);
+			$('.image-preview-filename').val(reponse.AnhDaiDien);
+			$('.image-preview-filename').prop("disabled", false);
+			$('#picgv').attr('src', reponse.AnhDaiDien);
 			$('#gvmodal').modal();
 
 		$('#saveputgv').click(function () {
@@ -875,7 +878,9 @@ $(document).ready(function($http){
            		$('#anhdaidien').val(data.responseText);
            		$('#anhmota').val(data.responseText);
            		$('#anhmotaput').val(data.responseText);
-           		$('#piccourse').attr('src',data.responseText);
+           		$('#anhdaidienput').val(data.responseText);
+           		$('#pic').attr('src',data.responseText);
+           		$('#picgv').attr('src',data.responseText);
            		$('.image-preview-filename').val(data.responseText);
 				$('.image-preview-filename').prop("disabled", false);
            		$('.popover').hide();   
