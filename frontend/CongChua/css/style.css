@@ -766,7 +766,7 @@ a {
   border: none;
 }
 
-.pic,.picgvv {
+.pic {
   text-align: center;
   border-radius: 5px;
   padding: 10px;
@@ -775,6 +775,28 @@ a {
 #pic,#picgv {
   border-radius: 5px;
 }
-/*.piccoursenone {
-  text-align: left;
-}*/
+
+.page-title {
+  color: black;
+  font-weight: bold;
+}
+
+.tokenfail {
+  color: red;
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px;
+  font-style: italic;
+}
+
+.tokenfailtitle {
+  color: red;
+  font-weight: bold;
+}
+
+#logouttoken {
+  color: black;
+  text-decoration: underline;
+}
+
