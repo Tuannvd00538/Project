@@ -25,6 +25,11 @@ $(document).ready(function () {
 		$('#checkSign').attr('style', 'display:none;');
 		$('#checkSignTwo').attr('style', 'display:none;');
 	}
+	window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+	d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+	_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+	$.src="https://v2.zopim.com/?5SBzz9cH0cfBaktuvUjBsuCBCjT1NrUC";z.t=+new Date;$.
+	type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
 });
 function search() {
     $.ajax({
@@ -180,6 +185,7 @@ function detailCourse() {
 	    	$('#desKH').text(response.MoTa);
 	    	$('#gvKH').text(response.GiangVien);
 	    	$('#gvKH').attr('href', 'lecturers.html?id=' + response.GiangVienID);
+	    	$('#getIDGV').attr('value', response.GiangVienID);
 	    	$('#cdKH').text(response.ChuDe);
 	    	$('#cdKH').attr('href', '/course.html?key=' + response.ChuDe);
 	    	$('#imgKH').attr("src", response.Thumbnail);
@@ -290,7 +296,8 @@ function sendCart(id) {
 	var price2 = price.replace(",", "");
 	var GiaKhoaHoc = price2.replace("$", "");
 	var thumbnail = $('#imgKH').attr('src');
-	addToCart(id, TenKhoaHoc, GiangVien, ChuDe, GiaKhoaHoc, thumbnail);
+	var GiangVienID = $('#getIDGV').val();
+	addToCart(id, TenKhoaHoc, GiangVien, ChuDe, GiaKhoaHoc, thumbnail, GiangVienID);
 }
 function loadCart() {
 	var listCart = localStorage.getItem('listCart');
@@ -328,7 +335,7 @@ function loadCart() {
 	$('.panel-footer').html('Tổng đơn hàng: ' + Math.round(totalPrice) + '<sup>$</sup>');
 	$('.loading').fadeOut();
 }
-function addToCart(MaKhoaHoc, TenKhoaHoc, GiangVien, ChuDe, GiaKhoaHoc, thumbnail) {
+function addToCart(MaKhoaHoc, TenKhoaHoc, GiangVien, ChuDe, GiaKhoaHoc, thumbnail, GiangVienID) {
 	var listCart = localStorage.getItem('listCart');
 	var customerId = localStorage.getItem('id');
 	if (listCart == null) {
@@ -341,7 +348,8 @@ function addToCart(MaKhoaHoc, TenKhoaHoc, GiangVien, ChuDe, GiaKhoaHoc, thumbnai
 					'GiangVien': GiangVien,
 					'ChuDe': ChuDe,
 					'GiaKhoaHoc': GiaKhoaHoc,
-					'Thumbnail': thumbnail
+					'Thumbnail': thumbnail,
+					'GiangVienID': GiangVienID
 				}
 			]
 		}
@@ -378,7 +386,8 @@ function addToCart(MaKhoaHoc, TenKhoaHoc, GiangVien, ChuDe, GiaKhoaHoc, thumbnai
 					'GiangVien': GiangVien,
 					'ChuDe': ChuDe,
 					'GiaKhoaHoc': GiaKhoaHoc,
-					'Thumbnail': thumbnail
+					'Thumbnail': thumbnail,
+					'GiangVienID': GiangVienID
 				});
 				localStorage.setItem("cart", totalCart + 1);
 				$('.countCart').text(totalCart + 1);
@@ -390,6 +399,14 @@ function addToCart(MaKhoaHoc, TenKhoaHoc, GiangVien, ChuDe, GiaKhoaHoc, thumbnai
 	}	
 	localStorage.setItem('listCart', JSON.stringify(listCart));
 };
+function randomOrderID() {
+	var date = Date.now();
+  	var text = "";
+  	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" + date;
+  	for (var i = 0; i < 20; i++)
+    	text += possible.charAt(Math.floor(Math.random() * possible.length));
+  	return text;
+}
 function checkOut() {
 	var token = localStorage.getItem('token');
 	if (token == null || token == undefined) {
