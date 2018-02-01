@@ -400,7 +400,7 @@ function checkOut() {
 		window.location.href = "/";
 	}
 	listCart = JSON.parse(listCart);
-	$('.soKhoaHoc').text(listCart.course.length + ' Khóa học');
+	$('.soKhoaHoc').text(listCart.course.length + ' khóa học');
 	var cartContent = '';
 	for (var i = 0; i < listCart.course.length; i++) {
 		cartContent += '<div class="row ttkh">';
