@@ -631,7 +631,7 @@ td img {
 
 /*LOADING*/
 
-.modalload {
+/*.modalload {
   display:    none;
   position:   fixed;
   z-index:    1000;
@@ -649,7 +649,7 @@ body.loading {
 }
 body.loading .modal {
   display: block;
-}
+}*/
 
 .viewindex,.viewindex2,.viewindex3,.viewindex4 {
   color: black;
@@ -672,11 +672,12 @@ body.loading .modal {
 
 .modal-dialog:not(.dialog) {
   width: 100%;
-
+  border: none;
   padding: 0 100px;
 }
 
 .modal-content:not(.content) {
+  border: none;
   height: auto;
   min-height: 100%;
   border-radius: 0;
@@ -685,6 +686,7 @@ body.loading .modal {
 
 .modal-header:not(.header),.modal-footer:not(.footer) {
   border-bottom: none;
+  border: none;
 }
 
 .modalbody:not(.body) {
@@ -763,3 +765,16 @@ a {
   color: red;
   border: none;
 }
+
+.piccourse {
+  text-align: center;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+#piccourse {
+  border-radius: 5px;
+}
+/*.piccoursenone {
+  text-align: left;
+}*/

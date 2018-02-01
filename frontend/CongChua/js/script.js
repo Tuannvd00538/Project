@@ -409,6 +409,9 @@ function suakhoahoc(id) {
 			$('#thoigianput').val(reponse.SoPhutHoc);
 			$('#tukhoaput').val(reponse.TuKhoa);
 			$('#anhmotaput').val(reponse.Thumbnail);
+			$('.image-preview-filename').val(reponse.Thumbnail);
+			$('.image-preview-filename').prop("disabled", false);
+			$('#piccourse').attr('src', reponse.Thumbnail);
 			$('#trangthaiput').val(reponse.TrangThai);
 			$('#khmodal').modal();
 
@@ -870,7 +873,12 @@ $(document).ready(function($http){
            	 	$('.avterr').text('');
            	 	$('.avterr').text('');
            		$('#anhdaidien').val(data.responseText);
-           		$('#anhmota').val(data.responseText);   
+           		$('#anhmota').val(data.responseText);
+           		$('#anhmotaput').val(data.responseText);
+           		$('#piccourse').attr('src',data.responseText);
+           		$('.image-preview-filename').val(data.responseText);
+				$('.image-preview-filename').prop("disabled", false);
+           		$('.popover').hide();   
             }
         });
     });

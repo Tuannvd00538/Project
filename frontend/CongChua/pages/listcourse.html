@@ -149,92 +149,115 @@
     </div>
     <div class="modalbody">
       <form>
-        <div class="form-group reg_name col-md-6">
-            <label>Mã Khóa Học</label>
-            <input id="makhoahocput" type="text" class="form-control" placeholder="Mã Khóa Học">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label>Mã Khóa Học</label>
+              <input id="makhoahocput" type="text" class="form-control" placeholder="Mã Khóa Học">
+            </div>
+            <div class="form-group row">
+              <label>Mô Tả</label>
+              <textarea id="motaput" rows="5" type="text" class="form-control" placeholder="Mô Tả"></textarea>
+            </div>
+            <div class="form-group row">
+              <label>Giảng Viên</label>
+              <select id="giangvien" class="form-control">
+              </select>
+            </div>
+            <div class="form-group row">
+              <label>Đối Tượng</label>
+              <textarea id="doituongput" rows="5" type="text" class="form-control" placeholder="Đối Tượng Hướng Tới , Cách Nhau Bởi Dấu Chấm Phẩy"></textarea>
+            </div>
+            <div class="form-group row">
+              <label>Giá Khóa Học</label>
+              <input id="giakhoahocput" type="number" class="form-control" placeholder="Giá Khóa Học">
+            </div>
+            <div class="form-group row">
+                <label>Số Bài Giảng</label>
+                <input id="sobaigiangput" type="text" class="form-control" placeholder="Số Bài Giảng">
+            </div>
+            <div class="form-group row">
+              <label>Từ Khóa</label>
+              <select id="tukhoaput" class="form-control">
+                <option>Sale;Marketing</option>
+                <option>Công nghệ;thông tin</option>
+                <option>Thiết kế;Nhiếp ảnh</option>
+                <option>Kinh doanh;Khởi nghiệp</option>
+                <option>Phát triển;cá nhân</option>
+                <option>Sức khỏe;Giới tính</option>
+                <option>Nghệ thuật;Làm đẹp</option>
+                <option>Ngoại ngữ;Quốc tế</option>
+                <option>Nuôi dạy con;Chăm sóc con</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+                <label>Tiêu Đề</label>
+                <input id="tieudeput" type="text" class="form-control" placeholder="Tiêu Đề">
+            </div>
+            <div class="form-group row">
+                <label>Lợi Ích</label>
+                <textarea id="loiichput" rows="5" type="text" class="form-control" placeholder="Bạn Sẽ Học Được Gì , Cách Nhau Bởi Dấu Chấm Phẩy"></textarea>
+            </div>    
+            <div class="form-group row">
+                <label>Chủ Đề</label>
+                <!-- <input id="chudeput" type="text" class="form-control" placeholder="Chủ Đề Của Khóa Học"> -->
+                <select id="chudeput" class="form-control">
+                  <option>Sale - Marketing</option>
+                  <option>Công nghệ thông tin</option>
+                  <option>Thiết kế - Nhiếp ảnh</option>
+                  <option>Kinh doanh - Khởi nghiệp</option>
+                  <option>Phát triển cá nhân</option>
+                  <option>Sức khỏe - Giới tính</option>
+                  <option>Nghệ thuật - Làm đẹp</option>
+                  <option>Ngoại ngữ</option>
+                  <option>Nuôi dạy con </option>
+                </select>
+            </div>     
+            <div class="form-group row">
+                <label>Giới Thiệu</label>
+                <textarea id="gioithieuput" rows="5" type="text" class="form-control" placeholder="Giới Thiệu Về Khóa Học"></textarea>
+            </div>        
+            <div class="form-group row">
+                <label>Giảm Giá</label>
+                <input id="giamgiaput" type="text" class="form-control" placeholder="% Giảm Giá">
+            </div>     
+            <div class="form-group row">
+                <label>Thời Gian</label>
+                <input id="thoigianput" type="text" class="form-control" placeholder="Thời Gian Bài Giảng">
+            </div>         
+            <div class="form-group row">
+              <label>Ảnh Khóa Học</label>
+             <!--  <input id="anhmotaput" type="text" class="form-control" placeholder="Ảnh Mô Tả"> -->
+              <div class="input-group image-preview">
+                <input id="inputfilename" type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+                <span class="input-group-btn">
+                    <!-- image-preview-clear button -->
+                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                        <span class="glyphicon glyphicon-remove"></span> Xóa
+                    </button>
+                    <!-- image-preview-input -->
+                    <div class="btn btn-default image-preview-input">
+                        <span class="glyphicon glyphicon-folder-open"></span>
+                        <span class="image-preview-input-title">Chọn Ảnh</span>
+                        <input id="inputchange" type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/>
+                    </div>
+                </span>
+              </div><!-- /input-group image-preview [TO HERE]--> 
+              <input style="display: none;" id="anhmotaput" type="text" name="">
+              <div class="piccourse">
+                   <img style="width: 400px;" id="piccourse" src="">
+              </div>
+            </div>
+           
+         <!--    <div class="form-group row">
+                <label>Ảnh Đại Diện</label>
+                
+            </div> -->
+          </div>
         </div>
-        <div class="form-group reg_name col-md-6">
-            <label>Tiêu Đề</label>
-            <input id="tieudeput" type="text" class="form-control" placeholder="Tiêu Đề">
-        </div>
-        <div class="form-group reg_name col-md-6">
-            <label>Mô Tả</label>
-            <textarea id="motaput" rows="5" type="text" class="form-control" placeholder="Mô Tả"></textarea>
-        </div>
-        <div class="form-group reg_name col-md-6">
-            <label>Lợi Ích</label>
-            <textarea id="loiichput" rows="5" type="text" class="form-control" placeholder="Bạn Sẽ Học Được Gì , Cách Nhau Bởi Dấu Chấm Phẩy"></textarea>
-        </div>
-        <div class="form-group reg_name col-md-6">
-            <label>Giảng Viên</label>
-          <!--   <input id="giangvienput" type="text" class="form-control" placeholder="Giảng Viên">
-            </input>
- -->        <select id="giangvien" class="form-control">
-            </select>
-        </div>
-        <div class="form-group reg_name col-md-6">
-            <label>Chủ Đề</label>
-            <!-- <input id="chudeput" type="text" class="form-control" placeholder="Chủ Đề Của Khóa Học"> -->
-            <select id="chudeput" class="form-control">
-              <option>Sale - Marketing</option>
-              <option>Công nghệ thông tin</option>
-              <option>Thiết kế - Nhiếp ảnh</option>
-              <option>Kinh doanh - Khởi nghiệp</option>
-              <option>Phát triển cá nhân</option>
-              <option>Sức khỏe - Giới tính</option>
-              <option>Nghệ thuật - Làm đẹp</option>
-              <option>Ngoại ngữ</option>
-              <option>Nuôi dạy con </option>
-            </select>
-        </div>
-        <div class="form-group reg_name col-md-6">
-            <label>Đối Tượng</label>
-            <textarea id="doituongput" rows="5" type="text" class="form-control" placeholder="Đối Tượng Hướng Tới , Cách Nhau Bởi Dấu Chấm Phẩy"></textarea>
-        </div>
-        <div class="form-group reg_name col-md-6">
-            <label>Giới Thiệu</label>
-            <textarea id="gioithieuput" rows="5" type="text" class="form-control" placeholder="Giới Thiệu Về Khóa Học"></textarea>
-        </div>
-        <div class="form-group reg_name col-md-6">
-            <label>Giá Khóa Học</label>
-            <input id="giakhoahocput" type="number" class="form-control" placeholder="Giá Khóa Học">
-        </div>
-        <div class="form-group reg_name col-md-6">
-            <label>Giảm Giá</label>
-            <input id="giamgiaput" type="text" class="form-control" placeholder="% Giảm Giá">
-        </div>
-        <div class="form-group reg_name col-md-6">
-            <label>Số Bài Giảng</label>
-            <input id="sobaigiangput" type="text" class="form-control" placeholder="Số Bài Giảng">
-        </div>
-        <div class="form-group reg_name col-md-6">
-            <label>Thời Gian</label>
-            <input id="thoigianput" type="text" class="form-control" placeholder="Thời Gian Bài Giảng">
-        </div>
-        <div class="form-group reg_name col-md-6">
-            <label>Từ Khóa</label>
-            <select id="tukhoaput" class="form-control">
-              <option>Sale;Marketing</option>
-              <option>Công nghệ;thông tin</option>
-              <option>Thiết kế;Nhiếp ảnh</option>
-              <option>Kinh doanh;Khởi nghiệp</option>
-              <option>Phát triển;cá nhân</option>
-              <option>Sức khỏe;Giới tính</option>
-              <option>Nghệ thuật;Làm đẹp</option>
-              <option>Ngoại ngữ;Quốc tế</option>
-              <option>Nuôi dạy con;Chăm sóc con</option>
-            </select>
-        </div>
-        <!-- <div class="form-group reg_name col-md-6">
-            <label>Ảnh Mô Tả</label>
-            <input style="display: none;" id="anhmotaput" type="text" class="form-control" placeholder="Ảnh Mô Tả">
-        </div>
-                                <img id="viewanhmota" src=""> -->
-        <div class="form-group reg_name col-md-6">
-            <label>Ảnh Đại Diện</label>
-            <input id="anhmotaput" type="text" class="form-control" placeholder="Ảnh Mô Tả">
-        </div>
-  </form>
+      </form>
     </div>
     <div class="modal-footer">
       <div class="btn-group btn-group-justified" role="group" aria-label="group button">
