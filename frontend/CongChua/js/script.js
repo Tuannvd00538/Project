@@ -2,12 +2,17 @@ var token = localStorage.getItem('keyLogin');
 var username = localStorage.getItem('username');
 // LOAD KHÓA HỌC
 $(document).ready(function(){
-	$.ajax({
-		url: 'https://project-tthhn.appspot.com/_api/v1/course/new?page=1&limit=500',
+	var limit = 9;
+	var next = 1;
+	navigation(next);
+	function navigation() {
+		$.ajax({
+		url: 'https://project-tthhn.appspot.com/_api/v1/course/new?page='+ next +'&limit='+ limit +'',
 		type: "GET",
 		data: {
 			},
 		success: function(reponse) {
+			localStorage.setItem('lengthpage',reponse.data.length)
 			var content = '';
 			var viewindex = '';
 			var viewindex3 = '';
@@ -35,11 +40,65 @@ $(document).ready(function(){
 			$('#course').html(content);
 			$('#viewindex').html(viewindex);
 			$('#viewindex3').html(viewindex3);
-			// $('#chude').html(listchude);
+			$('#page').text('Page '+ next +'');
 				},
 				error: function() {
 			}
+
 		});
+	}
+
+
+// PHÂN TRANG NEXT
+
+	var next;
+	$('#next').click(function () {
+		var lengthpage = localStorage.getItem('lengthpage')
+		if (lengthpage == limit) {
+			next ++;
+			navigation(next);
+		}
+		else {
+			swal("Khóa học đang được cập nhật thêm !")
+			localStorage.removeItem('lengthpage');
+		}		
+	});
+// PHÂN TRANG PREV
+	$('#prev').click(function () {
+		if (next > 1) {
+			next --;
+			navigation(next);	
+		}
+		else {
+			swal("Bạn đã ở trang đầu !")
+		}
+	});
+	
+	// LOAD ALL KHÓA HỌC
+
+		// $.ajax({
+		// url: 'https://project-tthhn.appspot.com/_api/v1/course/new',
+		// type: "GET",
+		// data: {
+		// 	},
+		// success: function(reponse) {
+		// 	localStorage.setItem('lengthpage',reponse.data.length)
+		// 	var allcourselength = reponse.data.length / limit;
+		// 	var viewindex = '';
+		// 	var viewindex3 = '';
+		// 	// var listchude = '';
+		// 	viewindex3 += '<div><h1 class="viewindex3">Tổng Số Khóa Học : <strong style="color: red"><i>'+ reponse.data.length +'</i></strong></h1></div>';
+		// 	viewindex += '<div><h1 class="viewindex">Khóa Học Mới Nhất : <strong style="color: red"><i>'+ reponse.data[reponse.data.length - 1].TieuDe +'</i></strong></h1></div>';	
+		// 	// for (var i = 0; i < reponse.data.length; i++){
+		// 	// 	var id = reponse.data[i]._id;
+		// 	// }
+		// 	$('#viewindex').html(viewindex);
+		// 	$('#viewindex3').html(viewindex3);
+		// 		},
+		// 		error: function() {
+		// 	}
+
+		// });
 
 	// LOAD GIẢNG VIÊN
 
@@ -217,13 +276,13 @@ $(document).ready(function(){
 	     else {
 	      $('.avterr').attr('style', 'display: none');
 	    }
-		// SEND DATA
-		// if (makhoahoc.length >= 5 && tieude.length >= 5
-		// 	 && mota.length >= 5 && loiich.length >= 5
-		// 	  && doituong.length >= 5 && gioithieu.length >= 5
-		// 	   && giakhoahoc >= 0 && giamgia >= 0
-		// 	    && sobaigiang > 0 && thoigian > 0
-		// 	      && anhmota.length > 0 && makhoahoc.length >= 5) {
+		//SEND DATA
+		if (makhoahoc.length >= 5 && tieude.length >= 5
+			 && mota.length >= 5 && loiich.length >= 5
+			  && doituong.length >= 5 && gioithieu.length >= 5
+			   && giakhoahoc >= 0 && giamgia >= 0
+			    && sobaigiang > 0 && thoigian > 0
+			      && anhmota.length > 0 && makhoahoc.length >= 5) {
 		$.ajax({
 			url: 'https://project-tthhn.appspot.com/_api/v1/course',
 			type: "POST",
@@ -259,7 +318,7 @@ $(document).ready(function(){
 
 				}
 			});
-		// }
+		}
 	});
 
 
@@ -983,7 +1042,24 @@ $(document).ready(function(){
 });
 
 
+// SEARCH COURSE 
 
+// $(document).ready(function(){
+// 	$('#searchcourse').click(function () {
+// 		var searchcourseinput = $('#searchcourseinput').val();
+// 		console.log(searchcourseinput);
+// 		$.ajax({
+// 		url: 'https://project-tthhn.appspot.com/_api/v1/course/view/:'+ searchcourseinput +'',
+// 		type: "GET",
+// 			success: function(reponse) {
+// 				console.log(reponse);
+// 			},
+// 			error: function(reponse) {
+				
+// 			}
+// 		});
+// 	});
+// });
 
 
 
