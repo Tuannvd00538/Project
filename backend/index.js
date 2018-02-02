@@ -10,6 +10,47 @@ mongoose.Promise = global.Promise;
 var jwt = require('jsonwebtoken');
 var app = express();
 
+// PayPal SDK
+var Paypal = require('paypal-express-checkout');
+var username = 'admin_api1.tthhn.vn';
+var password = 'DCG6MRD69U9V6ATK';
+var signature = 'ACUe-E7Hjxmeel8FjYAtjnx-yjHAAB9-1MtUdhHWEQIKwTLzNfI9bh67';
+var paypal = Paypal.init(username
+    , password
+    , signature
+    , 'https://project-tthhn.appspot.com/return-paypal'
+    , 'https://project-tthhn.appspot.com'
+    , true);
+app.get('/paypal', function(req, res){
+    var invoiceNumber = Math.random().toString(36).substring(7);
+    var totalPrice = req.params.totalPrice;
+    paypal.pay(invoiceNumber, totalPrice, 'Course', 'USD', true, ['customId', 'moreData'], function(err, url) {
+    if (err) {
+            console.log(err);
+            return;
+        }
+        res.redirect(url);
+    });
+});
+app.get('/return-paypal', function(req, res){
+    var token = req.query.token;
+    var PayerID = req.query.PayerID;
+    paypal.detail(token, PayerID, function(err, data, invoiceNumber, price) {
+ 
+    if (err) {
+            console.log(err);
+            return;
+        }
+        console.log(data);
+        if (data.success)
+            console.log('DONE, PAYMENT IS COMPLETED.');
+        else
+            console.log('SOME PROBLEM:', data);
+        res.send('Thanh toán thành công!');
+    });
+});
+// End PayPal SDK
+
 app.use(cors());
 const fileUpload = require('express-fileupload');
 const path = require('path');
