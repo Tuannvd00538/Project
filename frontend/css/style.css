@@ -1412,3 +1412,7 @@ margin: 10px 0 10px;
 	width: 25px;
 	height: 25px;
 }
+.stickyCheckout {
+	position: sticky;
+	top: 10px;
+}

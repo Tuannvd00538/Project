@@ -501,49 +501,6 @@ function checkOut() {
 	       swal("Lỗi!", "Có lỗi xảy ra, vui lòng thử lại!", "error");
 	    }
 	});
-	paypal.Button.render({
-      env: 'sandbox',
-      style: {
-          label: 'paypal',
-          size:  'responsive',
-          shape: 'rect',
-          color: 'blue',
-          tagline: false
-      },
-      client: {
-          sandbox:    'ATGv66JpXYIQRKgfybS3AECl62BZJpBnXBpwaiIsA5neL5IOJofWObknPS5nCtLph8QVHvpDUY48tAC7',
-          production: '<insert production client id>'
-      },
-      payment: function(data, actions) {
-      	var username = localStorage.getItem('username');
-      	var name = $('#paymentform-name').val();
-      	var phone = $('#paymentform-phone').val();
-      	if (name == null || phone == null || name == undefined || phone == undefined) {
-      		window.location.href = "/pages/login.html";
-      	} else if (email != null && name != null && phone != null || email != undefined && name != undefined && phone != undefined) {
-			return actions.payment.create({
-              payment: {
-                  transactions: [
-                      {
-                          amount: { total: Math.round(totalPrice), currency: 'USD' }
-                      }
-                  ]
-              }
-          });
-		}
-      },
-      onAuthorize: function(data, actions) {
-          return actions.payment.execute().then(function() {
-              	localStorage.setItem('orderID', data.orderID);
-              	localStorage.setItem('paymentID', data.paymentID);
-              	$('#endPay').removeClass('btn-warning');
-				$('#endPay').addClass('btn-success');
-				$('#endPay').html('<strong>HOÀN TẤT</strong>');
-				$('#endPay').attr('src', '/pages/mycourse.html');
-          });
-      }
-
-  }, '#paypal-button-container');
 	$('.loading').fadeOut();
 }
 function deleteCart() {
@@ -925,5 +882,13 @@ function savePsw() {
 	}
 }
 function Payment() {
-	alert('Chức năng đang phát triển!');	
+	if ($('#check6').is(':checked')) {
+		var listCart = localStorage.getItem('listCart');
+		listCart = JSON.parse(listCart);
+		var totalPrice = 0;
+		for (var i = 0; i < listCart.course.length; i++) {
+			totalPrice += listCart.course[i].GiaKhoaHoc * 1;
+		}
+		window.open("https://project-tthhn.appspot.com/paypal?totalPrice=" + totalPrice, "", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=500,width=500,height=600");
+	}
 }
