@@ -174,8 +174,10 @@
                   <input id="check5" type="radio" name="thanhtoan"> <img class="phuongthuc" src="https://media.kyna.vn/img/checkout/transfer.png"> <span>Chuyển khoản Ngân hàng</span>
                 </div></label>
               </div>
-              <div class="col-md-6" style="padding: 15px 35px;">
-                <div id="paypal-button-container"></div>
+              <div class="col-md-6">
+                <label><div class="form-group selectCO">
+                  <input id="check6" type="radio" name="thanhtoan"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/2000px-PayPal.svg.png" width="50%" height="auto">
+                </div></label>
               </div>
               <div id="chuyenkhoan" class="col-md-10 thongtin">
                 <ul>
@@ -211,7 +213,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 stickyCheckout">
             <div class="panel panel-default">
               <div class="panel-heading">
                 <div class="row">
@@ -243,7 +245,7 @@
               </div>
               <div class="panel-body">
                 <center>
-                  <a href="javascript:void(0)" class="btn btn-warning btn-lg btn-block" id="endPay"><strong>THANH TOÁN</strong></a>
+                  <a href="javascript:Payment()" class="btn btn-warning btn-lg btn-block"><strong>THANH TOÁN</strong></a>
                 </center>
               </div>
             </div>
