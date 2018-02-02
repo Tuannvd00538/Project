@@ -218,12 +218,12 @@ $(document).ready(function(){
 	      $('.avterr').attr('style', 'display: none');
 	    }
 		// SEND DATA
-		if (makhoahoc.length >= 5 && tieude.length >= 5
-			 && mota.length >= 5 && loiich.length >= 5
-			  && doituong.length >= 5 && gioithieu.length >= 5
-			   && giakhoahoc >= 0 && giamgia >= 0
-			    && sobaigiang > 0 && thoigian > 0
-			      && anhmota.length > 0 && makhoahoc.length >= 5) {
+		// if (makhoahoc.length >= 5 && tieude.length >= 5
+		// 	 && mota.length >= 5 && loiich.length >= 5
+		// 	  && doituong.length >= 5 && gioithieu.length >= 5
+		// 	   && giakhoahoc >= 0 && giamgia >= 0
+		// 	    && sobaigiang > 0 && thoigian > 0
+		// 	      && anhmota.length > 0 && makhoahoc.length >= 5) {
 		$.ajax({
 			url: 'https://project-tthhn.appspot.com/_api/v1/course',
 			type: "POST",
@@ -251,13 +251,15 @@ $(document).ready(function(){
 				success: function(reponse) {
 					swal("Thành Công", "Khóa Học Đã Được Thêm", "success");
 					localStorage.removeItem('idGV');
-					location.reload(2000);
+					console.log(reponse);
+					// location.reload(2000);
 				},
-				error: function() {
+				error: function(reponse) {
+						console.log(reponse.statusText);
 
 				}
 			});
-		}
+		// }
 	});
 
 
@@ -574,7 +576,16 @@ function suagiangvien(id) {
 // LOGIN ADMIN
 
 $(document).ready(function($){
-
+	$('#logouttoken').click(function () {
+		 localStorage.removeItem("keyLogin");
+	    localStorage.removeItem("username");
+		location.reload();
+	});
+	$('#logoutpagetoken').click(function () {
+		localStorage.removeItem("keyLogin");
+	    localStorage.removeItem("username");
+		window.location.href = '../index.html'
+	});
 	$('#logoutpage').click(function () {
 		swal({
 		   title: "Đăng Xuất",
@@ -950,7 +961,26 @@ $('#password_modal_save').click(function () {
 });
 
 
+// CHECK TOKKEN DIE
 
+$(document).ready(function(){
+	$.ajax({
+	url: 'https://project-tthhn.appspot.com/_api/v1/course',
+	type: "POST",
+	headers: {
+        "Authorization": token
+    },
+		success: function(reponse) {
+			$('#tokenok').attr('style','')
+			$('.tokenoktitle').attr('style','')
+		},
+		error: function(reponse) {
+			$('#tokenfail').attr('style','')
+			$('.coursetokenfail').attr('disabled','disabled');
+			$('.tokenfailtitle').attr('style','')
+		}
+	});
+});
 
 
 

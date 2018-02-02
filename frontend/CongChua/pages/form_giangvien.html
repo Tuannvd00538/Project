@@ -83,7 +83,15 @@
   </div>
 </body>
 <main class="l-main">
-  <div class="content-wrapper content-wrapper--with-bg">
+  <div style="display: none;" id="tokenfail" class="content-wrapper content-wrapper--with-bg">
+    <h1 class="page-title tokenfail">Có Lỗi Xảy Ra</h1>
+    <div class="page-content" >
+       <p class='tokenfail'>
+         TOKKEN BỊ LỖI HOẶC HẾT HẠN ! ĐỂ THÊM GIẢNG VIÊN MỚI VUI LÒNG <a id="logoutpagetoken">ĐĂNG NHẬP</a> LẠI !
+       </p>
+    </div>
+  </div>
+  <div style="display: none;" id="tokenok" class="content-wrapper content-wrapper--with-bg">
     <h1 class="page-title">Thêm Giảng Viên</h1>
     <div class="page-content">
     	<form id="formgiangvien">
