@@ -23,8 +23,7 @@ var paypal = Paypal.init(username
     , true);
 app.get('/paypal', function(req, res){
     var invoiceNumber = Math.random().toString(36).substring(7);
-    var totalPrice = req.params.totalPrice;
-    paypal.pay(invoiceNumber, totalPrice, 'Course', 'USD', true, ['customId', 'moreData'], function(err, url) {
+    paypal.pay(invoiceNumber, req.query.totalPrice, 'Course', 'USD', true, ['customId', 'moreData'], function(err, url) {
     if (err) {
             console.log(err);
             return;
