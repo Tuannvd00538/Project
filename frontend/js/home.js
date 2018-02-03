@@ -512,7 +512,6 @@ function checkOut() {
 	var data = {
 		'courses': JSON.stringify(arrayCourses)
 	}
-	// console.log(data);
 	$.ajax({
 	    url: ORDER,
 	    type: "POST",
@@ -914,8 +913,17 @@ function Payment() {
 		for (var i = 0; i < listCart.courses.length; i++) {
 			totalPrice += listCart.courses[i].GiaKhoaHoc * 1;
 		}
-		var urlPayPal = 'https://project-tthhn.appspot.com/paypal?totalPrice=' + totalPrice + '&customId=' + customerId;
-		window.open(urlPayPal);
+		var urlPayPal = 'https://project-tthhn.appspot.com/paypal?totalPrice=' + totalPrice + '&customerId=' + customerId;
+		$.ajax({
+			url: urlPayPal,
+			type: "GET",
+			success: function(response){
+				console.log(response);
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+		       swal("Lỗi!", "Có lỗi xảy ra!", "error");
+		    }
+		});
 	} else {
 		swal("Troll is real :v", "Hiện tại mình mới chỉ đang phát triển chức năng thanh toán qua PayPal nên bạn hãy tick vào ô PayPal nhé!");
 	}
