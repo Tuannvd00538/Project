@@ -928,3 +928,23 @@ function Payment() {
 		swal("Troll is real :v", "Hiện tại mình mới chỉ đang phát triển chức năng thanh toán qua PayPal nên bạn hãy tick vào ô PayPal nhé!");
 	}
 }
+function myCOurse() {
+	var id = localStorage.getItem('id');
+	if (id == null || id == undefined) {
+		window.location.href = '/pages/login.html';
+	} else {
+		$.ajax({
+		    url: MEMBER + '/' + id,
+		    type: "GET",
+		    success: function (response) {
+		    	$('#avtMyCourse').attr('src', response.avatar);
+		    	$('#nameMyCourse').text(response.fullName);
+		    	$('#emailMyCourse').text('/ ' + response.email);
+		     	$('.loading').fadeOut();
+		    },
+		    error: function(jqXHR, textStatus, errorThrown) {
+		       swal("Lỗi!", jqXHR.responseJSON.message, "error");
+		    }
+		});
+	}
+}

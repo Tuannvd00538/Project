@@ -11,7 +11,7 @@
  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
  <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
-<body>
+<body onload="myCOurse()">
 	<div class="loading"><img src="../img/chonau.gif"></div>
 	<div class="banner_top">
     	<a href="javascript:void(0)"><img src="https://unica.vn/uploadmydang/top.jpg"></a>
@@ -79,11 +79,11 @@
 	<div class="container header_mycourses">
 		<div class="header_mycourses1">
 			<div class="avatar">
-				<img class="img-fluid" src="https://storage.googleapis.com/tthhnvn/1516902337375avthihi.jpeg" alt="Ngô Văn Tuấn" title="Ngô Văn Tuấn">
+				<img class="img-fluid" id="avtMyCourse" src="" alt="Ngô Văn Tuấn" title="Ngô Văn Tuấn">
 			</div>
 			<h2>
-				<span class="name">Ngô Văn Tuấn</span>
-				<span class="email">/ contact.tuannv@gmail.com</span>
+				<span class="name" id="nameMyCourse"></span>
+				<span class="email" id="emailMyCourse"></span>
 			</h2>
 		</div>
 		<div class="link_dk editMyCourse">
