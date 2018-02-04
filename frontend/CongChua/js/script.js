@@ -14,11 +14,6 @@ $(document).ready(function(){
 		success: function(reponse) {
 			localStorage.setItem('lengthpage',reponse.data.length)
 			var content = '';
-			var viewindex = '';
-			var viewindex3 = '';
-			// var listchude = '';
-			viewindex3 += '<div><h1 class="viewindex3">Tổng Số Khóa Học : <strong style="color: red"><i>'+ reponse.data.length +'</i></strong></h1></div>';
-			viewindex += '<div><h1 class="viewindex">Khóa Học Mới Nhất : <strong style="color: red"><i>'+ reponse.data[reponse.data.length - 1].TieuDe +'</i></strong></h1></div>';			
 			// for (var i = reponse.data.length - 1; i >=0; i--)
 			for (var i = 0; i < reponse.data.length; i++){
 				var id = reponse.data[i]._id;
@@ -38,8 +33,6 @@ $(document).ready(function(){
 				// listchude += '<option>'+ reponse.data[i].ChuDe +'</option>';
 			}
 			$('#course').html(content);
-			$('#viewindex').html(viewindex);
-			$('#viewindex3').html(viewindex3);
 			$('#page').text('Page '+ next +'');
 				},
 				error: function() {
@@ -47,7 +40,6 @@ $(document).ready(function(){
 
 		});
 	}
-
 
 // PHÂN TRANG NEXT
 
@@ -76,29 +68,30 @@ $(document).ready(function(){
 	
 	// LOAD ALL KHÓA HỌC
 
-		// $.ajax({
-		// url: 'https://project-tthhn.appspot.com/_api/v1/course/new',
-		// type: "GET",
-		// data: {
-		// 	},
-		// success: function(reponse) {
-		// 	localStorage.setItem('lengthpage',reponse.data.length)
-		// 	var allcourselength = reponse.data.length / limit;
-		// 	var viewindex = '';
-		// 	var viewindex3 = '';
-		// 	// var listchude = '';
-		// 	viewindex3 += '<div><h1 class="viewindex3">Tổng Số Khóa Học : <strong style="color: red"><i>'+ reponse.data.length +'</i></strong></h1></div>';
-		// 	viewindex += '<div><h1 class="viewindex">Khóa Học Mới Nhất : <strong style="color: red"><i>'+ reponse.data[reponse.data.length - 1].TieuDe +'</i></strong></h1></div>';	
-		// 	// for (var i = 0; i < reponse.data.length; i++){
-		// 	// 	var id = reponse.data[i]._id;
-		// 	// }
-		// 	$('#viewindex').html(viewindex);
-		// 	$('#viewindex3').html(viewindex3);
-		// 		},
-		// 		error: function() {
-		// 	}
+		$.ajax({
+		url: 'https://project-tthhn.appspot.com/_api/v1/course/new?page=1&limit=999',
+		type: "GET",
+		success: function(reponse) {
+			for (var i = reponse.data.length - 1; i >= 0; i--) {
+			}
+			// localStorage.setItem('lengthpage',reponse.data.length)
+			var allcourselength = reponse.data.length / limit;
+			// console.log(allcourselength);
+			var viewindex = '';
+			var viewindex3 = '';
+			// var listchude = '';
+			viewindex3 += '<div><h1 class="viewindex3">Tổng Số Khóa Học : <strong style="color: red"><i>'+ reponse.data.length +'</i></strong></h1></div>';
+			viewindex += '<div><h1 class="viewindex">Khóa Học Mới Nhất : <strong style="color: red"><i>'+ reponse.data[reponse.data.length - 1].TieuDe +'</i></strong></h1></div>';	
+			// for (var i = 0; i < reponse.data.length; i++){
+			// 	var id = reponse.data[i]._id;
+			// }
+			$('#viewindex').html(viewindex);
+			$('#viewindex3').html(viewindex3);
+				},
+				error: function() {
+			}
 
-		// });
+		});
 
 	// LOAD GIẢNG VIÊN
 
@@ -111,6 +104,7 @@ $(document).ready(function(){
 			var content = '';
 			var viewindex2 = '';
 			var viewindex4 = '';
+			var searchgiangvien = '';
 			viewindex4  += '<div><h1 class="viewindex4">Tổng Số Giảng Viên : <strong style="color: red"><i>'+ reponse.data.length +'</i></strong></h1></div>';
 			viewindex2 += '<div><h1 class="viewindex2">Giảng Viên Mới Nhất : <strong style="color: red"><i>'+ reponse.data[reponse.data.length - 1].TenGiangVien +'</i></strong></h1></div>';
 			var listgiangvien = '';	
@@ -129,19 +123,9 @@ $(document).ready(function(){
 					content += '</tr>';
 
 				listgiangvien += '<option value="' + reponse.data[i].TenGiangVien + '" data-idgv="' + id + '">' + reponse.data[i].TenGiangVien + '</option>';
-				// $.ajax({
-				// 	url: 'https://project-tthhn.appspot.com/_api/v1/giangvien/course/'+id+'/?page=1&limit=100',
-				// 	type: "GET",
-				// 	success: function(reponse) {
-				// 		// console.log(reponse.data.length);
-				// 		// console.log(reponse);
-				// 			console.log(reponse.length);
-				// 		for (var i = 0; i < reponse.length; i++) {
-				// 			$('#sokhoahoc').html('');
-				// 		}
-				// 	}
-				// });
+				searchgiangvien += '<li><a href="javascript:getGV(\''+ id +'\')"><i class="fa fa-user"></i> '+ reponse.data[i].TenGiangVien +'</a></li>'
 			}
+			$('#searchgiangvien').html(searchgiangvien);
 			$('#listgiangvien').html(content);
 			$('#giangvien').html(listgiangvien);
 			$('#viewindex2').html(viewindex2);
@@ -953,7 +937,7 @@ $(document).ready(function($http){
            		$('#picgv').attr('src',data.responseText);
            		$('.image-preview-filename').val(data.responseText);
 				$('.image-preview-filename').prop("disabled", false);
-           		$('.popover').hide();   
+           		// $('.popover').hide();   
             }
         });
     });
@@ -1044,28 +1028,145 @@ $(document).ready(function(){
 
 // SEARCH COURSE 
 
-// $(document).ready(function(){
-// 	$('#searchcourse').click(function () {
-// 		var searchcourseinput = $('#searchcourseinput').val();
-// 		console.log(searchcourseinput);
-// 		$.ajax({
-// 		url: 'https://project-tthhn.appspot.com/_api/v1/course/view/:'+ searchcourseinput +'',
-// 		type: "GET",
-// 			success: function(reponse) {
-// 				console.log(reponse);
-// 			},
-// 			error: function(reponse) {
-				
-// 			}
-// 		});
-// 	});
-// });
+function searchcoursetext(searchcourseinput) {
+	$.ajax({
+	url: 'https://project-tthhn.appspot.com/_api/v1/course/view/'+ searchcourseinput +'?page=1limit=100',
+	type: "GET",
+		success: function(reponse) {
+			var content = '';
+			// for (var i = reponse.data.length - 1; i >=0; i--)
+			for (var i = 0; i < reponse.data.length; i++){
+				var id = reponse.data[i]._id;
+				// console.log(reponse.data[i].MaKhoaHoc);
+				content += '<tr>';
+					content += 's<td class="hidden-xs"><img src="'+ reponse.data[i].Thumbnail +'"></td>';
+					content += '<td class="hidden-xs">'+ reponse.data[i].MaKhoaHoc +'</td>';
+					content += '<td>'+ reponse.data[i].TieuDe +'</td>';
+						content += '<td>'+ reponse.data[i].GiangVien +'</td>';
+						content += '<td>'+ reponse.data[i].ChuDe +'</td>';
+							content += '<td>'+ reponse.data[i].GiaKhoaHoc +'</td>';
+						content += '<td align="center" class="hihi">';
+						content += '<a onclick="suakhoahoc(\''+ id +'\')" class="btn btn-default"><em class="fa fa-pencil"></em></a>';
+					content += '<a onclick="xoakhoahoc(\''+ id +'\')" class="btn btn-danger"><em class="fa fa-trash"></em></a>';
+					content += '</tr>';
 
+				// listchude += '<option>'+ reponse.data[i].ChuDe +'</option>';
+			}
+			if (reponse.data.length == 0) {
+				$('.nullsearchshow').attr('style','');
+				$('.nullsearchhide').hide();
+			}
+			else {
+				$('.nullsearchshow').attr('style','display:none');
+				$('.paginationbtn').hide();
+				$('.nullsearchhide').show();
+			}
+			$('#searchchude').html('Chủ Đề');
+			$('#searchgv').text('Giảng Viên');
+			$('#course').html(content);
+			$("#searchcourseinput").val('');
+		},
+		error: function(reponse) {
+			
+		}
+	});
+}
 
+$('#searchcourse').click(function () {
+	var searchcourseinput = $('#searchcourseinput').val();
+	searchcoursetext(searchcourseinput);
+});
 
+// SEARCH CHỦ ĐỀ
 
+function getChuDe(value) {
+		$.ajax({
+	url: 'https://project-tthhn.appspot.com/_api/v1/course/chude/'+ value +'?page=1&limit=100',
+	type: "GET",
+		success: function(reponse) {
+			var content = '';
+			// for (var i = reponse.data.length - 1; i >=0; i--)
+			for (var i = 0; i < reponse.data.length; i++){
+				var id = reponse.data[i]._id;
+				// console.log(reponse.data[i].MaKhoaHoc);
+				content += '<tr>';
+					content += 's<td class="hidden-xs"><img src="'+ reponse.data[i].Thumbnail +'"></td>';
+					content += '<td class="hidden-xs">'+ reponse.data[i].MaKhoaHoc +'</td>';
+					content += '<td>'+ reponse.data[i].TieuDe +'</td>';
+						content += '<td>'+ reponse.data[i].GiangVien +'</td>';
+						content += '<td>'+ reponse.data[i].ChuDe +'</td>';
+							content += '<td>'+ reponse.data[i].GiaKhoaHoc +'</td>';
+						content += '<td align="center" class="hihi">';
+						content += '<a onclick="suakhoahoc(\''+ id +'\')" class="btn btn-default"><em class="fa fa-pencil"></em></a>';
+					content += '<a onclick="xoakhoahoc(\''+ id +'\')" class="btn btn-danger"><em class="fa fa-trash"></em></a>';
+					content += '</tr>';
 
+				// listchude += '<option>'+ reponse.data[i].ChuDe +'</option>';
+			}
+			$('#searchcourseinput').val('')
+			$('#page').text('Page 1');
+			$('.paginationbtn').hide();
+			$('#course').html(content);
+			$('#searchgv').text('Giảng Viên');
+			$('#searchchude').text(''+ value +'');
+		},
+		error: function(reponse) {
+			
+		}
+	});
+}
 
+function getGV(value) {
+	$.ajax({
+	url: 'https://project-tthhn.appspot.com/_api/v1/giangvien/course/'+ value +'?page=1&limit=100',
+	type: "GET",
+		success: function(reponse) {
+			var content = '';
+			// for (var i = reponse.data.length - 1; i >=0; i--)
+			for (var i = 0; i < reponse.data.length; i++){
+				var id = reponse.data[i]._id;
+				var name = reponse.data[i].GiangVien;
+				// console.log(reponse.data[i].MaKhoaHoc);
+				content += '<tr>';
+					content += 's<td class="hidden-xs"><img src="'+ reponse.data[i].Thumbnail +'"></td>';
+					content += '<td class="hidden-xs">'+ reponse.data[i].MaKhoaHoc +'</td>';
+					content += '<td>'+ reponse.data[i].TieuDe +'</td>';
+						content += '<td>'+ reponse.data[i].GiangVien +'</td>';
+						content += '<td>'+ reponse.data[i].ChuDe +'</td>';
+							content += '<td>'+ reponse.data[i].GiaKhoaHoc +'</td>';
+						content += '<td align="center" class="hihi">';
+						content += '<a onclick="suakhoahoc(\''+ id +'\')" class="btn btn-default"><em class="fa fa-pencil"></em></a>';
+					content += '<a onclick="xoakhoahoc(\''+ id +'\')" class="btn btn-danger"><em class="fa fa-trash"></em></a>';
+					content += '</tr>';
+
+				// listchude += '<option>'+ reponse.data[i].ChuDe +'</option>';
+			}
+			$('#searchcourseinput').val('')
+			$('#page').text('Page 1');
+			$('.paginationbtn').hide();
+			$('#course').html(content);
+			$('#searchgv').text(''+ name +'');
+			$('#searchchude').text('Chủ Đề');
+		},
+		error: function(reponse) {
+			
+		}
+	});
+}
+
+// EVENT ENTER
+
+$("#searchcourseinput").keyup(function(event) {
+    if (event.keyCode === 13) {
+        $("#searchcourse").click();
+    }
+});
+
+$("#username,#password").keyup(function(event) {
+    if (event.keyCode === 13) {
+        $("#loginadmin").click();
+    }
+});
 
 
 

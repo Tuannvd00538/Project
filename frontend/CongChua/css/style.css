@@ -711,15 +711,12 @@ body.loading .modal {
   font-size: 20px;
 }
 
-.settingadmin {
-  margin-left: -20px;
-}
 
 a {
   cursor: pointer;
 }
 
-.settingadmin li {
+.settingadmin li,.searchchude li {
   padding: 5px;
 }
 
@@ -800,3 +797,25 @@ a {
   text-decoration: underline;
 }
 
+.searchchude {
+  float: right;
+  margin-left: 5px;
+}
+
+#searchchude::before {
+  content: "⭐️";
+}
+
+#searchgv::before {
+  content: "👨‍⚖️";
+}
+
+.nullsearchshow {
+  padding: 20px 0;
+  text-align: center;
+  font-size: 20px;
+}
+
+.nullsearchshow img {
+  width: 200px;
+}
