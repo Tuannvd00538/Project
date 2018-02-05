@@ -327,7 +327,7 @@ function loadCart() {
     		cartContent += '<td>' + listCart.courses[i].GiangVien + '</td>';
     		cartContent += '<td>' + listCart.courses[i].ChuDe + '</td>';
     		cartContent += '<td>' + Math.round(listCart.courses[i].GiaKhoaHoc) + '<sup>$</sup></td>';
-    		cartContent += '<td>Xóa</td>';
+    		cartContent += '<td><a href="javascript:delCourse()">Xóa</a></td>';
   		cartContent += '</tr>';
 	}
 	$('#innerCart').html(cartContent);
@@ -351,7 +351,6 @@ function addToCart(MaKhoaHoc, TenKhoaHoc, GiangVien, ChuDe, GiaKhoaHoc, thumbnai
 					'GiangVien': GiangVien,
 					'ChuDe': ChuDe,
 					'GiaKhoaHoc': GiaKhoaHoc,
-					'Thumbnail': thumbnail,
 					'GiangVienID': GiangVienID,
 					'KhoaHocID': KhoaHocID
 				}
@@ -390,7 +389,6 @@ function addToCart(MaKhoaHoc, TenKhoaHoc, GiangVien, ChuDe, GiaKhoaHoc, thumbnai
 					'GiangVien': GiangVien,
 					'ChuDe': ChuDe,
 					'GiaKhoaHoc': GiaKhoaHoc,
-					'Thumbnail': thumbnail,
 					'GiangVienID': GiangVienID,
 					'KhoaHocID': KhoaHocID
 				});
@@ -512,17 +510,17 @@ function checkOut() {
 	var data = {
 		'courses': JSON.stringify(arrayCourses)
 	}
-	$.ajax({
-	    url: ORDER,
-	    type: "POST",
-	    data: data,
-	    success: function (response) {
-	    	localStorage.setItem('orderID', response[0]._id);
-	    },
-	    error: function(jqXHR, textStatus, errorThrown) {
-	       swal("Lỗi!", "Có lỗi xảy ra, vui lòng thử lại!", "error");
-	    }
-	});
+	// $.ajax({
+	//     url: ORDER,
+	//     type: "POST",
+	//     data: data,
+	//     success: function (response) {
+	//     	localStorage.setItem('orderID', response[0]._id);
+	//     },
+	//     error: function(jqXHR, textStatus, errorThrown) {
+	//        swal("Lỗi!", "Có lỗi xảy ra, vui lòng thử lại!", "error");
+	//     }
+	// });
 	$('.loading').fadeOut();
 }
 function deleteCart() {
@@ -532,7 +530,7 @@ function deleteCart() {
 	  	type: "warning",
 	  	showCancelButton: true,
 	  	confirmButtonClass: "btn-danger",
-	  	confirmButtonText: "Yes, delete it!",
+	  	confirmButtonText: "Xóa",
 	  	closeOnConfirm: false
 	},
 	function(){
@@ -928,7 +926,7 @@ function Payment() {
 		swal("Troll is real :v", "Hiện tại mình mới chỉ đang phát triển chức năng thanh toán qua PayPal nên bạn hãy tick vào ô PayPal nhé!");
 	}
 }
-function myCOurse() {
+function myCourse() {
 	var id = localStorage.getItem('id');
 	if (id == null || id == undefined) {
 		window.location.href = '/pages/login.html';
@@ -937,7 +935,11 @@ function myCOurse() {
 		    url: MEMBER + '/' + id,
 		    type: "GET",
 		    success: function (response) {
-		    	$('#avtMyCourse').attr('src', response.avatar);
+		    	if (response.avatar == null || response.avatar == undefined) {
+		    		$('#avtMyCourse').attr('src', 'https://www.asxonline.com/content/dam/asxonline/public/images/icon-t.svg');
+		    	} else {
+		    		$('#avtMyCourse').attr('src', response.avatar);
+		    	}
 		    	$('#nameMyCourse').text(response.fullName);
 		    	$('#emailMyCourse').text('/ ' + response.email);
 		     	$('.loading').fadeOut();
@@ -947,4 +949,7 @@ function myCOurse() {
 		    }
 		});
 	}
+}
+function delCourse() {
+	swal("Chức năng đang phát triển!", "Đi chỗ khác chơi đê, chức năng này đang phát triển nên chưa ấn đc đâu :)", "error");
 }
