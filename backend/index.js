@@ -35,18 +35,18 @@ app.get('/return-paypal', function(req, res){
     var token = req.query.token;
     var PayerID = req.query.PayerID;
     paypal.detail(token, PayerID, function(err, data, invoiceNumber, price) {
+        var str = data.CUSTOM;
+        var customerId = str.split("|")[3];
         if (err) {
                 console.log(err);
                 return;
             }
-            console.log(data);
-            if (data.success)
-                console.log('DONE, PAYMENT IS COMPLETED.');
-            else
-                console.log('SOME PROBLEM:', data);
-            var str = data.CUSTOM;
-            var customerId = str.split("|")[3];
-            res.send('Siin Đẹp Trai thanh toán thành công!');
+        console.log(data);
+        if (data.success)
+            res.redirect('https://tthhnvn.appspot.com/pages/payment_success.html?orderID=' + invoiceNumber + '&customerId=' + customerId);
+        else
+            res.redirect('https://tthhnvn.appspot.com/pages/payment_error.html?orderID=' + invoiceNumber + '&customerId=' + customerId);
+        res.send('Siin đẹp trai!');
     });
 });
 // End PayPal SDK

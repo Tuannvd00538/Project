@@ -1,6 +1,5 @@
 var Member = require('../models/schemaMember');
 var Admin = require('../models/schemaAccount');
-var Credential = require('../models/schemaCredential');
 var accountController = require('../controllers/accountController');
 var jwt = require('jsonwebtoken');
 require('mongoose-pagination');
