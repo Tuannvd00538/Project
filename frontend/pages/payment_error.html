@@ -17,14 +17,13 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
  	<link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
-<body>
+<body onload="paymentError()">
   <main class="mainPmtSc">
        <div class="row awmmm">
           <span class="mauchu988 fa fa-times"></span>
-          <strong class="mauchu988"><h1>Error!</h1></strong>
-          <p>You payment of $0.01 to Dwolla #812-713-9234 has been processed successfully.</p>
-          <p>We'll send you a confirmation email shortly.</p>
-          <p>For you reference, your Dwolla transaction ID is 4841459.</p>
+          <strong class="mauchu988"><h1>Có lỗi xảy ra!</h1></strong>
+          <p>Giao dịch thất bại.</p>
+          <p class="textSc"></p>
           <a href="/pages/checkout.html" class="btn btn-danger">Quay lại trang thanh toán</a>
       </div>
   </main>
