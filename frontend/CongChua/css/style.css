@@ -778,25 +778,6 @@ a {
   font-weight: bold;
 }
 
-.tokenfail {
-  color: red;
-  font-size: 50px;
-  font-weight: bold;
-  text-align: center;
-  padding: 20px;
-  font-style: italic;
-}
-
-.tokenfailtitle {
-  color: red;
-  font-weight: bold;
-}
-
-#logouttoken {
-  color: black;
-  text-decoration: underline;
-}
-
 .searchchude {
   float: right;
   margin-left: 5px;
@@ -822,4 +803,12 @@ a {
 
 .nullsearchshow img {
   width: 200px;
+}
+
+/*REPOSIVE*/
+
+@media (max-width:800px) {
+  body {
+    width:100%;/*The width is 100%, when the viewport is 800px or smaller*/
+  }
 }

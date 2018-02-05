@@ -619,16 +619,6 @@ function suagiangvien(id) {
 // LOGIN ADMIN
 
 $(document).ready(function($){
-	$('#logouttoken').click(function () {
-		 localStorage.removeItem("keyLogin");
-	    localStorage.removeItem("username");
-		location.reload();
-	});
-	$('#logoutpagetoken').click(function () {
-		localStorage.removeItem("keyLogin");
-	    localStorage.removeItem("username");
-		window.location.href = '../index.html'
-	});
 	$('#logoutpage').click(function () {
 		swal({
 		   title: "Đăng Xuất",
@@ -1014,13 +1004,10 @@ $(document).ready(function(){
         "Authorization": token
     },
 		success: function(reponse) {
-			$('#tokenok').attr('style','')
-			$('.tokenoktitle').attr('style','')
 		},
 		error: function(reponse) {
-			$('#tokenfail').attr('style','')
-			$('.coursetokenfail').attr('disabled','disabled');
-			$('.tokenfailtitle').attr('style','')
+			localStorage.removeItem("keyLogin");
+		    localStorage.removeItem("username");
 		}
 	});
 });
@@ -1079,8 +1066,6 @@ $('#searchcourse').click(function () {
 });
 
 // SEARCH CHỦ ĐỀ
-var a = ['200','1','40','0','3'];
-console.log(a.sort());
 function getChuDe(value) {
 		$.ajax({
 	url: 'https://project-tthhn.appspot.com/_api/v1/course/chude/'+ value +'?page=1&limit=100',
