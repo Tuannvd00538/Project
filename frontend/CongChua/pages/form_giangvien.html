@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html class=''>
 <head>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thêm Khóa Học</title>
    <meta charset='UTF-8'>
    <link rel="icon" href="../img/icon.ico" type="image/x-icon" />
@@ -77,15 +78,7 @@
   </div>
 </body>
 <main class="l-main">
-  <div style="display: none;" id="tokenfail" class="content-wrapper content-wrapper--with-bg">
-    <h1 class="page-title tokenfail">Có Lỗi Xảy Ra</h1>
-    <div class="page-content" >
-       <p class='tokenfail'>
-         TOKKEN BỊ LỖI HOẶC HẾT HẠN ! ĐỂ THÊM GIẢNG VIÊN MỚI VUI LÒNG <a id="logoutpagetoken">ĐĂNG NHẬP</a> LẠI !
-       </p>
-    </div>
-  </div>
-  <div style="display: none;" id="tokenok" class="content-wrapper content-wrapper--with-bg">
+  <div class="content-wrapper content-wrapper--with-bg">
     <h1 class="page-title">Thêm Giảng Viên</h1>
     <div class="page-content">
     	<form id="formgiangvien">
@@ -103,8 +96,6 @@
               <label>Số Khóa Học</label> <span class="skherr"></span>
               <input id="sokhoahoc" name="sokhoahoc" type="number" class="form-control" placeholder="Số Khóa Học">
           </div>
-          <button id="themgiangvien" type="button" class="btn btn-default">Hoàn Tất</button>
-          <button type="reset" class="btn btn-default">Reset</button>
           </div>
           <div class="col-md-6">
             <div class="form-group row">
@@ -137,6 +128,10 @@
                   <input value="" id="anhdaidien" name="anhdaidien" type="text" class="form-control" placeholder="Link Ảnh Đại Diện">
                 </div>
             </div>
+          </div>
+          <div class="col-md-6">
+            <button id="themgiangvien" type="button" class="btn btn-default">Hoàn Tất</button>
+            <button type="reset" class="btn btn-default">Reset</button>
           </div>
         </div>
 		</form>
