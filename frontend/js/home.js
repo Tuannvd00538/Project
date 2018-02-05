@@ -983,6 +983,7 @@ function myCourse() {
 			    	$('#returnMyCoursePaid').html(appendContent);
 		    	}
 		    	if (response.data.length != 0) {
+		    		$('.course-number').text(response.data.length);
 		    		$('.returnMyCoursePaid').attr('style', 'display:none;');
 		    	}
 		    },
