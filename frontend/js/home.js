@@ -46,7 +46,7 @@ function search() {
 		     	var GiaKhoaHoc = response.data[i].GiaKhoaHoc;
 		     	var Sale = response.data[i].Sale;
 		     	var GiangVienID = response.data[i].GiangVienID;
-		     	appendContent += generateVideoBlock(id, Thumbnail, TieuDe, GiangVien, GiaKhoaHoc, Sale, GiangVienID);
+		     	appendContent += generateCourseBlock(id, Thumbnail, TieuDe, GiangVien, GiaKhoaHoc, Sale, GiangVienID);
 	     	}
 	     	$("#hot").html(appendContent);
 	     	$('.loading').fadeOut();
@@ -68,7 +68,7 @@ function search() {
 		     	var GiaKhoaHoc = response.data[i].GiaKhoaHoc;
 		     	var Sale = response.data[i].Sale;
 		     	var GiangVienID = response.data[i].GiangVienID;
-		     	appendContent += generateVideoBlock(id, Thumbnail, TieuDe, GiangVien, GiaKhoaHoc, Sale, GiangVienID);
+		     	appendContent += generateCourseBlock(id, Thumbnail, TieuDe, GiangVien, GiaKhoaHoc, Sale, GiangVienID);
 	     	}
 	     	$("#sale").html(appendContent);
 	     	$('.loading').fadeOut();
@@ -90,7 +90,7 @@ function search() {
 		     	var GiaKhoaHoc = response.data[i].GiaKhoaHoc;
 		     	var Sale = response.data[i].Sale;
 		     	var GiangVienID = response.data[i].GiangVienID;
-		     	appendContent += generateVideoBlock(id, Thumbnail, TieuDe, GiangVien, GiaKhoaHoc, Sale, GiangVienID);
+		     	appendContent += generateCourseBlock(id, Thumbnail, TieuDe, GiangVien, GiaKhoaHoc, Sale, GiangVienID);
 	     	}
 	     	$("#new").html(appendContent);
 	     	$('.loading').fadeOut();
@@ -100,7 +100,7 @@ function search() {
 	    }
 	});
 };
-function generateVideoBlock(id, Thumbnail, TieuDe, GiangVien, GiaKhoaHoc, Sale, GiangVienID) {
+function generateCourseBlock(id, Thumbnail, TieuDe, GiangVien, GiaKhoaHoc, Sale, GiangVienID) {
     if (Sale != 0) {
     	var GiaHienTai = ((GiaKhoaHoc / 100) * (100 - Sale));
     	var newOutPut = "";
@@ -670,7 +670,7 @@ function searchCourseIndex() {
 			     	var GiaKhoaHoc = response.data[i].GiaKhoaHoc;
 			     	var Sale = response.data[i].Sale;
 			     	var GiangVienID = response.data[i].GiangVienID;
-			     	appendContent += generateVideoBlock(id, Thumbnail, TieuDe, GiangVien, GiaKhoaHoc, Sale, GiangVienID);
+			     	appendContent += generateCourseBlock(id, Thumbnail, TieuDe, GiangVien, GiaKhoaHoc, Sale, GiangVienID);
 		     	}
 		     	$("#resultSearch").html(appendContent);
 		     	$('.error404').attr('style', 'display:none;');
@@ -748,7 +748,7 @@ function chude() {
 		     	var GiaKhoaHoc = response.data[i].GiaKhoaHoc;
 		     	var Sale = response.data[i].Sale;
 		     	var GiangVienID = response.data[i].GiangVienID;
-		     	appendContent += generateVideoBlock(id, Thumbnail, TieuDe, GiangVien, GiaKhoaHoc, Sale, GiangVienID);
+		     	appendContent += generateCourseBlock(id, Thumbnail, TieuDe, GiangVien, GiaKhoaHoc, Sale, GiangVienID);
 	     	}
 	     	$("#resultSearch").html(appendContent);
 	     	$('.textSearch').html('Các khóa học theo chủ đề: <strong>' + key + '</strong>');
@@ -912,7 +912,7 @@ function Payment() {
 			totalPrice += listCart.courses[i].GiaKhoaHoc * 1;
 		}
 		var urlPayPal = 'https://project-tthhn.appspot.com/paypal?totalPrice=' + totalPrice + '&customerId=' + customerId + '&orderID=' + orderID;
-		window.open(urlPayPal);
+		window.location.href = urlPayPal;
 	} else {
 		swal("Thông báo!", "Hiện tại mình mới chỉ đang phát triển chức năng thanh toán qua PayPal nên bạn hãy tick vào ô PayPal nhé!");
 	}
@@ -939,7 +939,65 @@ function myCourse() {
 		       swal("Lỗi!", jqXHR.responseJSON.message, "error");
 		    }
 		});
+		$.ajax({
+		    url: ORDER + '/' + id,
+		    type: "GET",
+		    success: function (response) {
+		    	for (var i = 0; i < response.data.length; i++) {
+		    		$.ajax({
+					    url: ORDER + '/customer/' + response.data[i]._id,
+					    type: "GET",
+					    success: function (response) {
+					    	var appendContent = '';
+					    	for (var i = 0; i < response.data.length; i++) {
+					    		var id = response.data[i]._id;
+					    		var Thumbnail = response.data[i].Thumbnail;
+					    		var TieuDe = response.data[i].TieuDe;
+					    		var GiangVienID = response.data[i].GiangVienID;
+					    		var courseID = response.data[i].courseID;
+					    		appendContent += blockCourse(id, Thumbnail, TieuDe, GiangVienID, courseID);
+					    	}
+					    	$('#returnMyCourse').html(appendContent);
+					    },
+					    error: function(jqXHR, textStatus, errorThrown) {
+					       swal("Lỗi!", jqXHR.responseJSON.message, "error");
+					    }
+					});
+					var status = response.data[i].status;
+		    		if (status == 2) {
+		    			alert('Đã thanh toán!');
+		    		}
+		    	}
+		    },
+		    error: function(jqXHR, textStatus, errorThrown) {
+		       swal("Lỗi!", jqXHR.responseJSON.message, "error");
+		    }
+		});
 	}
+}
+function blockCourse(id, Thumbnail, TieuDe, GiangVienID, courseID) {
+	var content = '';
+	content += '<tr>';
+		content += '<td class="imgLecturers">';
+			content += '<a href="product.html?id=' + courseID + '&gv=' + GiangVienID + '"><img src="' + Thumbnail + '"></a>';
+		content += '</td>';
+		content += '<td class="tenKhoaHoc">';
+			content += '<a href="product.html?id=' + courseID + '&gv=' + GiangVienID + '">' + TieuDe + '</a>';
+			content += '<div class="starBlue">';
+				content += '<span class="fa fa-star checked"></span>';
+				content += '<span class="fa fa-star checked"></span>';
+				content += '<span class="fa fa-star checked"></span>';
+				content += '<span class="fa fa-star checked"></span>';
+				content += '<span class="fa fa-star checked"></span>';
+			content += '</div>';
+		content += '</td>';
+		content += '<td>';
+		content += '</td>';
+		content += '<td>';
+			content += '<a href="product.html?id=' + courseID + '&gv=' + GiangVienID + '" class="btn btn-primary">Xem khóa học</a>';
+		content += '</td>';
+	content += '</tr>';
+	return content;
 }
 function delCourse() {
 	swal("Chức năng đang phát triển!", "Đi chỗ khác chơi đê, chức năng này đang phát triển nên chưa ấn đc đâu :)", "error");

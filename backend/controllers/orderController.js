@@ -3,7 +3,7 @@ var Product = require('../models/schemaCourse');
 var Order = require('../models/schemaOrder');
 var OrderDetail = require('../models/schemaOrderDetail');
 var Transaction = require('mongoose-transaction')(mongoose);
-
+require('mongoose-pagination');
 exports.saveCart = function(req, res){
 	var listOrderCourses = JSON.parse(req.body.courses);
 	var customerId = listOrderCourses[0].customerId;
@@ -62,4 +62,52 @@ exports.saveCart = function(req, res){
 		    res.send(docs);
 		});    
 	});
+}
+exports.getOrder = function(req, res){
+	var page = Number(req.query.page);
+	var limit = Number(req.query.limit);
+	Order.find({ customerId: req.params.id })
+	.paginate(page, limit, function(err, result, total) {
+    	var responseData = {
+    		'data': result,
+    		'totalPage': Math.ceil(total/limit)
+    	};
+    	res.send(responseData);
+  	});
+}
+exports.getCartOrder = function(req, res){
+	var page = Number(req.query.page);
+	var limit = Number(req.query.limit);
+	OrderDetail.find({ orderID: req.params.id })
+	.paginate(page, limit, function(err, result, total) {
+    	var responseData = {
+    		'data': result,
+    		'totalPage': Math.ceil(total/limit)
+    	};
+    	res.send(responseData);
+  	});
+}
+exports.getPaid = function(req, res){
+	var page = Number(req.query.page);
+	var limit = Number(req.query.limit);
+	Order.find({ $and: [ { customerId: req.params.id }, { status: 2 } ] })
+	.paginate(page, limit, function(err, result, total) {
+    	var responseData = {
+    		'data': result,
+    		'totalPage': Math.ceil(total/limit)
+    	};
+    	res.send(responseData);
+  	});
+}
+exports.getUnpaid = function(req, res){
+	var page = Number(req.query.page);
+	var limit = Number(req.query.limit);
+	Order.find({ $and: [ { customerId: req.params.id }, { status: 1 } ] })
+	.paginate(page, limit, function(err, result, total) {
+    	var responseData = {
+    		'data': result,
+    		'totalPage': Math.ceil(total/limit)
+    	};
+    	res.send(responseData);
+  	});
 }
