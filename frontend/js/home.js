@@ -912,16 +912,7 @@ function Payment() {
 			totalPrice += listCart.courses[i].GiaKhoaHoc * 1;
 		}
 		var urlPayPal = 'https://project-tthhn.appspot.com/paypal?totalPrice=' + totalPrice + '&customerId=' + customerId + '&orderID=' + orderID;
-		$.ajax({
-			url: urlPayPal,
-			type: "GET",
-			success: function(response){
-				console.log(response);
-			},
-			error: function(jqXHR, textStatus, errorThrown) {
-		       swal("Lỗi!", "Có lỗi xảy ra!", "error");
-		    }
-		});
+		window.open(urlPayPal);
 	} else {
 		swal("Thông báo!", "Hiện tại mình mới chỉ đang phát triển chức năng thanh toán qua PayPal nên bạn hãy tick vào ô PayPal nhé!");
 	}
@@ -952,4 +943,16 @@ function myCourse() {
 }
 function delCourse() {
 	swal("Chức năng đang phát triển!", "Đi chỗ khác chơi đê, chức năng này đang phát triển nên chưa ấn đc đâu :)", "error");
+}
+function paymentSuccess() {
+	var url_string = window.location.href;
+	var url = new URL(url_string);
+	var key = url.searchParams.get("orderID");
+	$('.textSc').text('Mã giao dịch: ' + key);
+}
+function paymentError() {
+	var url_string = window.location.href;
+	var url = new URL(url_string);
+	var key = url.searchParams.get("orderID");
+	$('.textSc').text('Mã giao dịch: ' + key);
 }

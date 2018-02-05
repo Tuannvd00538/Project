@@ -9,7 +9,7 @@ mongoose.connect('mongodb://admin:admin@ds153577.mlab.com:53577/tthhngroup');
 mongoose.Promise = global.Promise;
 var jwt = require('jsonwebtoken');
 var app = express();
-
+var Order = require('./models/schemaOrder');
 // PayPal SDK
 var Paypal = require('paypal-express-checkout');
 var username = 'admin_api1.tthhn.vn';
@@ -42,11 +42,16 @@ app.get('/return-paypal', function(req, res){
                 return;
             }
         console.log(data);
-        if (data.success)
-            res.redirect('https://tthhnvn.appspot.com/pages/payment_success.html?orderID=' + invoiceNumber + '&customerId=' + customerId);
-        else
+        if (data.success){
+           Order.findByIdAndUpdate(invoiceNumber, {$set: {status: 2}}, function(err, result){
+                if(err){
+                    console.log(err);
+                }
+                res.redirect('https://tthhnvn.appspot.com/pages/payment_success.html?orderID=' + invoiceNumber + '&customerId=' + customerId);
+            }); 
+        } else {
             res.redirect('https://tthhnvn.appspot.com/pages/payment_error.html?orderID=' + invoiceNumber + '&customerId=' + customerId);
-        res.send('Siin đẹp trai!');
+        }
     });
 });
 // End PayPal SDK
