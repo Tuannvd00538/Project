@@ -103,7 +103,7 @@ exports.getUnpaid = function(req, res){
 exports.getHistory = function(req, res){
 	var page = Number(req.query.page);
 	var limit = Number(req.query.limit);
-	OrderDetail.find({ customerId: req.params.id }).sort({createdAt: -1})
+	Order.find({ customerId: req.params.id }).sort({createdAt: -1})
 	.paginate(page, limit, function(err, result, total) {
     	var responseData = {
     		'data': result,

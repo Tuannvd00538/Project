@@ -978,7 +978,7 @@ function myCourse() {
 			    		var TieuDe = response.data[i].TieuDe;
 			    		var GiangVienID = response.data[i].GiangVienID;
 			    		var courseID = response.data[i].courseID;
-			    		appendContent += blockCourse(id, Thumbnail, TieuDe, GiangVienID, courseID);
+			    		appendContent += blockCoursePaid(id, Thumbnail, TieuDe, GiangVienID, courseID);
 			    	}
 			    	$('#returnMyCoursePaid').html(appendContent);
 		    	}
@@ -1019,7 +1019,7 @@ function myCourse() {
 		    type: "GET",
 		    success: function (response) {
 		    	for (var i = 0; i < response.data.length; i++) {
-		    		alert('history true');
+		    		console.log(response.data[i].createdAt + " - " + response.data[i].status);
 		    	}
 		    	if (response.data.length != 0) {
 		    		$('.historyGD').attr('style', 'display:none;');
@@ -1051,6 +1051,30 @@ function blockCourse(id, Thumbnail, TieuDe, GiangVienID, courseID) {
 		content += '</td>';
 		content += '<td>';
 			content += '<a href="product.html?id=' + courseID + '&gv=' + GiangVienID + '" class="btn btn-primary">Xem khóa học</a>';
+		content += '</td>';
+	content += '</tr>';
+	return content;
+}
+function blockCoursePaid(id, Thumbnail, TieuDe, GiangVienID, courseID) {
+	var content = '';
+	content += '<tr>';
+		content += '<td class="imgLecturers">';
+			content += '<a href="product.html?id=' + courseID + '&gv=' + GiangVienID + '"><img src="' + Thumbnail + '"></a>';
+		content += '</td>';
+		content += '<td class="tenKhoaHoc">';
+			content += '<a href="product.html?id=' + courseID + '&gv=' + GiangVienID + '">' + TieuDe + '</a>';
+			content += '<div class="starBlue">';
+				content += '<span class="fa fa-star checked"></span>';
+				content += '<span class="fa fa-star checked"></span>';
+				content += '<span class="fa fa-star checked"></span>';
+				content += '<span class="fa fa-star checked"></span>';
+				content += '<span class="fa fa-star checked"></span>';
+			content += '</div>';
+		content += '</td>';
+		content += '<td>';
+		content += '</td>';
+		content += '<td>';
+			content += '<a href="javascript:delCourse()" class="btn btn-success">Vào học</a>';
 		content += '</td>';
 	content += '</tr>';
 	return content;
