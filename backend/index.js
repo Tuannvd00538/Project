@@ -10,6 +10,48 @@ mongoose.Promise = global.Promise;
 var jwt = require('jsonwebtoken');
 var app = express();
 
+// PayPal SDK
+var Paypal = require('paypal-express-checkout');
+var username = 'admin_api1.tthhn.vn';
+var password = 'DCG6MRD69U9V6ATK';
+var signature = 'ACUe-E7Hjxmeel8FjYAtjnx-yjHAAB9-1MtUdhHWEQIKwTLzNfI9bh67';
+var paypal = Paypal.init(username
+    , password
+    , signature
+    , 'https://project-tthhn.appspot.com/return-paypal'
+    , 'https://project-tthhn.appspot.com'
+    , true);
+app.get('/paypal', function(req, res){
+    var invoiceNumber = Math.random().toString(36).substring(7);
+    paypal.pay(invoiceNumber, req.query.totalPrice, 'Course', 'USD', true, [req.query.customerId, 'moreData'], function(err, url) {
+    if (err) {
+            console.log(err);
+            return;
+        }
+        res.redirect(url);
+    });
+});
+app.get('/return-paypal', function(req, res){
+    var token = req.query.token;
+    var PayerID = req.query.PayerID;
+    paypal.detail(token, PayerID, function(err, data, invoiceNumber, price) {
+ 
+    if (err) {
+            console.log(err);
+            return;
+        }
+        console.log(data);
+        if (data.success)
+            console.log('DONE, PAYMENT IS COMPLETED.');
+        else
+            console.log('SOME PROBLEM:', data);
+        var str = data.CUSTOM;
+        var customerId = str.split("|")[3];
+        res.send(customerId);
+    });
+});
+// End PayPal SDK
+
 app.use(cors());
 const fileUpload = require('express-fileupload');
 const path = require('path');
@@ -79,8 +121,8 @@ var gvRoute = require('./routes/gvRoute');
 gvRoute(app);
 var recycleBin = require('./routes/recycleBinRoute');
 recycleBin(app);
-var order = require('./routes/orderRoute');
-order(app);
+var orderRoute = require('./routes/orderRoute');
+orderRoute(app);
 app.get('/', (req, res) => res.status(200).json({
 	"MEMBER": "/_api/v1/member    ----    Method: Post (Đăng ký thành viên)",
 	"MEMBER": "/_api/v1/member/:id    ---- Method: Get (Thông tin của 1 member), Put (Sửa thông tin của member (kèm authorization)), Delete (Xóa member (kèm authorization))",
@@ -105,5 +147,5 @@ app.get('/', (req, res) => res.status(200).json({
     "ADMIN": "www.facebook.com/TuanMinPay    ----    Ngô Văn Tuấn"
 }));
 app.listen(8080, function(){
-	console.log('Port 8080: everything is going to be 200 OK!');
+	console.log('Port 8080: cứ thấy số 200 trả về là thằng code server auto đẹp trai :)');
 });

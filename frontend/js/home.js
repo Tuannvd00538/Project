@@ -8,6 +8,7 @@ var SEARCH = 'https://project-tthhn.appspot.com/_api/v1/course/view';
 var CHUDE = 'https://project-tthhn.appspot.com/_api/v1/course/chude';
 var FILE_UPLOAD_URL = 'https://project-tthhn.appspot.com/_api/v1/images';
 var MEMBER = 'https://project-tthhn.appspot.com/_api/v1/member';
+var ORDER = 'https://project-tthhn.appspot.com/_api/v1/order';
 $(document).ready(function () {
 	search();
 	var cart = localStorage.getItem("cart");
@@ -25,6 +26,11 @@ $(document).ready(function () {
 		$('#checkSign').attr('style', 'display:none;');
 		$('#checkSignTwo').attr('style', 'display:none;');
 	}
+	window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+	d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+	_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+	$.src="https://v2.zopim.com/?5SBzz9cH0cfBaktuvUjBsuCBCjT1NrUC";z.t=+new Date;$.
+	type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
 });
 function search() {
     $.ajax({
@@ -180,6 +186,8 @@ function detailCourse() {
 	    	$('#desKH').text(response.MoTa);
 	    	$('#gvKH').text(response.GiangVien);
 	    	$('#gvKH').attr('href', 'lecturers.html?id=' + response.GiangVienID);
+	    	$('#getIDGV').attr('value', gv);
+	    	$('#getIDKH').attr('value', id);
 	    	$('#cdKH').text(response.ChuDe);
 	    	$('#cdKH').attr('href', '/course.html?key=' + response.ChuDe);
 	    	$('#imgKH').attr("src", response.Thumbnail);
@@ -290,7 +298,9 @@ function sendCart(id) {
 	var price2 = price.replace(",", "");
 	var GiaKhoaHoc = price2.replace("$", "");
 	var thumbnail = $('#imgKH').attr('src');
-	addToCart(id, TenKhoaHoc, GiangVien, ChuDe, GiaKhoaHoc, thumbnail);
+	var GiangVienID = $('#getIDGV').val();
+	var KhoaHocID = $('#getIDKH').val();
+	addToCart(id, TenKhoaHoc, GiangVien, ChuDe, GiaKhoaHoc, thumbnail, GiangVienID, KhoaHocID);
 }
 function loadCart() {
 	var listCart = localStorage.getItem('listCart');
@@ -310,30 +320,30 @@ function loadCart() {
 		$('.noneCart').attr('style', 'display:none;');
 	}
 	var cartContent = '';
-	for (var i = 0; i < listCart.course.length; i++) {
+	for (var i = 0; i < listCart.courses.length; i++) {
 		cartContent += '<tr>';
-    		cartContent += '<td>' + listCart.course[i].MaKhoaHoc + '</td>';
-    		cartContent += '<td class="titleCart">' + listCart.course[i].TenKhoaHoc + '</td>';
-    		cartContent += '<td>' + listCart.course[i].GiangVien + '</td>';
-    		cartContent += '<td>' + listCart.course[i].ChuDe + '</td>';
-    		cartContent += '<td>' + Math.round(listCart.course[i].GiaKhoaHoc) + '<sup>$</sup></td>';
-    		cartContent += '<td>x</td>';
+    		cartContent += '<td>' + listCart.courses[i].MaKhoaHoc + '</td>';
+    		cartContent += '<td class="titleCart">' + listCart.courses[i].TenKhoaHoc + '</td>';
+    		cartContent += '<td>' + listCart.courses[i].GiangVien + '</td>';
+    		cartContent += '<td>' + listCart.courses[i].ChuDe + '</td>';
+    		cartContent += '<td>' + Math.round(listCart.courses[i].GiaKhoaHoc) + '<sup>$</sup></td>';
+    		cartContent += '<td><a href="javascript:delCourse()">Xóa</a></td>';
   		cartContent += '</tr>';
 	}
 	$('#innerCart').html(cartContent);
 	var totalPrice = 0;
-	for (var i = 0; i < listCart.course.length; i++) {
-		totalPrice += listCart.course[i].GiaKhoaHoc * 1;
+	for (var i = 0; i < listCart.courses.length; i++) {
+		totalPrice += listCart.courses[i].GiaKhoaHoc * 1;
 	}
 	$('.panel-footer').html('Tổng đơn hàng: ' + Math.round(totalPrice) + '<sup>$</sup>');
 	$('.loading').fadeOut();
 }
-function addToCart(MaKhoaHoc, TenKhoaHoc, GiangVien, ChuDe, GiaKhoaHoc, thumbnail) {
+function addToCart(MaKhoaHoc, TenKhoaHoc, GiangVien, ChuDe, GiaKhoaHoc, thumbnail, GiangVienID, KhoaHocID) {
 	var listCart = localStorage.getItem('listCart');
 	var customerId = localStorage.getItem('id');
 	if (listCart == null) {
 		listCart = {
-			'course': [
+			'courses': [
 				{
 					'customerId': customerId,
 					'MaKhoaHoc': MaKhoaHoc,
@@ -341,7 +351,8 @@ function addToCart(MaKhoaHoc, TenKhoaHoc, GiangVien, ChuDe, GiaKhoaHoc, thumbnai
 					'GiangVien': GiangVien,
 					'ChuDe': ChuDe,
 					'GiaKhoaHoc': GiaKhoaHoc,
-					'Thumbnail': thumbnail
+					'GiangVienID': GiangVienID,
+					'KhoaHocID': KhoaHocID
 				}
 			]
 		}
@@ -354,7 +365,7 @@ function addToCart(MaKhoaHoc, TenKhoaHoc, GiangVien, ChuDe, GiaKhoaHoc, thumbnai
 		listCart = JSON.parse(listCart);
 		if (listCart != undefined && listCart != null) {
 			var existsItem = false;
-			var totalCart = listCart.course.length;
+			var totalCart = listCart.courses.length;
 			var cart = localStorage.getItem("cart");
 			if (cart == null) {
 				localStorage.setItem("cart", totalCart);
@@ -363,22 +374,23 @@ function addToCart(MaKhoaHoc, TenKhoaHoc, GiangVien, ChuDe, GiaKhoaHoc, thumbnai
 				localStorage.setItem("cart", totalCart);
 				$('.countCart').text(totalCart);
 			}
-			for (var i = 0; i < listCart.course.length; i++) {
-				if(listCart.course[i].MaKhoaHoc == MaKhoaHoc){
+			for (var i = 0; i < listCart.courses.length; i++) {
+				if(listCart.courses[i].MaKhoaHoc == MaKhoaHoc){
 					existsItem = true;
 					swal("Lỗi!", "Khóa học này đã có trong giỏ hàng của bạn", "error")
 					break;
 				}
 			}
 			if(!existsItem){
-				listCart.course.push({
+				listCart.courses.push({
 					'customerId': customerId,
 					'MaKhoaHoc': MaKhoaHoc,
 					'TenKhoaHoc': TenKhoaHoc,
 					'GiangVien': GiangVien,
 					'ChuDe': ChuDe,
 					'GiaKhoaHoc': GiaKhoaHoc,
-					'Thumbnail': thumbnail
+					'GiangVienID': GiangVienID,
+					'KhoaHocID': KhoaHocID
 				});
 				localStorage.setItem("cart", totalCart + 1);
 				$('.countCart').text(totalCart + 1);
@@ -400,20 +412,20 @@ function checkOut() {
 		window.location.href = "/";
 	}
 	listCart = JSON.parse(listCart);
-	$('.soKhoaHoc').text(listCart.course.length + ' Khóa học');
+	$('.soKhoaHoc').text(listCart.courses.length + ' khóa học');
 	var cartContent = '';
-	for (var i = 0; i < listCart.course.length; i++) {
+	for (var i = 0; i < listCart.courses.length; i++) {
 		cartContent += '<div class="row ttkh">';
-    		cartContent += '<div class="col-md-8 ttkh1">' + listCart.course[i].TenKhoaHoc + '</div>';
+    		cartContent += '<div class="col-md-8 ttkh1">' + listCart.courses[i].TenKhoaHoc + '</div>';
     		cartContent += '<div class="col-md-4">';
-    		cartContent += '<strong>' + Math.round(listCart.course[i].GiaKhoaHoc) + '<sup>$</sup></strong>';
+    		cartContent += '<strong>' + Math.round(listCart.courses[i].GiaKhoaHoc) + '<sup>$</sup></strong>';
     		cartContent += '</div>';
   		cartContent += '</div>';
 	}
 	$('.loadCartCheckOut').html(cartContent);
 	var totalPrice = 0;
-	for (var i = 0; i < listCart.course.length; i++) {
-		totalPrice += listCart.course[i].GiaKhoaHoc * 1;
+	for (var i = 0; i < listCart.courses.length; i++) {
+		totalPrice += listCart.courses[i].GiaKhoaHoc * 1;
 	}
 	$('.hocPhiGoc').html(Math.round(totalPrice) + '<sup>$</sup>');
 	var token = localStorage.getItem('token');
@@ -425,55 +437,90 @@ function checkOut() {
 	    	$('#paymentform-email').val(response.email);
 	    	$('#paymentform-name').val(response.fullName);
 	    	$('#paymentform-phone').val(response.phone);
+	    	if (response.fullName == null || response.phone == null || response.phone == undefined || response.fullName == undefined) {
+				swal({
+				  	title: "Vui lòng nhập họ tên!",
+				  	text: "Vui lòng nhập họ tên của bạn để hoàn tất thanh toán",
+				  	type: "input",
+				  	showCancelButton: true,
+				  	closeOnConfirm: false,
+				  	inputPlaceholder: "Nhập tên của bạn."
+				}, function (nameValue) {
+				  	if (nameValue === false) return false;
+				  	if (nameValue === "") {
+					    swal.showInputError("Bạn chưa nhập tên kìa!");
+				    	return false
+				  	}
+				  	swal({
+					  	title: "Vui lòng số điện thoại!",
+					  	text: "Số điện thoại của bạn là:",
+					  	type: "input",
+					  	showCancelButton: true,
+					  	closeOnConfirm: false,
+					  	inputPlaceholder: "Nhập số điện thoại của bạn.",
+					  	showLoaderOnConfirm: true
+					}, function (sdtValue) {
+					  	if (sdtValue === false) return false;
+					  	if (sdtValue === "") {
+						    swal.showInputError("Bạn chưa nhập số điện thoại kìa!");
+					    	return false
+					  	}
+					  	var token = localStorage.getItem('token');
+					  	var putData = {
+							"fullName": nameValue,
+							"phone": sdtValue
+						}
+						$.ajax({
+							url: MEMBER + '/' + id,
+							type: "PUT",
+							data: putData,
+							headers: {
+							    "Authorization": token
+							},
+							success: function(response){
+						    	$('#paymentform-name').val(response.fullName);
+						    	$('#paymentform-phone').val(response.phone);
+						    	swal("Cập nhật thông tin thành công!", "Hãy tiếp tục thanh toán nhé!", "success");
+						    	$('.loading').fadeOut();
+							},
+							error: function(jqXHR, textStatus, errorThrown) {
+						       swal("Lỗi!", "Có lỗi xảy ra!", "error");
+						    }
+						});
+					});
+				});
+			}
 	     	$('.loading').fadeOut();
 	    },
 	    error: function(jqXHR, textStatus, errorThrown) {
 	       swal("Lỗi!", "Có lỗi xảy ra, vui lòng thử lại!", "error");
 	    }
 	});
-	paypal.Button.render({
-      env: 'sandbox',
-      style: {
-          label: 'paypal',
-          size:  'responsive',
-          shape: 'rect',
-          color: 'blue',
-          tagline: false
-      },
-      client: {
-          sandbox:    'ATGv66JpXYIQRKgfybS3AECl62BZJpBnXBpwaiIsA5neL5IOJofWObknPS5nCtLph8QVHvpDUY48tAC7',
-          production: '<insert production client id>'
-      },
-      payment: function(data, actions) {
-      	var username = localStorage.getItem('username');
-      	var name = $('#paymentform-name').val();
-      	var phone = $('#paymentform-phone').val();
-      	if (name == null || phone == null || name == undefined || phone == undefined) {
-      		window.location.href = "/pages/login.html";
-      	} else if (email != null && name != null && phone != null || email != undefined && name != undefined && phone != undefined) {
-			return actions.payment.create({
-              payment: {
-                  transactions: [
-                      {
-                          amount: { total: Math.round(totalPrice), currency: 'USD' }
-                      }
-                  ]
-              }
-          });
-		}
-      },
-      onAuthorize: function(data, actions) {
-          return actions.payment.execute().then(function() {
-              	localStorage.setItem('orderID', data.orderID);
-              	localStorage.setItem('paymentID', data.paymentID);
-              	$('#endPay').removeClass('btn-warning');
-				$('#endPay').addClass('btn-success');
-				$('#endPay').html('<strong>HOÀN TẤT</strong>');
-				$('#endPay').attr('src', '/pages/mycourse.html');
-          });
-      }
-
-  }, '#paypal-button-container');
+	var customerId = localStorage.getItem('id');
+	var arrayCourses = [];
+	for (var i = 0; i < listCart.courses.length; i++) {
+		var course = {
+			'customerId': customerId,
+			'KhoaHocID': listCart.courses[i].KhoaHocID,
+			'GiangVienID':	listCart.courses[i].GiangVienID,
+			'GiaKhoaHoc': listCart.courses[i].GiaKhoaHoc
+		};
+		arrayCourses.push(course);
+	}
+	var data = {
+		'courses': JSON.stringify(arrayCourses)
+	}
+	// $.ajax({
+	//     url: ORDER,
+	//     type: "POST",
+	//     data: data,
+	//     success: function (response) {
+	//     	localStorage.setItem('orderID', response[0]._id);
+	//     },
+	//     error: function(jqXHR, textStatus, errorThrown) {
+	//        swal("Lỗi!", "Có lỗi xảy ra, vui lòng thử lại!", "error");
+	//     }
+	// });
 	$('.loading').fadeOut();
 }
 function deleteCart() {
@@ -483,7 +530,7 @@ function deleteCart() {
 	  	type: "warning",
 	  	showCancelButton: true,
 	  	confirmButtonClass: "btn-danger",
-	  	confirmButtonText: "Yes, delete it!",
+	  	confirmButtonText: "Xóa",
 	  	closeOnConfirm: false
 	},
 	function(){
@@ -855,5 +902,54 @@ function savePsw() {
 	}
 }
 function Payment() {
-	alert('Chức năng đang phát triển!');	
+	if ($('#check6').is(':checked')) {
+		var listCart = localStorage.getItem('listCart');
+		var customerId = localStorage.getItem('id');
+		var orderID = localStorage.getItem('orderID');
+		listCart = JSON.parse(listCart);
+		var totalPrice = 0;
+		for (var i = 0; i < listCart.courses.length; i++) {
+			totalPrice += listCart.courses[i].GiaKhoaHoc * 1;
+		}
+		var urlPayPal = 'https://project-tthhn.appspot.com/paypal?totalPrice=' + totalPrice + '&customerId=' + customerId;
+		$.ajax({
+			url: urlPayPal,
+			type: "GET",
+			success: function(response){
+				console.log(response);
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+		       swal("Lỗi!", "Có lỗi xảy ra!", "error");
+		    }
+		});
+	} else {
+		swal("Troll is real :v", "Hiện tại mình mới chỉ đang phát triển chức năng thanh toán qua PayPal nên bạn hãy tick vào ô PayPal nhé!");
+	}
+}
+function myCourse() {
+	var id = localStorage.getItem('id');
+	if (id == null || id == undefined) {
+		window.location.href = '/pages/login.html';
+	} else {
+		$.ajax({
+		    url: MEMBER + '/' + id,
+		    type: "GET",
+		    success: function (response) {
+		    	if (response.avatar == null || response.avatar == undefined) {
+		    		$('#avtMyCourse').attr('src', 'https://www.asxonline.com/content/dam/asxonline/public/images/icon-t.svg');
+		    	} else {
+		    		$('#avtMyCourse').attr('src', response.avatar);
+		    	}
+		    	$('#nameMyCourse').text(response.fullName);
+		    	$('#emailMyCourse').text('/ ' + response.email);
+		     	$('.loading').fadeOut();
+		    },
+		    error: function(jqXHR, textStatus, errorThrown) {
+		       swal("Lỗi!", jqXHR.responseJSON.message, "error");
+		    }
+		});
+	}
+}
+function delCourse() {
+	swal("Chức năng đang phát triển!", "Đi chỗ khác chơi đê, chức năng này đang phát triển nên chưa ấn đc đâu :)", "error");
 }

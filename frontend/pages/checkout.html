@@ -89,7 +89,7 @@
                   <div class="col-md-6">
                     <fieldset>
                       <legend>Email đăng kí học <span style="color: red">*</span></legend>
-                      <input type="text" id="paymentform-email" class="form-control" name="" oldautocomplete="remove" autocomplete="off" abineorigin="disposable">
+                      <input type="text" id="paymentform-email" class="form-control" name="" oldautocomplete="remove" autocomplete="off" abineorigin="disposable" disabled>
                     </fieldset>
                   </div>
                 </div>
@@ -174,8 +174,10 @@
                   <input id="check5" type="radio" name="thanhtoan"> <img class="phuongthuc" src="https://media.kyna.vn/img/checkout/transfer.png"> <span>Chuyển khoản Ngân hàng</span>
                 </div></label>
               </div>
-              <div class="col-md-6" style="padding: 15px 35px;">
-                <div id="paypal-button-container"></div>
+              <div class="col-md-6">
+                <label><div class="form-group selectCO">
+                  <input id="check6" type="radio" name="thanhtoan"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/2000px-PayPal.svg.png" width="50%" height="auto">
+                </div></label>
               </div>
               <div id="chuyenkhoan" class="col-md-10 thongtin">
                 <ul>
@@ -211,16 +213,13 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 stickyCheckout">
             <div class="panel panel-default">
               <div class="panel-heading">
                 <div class="row">
                   <div class="col-md-6 cart1">
-                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                    <img src="https://media.kyna.vn/img/icon-mini-cart.png">
                     <strong class="soKhoaHoc"></strong>
-                  </div>
-                  <div class="col-md-6 change">
-                    <a href="cart.html">Thay đổi</a>
                   </div>
                 </div>
               </div>
@@ -243,7 +242,7 @@
               </div>
               <div class="panel-body">
                 <center>
-                  <a href="javascript:void(0)" class="btn btn-warning btn-lg btn-block" id="endPay"><strong>THANH TOÁN</strong></a>
+                  <a href="javascript:Payment()" class="btn btn-warning btn-lg btn-block"><strong>THANH TOÁN</strong></a>
                 </center>
               </div>
             </div>
@@ -261,7 +260,7 @@
               <li><a href="gioithieu.html">Giới thiệu về Tthhn</a>
               </li>
               <li><a href="faq.html">Câu hỏi thường gặp</a></li>
-              <li><a href="QA.html">Điều khoản dịch vụ</a></li>
+              <li><a href="tos.html">Điều khoản dịch vụ</a></li>
             </ul>
           </div>
         </div>
@@ -269,7 +268,7 @@
           <div>
             <ul class="item-list">
                 <li><a href="pay.html">Hướng dẫn thanh toán</a></li>
-                <li><a href="#">Affiliate</a></li>
+                <li><a href="affiliate.html">Affiliate</a></li>
             </ul>
           </div>
         </div>

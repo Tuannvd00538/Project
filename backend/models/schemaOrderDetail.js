@@ -1,28 +1,11 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 module.exports = mongoose.model('orderDetail', {
-	customerID: {
-		type: String,
-		require: true
-	},
-	MaKhoaHoc: {
-		type: String,
-		require: true
-	},
-	TenKhoaHoc: {
-		type: String,
-		require: true
-	},
-	GiangVien: {
-		type: String,
-		require: true
-	},
-	GiaKhoaHoc: {
-		type: Number,
-		require: true
-	},
-	status: {
-		type: Number,
-		detail: 1
-	}
+	orderID: Schema.Types.ObjectId,
+	courseID: Schema.Types.ObjectId,
+	TieuDe: String,
+	GiangVienID: String,
+	GiaKhoaHoc: Number,
+	Thumbnail: String
 });

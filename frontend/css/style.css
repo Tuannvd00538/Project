@@ -29,9 +29,6 @@
 	width: 100%;
 	height: auto;
 }
-.nav li a {
-	border-right: 1px solid #eee;
-}
 a, a:hover {
 	text-decoration: none;
 }
@@ -811,10 +808,15 @@ footer ul li {
 .row .col-md-6 fieldset:hover {
   	border: 1px solid #50ad4e;
 }
+fieldset {
+    border: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: 0.35em 0.2em 0.76em 0.6em;
+}
 .row .col-md-6 fieldset legend {
     width: auto;
     font-size: 16px;
-    color: #777;
+    color: #333;
     margin-bottom: 0;
 }
 .row .col-md-6 fieldset input, .row .col-md-6 fieldset textarea {
@@ -1255,10 +1257,6 @@ margin: 10px 0 10px;
 .ul_li_affiliate ul{
 	list-style: none;
 }
-
-.avater{
-
-}
 .avatar img {
 	width: 100px;
     height: 100px;
@@ -1270,26 +1268,28 @@ margin: 10px 0 10px;
     margin-left: 46%;
     margin-bottom: 0px;
 }
-
-.header_mycourses1 h3{
+.header_mycourses1 h2 {
 	text-align: center;
-	font-weight: 400;
+    font-weight: 400;
+    margin: 20px;
 }
-
-.header_mycourses1 h3 .email {
+.header_mycourses1 h2 .email {
 	font-size: 16px;
 }
-
 .header_mycourses1 a:hover{
 	background-color: #0975b4;
 	border: 1px solid #0975b4; 
 }
-
 .header_mycourses{
 	background-color: #f5f5f5;
 	width: 100%;
 }
-
+.editMyCourse {
+	margin-bottom: 30px;
+}
+.mainCourse {
+	padding: 0 100px;
+}
 .img-courses {
     width: 50px;
     height: 50px;
@@ -1298,39 +1298,83 @@ margin: 10px 0 10px;
     background-repeat: no-repeat;
     background-position-x: -50px;
 }
-
 .course_summary{
 	text-align: center;
     margin: 0 20px;
 }
-
 .course_summary img{
 	width: 50px;
 }
-
 .course_summary ul{
     display: inline-block;
     list-style: none;
 }
-.quay_quay2{
-	text-align: center;
+.quay_quay2 {
+	border-radius: 3px;
+    text-align: center;
+    background: #fff;
+    padding: 0 15px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.1);
+    margin: 0 100px;
 }
-.quay_quay2 img{
+.quay_quay2 .course-summary {
+	display: inline-block;
+    padding: 20px 10%;
+}
+.quay_quay2 .course-summary ul li {
+	list-style-type: none;
+	width: 130px;
+    float: left;
+    margin: 0 20px;
+}
+.quay_quay2 .course-summary ul li p {
+	font-size: 18px;
+    color: #353535;
+}
+.quay_quay2 .course-summary ul li span {
+	font-size: 24px;
+    font-weight: 400;
+    display: block;
+    margin-top: 15px;
+}
+.contentCourse {
+	width: 100%;
+}
+.tpoin {
+	font-size: 16px;
+    font-weight: bold;
+}
+.img-count-courses {
+    background-position-y: -4937px;
+}
+.img-document-courses {
+    background-position-y: -5037px;
+}
+.img-question-courses {
+    background-position-y: -4837px;
+}
+.quay_quay2 .course-summary .img-courses {
 	width: 50px;
-	height: auto;
+    height: 50px;
+    margin: auto;
+    background-image: url(https://media-kyna.cdn.vccloud.vn/src/img/icon-kyna.png);
+    background-repeat: no-repeat;
+    background-position-x: -50px;
 }
-
 .tab_mycourses li a{
 	padding: 10px 38px;
     font-size: 15px;
     margin-top: 30px;
 }
-
-#menu3, #menu5, #menu1, #menu7{
-	padding-top: 30px;
-	float: left;
+#menu1 {
+	padding-top: 20px;
+	background-color: #fff;
 }
-
+.emptyCourse {
+	padding: 100px;
+    text-align: center;
+    background-color: #fff;
+}
 .give_me{
 	border: 1px solid #ddd;
 	margin-bottom: 20px;
@@ -1352,7 +1396,6 @@ margin: 10px 0 10px;
 .give_me_text{
 	height: 300px;
 }
-
 .btnMyCourse {
 	white-space: pre-line;
 	text-align: center;
@@ -1367,4 +1410,8 @@ margin: 10px 0 10px;
 #menu1_6 img{
 	width: 25px;
 	height: 25px;
+}
+.stickyCheckout {
+	position: sticky;
+	top: 10px;
 }
