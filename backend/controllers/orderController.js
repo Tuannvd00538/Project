@@ -35,6 +35,7 @@ exports.saveCart = function(req, res){
 	     	var orderDetail = new OrderDetail({
 	     		orderID: order._id,
 	     		courseID: courseResult[i]._id,
+	     		customerId: order.customerId,
 	     		TieuDe: courseResult[i].TieuDe,
 	     		GiangVienID: courseResult[i].GiangVienID,
 	     		GiaKhoaHoc: Math.round((courseResult[i].GiaKhoaHoc / 100) * (100 - courseResult[i].Sale)),
@@ -66,19 +67,7 @@ exports.saveCart = function(req, res){
 exports.getOrder = function(req, res){
 	var page = Number(req.query.page);
 	var limit = Number(req.query.limit);
-	Order.find({ customerId: req.params.id })
-	.paginate(page, limit, function(err, result, total) {
-    	var responseData = {
-    		'data': result,
-    		'totalPage': Math.ceil(total/limit)
-    	};
-    	res.send(responseData);
-  	});
-}
-exports.getCartOrder = function(req, res){
-	var page = Number(req.query.page);
-	var limit = Number(req.query.limit);
-	OrderDetail.find({ orderID: req.params.id })
+	OrderDetail.find({ customerId: req.params.id })
 	.paginate(page, limit, function(err, result, total) {
     	var responseData = {
     		'data': result,
@@ -90,7 +79,7 @@ exports.getCartOrder = function(req, res){
 exports.getPaid = function(req, res){
 	var page = Number(req.query.page);
 	var limit = Number(req.query.limit);
-	Order.find({ $and: [ { customerId: req.params.id }, { status: 2 } ] })
+	OrderDetail.find({ $and: [ { customerId: req.params.id }, { status: 2 } ] })
 	.paginate(page, limit, function(err, result, total) {
     	var responseData = {
     		'data': result,
@@ -102,7 +91,19 @@ exports.getPaid = function(req, res){
 exports.getUnpaid = function(req, res){
 	var page = Number(req.query.page);
 	var limit = Number(req.query.limit);
-	Order.find({ $and: [ { customerId: req.params.id }, { status: 1 } ] })
+	OrderDetail.find({ $and: [ { customerId: req.params.id }, { status: 1 } ] })
+	.paginate(page, limit, function(err, result, total) {
+    	var responseData = {
+    		'data': result,
+    		'totalPage': Math.ceil(total/limit)
+    	};
+    	res.send(responseData);
+  	});
+}
+exports.getHistory = function(req, res){
+	var page = Number(req.query.page);
+	var limit = Number(req.query.limit);
+	OrderDetail.find({ customerId: req.params.id }).sort({createdAt: -1})
 	.paginate(page, limit, function(err, result, total) {
     	var responseData = {
     		'data': result,

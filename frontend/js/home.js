@@ -26,6 +26,9 @@ $(document).ready(function () {
 		$('#checkSign').attr('style', 'display:none;');
 		$('#checkSignTwo').attr('style', 'display:none;');
 	}
+	if (screen.width <= 768) {
+		window.location.href = "/m/index.html";
+	}
 	window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
 	d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
 	_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
@@ -944,29 +947,82 @@ function myCourse() {
 		    type: "GET",
 		    success: function (response) {
 		    	for (var i = 0; i < response.data.length; i++) {
-		    		$.ajax({
-					    url: ORDER + '/customer/' + response.data[i]._id,
-					    type: "GET",
-					    success: function (response) {
-					    	var appendContent = '';
-					    	for (var i = 0; i < response.data.length; i++) {
-					    		var id = response.data[i]._id;
-					    		var Thumbnail = response.data[i].Thumbnail;
-					    		var TieuDe = response.data[i].TieuDe;
-					    		var GiangVienID = response.data[i].GiangVienID;
-					    		var courseID = response.data[i].courseID;
-					    		appendContent += blockCourse(id, Thumbnail, TieuDe, GiangVienID, courseID);
-					    	}
-					    	$('#returnMyCourse').html(appendContent);
-					    },
-					    error: function(jqXHR, textStatus, errorThrown) {
-					       swal("Lỗi!", jqXHR.responseJSON.message, "error");
-					    }
-					});
-					var status = response.data[i].status;
-		    		if (status == 2) {
-		    			alert('Đã thanh toán!');
-		    		}
+		    		var appendContent = '';
+			    	for (var i = 0; i < response.data.length; i++) {
+			    		var id = response.data[i]._id;
+			    		var Thumbnail = response.data[i].Thumbnail;
+			    		var TieuDe = response.data[i].TieuDe;
+			    		var GiangVienID = response.data[i].GiangVienID;
+			    		var courseID = response.data[i].courseID;
+			    		appendContent += blockCourse(id, Thumbnail, TieuDe, GiangVienID, courseID);
+			    	}
+			    	$('#returnMyCourse').html(appendContent);
+		    	}
+		    	if (response.data.length != 0) {
+		    		$('.returnMyCourse').attr('style', 'display:none;');
+		    	}
+		    },
+		    error: function(jqXHR, textStatus, errorThrown) {
+		       swal("Lỗi!", jqXHR.responseJSON.message, "error");
+		    }
+		});
+		$.ajax({
+		    url: ORDER + '/paid/' + id,
+		    type: "GET",
+		    success: function (response) {
+		    	for (var i = 0; i < response.data.length; i++) {
+		    		var appendContent = '';
+			    	for (var i = 0; i < response.data.length; i++) {
+			    		var id = response.data[i]._id;
+			    		var Thumbnail = response.data[i].Thumbnail;
+			    		var TieuDe = response.data[i].TieuDe;
+			    		var GiangVienID = response.data[i].GiangVienID;
+			    		var courseID = response.data[i].courseID;
+			    		appendContent += blockCourse(id, Thumbnail, TieuDe, GiangVienID, courseID);
+			    	}
+			    	$('#returnMyCoursePaid').html(appendContent);
+		    	}
+		    	if (response.data.length != 0) {
+		    		$('.returnMyCoursePaid').attr('style', 'display:none;');
+		    	}
+		    },
+		    error: function(jqXHR, textStatus, errorThrown) {
+		       swal("Lỗi!", jqXHR.responseJSON.message, "error");
+		    }
+		});
+		$.ajax({
+		    url: ORDER + '/unpaid/' + id,
+		    type: "GET",
+		    success: function (response) {
+		    	for (var i = 0; i < response.data.length; i++) {
+		    		var appendContent = '';
+			    	for (var i = 0; i < response.data.length; i++) {
+			    		var id = response.data[i]._id;
+			    		var Thumbnail = response.data[i].Thumbnail;
+			    		var TieuDe = response.data[i].TieuDe;
+			    		var GiangVienID = response.data[i].GiangVienID;
+			    		var courseID = response.data[i].courseID;
+			    		appendContent += blockCourse(id, Thumbnail, TieuDe, GiangVienID, courseID);
+			    	}
+			    	$('#returnMyCourseUnpaid').html(appendContent);
+		    	}
+		    	if (response.data.length != 0) {
+		    		$('.returnMyCourseUnpaid').attr('style', 'display:none;');
+		    	}
+		    },
+		    error: function(jqXHR, textStatus, errorThrown) {
+		       swal("Lỗi!", jqXHR.responseJSON.message, "error");
+		    }
+		});
+		$.ajax({
+		    url: ORDER + '/history/' + id,
+		    type: "GET",
+		    success: function (response) {
+		    	for (var i = 0; i < response.data.length; i++) {
+		    		alert('history true');
+		    	}
+		    	if (response.data.length != 0) {
+		    		$('.historyGD').attr('style', 'display:none;');
 		    	}
 		    },
 		    error: function(jqXHR, textStatus, errorThrown) {
@@ -1007,6 +1063,8 @@ function paymentSuccess() {
 	var url = new URL(url_string);
 	var key = url.searchParams.get("orderID");
 	$('.textSc').text('Mã giao dịch: ' + key);
+	localStorage.removeItem('listCart');
+	localStorage.removeItem('cart');
 }
 function paymentError() {
 	var url_string = window.location.href;
