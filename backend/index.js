@@ -22,7 +22,7 @@ var paypal = Paypal.init(username
     , 'https://project-tthhn.appspot.com'
     , true);
 app.get('/paypal', function(req, res){
-    var invoiceNumber = Math.random().toString(36).substring(7);
+    var invoiceNumber = req.query.orderID;
     paypal.pay(invoiceNumber, req.query.totalPrice, 'Course', 'USD', true, [req.query.customerId, 'moreData'], function(err, url) {
     if (err) {
             console.log(err);
@@ -35,19 +35,18 @@ app.get('/return-paypal', function(req, res){
     var token = req.query.token;
     var PayerID = req.query.PayerID;
     paypal.detail(token, PayerID, function(err, data, invoiceNumber, price) {
- 
-    if (err) {
-            console.log(err);
-            return;
-        }
-        console.log(data);
-        if (data.success)
-            console.log('DONE, PAYMENT IS COMPLETED.');
-        else
-            console.log('SOME PROBLEM:', data);
-        var str = data.CUSTOM;
-        var customerId = str.split("|")[3];
-        res.send(customerId);
+        if (err) {
+                console.log(err);
+                return;
+            }
+            console.log(data);
+            if (data.success)
+                console.log('DONE, PAYMENT IS COMPLETED.');
+            else
+                console.log('SOME PROBLEM:', data);
+            var str = data.CUSTOM;
+            var customerId = str.split("|")[3];
+            res.send('Siin Đẹp Trai thanh toán thành công!');
     });
 });
 // End PayPal SDK
