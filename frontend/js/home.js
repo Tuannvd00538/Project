@@ -510,17 +510,17 @@ function checkOut() {
 	var data = {
 		'courses': JSON.stringify(arrayCourses)
 	}
-	// $.ajax({
-	//     url: ORDER,
-	//     type: "POST",
-	//     data: data,
-	//     success: function (response) {
-	//     	localStorage.setItem('orderID', response[0]._id);
-	//     },
-	//     error: function(jqXHR, textStatus, errorThrown) {
-	//        swal("Lỗi!", "Có lỗi xảy ra, vui lòng thử lại!", "error");
-	//     }
-	// });
+	$.ajax({
+	    url: ORDER,
+	    type: "POST",
+	    data: data,
+	    success: function (response) {
+	    	localStorage.setItem('orderID', response[0]._id);
+	    },
+	    error: function(jqXHR, textStatus, errorThrown) {
+	       swal("Lỗi!", "Có lỗi xảy ra, vui lòng thử lại!", "error");
+	    }
+	});
 	$('.loading').fadeOut();
 }
 function deleteCart() {
@@ -911,7 +911,7 @@ function Payment() {
 		for (var i = 0; i < listCart.courses.length; i++) {
 			totalPrice += listCart.courses[i].GiaKhoaHoc * 1;
 		}
-		var urlPayPal = 'https://project-tthhn.appspot.com/paypal?totalPrice=' + totalPrice + '&customerId=' + customerId;
+		var urlPayPal = 'https://project-tthhn.appspot.com/paypal?totalPrice=' + totalPrice + '&customerId=' + customerId + '&orderID=' + orderID;
 		$.ajax({
 			url: urlPayPal,
 			type: "GET",
@@ -923,7 +923,7 @@ function Payment() {
 		    }
 		});
 	} else {
-		swal("Troll is real :v", "Hiện tại mình mới chỉ đang phát triển chức năng thanh toán qua PayPal nên bạn hãy tick vào ô PayPal nhé!");
+		swal("Thông báo!", "Hiện tại mình mới chỉ đang phát triển chức năng thanh toán qua PayPal nên bạn hãy tick vào ô PayPal nhé!");
 	}
 }
 function myCourse() {
