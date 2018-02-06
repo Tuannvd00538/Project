@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+	<style type="text/css">
+		.container {
+		  margin: 0 auto;
+		  padding: 10px;
+		  width: 80%;
+		  height: 300px;
+		  color: #333;
+		  background: #419be0;
+		}
+
+		.slick-slide {
+		  text-align: center;
+		  color: #419be0;
+		  height: 280px;
+		  background: white;
+		}
+	</style>
+</head>
+<body>
+	<div class='container'>
+	  <div class='single-item'>
+	    <div><h3>132142134</h3></div>
+	    <div><h3>2123421341234</h3></div>
+	    <div><h3>3123421341234</h3></div>
+	    <div><h3>412341234</h3></div>
+	    <div><h3>1123423421345</h3></div>
+	    <div><h3>12346</h3></div>
+	  </div>
+	</div>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+	<script>
+		$(document).ready(function(){
+		  $('.single-item').slick({
+			  slidesToShow: 5,
+			  slidesToScroll: 1,
+			  autoplay: true,
+			  autoplaySpeed: 2000,
+			});
+		});
+	</script>
+</body>
+</html>
