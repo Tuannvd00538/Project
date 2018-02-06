@@ -1443,13 +1443,66 @@ margin: 10px 0 10px;
 .tablecourse {
     background-color: #fff;
     padding: 20px 15px;
+   	border-radius: 5px;
+}
+
+.dateorder {
+	text-align: right;
+	font-size: 14px;
+	padding: 10px 0;
 }
 
 .tablecourse th,.tablecourse td {
 	padding: 10px 40px;
 	margin: 0 50px;
+	border-bottom: 1px #f4f4f4 solid;
 }
 
 .tablecourse table {
     width: 100%;
+}
+
+.titletablecart {
+	padding: 20px 30px;
+	font-size: 20px;
+}
+
+.dateorder {
+	float: right;
+}
+
+.statuscart {
+	font-weight: bold;
+}
+
+.picproduct {
+	width: 50px;
+}
+
+.tinhtien {
+	text-align: right;
+	padding: 20px 0;
+	border: none;
+}
+
+.sum {
+	color: #ff3b27;
+	font-size: 18px;
+}
+
+.btn-back {
+	background: #fdd835;
+    border-color: #fdd835;
+    margin-top: 15px;
+    padding: 9px 12px;
+    width: 225px;
+    margin-bottom: 20px;
+}
+
+.productinfo {
+	padding: 0 120px;
+}
+
+.madonhang {
+	color: #007ff0;
 }
