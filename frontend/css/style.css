@@ -1530,6 +1530,7 @@ margin: 10px 0 10px;
     padding: 9px 12px;
     width: 225px;
     margin-bottom: 20px;
+    color: #fff;
 }
 
 .productinfo {
@@ -1538,4 +1539,7 @@ margin: 10px 0 10px;
 
 .madonhang {
 	color: #007ff0;
+}
+.titleHiHi {
+	width: 40%;
 }

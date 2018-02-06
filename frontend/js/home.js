@@ -42,7 +42,7 @@ $(document).ready(function () {
 	  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12&appId=252312411967413&autoLogAppEvents=1';
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));
-	
+
 	$('.single-item').slick({
 	  	slidesToShow: 3,
 	  	slidesToScroll: 1,
@@ -1103,15 +1103,30 @@ function blockCoursePaid(id, Thumbnail, TieuDe, GiangVienID, courseID) {
 	return content;
 }
 function blockHistory(id, createdAt, customerId, totalPrice, status) {
+	var ngay = new Date(createdAt).getDate();
+	var thang = new Date(createdAt).getMonth() + 1;
+	var nam = new Date(createdAt).getFullYear();
 	var content = '';
-	content += '<tr>';
-        content += '<td><a href="myproductinfo.html" class="madonhang">#' + id + '</a></td>';
-        content += '<td>' + createdAt + '</td>';
-		content += '<td>' + totalPrice + '$</td>';
-		content += '<td>';
-    		content += '<span class="order-status">Đang vận chuyển</span>';
-        content += '</td>';
-    content += '</tr>';
+	if (status == 1) {
+		content += '<tr>';
+	        content += '<td><a href="myproductinfo.html?id=' + id + '&status=' + status + '&create=' + createdAt + '" class="madonhang">#' + id + '</a></td>';
+	        content += '<td>' + ngay + '/' + thang + '/' + nam + '</td>';
+			content += '<td>' + totalPrice + '$</td>';
+			content += '<td>';
+	    		content += '<span class="order-status">Chưa thanh toán</span>';
+	        content += '</td>';
+	    content += '</tr>';
+	}
+	if (status == 2) {
+		content += '<tr>';
+	        content += '<td><a href="myproductinfo.html?id=' + id + '&status=' + status + '&create=' + createdAt + '" class="madonhang">#' + id + '</a></td>';
+	        content += '<td>' + ngay + '/' + thang + '/' + nam + '</td>';
+			content += '<td>' + totalPrice + '$</td>';
+			content += '<td>';
+	    		content += '<span class="order-status">Đã thanh toán</span>';
+	        content += '</td>';
+	    content += '</tr>';
+	}
 	return content;
 }
 function delCourse() {
@@ -1130,4 +1145,67 @@ function paymentError() {
 	var url = new URL(url_string);
 	var key = url.searchParams.get("orderID");
 	$('.textSc').text('Mã giao dịch: ' + key);
+}
+function historyInfo() {
+	var url_string = window.location.href;
+	var url = new URL(url_string);
+	var id = url.searchParams.get("id");
+	var status = url.searchParams.get("status");
+	var create = url.searchParams.get("create");
+	var ngay = new Date(create).getDate();
+	var thang = new Date(create).getMonth() + 1;
+	var nam = new Date(create).getFullYear();
+	if (status == 1) {
+		$('.titletablecart').html('Chi tiết đơn hàng #' + id + ' - <span class="statuscart">Chưa thanh toán</span><p class="dateorder">Ngày đặt hàng: ' + ngay + '/' + thang + '/' + nam + '</p>');
+	}
+	if (status == 2) {
+		$('.titletablecart').html('Chi tiết đơn hàng #' + id + ' - <span class="statuscart">Đã thanh toán</span><p class="dateorder">Ngày đặt hàng: ' + ngay + '/' + thang + '/' + nam + '</p>');
+	}
+	$.ajax({
+	    url: ORDER + '/history/check/' + id,
+	    type: "GET",
+	    success: function (response) {
+	    	var appendContent = '';
+	    	var totalPrice = 0;
+	    	for (var i = 0; i < response.data.length; i++) {
+	    		var courseID = response.data[i].courseID;
+	    		var TieuDe = response.data[i].TieuDe;
+	    		var courseID = response.data[i].courseID;
+	    		var GiangVienID = response.data[i].GiangVienID;
+	    		var GiaKhoaHoc = response.data[i].GiaKhoaHoc;
+	    		var status = response.data[i].status;
+	    		appendContent += blockHistoryTwo (courseID, TieuDe, courseID, GiangVienID, GiaKhoaHoc, status);
+	    		totalPrice += response.data[i].GiaKhoaHoc * 1;
+	    	}
+	    	$('#resultsMyProductInfo').html(appendContent);
+	    	$('.sum').text(totalPrice + '$');
+	    },
+	    error: function(jqXHR, textStatus, errorThrown) {
+	       swal("Lỗi!", jqXHR.responseJSON.message, "error");
+	    }
+	});
+}
+function blockHistoryTwo(courseID, TieuDe, courseID, GiangVienID, GiaKhoaHoc, status) {
+	if (status == 1) {
+		var content = '';
+		content += '<tr>';
+	        content += '<td class="titleHiHi">' + TieuDe + '</td>';
+	        content += '<td>' + GiaKhoaHoc + '$</td>';
+			content += '<td>0%</td>';
+			content += '<td>Chưa thanh toán</td>';
+			content += '<td><a href="product.html?id=' + courseID + '&gv=' + GiangVienID + '" class="btn btn-info">Xem khóa học</a></td>';
+	    content += '</tr>';
+	    return content;
+	}
+	if (status == 2) {
+		var content = '';
+		content += '<tr>';
+	        content += '<td class="titleHiHi">' + TieuDe + '</td>';
+	        content += '<td>' + GiaKhoaHoc + '$</td>';
+			content += '<td>0%</td>';
+			content += '<td>Đã thanh toán</td>';
+			content += '<td><a href="javascript:delCourse()" class="btn btn-success">Vào học</a></td>';
+	    content += '</tr>';
+	    return content;
+	}
 }

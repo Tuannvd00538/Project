@@ -112,3 +112,15 @@ exports.getHistory = function(req, res){
     	res.send(responseData);
   	});
 }
+exports.checkHistory = function(req, res){
+	var page = Number(req.query.page);
+	var limit = Number(req.query.limit);
+	OrderDetail.find({ orderID: req.params.id })
+	.paginate(page, limit, function(err, result, total) {
+    	var responseData = {
+    		'data': result,
+    		'totalPage': Math.ceil(total/limit)
+    	};
+    	res.send(responseData);
+  	});
+}

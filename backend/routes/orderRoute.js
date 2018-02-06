@@ -11,4 +11,6 @@ module.exports = function(app){
 		.get(orderController.getUnpaid)
 	app.route('/_api/v1/order/history/:id')
 		.get(orderController.getHistory)
+	app.route('/_api/v1/order/history/check/:id')
+		.get(orderController.checkHistory)
 }
