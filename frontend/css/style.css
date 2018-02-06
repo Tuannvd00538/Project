@@ -1364,6 +1364,7 @@ margin: 10px 0 10px;
     text-align: center;
     background-color: #fff;
 }
+
 .give_me{
 	border: 1px solid #ddd;
 	margin-bottom: 20px;
@@ -1425,4 +1426,20 @@ margin: 10px 0 10px;
 .mauchu988 {
 	color: red;
 	font-size: 50px;
+}
+
+/*LICH SU GIAO DICH*/
+
+.tablecourse {
+    background-color: #fff;
+    padding: 20px 15px;
+}
+
+.tablecourse th,.tablecourse td {
+	padding: 10px 40px;
+	margin: 0 50px;
+}
+
+.tablecourse table {
+    width: 100%;
 }
