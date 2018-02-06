@@ -221,19 +221,9 @@ footer ul li {
 .dropdown-toggle {
 	font-size: 12px;
 }
-.downloadApp {
-	margin-top: -10px;
-}
-.downloadApp img {
-	width: 25%;
-}
 .item-list li a:hover {
 	color: #fff;
 }
-
-/*.item-list{
-	color: white;
-}*/
 
 .nav-center {
 	padding-top: 10px;
