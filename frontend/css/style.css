@@ -1427,12 +1427,16 @@ margin: 10px 0 10px;
 	color: red;
 	font-size: 50px;
 }
+<<<<<<< HEAD
 
+=======
+/*slide*/
+>>>>>>> 375e644f62c32572e5d61284c7192caa9a95f352
 .container1 {
-	margin: 0 auto;
+	margin: 0 0 15px 0;
 	padding: 10px;
 	width: 100%;
-	height: 285px;
+	height: 340px;
 	color: #333;
 	background: #eee;
 }
@@ -1451,6 +1455,11 @@ margin: 10px 0 10px;
 .lecturers1 {
 	margin-left: -11%;
 }
+<<<<<<< HEAD
+=======
+/*-----------------*/
+/*LICH SU GIAO DICH*/
+>>>>>>> 375e644f62c32572e5d61284c7192caa9a95f352
 
 .tablecourse {
     background-color: #fff;
