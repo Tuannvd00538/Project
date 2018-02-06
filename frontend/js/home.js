@@ -1036,6 +1036,7 @@ function myCourse() {
 		    		var status = response.data[i].status;
 		    		appendContent += blockHistory (id, createdAt, customerId, totalPrice, status)
 		    	}
+		    	$('#resultsHistory').html(appendContent);
 		    	if (response.data.length != 0) {
 		    		$('.historyGD').attr('style', 'display:none;');
 		    	}
@@ -1092,6 +1093,18 @@ function blockCoursePaid(id, Thumbnail, TieuDe, GiangVienID, courseID) {
 			content += '<a href="javascript:delCourse()" class="btn btn-success">Vào học</a>';
 		content += '</td>';
 	content += '</tr>';
+	return content;
+}
+function blockHistory(id, createdAt, customerId, totalPrice, status) {
+	var content = '';
+	content += '<tr>';
+        content += '<td><a href="myproductinfo.html" class="madonhang">#' + id + '</a></td>';
+        content += '<td>' + createdAt + '</td>';
+		content += '<td>' + totalPrice + '$</td>';
+		content += '<td>';
+    		content += '<span class="order-status">Đang vận chuyển</span>';
+        content += '</td>';
+    content += '</tr>';
 	return content;
 }
 function delCourse() {
