@@ -34,7 +34,7 @@ $(document).ready(function () {
 	_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
 	$.src="https://v2.zopim.com/?5SBzz9cH0cfBaktuvUjBsuCBCjT1NrUC";z.t=+new Date;$.
 	type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
-	
+
 	(function(d, s, id) {
 	  var js, fjs = d.getElementsByTagName(s)[0];
 	  if (d.getElementById(id)) return;
@@ -1027,8 +1027,14 @@ function myCourse() {
 		    url: ORDER + '/history/' + id,
 		    type: "GET",
 		    success: function (response) {
+		    	var appendContent = '';
 		    	for (var i = 0; i < response.data.length; i++) {
-		    		console.log(response.data[i].createdAt + " - " + response.data[i].status);
+		    		var id = response.data[i]._id;
+		    		var createdAt = response.data[i].createdAt;
+		    		var customerId = response.data[i].customerId;
+		    		var totalPrice = response.data[i].totalPrice;
+		    		var status = response.data[i].status;
+		    		appendContent += blockHistory (id, createdAt, customerId, totalPrice, status)
 		    	}
 		    	if (response.data.length != 0) {
 		    		$('.historyGD').attr('style', 'display:none;');
