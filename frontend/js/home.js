@@ -192,7 +192,11 @@ function detailCourse() {
 	    url: HOME + '/' + id,
 	    type: "GET",
 	    success: function (response) {
-	    	document.title = response.TieuDe + ' - TTHHN';
+	    	document.title = response.TieuDe;
+	    	$("meta[property=og\\:url]").attr("content", url_string);
+	    	$("meta[property=og\\:title]").attr("content", response.TieuDe);
+	    	$("meta[property=og\\:image]").attr("content", response.Thumbnail);
+	    	$('.fb-like').attr('data-href', url_string);
 	    	$('#titleKH').text(response.TieuDe);
 	    	$('#desKH').text(response.MoTa);
 	    	$('#gvKH').text(response.GiangVien);
@@ -1096,9 +1100,10 @@ function blockCoursePaid(id, Thumbnail, TieuDe, GiangVienID, courseID) {
 	return content;
 }
 function blockHistory(id, createdAt, customerId, totalPrice, status) {
-	var ngay = new Date(createdAt).getDate();
-	var thang = new Date(createdAt).getMonth() + 1;
-	var nam = new Date(createdAt).getFullYear();
+	var dates = createdAt.replace(/T/, ' ').replace(/\..+/, '');
+	var ngay = new Date(dates).getDate();
+	var thang = new Date(dates).getMonth() + 1;
+	var nam = new Date(dates).getFullYear();
 	var content = '';
 	if (status == 1) {
 		content += '<tr>';
@@ -1145,9 +1150,10 @@ function historyInfo() {
 	var id = url.searchParams.get("id");
 	var status = url.searchParams.get("status");
 	var create = url.searchParams.get("create");
-	var ngay = new Date(create).getDate();
-	var thang = new Date(create).getMonth() + 1;
-	var nam = new Date(create).getFullYear();
+	var dates = create.replace(/T/, ' ').replace(/\..+/, '');
+	var ngay = new Date(dates).getDate();
+	var thang = new Date(dates).getMonth() + 1;
+	var nam = new Date(dates).getFullYear();
 	if (status == 1) {
 		$('.titletablecart').html('Chi tiết đơn hàng #' + id + ' - <span class="statuscart">Chưa thanh toán</span><p class="dateorder">Ngày đặt hàng: ' + ngay + '/' + thang + '/' + nam + '</p>');
 	}

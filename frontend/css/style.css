@@ -1427,51 +1427,6 @@ margin: 10px 0 10px;
 	color: red;
 	font-size: 50px;
 }
-.container1 {
-	margin-bottom: 15px;
-	padding: 10px;
-	width: 100%;
-	height: 340px;
-	color: #333;
-	background: #eee;
-	border-radius: 5px;
-}
-.container1 h3 {
-	margin-top: 0;
-}
-.slick-slide {
-	text-align: center;
-	color: #419be0;
-	height: 265px;
-	background: white;
-	margin: 0 20px 0 15px;
-}
-.priceOld {
-	text-align: left;
-	padding-top: 20px;
-	border-top: 1px solid #888;
-}
-.priceOld .old-price {
-	text-decoration: line-through;
-	color: #888;
-	margin-left: 5px;
-}
-.priceOld .discount {
-    font-size: 16px;
-    color: #fff;
-    background-color: #ed1c24;
-    padding: 0px 3px;
-    text-decoration: none;
-    font-weight: bold;
-    float: right;
-}
-.old-price1 {
-    text-decoration: line-through;
-    color: #888;
-}
-.lecturers1 {
-	margin-left: -11%;
-}
 
 .tablecourse {
     background-color: #fff;
