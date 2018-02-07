@@ -151,7 +151,7 @@ exports.getOrderHistoryAdmin = function(req, res){
 exports.getOrderQueryAdmin = function(req, res){
 	var page = Number(req.query.page);
 	var limit = Number(req.query.limit);
-	OrderDetail.find({ orderID : req.query.id })
+	Order.find({ _id : req.query.id })
 	.paginate(page, limit, function(err, result, total) {
     	var responseData = {
     		'data': result,
