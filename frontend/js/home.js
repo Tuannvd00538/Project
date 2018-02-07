@@ -42,13 +42,6 @@ $(document).ready(function () {
 	  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12&appId=252312411967413&autoLogAppEvents=1';
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));
-
-	$('.single-item').slick({
-	  	slidesToShow: 3,
-	  	slidesToScroll: 1,
-	  	autoplay: true,
-	  	autoplaySpeed: 2000,
-	});
 });
 function search() {
     $.ajax({
