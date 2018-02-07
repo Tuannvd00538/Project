@@ -124,3 +124,39 @@ exports.checkHistory = function(req, res){
     	res.send(responseData);
   	});
 }
+exports.getOrderAdmin = function(req, res){
+	var page = Number(req.query.page);
+	var limit = Number(req.query.limit);
+	Order.find({ })
+	.paginate(page, limit, function(err, result, total) {
+    	var responseData = {
+    		'data': result,
+    		'totalPage': Math.ceil(total/limit)
+    	};
+    	res.send(responseData);
+  	});
+}
+exports.getOrderHistoryAdmin = function(req, res){
+	var page = Number(req.query.page);
+	var limit = Number(req.query.limit);
+	Order.find({ createdAt : { $gte: req.query.start, $lte: req.query.end } })
+	.paginate(page, limit, function(err, result, total) {
+    	var responseData = {
+    		'data': result,
+    		'totalPage': Math.ceil(total/limit)
+    	};
+    	res.send(responseData);
+  	});
+}
+exports.getOrderQueryAdmin = function(req, res){
+	var page = Number(req.query.page);
+	var limit = Number(req.query.limit);
+	OrderDetail.find({ orderID : req.query.id })
+	.paginate(page, limit, function(err, result, total) {
+    	var responseData = {
+    		'data': result,
+    		'totalPage': Math.ceil(total/limit)
+    	};
+    	res.send(responseData);
+  	});
+}
