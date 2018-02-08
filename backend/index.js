@@ -61,7 +61,6 @@ app.get('/return-paypal', function(req, res){
     });
 });
 // End PayPal SDK
-
 app.use(cors());
 const fileUpload = require('express-fileupload');
 const path = require('path');
@@ -79,7 +78,6 @@ app.use(function(req, res, next) {
     next();
   }
 });
-
 const Storage = require('@google-cloud/storage');
 const storage = new Storage({
     keyFilename: './siin.json'
@@ -94,21 +92,17 @@ app.post('/_api/v1/images', upload.single('file'), function(req, res, next) {
     if (!req.file) {
         return next();
     }
-
     const gcsname = Date.now() + req.file.originalname;
     const file    = bucket.file(gcsname);
-
     const stream = file.createWriteStream({
         metadata: {
             contentType: req.file.mimetype
         }
     });
-
     stream.on('error', (err) => {
         req.file.cloudStorageError = err;
         next(err);
     });
-
     stream.on('finish', () => {
         req.file.cloudStorageObject = gcsname;
         file.makePublic().then(() => {
@@ -116,10 +110,8 @@ app.post('/_api/v1/images', upload.single('file'), function(req, res, next) {
             res.status(200).send(req.file.cloudStoragePublicUrl);
         });
     });
-
     stream.end(req.file.buffer);
 });
-
 app.use(fileUpload());
 app.use(express.static('./public'));
 app.use(bodyParser.json());
